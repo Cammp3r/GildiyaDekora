@@ -180,14 +180,13 @@ function App() {
             <div className="footer-section">
               <h4>Соціальні мережі</h4>
               <ul>
-                <li><a href="#">Facebook</a></li>
-                <li><a href="#">Instagram</a></li>
-                <li><a href="#">YouTube</a></li>
+                <li><a href="https://www.facebook.com/GildiyaDecora/" target="_blank">Facebook</a></li>
+                <li><a href="https://www.instagram.com/gildiya_decora/" target="_blank">Instagram</a></li>
               </ul>
             </div>
           </div>
           <div className="footer-bottom">
-            <p>&copy; 2024 Гільдія Декору. Офіційний дилер OIKOS. Всі права захищені.</p>
+            <p>&copy; 2026 Гільдія Декору. Офіційний дилер OIKOS. Всі права захищені.</p>
           </div>
         </div>
       </footer>
