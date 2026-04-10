@@ -1,34 +1,12 @@
-import { useState } from 'react'
 import './App.css'
+import Header from './components/Header.jsx'
+import Footer from './components/Footer.jsx'
 
 function App() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-
   return (
     <div className="App">
       {/* Header */}
-      <header className="header">
-        <div className="container">
-          <div className="header-content">
-            <div className="logo">
-              <h1>Гільдія Декору</h1>
-              <p className="tagline">Офіційний дилер OIKOS</p>
-            </div>
-            <nav className={`nav ${mobileMenuOpen ? 'open' : ''}`}>
-              <a href="#about">Про нас</a>
-              <a href="#products">Продукти</a>
-              <a href="#benefits">Переваги</a>
-              <a href="#contact">Контакти</a>
-            </nav>
-            <button 
-              className="mobile-toggle"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            >
-              ☰
-            </button>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       {/* Hero Section */}
       <section className="hero">
@@ -162,34 +140,7 @@ function App() {
       </section>
 
       {/* Footer */}
-      <footer className="footer">
-        <div className="container">
-          <div className="footer-content">
-            <div className="footer-section">
-              <h4>Гільдія Декору</h4>
-              <p>Офіційний дилер OIKOS в Україні</p>
-            </div>
-            <div className="footer-section">
-              <h4>Навігація</h4>
-              <ul>
-                <li><a href="#about">Про нас</a></li>
-                <li><a href="#products">Продукти</a></li>
-                <li><a href="#contact">Контакти</a></li>
-              </ul>
-            </div>
-            <div className="footer-section">
-              <h4>Соціальні мережі</h4>
-              <ul>
-                <li><a href="https://www.facebook.com/GildiyaDecora/" target="_blank">Facebook</a></li>
-                <li><a href="https://www.instagram.com/gildiya_decora/" target="_blank">Instagram</a></li>
-              </ul>
-            </div>
-          </div>
-          <div className="footer-bottom">
-            <p>&copy; 2026 Гільдія Декору. Офіційний дилер OIKOS. Всі права захищені.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }
