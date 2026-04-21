@@ -1,7 +1,10 @@
 import { useState } from 'react'
+import { NavLink } from 'react-router-dom'
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
+  const closeMobileMenu = () => setMobileMenuOpen(false)
 
   return (
     <header className="header">
@@ -12,10 +15,18 @@ export default function Header() {
             <p className="tagline">Офіційний дилер OIKOS</p>
           </div>
           <nav className={`nav ${mobileMenuOpen ? 'open' : ''}`}>
-            <a href="#about">Про нас</a>
-            <a href="#products">Продукти</a>
-            <a href="#benefits">Переваги</a>
-            <a href="#contact">Контакти</a>
+            <NavLink to="/about" onClick={closeMobileMenu}>
+              Про нас
+            </NavLink>
+            <NavLink to="/products" onClick={closeMobileMenu}>
+              Продукти
+            </NavLink>
+            <NavLink to="/benefits" onClick={closeMobileMenu}>
+              Переваги
+            </NavLink>
+            <NavLink to="/contact" onClick={closeMobileMenu}>
+              Контакти
+            </NavLink>
           </nav>
           <button
             className="mobile-toggle"

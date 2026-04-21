@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 export default function Footer() {
   return (
     <footer className="footer">
@@ -11,13 +13,13 @@ export default function Footer() {
             <h4>Навігація</h4>
             <ul>
               <li>
-                <a href="#about">Про нас</a>
+                <Link to="/about">Про нас</Link>
               </li>
               <li>
-                <a href="#products">Продукти</a>
+                <Link to="/products">Продукти</Link>
               </li>
               <li>
-                <a href="#contact">Контакти</a>
+                <Link to="/contact">Контакти</Link>
               </li>
             </ul>
           </div>
@@ -28,6 +30,7 @@ export default function Footer() {
                 <a
                   href="https://www.facebook.com/GildiyaDecora/"
                   target="_blank"
+                  rel="noreferrer"
                 >
                   Facebook
                 </a>
@@ -36,6 +39,7 @@ export default function Footer() {
                 <a
                   href="https://www.instagram.com/gildiya_decora/"
                   target="_blank"
+                  rel="noreferrer"
                 >
                   Instagram
                 </a>
