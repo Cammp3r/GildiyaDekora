@@ -1,5 +1,3 @@
-import { Link } from 'react-router-dom'
-
 export default function Footer() {
   return (
     <footer className="footer">
@@ -8,20 +6,6 @@ export default function Footer() {
           <div className="footer-section">
             <h4>Гільдія Декору</h4>
             <p>Офіційний дилер OIKOS в Україні</p>
-          </div>
-          <div className="footer-section">
-            <h4>Навігація</h4>
-            <ul>
-              <li>
-                <Link to="/about">Про нас</Link>
-              </li>
-              <li>
-                <Link to="/products">Продукти</Link>
-              </li>
-              <li>
-                <Link to="/contact">Контакти</Link>
-              </li>
-            </ul>
           </div>
           <div className="footer-section">
             <h4>Соціальні мережі</h4>

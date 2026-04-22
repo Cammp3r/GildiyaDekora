@@ -1,32 +1,37 @@
 import { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const location = useLocation()
 
   const closeMobileMenu = () => setMobileMenuOpen(false)
+
+  const navItems = [
+    { label: 'Про нас', path: '/' },
+    { label: 'Продукти', path: '/products' },
+    { label: 'Галерея', path: '/gallery' },
+    { label: 'Контакти', path: '/contact' }
+  ]
 
   return (
     <header className="header">
       <div className="container">
         <div className="header-content">
-          <div className="logo">
-            <h1>Гільдія Декору</h1>
-            <p className="tagline">Офіційний дилер OIKOS</p>
-          </div>
+          <NavLink to="/" className="logo" onClick={closeMobileMenu}>
+            <img src="" alt="Гільдія Декору" />
+          </NavLink>
           <nav className={`nav ${mobileMenuOpen ? 'open' : ''}`}>
-            <NavLink to="/about" onClick={closeMobileMenu}>
-              Про нас
-            </NavLink>
-            <NavLink to="/products" onClick={closeMobileMenu}>
-              Продукти
-            </NavLink>
-            <NavLink to="/gallery" onClick={closeMobileMenu}>
-              Галерея
-            </NavLink>
-            <NavLink to="/contact" onClick={closeMobileMenu}>
-              Контакти
-            </NavLink>
+            {navItems.map((item) => (
+              <NavLink
+                key={item.path}
+                to={item.path}
+                className={({ isActive }) => isActive ? 'active' : ''}
+                onClick={closeMobileMenu}
+              >
+                {item.label}
+              </NavLink>
+            ))}
           </nav>
           <button
             className="mobile-toggle"
