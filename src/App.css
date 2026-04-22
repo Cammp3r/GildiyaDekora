@@ -28,7 +28,7 @@ body {
 
 /* Header */
 .header {
-  background: linear-gradient(135deg, #800080 0%, #9400D3 100%);
+  background: linear-gradient(135deg, #9400D3 0%, #800080 100%);
   color: white;
   padding: 1rem 0;
   position: static;
@@ -39,6 +39,18 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 60px;
+  width: auto;
+  display: block;
+  background: transparent;
 }
 
 .logo h1 {
@@ -102,7 +114,7 @@ body {
 
 /* Hero Section */
 .hero {
-  background: linear-gradient(135deg, #9400D3 0%, #800080 100%);
+  background: linear-gradient(135deg, #800080 0%, #9400D3 100%);
   color: white;
   padding: 6rem 2rem;
   text-align: center;

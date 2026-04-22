@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import { NavLink, useLocation } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
+import logo from '../logos/logo-transparent.png'
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const location = useLocation()
 
   const closeMobileMenu = () => setMobileMenuOpen(false)
 
@@ -19,7 +19,7 @@ export default function Header() {
       <div className="container">
         <div className="header-content">
           <NavLink to="/" className="logo" onClick={closeMobileMenu}>
-            <img src="" alt="Гільдія Декору" />
+            <img src={logo} alt="Гільдія Декору" />
           </NavLink>
           <nav className={`nav ${mobileMenuOpen ? 'open' : ''}`}>
             {navItems.map((item) => (
