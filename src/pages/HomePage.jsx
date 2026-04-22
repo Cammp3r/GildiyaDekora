@@ -102,26 +102,30 @@ export default function HomePage({ scrollToId }) {
         </div>
       </section>
 
-      {/* Benefits Section */}
-      <section id="benefits" className="benefits">
+      {/* Gallery Section */}
+      <section id="gallery" className="gallery">
         <div className="container">
-          <h2 className="section-title">Чому обирають OIKOS?</h2>
-          <div className="benefits-grid">
-            <div className="benefit-item">
-              <h3>🌱 Екологічність</h3>
-              <p>Екологічні матеріали, безпечні для здоров'я</p>
+          <h2 className="section-title">Галерея наших об'єктів</h2>
+          <div className="gallery-grid">
+            <div className="gallery-item">
+              <div className="gallery-image-placeholder">
+                <span>Фото об'єкту 1</span>
+              </div>
             </div>
-            <div className="benefit-item">
-              <h3>⏱️ Довговічність</h3>
-              <p>Тривалий термін служби до 20+ років</p>
+            <div className="gallery-item">
+              <div className="gallery-image-placeholder">
+                <span>Фото об'єкту 2</span>
+              </div>
             </div>
-            <div className="benefit-item">
-              <h3>🎨 Колірна гама</h3>
-              <p>Понад 3000 кольорів на вибір</p>
+            <div className="gallery-item">
+              <div className="gallery-image-placeholder">
+                <span>Фото об'єкту 3</span>
+              </div>
             </div>
-            <div className="benefit-item">
-              <h3>💪 Якість</h3>
-              <p>Світові стандарти якості ISO</p>
+            <div className="gallery-item">
+              <div className="gallery-image-placeholder">
+                <span>Фото об'єкту 4</span>
+              </div>
             </div>
           </div>
         </div>

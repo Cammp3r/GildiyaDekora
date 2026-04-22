@@ -21,8 +21,8 @@ export default function Header() {
             <NavLink to="/products" onClick={closeMobileMenu}>
               Продукти
             </NavLink>
-            <NavLink to="/benefits" onClick={closeMobileMenu}>
-              Переваги
+            <NavLink to="/gallery" onClick={closeMobileMenu}>
+              Галерея
             </NavLink>
             <NavLink to="/contact" onClick={closeMobileMenu}>
               Контакти
