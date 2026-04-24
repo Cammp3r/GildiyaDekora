@@ -314,7 +314,6 @@ body {
 
 .color-swatch {
   transition: transform 0.6s ease, filter 0.4s;
-  cursor: pointer;
 }
 
 .color-swatch:hover {
@@ -330,7 +329,7 @@ body {
   background: var(--cream);
   border: 1px solid var(--soft);
   padding: 1.2rem 1.5rem;
-  z-index: 5;
+  z-index: 100;
   box-shadow: 4px 4px 0 var(--soft);
 }
 

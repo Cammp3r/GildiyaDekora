@@ -62,8 +62,10 @@ export default function HomePage() {
             <div className="color-swatch" style={{background:'#582858'}}></div>
           </div>
           <div className="hero-badge">
+            
             <div className="badge-num">840+</div>
             <div className="badge-label">відтінків у каталозі</div>
+            
           </div>
         </div>
       </section>
