@@ -10,7 +10,7 @@ export default function ContactPage() {
       {/* Contact Section */}
       <section className="contact">
         <div className="container">
-          <h2 className="section-title">Зв'яжіться з нами</h2>
+          <h2 className="section-title">Зв'яжіться з <em>нами</em></h2>
           <div className="contact-content">
             <div className="contact-info">
               <div className="contact-item">
@@ -19,16 +19,14 @@ export default function ContactPage() {
               </div>
               <div className="contact-item">
                 <h3>📞 Телефон</h3>
-                <p>+38 (067) 503-93-52</p>
+                <p><a href="tel:+380675039352">+38 (067) 503-93-52</a></p>
               </div>
               <div className="contact-item">
-                <h3>Email</h3>
-                <p>
-                  
-                </p>
+                <h3>💬 Замовлення</h3>
+                <p>Заповніть форму справа і ми зв'яжемось з вами найближчим часом</p>
               </div>
             </div>
-            <form className="contact-form">
+            <form className="contact-form" onSubmit={(e) => { e.preventDefault(); alert('Дякуємо за ваше повідомлення!'); }}>
               <input type="text" placeholder="Ваше ім'я" required />
               <input type="email" placeholder="Ваша email" required />
               <textarea
@@ -37,7 +35,7 @@ export default function ContactPage() {
                 required
               ></textarea>
               <button type="submit" className="submit-button">
-                Надіслати
+                Надіслати повідомлення
               </button>
             </form>
           </div>

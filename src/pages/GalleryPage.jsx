@@ -25,7 +25,7 @@ export default function GalleryPage() {
       {/* Gallery Section */}
       <section className="gallery">
         <div className="container">
-          <h2 className="section-title">Галерея наших об'єктів</h2>
+          <h2 className="section-title">Галерея <em>наших об'єктів</em></h2>
           <div className="gallery-grid">
             {photos.map((photo, index) => (
               <div className="gallery-item" key={index}>

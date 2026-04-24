@@ -16,30 +16,36 @@ export default function Header() {
 
   return (
     <header className="header">
-      <div className="container">
-        <div className="header-content">
-          <NavLink to="/" className="logo" onClick={closeMobileMenu}>
-            <img src={logo} alt="Гільдія Декору" />
-          </NavLink>
-          <nav className={`nav ${mobileMenuOpen ? 'open' : ''}`}>
-            {navItems.map((item) => (
-              <NavLink
-                key={item.path}
-                to={item.path}
-                className={({ isActive }) => isActive ? 'active' : ''}
-                onClick={closeMobileMenu}
-              >
-                {item.label}
-              </NavLink>
-            ))}
-          </nav>
-          <button
-            className="mobile-toggle"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            ☰
-          </button>
+      <div className="header-content">
+        <NavLink to="/" className="logo" onClick={closeMobileMenu}>
+          <img src={logo} alt="Гільдія Декору" />
+          <div className="logo-text">
+            <span className="logo-main">GILDIYA</span>
+            <span className="logo-sub">DEKORA</span>
+          </div>
+        </NavLink>
+        <nav className={`nav ${mobileMenuOpen ? 'open' : ''}`}>
+          {navItems.map((item) => (
+            <NavLink
+              key={item.path}
+              to={item.path}
+              className={({ isActive }) => isActive ? 'active' : ''}
+              onClick={closeMobileMenu}
+            >
+              {item.label}
+            </NavLink>
+          ))}
+        </nav>
+        <div className="nav-right">
+          <a href="#search">Пошук</a>
+          <a href="#cart">Контакти</a>
         </div>
+        <button
+          className="mobile-toggle"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        >
+          ☰
+        </button>
       </div>
     </header>
   )

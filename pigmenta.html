@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PIGMENTA — Декоративні фарби</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --ink: #1a1714;
+    --cream: #f5f0e8;
+    --warm: #e8ddd0;
+    --accent: #c4703a;
+    --accent2: #7a5c8a;
+    --soft: #d4c9b8;
+    --muted: #8a8278;
+    --serif: 'Cormorant Garamond', serif;
+    --mono: 'Space Mono', monospace;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--cream); color: var(--ink); font-family: var(--serif); overflow-x: hidden; cursor: none; }
+  #cursor { width: 12px; height: 12px; background: var(--accent); border-radius: 50%; position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999; transition: transform 0.15s ease, background 0.3s; mix-blend-mode: multiply; }
+  #cursor-ring { width: 36px; height: 36px; border: 1px solid var(--accent); border-radius: 50%; position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9998; transition: transform 0.4s ease, opacity 0.3s; opacity: 0.5; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.5rem 3rem; mix-blend-mode: multiply; }
+  .logo { font-family: var(--mono); font-size: 1.1rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ink); }
+  nav ul { display: flex; gap: 2.5rem; list-style: none; }
+  nav a { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; color: var(--ink); opacity: 0.6; transition: opacity 0.3s; }
+  nav a:hover { opacity: 1; }
+  .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; position: relative; overflow: hidden; }
+  .hero-left { display: flex; flex-direction: column; justify-content: flex-end; padding: 8rem 3rem 5rem; position: relative; z-index: 2; }
+  .hero-tag { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.5rem; }
+  .hero h1 { font-size: clamp(3.5rem, 7vw, 6rem); font-weight: 300; line-height: 0.95; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 2rem; }
+  .hero h1 em { font-style: italic; color: var(--accent); }
+  .hero-desc { font-size: 1rem; line-height: 1.7; color: var(--muted); max-width: 340px; margin-bottom: 3rem; font-weight: 300; }
+  .btn-primary { display: inline-flex; align-items: center; gap: 1rem; font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; color: var(--cream); background: var(--ink); padding: 1rem 1.8rem; transition: all 0.3s; width: fit-content; }
+  .btn-primary:hover { background: var(--accent); letter-spacing: 0.3em; }
+  .btn-secondary { display: inline-flex; align-items: center; gap: 0.8rem; font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; color: var(--ink); border-bottom: 1px solid var(--soft); padding-bottom: 0.2rem; transition: border-color 0.3s; width: fit-content; margin-top: 1rem; }
+  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+  .hero-right { position: relative; overflow: hidden; }
+  .color-wall { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(5, 1fr); grid-template-rows: repeat(8, 1fr); }
+  .color-swatch { transition: transform 0.6s ease, filter 0.4s; cursor: none; }
+  .color-swatch:hover { transform: scale(1.05); filter: brightness(1.1); z-index: 10; }
+  .hero-badge { position: absolute; bottom: 4rem; left: -1.5rem; background: var(--cream); border: 1px solid var(--soft); padding: 1.2rem 1.5rem; z-index: 5; box-shadow: 4px 4px 0 var(--soft); }
+  .badge-num { font-size: 2.5rem; font-weight: 300; line-height: 1; color: var(--ink); }
+  .badge-label { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.2em; color: var(--muted); text-transform: uppercase; margin-top: 0.2rem; }
+  .marquee-bar { background: var(--ink); color: var(--cream); padding: 0.8rem 0; overflow: hidden; white-space: nowrap; }
+  .marquee-inner { display: inline-flex; animation: marquee 20s linear infinite; }
+  .marquee-inner span { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; margin: 0 3rem; opacity: 0.7; }
+  .marquee-inner .dot { color: var(--accent); opacity: 1; margin: 0; }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  section { padding: 6rem 3rem; }
+  .section-label { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); margin-bottom: 3rem; display: flex; align-items: center; gap: 1rem; }
+  .section-label::after { content: ''; display: block; width: 40px; height: 1px; background: var(--accent); }
+  .collections-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: auto auto; gap: 1.5px; background: var(--soft); }
+  .col-card { background: var(--cream); position: relative; overflow: hidden; cursor: none; }
+  .col-card:first-child { grid-row: span 2; min-height: 600px; }
+  .col-card-inner { height: 100%; min-height: 280px; display: flex; flex-direction: column; justify-content: flex-end; padding: 2rem; position: relative; overflow: hidden; }
+  .col-bg { position: absolute; inset: 0; transition: transform 0.8s ease; }
+  .col-card:hover .col-bg { transform: scale(1.05); }
+  .col-info { position: relative; z-index: 2; background: var(--cream); padding: 1rem 1.2rem; margin: -1rem; transition: background 0.3s; }
+  .col-card:hover .col-info { background: var(--ink); color: var(--cream); }
+  .col-name { font-size: 1.6rem; font-weight: 300; line-height: 1.1; margin-bottom: 0.3rem; }
+  .col-count { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.2em; color: var(--muted); text-transform: uppercase; }
+  .col-card:hover .col-count { color: var(--soft); }
+  .products-section { background: var(--warm); }
+  .products-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; }
+  .products-title { font-size: 3rem; font-weight: 300; line-height: 1; }
+  .products-title em { font-style: italic; color: var(--accent); }
+  .filter-row { display: flex; gap: 0.5rem; }
+  .filter-btn { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; background: none; border: 1px solid var(--soft); padding: 0.4rem 0.8rem; cursor: none; transition: all 0.3s; color: var(--muted); }
+  .filter-btn.active, .filter-btn:hover { background: var(--ink); border-color: var(--ink); color: var(--cream); }
+  .products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--soft); }
+  .product-card { background: var(--cream); cursor: none; overflow: hidden; transition: background 0.3s; }
+  .product-card:hover { background: var(--ink); }
+  .product-swatch { height: 200px; position: relative; overflow: hidden; }
+  .swatch-color { position: absolute; inset: 0; transition: transform 0.5s ease; }
+  .product-card:hover .swatch-color { transform: scale(1.08); }
+  .product-tag { position: absolute; top: 1rem; right: 1rem; font-family: var(--mono); font-size: 0.5rem; letter-spacing: 0.15em; text-transform: uppercase; background: rgba(245,240,232,0.9); padding: 0.3rem 0.6rem; color: var(--ink); }
+  .product-info { padding: 1.2rem; transition: color 0.3s; }
+  .product-card:hover .product-info { color: var(--cream); }
+  .product-name { font-size: 1.1rem; font-weight: 300; margin-bottom: 0.2rem; }
+  .product-sub { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.15em; color: var(--muted); text-transform: uppercase; margin-bottom: 0.8rem; }
+  .product-card:hover .product-sub { color: var(--soft); }
+  .product-footer { display: flex; justify-content: space-between; align-items: center; }
+  .product-price { font-size: 1.3rem; font-weight: 300; }
+  .add-btn { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase; background: none; border: 1px solid currentColor; padding: 0.4rem 0.7rem; cursor: none; color: inherit; transition: all 0.3s; }
+  .add-btn:hover { background: var(--accent); border-color: var(--accent); color: var(--cream); }
+  .palette-section { display: grid; grid-template-columns: 1fr 1fr; gap: 0; min-height: 500px; background: var(--soft); }
+  .palette-left { background: var(--ink); color: var(--cream); padding: 5rem 4rem; display: flex; flex-direction: column; justify-content: center; }
+  .palette-left h2 { font-size: 2.8rem; font-weight: 300; line-height: 1.1; margin-bottom: 1.5rem; }
+  .palette-left h2 em { color: var(--accent); font-style: italic; }
+  .palette-left p { font-size: 1rem; line-height: 1.7; color: rgba(245,240,232,0.65); font-weight: 300; margin-bottom: 2.5rem; max-width: 340px; }
+  .palette-right { background: var(--warm); padding: 3rem; display: flex; flex-direction: column; justify-content: center; }
+  .mixer-label { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.5rem; }
+  .mixer-colors { display: flex; gap: 0.8rem; margin-bottom: 2rem; flex-wrap: wrap; }
+  .mix-dot { width: 44px; height: 44px; border-radius: 50%; cursor: none; transition: transform 0.3s; border: 3px solid transparent; flex-shrink: 0; }
+  .mix-dot.selected { border-color: var(--ink); transform: scale(1.15); }
+  .mix-dot:hover { transform: scale(1.1); }
+  .mix-result-label { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.8rem; }
+  .mix-result { height: 100px; border-radius: 2px; transition: background-color 1s ease; display: flex; align-items: center; justify-content: center; }
+  .mix-result-name { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.7); background: rgba(0,0,0,0.2); padding: 0.4rem 0.8rem; }
+  .about-section { display: grid; grid-template-columns: 1fr 1.5fr; gap: 6rem; align-items: center; background: var(--cream); }
+  .about-num { font-size: 8rem; font-weight: 300; line-height: 1; color: var(--soft); font-family: var(--serif); }
+  .about-stat { margin-bottom: 2.5rem; }
+  .about-stat-label { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.2rem; }
+  .about-right h2 { font-size: 2.8rem; font-weight: 300; line-height: 1.15; margin-bottom: 2rem; }
+  .about-right h2 em { font-style: italic; color: var(--accent2); }
+  .about-right p { font-size: 1.05rem; line-height: 1.8; color: var(--muted); font-weight: 300; margin-bottom: 1.5rem; }
+  .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; background: var(--soft); border-top: 1px solid var(--soft); }
+  .feature { background: var(--cream); padding: 2.5rem; border-right: 1px solid var(--soft); }
+  .feature:last-child { border-right: none; }
+  .feature-icon { width: 32px; height: 32px; background: var(--accent); margin-bottom: 1.5rem; }
+  .feature h3 { font-size: 1.3rem; font-weight: 300; margin-bottom: 0.8rem; }
+  .feature p { font-size: 0.85rem; line-height: 1.7; color: var(--muted); font-weight: 300; }
+  footer { background: var(--ink); color: var(--cream); padding: 4rem 3rem; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; }
+  footer .logo { color: var(--cream); margin-bottom: 1rem; }
+  .footer-desc { font-size: 0.85rem; line-height: 1.7; color: rgba(245,240,232,0.5); font-family: var(--serif); font-weight: 300; }
+  .footer-col h4 { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.2rem; }
+  .footer-col ul { list-style: none; }
+  .footer-col li { font-size: 0.85rem; color: rgba(245,240,232,0.5); margin-bottom: 0.6rem; cursor: none; transition: color 0.3s; }
+  .footer-col li:hover { color: var(--cream); }
+  .footer-bottom { background: var(--ink); border-top: 1px solid rgba(245,240,232,0.1); padding: 1.2rem 3rem; display: flex; justify-content: space-between; }
+  .footer-bottom span { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(245,240,232,0.3); }
+  @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  .fade-in { animation: fadeInUp 0.8s ease forwards; opacity: 0; }
+  .fade-in:nth-child(1) { animation-delay: 0.1s; }
+  .fade-in:nth-child(2) { animation-delay: 0.25s; }
+  .fade-in:nth-child(3) { animation-delay: 0.4s; }
+  .fade-in:nth-child(4) { animation-delay: 0.55s; }
+  .fade-in:nth-child(5) { animation-delay: 0.7s; }
+</style>
+</head>
+<body>
+
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<nav>
+  <div class="logo">Pigmenta</div>
+  <ul>
+    <li><a href="#">Колекції</a></li>
+    <li><a href="#">Каталог</a></li>
+    <li><a href="#">Кольори</a></li>
+    <li><a href="#">Про нас</a></li>
+    <li><a href="#">Магазини</a></li>
+  </ul>
+  <div style="display:flex;gap:1.5rem;align-items:center;">
+    <a href="#" style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;color:var(--ink);opacity:0.6;">Пошук</a>
+    <a href="#" style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;color:var(--ink);opacity:0.6;">Кошик (0)</a>
+  </div>
+</nav>
+
+<section class="hero" style="padding:0;">
+  <div class="hero-left">
+    <p class="hero-tag fade-in">Нова колекція · Весна 2026</p>
+    <h1 class="fade-in">Колір<br>що <em>говорить</em><br>за вас</h1>
+    <p class="hero-desc fade-in">Декоративні фарби для інтер'єрів, що надихають. Від шовкового матового до структурованого рельєфу.</p>
+    <a href="#" class="btn-primary fade-in">Переглянути колекцію →</a>
+    <a href="#" class="btn-secondary fade-in">Замовити зразки</a>
+  </div>
+  <div class="hero-right">
+    <div class="color-wall">
+      <div class="color-swatch" style="background:#d4c4b8;"></div>
+      <div class="color-swatch" style="background:#b8a898;"></div>
+      <div class="color-swatch" style="background:#8c7b6e;"></div>
+      <div class="color-swatch" style="background:#c4703a;"></div>
+      <div class="color-swatch" style="background:#e8d4c4;"></div>
+      <div class="color-swatch" style="background:#a8c4b4;"></div>
+      <div class="color-swatch" style="background:#7a9e8e;"></div>
+      <div class="color-swatch" style="background:#4e7a6a;"></div>
+      <div class="color-swatch" style="background:#7a5c8a;"></div>
+      <div class="color-swatch" style="background:#d4e8d4;"></div>
+      <div class="color-swatch" style="background:#e8c4a0;"></div>
+      <div class="color-swatch" style="background:#c8a080;"></div>
+      <div class="color-swatch" style="background:#a87c5a;"></div>
+      <div class="color-swatch" style="background:#885c3a;"></div>
+      <div class="color-swatch" style="background:#c4d4e4;"></div>
+      <div class="color-swatch" style="background:#8ca4b8;"></div>
+      <div class="color-swatch" style="background:#5a7a94;"></div>
+      <div class="color-swatch" style="background:#2a4a64;"></div>
+      <div class="color-swatch" style="background:#e4c4c4;"></div>
+      <div class="color-swatch" style="background:#c49a9a;"></div>
+      <div class="color-swatch" style="background:#e8e4d4;"></div>
+      <div class="color-swatch" style="background:#d4ceb8;"></div>
+      <div class="color-swatch" style="background:#b8b09a;"></div>
+      <div class="color-swatch" style="background:#1a1714;"></div>
+      <div class="color-swatch" style="background:#f5f0e8;"></div>
+      <div class="color-swatch" style="background:#eae0cc;"></div>
+      <div class="color-swatch" style="background:#d4c8a8;"></div>
+      <div class="color-swatch" style="background:#b8a880;"></div>
+      <div class="color-swatch" style="background:#9c8858;"></div>
+      <div class="color-swatch" style="background:#7c6840;"></div>
+      <div class="color-swatch" style="background:#cce4cc;"></div>
+      <div class="color-swatch" style="background:#aac8aa;"></div>
+      <div class="color-swatch" style="background:#88ac88;"></div>
+      <div class="color-swatch" style="background:#669066;"></div>
+      <div class="color-swatch" style="background:#447444;"></div>
+      <div class="color-swatch" style="background:#d4b8d4;"></div>
+      <div class="color-swatch" style="background:#b894b8;"></div>
+      <div class="color-swatch" style="background:#9c709c;"></div>
+      <div class="color-swatch" style="background:#7a4c7a;"></div>
+      <div class="color-swatch" style="background:#582858;"></div>
+    </div>
+    <div class="hero-badge">
+      <div class="badge-num">840+</div>
+      <div class="badge-label">відтінків у каталозі</div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-bar">
+  <div class="marquee-inner">
+    <span>Декоративні фарби</span><span class="dot">·</span>
+    <span>Венеційська штукатурка</span><span class="dot">·</span>
+    <span>Мікроцемент</span><span class="dot">·</span>
+    <span>Ефект крейди</span><span class="dot">·</span>
+    <span>Металік</span><span class="dot">·</span>
+    <span>Перламутр</span><span class="dot">·</span>
+    <span>Рельєфні покриття</span><span class="dot">·</span>
+    <span>Матові текстури</span><span class="dot">·</span>
+    <span>Декоративні фарби</span><span class="dot">·</span>
+    <span>Венеційська штукатурка</span><span class="dot">·</span>
+    <span>Мікроцемент</span><span class="dot">·</span>
+    <span>Ефект крейди</span><span class="dot">·</span>
+    <span>Металік</span><span class="dot">·</span>
+    <span>Перламутр</span><span class="dot">·</span>
+    <span>Рельєфні покриття</span><span class="dot">·</span>
+    <span>Матові текстури</span><span class="dot">·</span>
+  </div>
+</div>
+
+<section>
+  <div class="section-label">Колекції</div>
+  <div class="collections-grid">
+    <div class="col-card">
+      <div class="col-card-inner">
+        <div class="col-bg" style="background:linear-gradient(160deg,#8c7b6e 0%,#4e3a2a 100%);"></div>
+        <div class="col-info">
+          <div class="col-name">Terra<br><em>Antica</em></div>
+          <div class="col-count">48 відтінків · Земляні тони</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-card">
+      <div class="col-card-inner">
+        <div class="col-bg" style="background:linear-gradient(140deg,#a8c4b4 0%,#2a4a64 100%);"></div>
+        <div class="col-info">
+          <div class="col-name"><em>Nordic</em> Mist</div>
+          <div class="col-count">36 відтінків · Скандинавія</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-card">
+      <div class="col-card-inner">
+        <div class="col-bg" style="background:linear-gradient(140deg,#7a5c8a 0%,#2a1a3a 100%);"></div>
+        <div class="col-info">
+          <div class="col-name">Viola<br><em>Profonda</em></div>
+          <div class="col-count">24 відтінки · Сутінки</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-card">
+      <div class="col-card-inner">
+        <div class="col-bg" style="background:linear-gradient(140deg,#e8e4d4 0%,#b8a880 100%);"></div>
+        <div class="col-info">
+          <div class="col-name"><em>Ivory</em> Shore</div>
+          <div class="col-count">56 відтінків · Нейтрали</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="products-section">
+  <div class="products-header">
+    <h2 class="products-title">Нові <em>надходження</em></h2>
+    <div class="filter-row">
+      <button class="filter-btn active">Всі</button>
+      <button class="filter-btn">Матові</button>
+      <button class="filter-btn">Металік</button>
+      <button class="filter-btn">Рельєф</button>
+      <button class="filter-btn">Венеція</button>
+    </div>
+  </div>
+  <div class="products-grid">
+    <div class="product-card">
+      <div class="product-swatch">
+        <div class="swatch-color" style="background:linear-gradient(135deg,#c4703a,#8c4a1a);"></div>
+        <div class="product-tag">Новинка</div>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Burnt Sienna</div>
+        <div class="product-sub">Матова · 2.5 л</div>
+        <div class="product-footer">
+          <div class="product-price">890 ₴</div>
+          <button class="add-btn">+ кошик</button>
+        </div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-swatch">
+        <div class="swatch-color" style="background:linear-gradient(135deg,#4e7a6a,#1a4a3a);"></div>
+        <div class="product-tag">Хіт</div>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Forest Dew</div>
+        <div class="product-sub">Шовковий матовий · 2.5 л</div>
+        <div class="product-footer">
+          <div class="product-price">1 050 ₴</div>
+          <button class="add-btn">+ кошик</button>
+        </div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-swatch">
+        <div class="swatch-color" style="background:linear-gradient(135deg,#b894b8,#5a3a5a);"></div>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Wisteria Bloom</div>
+        <div class="product-sub">Перламутр · 1 л</div>
+        <div class="product-footer">
+          <div class="product-price">1 280 ₴</div>
+          <button class="add-btn">+ кошик</button>
+        </div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-swatch">
+        <div class="swatch-color" style="background:linear-gradient(135deg,#8ca4b8,#2a4a64);"></div>
+        <div class="product-tag">-15%</div>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Storm Blue</div>
+        <div class="product-sub">Венеційська · 1 л</div>
+        <div class="product-footer">
+          <div class="product-price">1 590 ₴</div>
+          <button class="add-btn">+ кошик</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="palette-section" style="padding:0;">
+  <div class="palette-left">
+    <h2>Змішайте <em>свій</em><br>унікальний<br>відтінок</h2>
+    <p>Наш онлайн-мікшер допоможе підібрати ідеальне поєднання. Оберіть базові кольори і отримайте рецепт змішування.</p>
+    <a href="#" class="btn-primary" style="background:var(--accent);color:var(--cream);">Відкрити мікшер →</a>
+  </div>
+  <div class="palette-right">
+    <div class="mixer-label">Оберіть базові кольори</div>
+    <div class="mixer-colors" id="mixColors">
+      <div class="mix-dot selected" style="background:#c4703a;" data-color="196,112,58" data-name="Terracotta"></div>
+      <div class="mix-dot" style="background:#4e7a6a;" data-color="78,122,106" data-name="Forest"></div>
+      <div class="mix-dot" style="background:#7a5c8a;" data-color="122,92,138" data-name="Wisteria"></div>
+      <div class="mix-dot" style="background:#2a4a64;" data-color="42,74,100" data-name="Storm"></div>
+      <div class="mix-dot" style="background:#e8e4d4;" data-color="232,228,212" data-name="Ivory"></div>
+      <div class="mix-dot" style="background:#1a1714;" data-color="26,23,20" data-name="Onyx"></div>
+      <div class="mix-dot" style="background:#b8a880;" data-color="184,168,128" data-name="Sand"></div>
+      <div class="mix-dot" style="background:#c49a9a;" data-color="196,154,154" data-name="Rose"></div>
+    </div>
+    <div class="mix-result-label">Результат змішування</div>
+    <div class="mix-result" id="mixResult" style="background:#c4703a;">
+      <span class="mix-result-name" id="mixName">Terracotta Pure</span>
+    </div>
+  </div>
+</div>
+
+<section class="about-section">
+  <div class="about-left">
+    <div class="about-stat">
+      <div class="about-num">18</div>
+      <div class="about-stat-label">Років досвіду на ринку</div>
+    </div>
+    <div class="about-stat">
+      <div class="about-num">840</div>
+      <div class="about-stat-label">Унікальних відтінків</div>
+    </div>
+    <div class="about-stat">
+      <div class="about-num">92<span style="font-size:3rem;">%</span></div>
+      <div class="about-stat-label">Задоволених клієнтів</div>
+    </div>
+  </div>
+  <div class="about-right">
+    <div class="section-label">Про Pigmenta</div>
+    <h2>Мистецтво кольору<br>у <em>кожній деталі</em></h2>
+    <p>Ми не просто продаємо фарби — ми допомагаємо втілювати ідеї. Наші декоративні покриття розроблені разом з архітекторами та дизайнерами інтер'єрів.</p>
+    <p>Від класичної венеційської штукатурки до сучасного мікроцементу — кожен продукт проходить суворий контроль якості у власній лабораторії.</p>
+    <a href="#" class="btn-secondary">Дізнатися більше →</a>
+  </div>
+</section>
+
+<div class="features">
+  <div class="feature">
+    <div class="feature-icon"></div>
+    <h3>Безкоштовні зразки</h3>
+    <p>Замовте до 5 зразків кольору безкоштовно. Доставляємо протягом 2 робочих днів по всій Україні.</p>
+  </div>
+  <div class="feature">
+    <div class="feature-icon" style="background:var(--accent2);"></div>
+    <h3>Консультація дизайнера</h3>
+    <p>Наші сертифіковані колористи допоможуть підібрати ідеальну палітру для вашого проекту.</p>
+  </div>
+  <div class="feature">
+    <div class="feature-icon" style="background:#4e7a6a;"></div>
+    <h3>Колірні гарантії</h3>
+    <p>Гарантуємо точне відтворення кольору при дозамовленні. Зберігаємо рецептуру 5 років.</p>
+  </div>
+</div>
+
+<footer>
+  <div>
+    <div class="logo">Pigmenta</div>
+    <p class="footer-desc">Декоративні фарби та покриття для інтер'єрів, що надихають.</p>
+  </div>
+  <div class="footer-col">
+    <h4>Продукти</h4>
+    <ul>
+      <li>Матові фарби</li>
+      <li>Металік</li>
+      <li>Венеційська штукатурка</li>
+      <li>Мікроцемент</li>
+      <li>Рельєфні покриття</li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Послуги</h4>
+    <ul>
+      <li>Безкоштовні зразки</li>
+      <li>Консультація</li>
+      <li>Колірний підбір</li>
+      <li>Навчання</li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Контакти</h4>
+    <ul>
+      <li>Київ, Хрещатик 22</li>
+      <li>0800 300 400</li>
+      <li>hello@pigmenta.ua</li>
+      <li>Instagram</li>
+      <li>Pinterest</li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <span>© 2026 Pigmenta. Всі права захищені.</span>
+  <span>Дизайн · Розробка · Концепція</span>
+</div>
+
+<script>
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursor-ring');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.transform = `translate(${mx-6}px, ${my-6}px)`;
+  });
+  function animateRing() {
+    rx += (mx - rx) * 0.12;
+    ry += (my - ry) * 0.12;
+    ring.style.transform = `translate(${rx-18}px, ${ry-18}px)`;
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+  const dots = document.querySelectorAll('.mix-dot');
+  const result = document.getElementById('mixResult');
+  const mixName = document.getElementById('mixName');
+  let selected = [];
+  function updateMix() {
+    if (selected.length === 0) return;
+    let r = 0, g = 0, b = 0;
+    selected.forEach(d => {
+      const [dr, dg, db] = d.dataset.color.split(',').map(Number);
+      r += dr; g += dg; b += db;
+    });
+    r = Math.round(r / selected.length);
+    g = Math.round(g / selected.length);
+    b = Math.round(b / selected.length);
+    result.style.backgroundColor = `rgb(${r},${g},${b})`;
+    mixName.textContent = selected.map(d => d.dataset.name).join(' + ');
+  }
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      dot.classList.toggle('selected');
+      selected = Array.from(document.querySelectorAll('.mix-dot.selected'));
+      updateMix();
+    });
+  });
+  selected = [dots[0]];
+  updateMix();
+</script>
+</body>
+</html>
