@@ -908,6 +908,68 @@ section {
   color: var(--ink);
 }
 
+/* Product Filter */
+.products-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.filter-btn {
+  padding: 0.7rem 1.5rem;
+  background: transparent;
+  border: 2px solid var(--ink);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 4px;
+}
+
+.filter-btn:hover {
+  background: var(--ink);
+  color: var(--cream);
+}
+
+.filter-btn.active {
+  background: var(--ink);
+  color: var(--cream);
+}
+
+/* Product Card Enhancements */
+.product-card {
+  position: relative;
+}
+
+.product-eco-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(76, 175, 80, 0.9);
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  z-index: 10;
+}
+
+.product-effect {
+  font-size: 0.85rem;
+  color: var(--accent);
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.product-desc {
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
 /* ============== FOOTER ============== */
 footer {
   background: var(--ink);
