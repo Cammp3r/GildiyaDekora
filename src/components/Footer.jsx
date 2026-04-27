@@ -18,26 +18,26 @@ export default function Footer() {
       <div className="footer-col">
         <h4>Навігація</h4>
         <ul>
-          <li><Link to="/">Про нас</Link></li>
-          <li><Link to="/products">Продукти</Link></li>
-          <li><Link to="/gallery">Галерея</Link></li>
-          <li><Link to="/contact">Контакти</Link></li>
+          <li><Link to="/" style={{color: "orange"}} >Про нас</Link></li>
+          <li><Link to="/products" style={{color: "orange"}}>Продукти</Link></li>
+          <li><Link to="/gallery" style={{color: "orange"}}>Галерея</Link></li>
+          <li><Link to="/contact" style={{color: "orange"}}>Контакти</Link></li>
         </ul>
       </div>
 
       <div className="footer-col">
         <h4>Соціальні мережі</h4>
         <ul>
-          <li><a href="https://www.facebook.com/GildiyaDecora/" target="_blank" rel="noreferrer">Facebook</a></li>
-          <li><a href="https://www.instagram.com/gildiya_decora/" target="_blank" rel="noreferrer">Instagram</a></li>
+          <li><a href="https://www.facebook.com/GildiyaDecora/" target="_blank" rel="noreferrer" style={{color: "orange"}}>Facebook</a></li>
+          <li><a href="https://www.instagram.com/gildiya_decora/" target="_blank" rel="noreferrer" style={{color: "orange"}}>Instagram</a></li>
         </ul>
       </div>
 
       <div className="footer-col">
         <h4>Контакти</h4>
         <ul>
-          <li><a href="tel:+380675039352">+38 (067) 503-93-52</a></li>
-          <li><a href="https://maps.app.goo.gl/dRX4TLoQzrdfMqeS9" target="_blank" rel="noreferrer">м. Київ, вул. Гусовського 12/7</a></li>
+          <li><a href="tel:+380675039352" style={{color: "orange"}}>+38 (067) 503-93-52</a></li>
+          <li><a href="https://maps.app.goo.gl/dRX4TLoQzrdfMqeS9" target="_blank" rel="noreferrer" style={{color: "orange"}}>м. Київ, вул. Гусовського 12/7</a></li>
         </ul>
       </div>
 

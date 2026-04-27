@@ -1,18 +1,14 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { productsDb } from '../data/products.js'
 
 export default function ProductsPage() {
-  const [filteredProducts, setFilteredProducts] = useState([])
+  const [filteredProducts, setFilteredProducts] = useState(productsDb)
   const [selectedCategory, setSelectedCategory] = useState('all')
-  const [categories, setCategories] = useState([])
+  const categories = [...new Set(productsDb.map((p) => p.category))]
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
-
-    // Отримуємо унікальні категорії
-    const uniqueCategories = [...new Set(productsDb.map((p) => p.category))]
-    setCategories(uniqueCategories)
-    setFilteredProducts(productsDb)
   }, [])
 
   const handleCategoryFilter = (category) => {
@@ -67,8 +63,10 @@ export default function ProductsPage() {
                     backgroundPosition: 'center',
                   }}
                 >
-                  <span className="product-tag">{product.category}</span>
-                  {product.eco && <span className="product-eco-badge">🌿 Еко</span>}
+                  <div className="product-badges">
+                    <span className="product-tag">{product.category}</span>
+                    {product.eco && <span className="product-eco-badge">🌿 Еко</span>}
+                  </div>
                 </div>
                 <div className="product-info">
                   <h3 className="product-name">{product.title}</h3>
@@ -80,9 +78,9 @@ export default function ProductsPage() {
                   )}
                   <div className="product-footer">
                     <span className="product-price">{formatPrice(product.price)}</span>
-                    <a href="#contact" className="add-btn">
+                    <Link to={`/products/${product.id}`} className="add-btn">
                       Дізнатись більше
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>

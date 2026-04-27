@@ -164,7 +164,7 @@ body {
   .nav {
     display: none;
     position: absolute;
-    top: 70px;
+    top: 100%;
     left: 0;
     right: 0;
     flex-direction: column;
@@ -173,6 +173,8 @@ body {
     padding: 1.5rem;
     border-bottom: 1px solid rgba(218, 201, 184, 0.3);
     justify-content: flex-start;
+    max-height: calc(100vh - 70px);
+    overflow-y: auto;
   }
 
   .nav.open {
@@ -199,6 +201,7 @@ body {
 /* ============== HERO SECTION ============== */
 .hero {
   min-height: 100vh;
+  min-height: 100svh;
   display: grid;
   grid-template-columns: 1fr 1fr;
   position: relative;
@@ -945,17 +948,129 @@ section {
   position: relative;
 }
 
-.product-eco-badge {
+.product-badges {
   position: absolute;
   top: 12px;
   right: 12px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.product-badges .product-tag,
+.product-badges .product-eco-badge {
+  position: static;
+  top: auto;
+  right: auto;
+}
+
+.product-eco-badge {
   background: rgba(76, 175, 80, 0.9);
   color: white;
   padding: 0.4rem 0.8rem;
   border-radius: 4px;
   font-size: 0.75rem;
   font-weight: 600;
-  z-index: 10;
+}
+
+/* ============== PRODUCT DETAILS PAGE ============== */
+.product-details {
+  padding: 6rem 3rem;
+  background: var(--cream);
+}
+
+.product-details-top {
+  margin-bottom: 1rem;
+}
+
+.product-details-back {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--muted);
+  transition: color 0.3s;
+}
+
+.product-details-back:hover {
+  color: var(--accent);
+}
+
+.product-details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.product-details-image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--soft);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.product-details-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.product-details-badges .product-tag {
+  position: static;
+  top: auto;
+  right: auto;
+}
+
+.product-details-subcategory {
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  background: rgba(245, 240, 232, 0.9);
+  padding: 0.3rem 0.6rem;
+  color: var(--ink);
+}
+
+.product-details-desc {
+  color: var(--muted);
+  margin-bottom: 1rem;
+  line-height: 1.8;
+}
+
+.product-details-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 1rem 0 1.5rem;
+}
+
+.product-details-tag {
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid var(--soft);
+  padding: 0.35rem 0.55rem;
+  color: var(--muted);
+}
+
+.product-details-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .product-details-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .product-effect {
@@ -1002,10 +1117,13 @@ footer .logo-text {
   text-transform: uppercase;
   color: var(--accent);
   margin-bottom: 1.2rem;
+  
 }
+
 
 .footer-col ul {
   list-style: none;
+ 
 }
 
 .footer-col li {
@@ -1013,6 +1131,7 @@ footer .logo-text {
   color: rgba(245, 240, 232, 0.5);
   margin-bottom: 0.6rem;
   transition: color 0.3s;
+  
 }
 
 .footer-col li:hover {
@@ -1086,6 +1205,11 @@ footer .logo-text {
     min-height: 100vh;
   }
 
+  .hero-badge {
+    left: 1.5rem;
+    bottom: 2rem;
+  }
+
   .collections-grid {
     grid-template-columns: 1fr 1fr;
   }
@@ -1129,6 +1253,18 @@ footer .logo-text {
     padding: 0 1.5rem;
   }
 
+  .products,
+  .gallery,
+  .contact,
+  .about,
+  .product-details {
+    padding: 4rem 1.5rem;
+  }
+
+  footer {
+    padding: 3rem 1.5rem;
+  }
+
   .products-grid {
     grid-template-columns: 1fr;
   }
@@ -1145,12 +1281,17 @@ footer .logo-text {
   .footer-bottom {
     flex-direction: column;
     gap: 0.5rem;
-    margin: 0 -1.5rem -4rem;
+    margin: 0 -1.5rem -3rem;
     padding: 1.2rem 1.5rem;
   }
 
   .hero-left {
     padding: 6rem 1.5rem 3rem;
+    justify-content: center;
+  }
+
+  .hero-badge {
+    bottom: 1.5rem;
   }
 
   .hero h1 {
@@ -1176,5 +1317,43 @@ footer .logo-text {
     width: 2.5rem;
     height: 2.5rem;
     font-size: 1.2rem;
+  }
+
+  .marquee-inner span {
+    margin: 0 1.5rem;
+  }
+
+  .product-footer {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: baseline;
+  }
+}
+
+@media (max-width: 520px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .header {
+    padding: 1rem 1.25rem;
+  }
+
+  .logo img {
+    height: 46px;
+  }
+
+  .logo-text {
+    font-size: 0.95rem;
+    letter-spacing: 0.22em;
+  }
+
+  .products-filter {
+    gap: 0.6rem;
+  }
+
+  .filter-btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.65rem;
   }
 }
