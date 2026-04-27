@@ -53,16 +53,17 @@ export default function ProductsPage() {
 
           {/* Products Grid */}
           <div className="products-grid">
-            {filteredProducts.map((product) => (
+            {filteredProducts.map((product, index) => (
               <div key={product.id} className="product-card">
-                <div
-                  className="product-swatch"
-                  style={{
-                    backgroundImage: `url(${product.image})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                  }}
-                >
+                <div className="product-swatch">
+                  <img
+                    className="swatch-color"
+                    src={product.image}
+                    alt={product.title}
+                    loading={index < 4 ? 'eager' : 'lazy'}
+                    decoding="async"
+                    fetchPriority={index < 2 ? 'high' : 'low'}
+                  />
                   <div className="product-badges">
                     <span className="product-tag">{product.category}</span>
                     {product.eco && <span className="product-eco-badge">🌿 Еко</span>}

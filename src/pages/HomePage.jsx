@@ -115,7 +115,12 @@ export default function HomePage() {
               </ul>
             </div>
             <div className="about-image">
-              <img src={officePhoto} alt="Гільдія Декору офіс" />
+              <img
+                src={officePhoto}
+                alt="Гільдія Декору офіс"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
           </div>
         </div>

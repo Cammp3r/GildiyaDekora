@@ -31,14 +31,13 @@ export default function ProductDetailsPage() {
 
         <div className="product-details-grid">
           <div className="product-details-media">
-            <div
+            <img
               className="product-details-image"
-              style={{
-                backgroundImage: `url(${product.image})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-              }}
-              aria-label={product.title}
+              src={product.image}
+              alt={product.title}
+              loading="eager"
+              decoding="async"
+              fetchPriority="high"
             />
           </div>
 
