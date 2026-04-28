@@ -42,10 +42,6 @@ export default function Header() {
             </NavLink>
           ))}
         </nav>
-        <div className="nav-right">
-          <a href="#search">Пошук</a>
-
-        </div>
         <button
           className="mobile-toggle"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}

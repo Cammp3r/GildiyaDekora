@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { productsDb } from '../data/products.js'
 import { useCart } from '../cart/CartContext.jsx'
 
 export default function ProductsPage() {
-  const [filteredProducts, setFilteredProducts] = useState(productsDb)
   const [selectedCategory, setSelectedCategory] = useState('all')
+  const [searchQuery, setSearchQuery] = useState('')
   const categories = [...new Set(productsDb.map((p) => p.category))]
   const { addItem } = useCart()
 
@@ -15,12 +15,44 @@ export default function ProductsPage() {
 
   const handleCategoryFilter = (category) => {
     setSelectedCategory(category)
-    if (category === 'all') {
-      setFilteredProducts(productsDb)
-    } else {
-      setFilteredProducts(productsDb.filter((p) => p.category === category))
-    }
   }
+
+  const filteredProducts = useMemo(() => {
+    const query = searchQuery.trim().toLowerCase()
+    const byCategory =
+      selectedCategory === 'all'
+        ? productsDb
+        : productsDb.filter((p) => p.category === selectedCategory)
+
+    if (!query) return byCategory
+
+    return byCategory.filter((p) => {
+      const colorCodes = Array.isArray(p.colors)
+        ? p.colors.map((c) => c?.code).filter(Boolean).join(' ')
+        : ''
+      const textureNames = Array.isArray(p.textures)
+        ? p.textures.map((t) => t?.name).filter(Boolean).join(' ')
+        : ''
+      const tags = Array.isArray(p.tags) ? p.tags.filter(Boolean).join(' ') : ''
+
+      const haystack = [
+        p.title,
+        p.description,
+        p.effect,
+        p.base,
+        p.category,
+        p.subcategory,
+        tags,
+        colorCodes,
+        textureNames,
+      ]
+        .filter(Boolean)
+        .join(' ')
+        .toLowerCase()
+
+      return haystack.includes(query)
+    })
+  }, [searchQuery, selectedCategory])
 
   const formatPrice = (price) => {
     if (price === null || price === undefined || price === '') return 'Дізнатись ціну'
@@ -35,6 +67,18 @@ export default function ProductsPage() {
       <section className="products">
         <div className="container">
           <h2 className="section-title">Лінійки продуктів OIKOS</h2>
+
+          {/* Search */}
+          <div className="products-search">
+            <input
+              className="products-search-input"
+              type="search"
+              placeholder="Пошук фарби (назва, ефект, код кольору…)"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              aria-label="Пошук фарби"
+            />
+          </div>
 
           {/* Category Filter */}
           <div className="products-filter" style={{ marginBottom: '40px' }}>
