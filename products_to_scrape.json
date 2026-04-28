@@ -1,0 +1,16 @@
+{
+  "products_needing_web_scraping": [
+    "Multifund",
+    "Supercolor",
+    "Topmatt",
+    "Ultrasaten",
+    "Wallsatin",
+    "Micotral",
+    "Sterylcalce",
+    "Sterylfix",
+    "Sterylpaint",
+    "Sterylplus",
+    "Sterylsan"
+  ],
+  "note": "These products need to be scraped from the website as dtb.json data is incomplete"
+}
