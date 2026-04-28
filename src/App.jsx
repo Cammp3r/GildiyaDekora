@@ -10,6 +10,7 @@ const ProductsPage = lazy(() => import('./pages/ProductsPage.jsx'))
 const ProductDetailsPage = lazy(() => import('./pages/ProductDetailsPage.jsx'))
 const GalleryPage = lazy(() => import('./pages/GalleryPage.jsx'))
 const ContactPage = lazy(() => import('./pages/ContactPage.jsx'))
+const CartPage = lazy(() => import('./pages/CartPage.jsx'))
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/products" element={<ProductsPage />} />
           <Route path="/products/:id" element={<ProductDetailsPage />} />
+          <Route path="/cart" element={<CartPage />} />
           <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />

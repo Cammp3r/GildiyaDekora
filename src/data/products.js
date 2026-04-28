@@ -1,55 +1,121 @@
-import productsData from '../../oikos_all_products.json'
+import dtb from '../../dtb.json'
+import fallbackImage from '../logos/logo.png'
+
+function toArray(value) {
+  return Array.isArray(value) ? value : []
+}
+
+function normalizeColors(colors) {
+  return toArray(colors)
+    .filter(Boolean)
+    .map((color) => {
+      if (typeof color === 'string') return { code: color, img: '' }
+      return {
+        code: color.code ?? color.name ?? '',
+        img: color.img ?? '',
+      }
+    })
+    .filter((c) => Boolean(c.code) || Boolean(c.img))
+}
+
+function normalizeTextures(textures) {
+  return toArray(textures)
+    .filter(Boolean)
+    .map((texture) => {
+      if (typeof texture === 'string') return { name: texture, url: '' }
+      return {
+        name: texture.name ?? '',
+        url: texture.url ?? '',
+      }
+    })
+    .filter((t) => Boolean(t.name) || Boolean(t.url))
+}
+
+function normalizePhotos(photos) {
+  return toArray(photos).filter((p) => typeof p === 'string' && p.trim().length > 0)
+}
+
+function mapProduct(product, { category, subcategory, sectionId }) {
+  const photos = normalizePhotos(product.photos)
+  const colors = normalizeColors(product.colors)
+  const textures = normalizeTextures(product.textures)
+  const primaryImage =
+    photos[0] || colors.find((c) => c.img)?.img || product.image || fallbackImage
+
+  const pricePerM2 =
+    product.price_m2 ??
+    product.pricePerM2 ??
+    product.price_per_m2 ??
+    product.price ??
+    null
+
+  return {
+    id: String(product.id ?? product.url ?? product.name),
+    title: product.name ?? '',
+    category,
+    subcategory,
+    description: product.desc ?? product.description ?? '',
+    image: primaryImage,
+    photos,
+    colors,
+    textures,
+    pricePerM2,
+    price: pricePerM2,
+    finish: toArray(product.finish),
+    base: product.base ?? '',
+    effect: product.effect ?? '',
+    url: product.url ?? '',
+    eco: Boolean(product.eco),
+    washable: Boolean(product.washable),
+    formaldehydeFree: Boolean(product.formaldehyde_free),
+    colorsCount: product.colors_count ?? product.colorsCount ?? null,
+    colorsNote: product.colors_note ?? '',
+    colorsCollection: product.colors_collection ?? product.colorsCollection ?? '',
+    colorCollection: product.color_collection ?? '',
+    colorCollectionUrl: product.color_collection_url ?? '',
+    versions: toArray(product.versions),
+    note: product.note ?? '',
+    sectionId: sectionId ?? '',
+    tags: toArray(product.tags),
+  }
+}
 
 /**
- * Трансформує дані з JSON у формат, сумісний з UI
+ * Трансформує дані з dtb.json у формат, сумісний з UI
  */
 function transformProductsData() {
   const products = []
-  let productId = 1
 
-  productsData.sections.forEach((section) => {
-    const categoryName = section.title_ua || section.title
-    const sectionImage = section.image
+  toArray(dtb.sections).forEach((section) => {
+    const categoryName = section.title ?? section.id ?? ''
 
-    // Обробка прямих продуктів (як в interior-decor)
+    // 1) Секції з прямим масивом продуктів (наприклад: interior-decor)
     if (Array.isArray(section.products) && section.products.length > 0) {
-      if (section.products[0].name) {
-        // Це масив з безпосередніми продуктами
-        section.products.forEach((product) => {
-          products.push({
-            id: productId++,
-            title: product.name,
+      section.products.forEach((product) => {
+        products.push(
+          mapProduct(product, {
             category: categoryName,
-            subcategory: product.subcategory || '',
-            description: product.description,
-            image: product.image || sectionImage,
-            url: product.url,
-            effect: product.effect,
-            tags: product.tags || [],
-            eco: product.eco || false,
+            subcategory: product.subcategory ?? '',
+            sectionId: section.id,
           })
-        })
-      } else if (section.products[0].subcategory) {
-        // Це масив з підкатегоріями (як в interior-paint, exterior-paint)
-        section.products.forEach((subCategory) => {
-          if (Array.isArray(subCategory.items)) {
-            subCategory.items.forEach((product) => {
-              products.push({
-                id: productId++,
-                title: product.name,
-                category: categoryName,
-                subcategory: subCategory.subcategory,
-                description: product.description,
-                image: product.image || sectionImage,
-                url: product.url,
-                effect: product.effect,
-                tags: product.tags || [],
-                eco: product.eco || false,
-              })
+        )
+      })
+      return
+    }
+
+    // 2) Секції з підкатегоріями (interior-paint, exterior-paint, інші)
+    if (Array.isArray(section.subcategories) && section.subcategories.length > 0) {
+      section.subcategories.forEach((subCategory) => {
+        toArray(subCategory.products).forEach((product) => {
+          products.push(
+            mapProduct(product, {
+              category: categoryName,
+              subcategory: subCategory.name ?? '',
+              sectionId: section.id,
             })
-          }
+          )
         })
-      }
+      })
     }
   })
 

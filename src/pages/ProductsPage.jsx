@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { productsDb } from '../data/products.js'
+import { useCart } from '../cart/CartContext.jsx'
 
 export default function ProductsPage() {
   const [filteredProducts, setFilteredProducts] = useState(productsDb)
   const [selectedCategory, setSelectedCategory] = useState('all')
   const categories = [...new Set(productsDb.map((p) => p.category))]
+  const { addItem } = useCart()
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
@@ -21,8 +23,10 @@ export default function ProductsPage() {
   }
 
   const formatPrice = (price) => {
-    if (!price) return 'Дізнатись ціну'
-    return `${price.toLocaleString('uk-UA')} грн`
+    if (price === null || price === undefined || price === '') return 'Дізнатись ціну'
+    const num = typeof price === 'number' ? price : Number(price)
+    if (!Number.isFinite(num) || num <= 0) return 'Дізнатись ціну'
+    return `${num.toLocaleString('uk-UA')} грн/м²`
   }
 
   return (
@@ -78,10 +82,24 @@ export default function ProductsPage() {
                     </p>
                   )}
                   <div className="product-footer">
-                    <span className="product-price">{formatPrice(product.price)}</span>
-                    <Link to={`/products/${product.id}`} className="add-btn">
-                      Дізнатись більше
-                    </Link>
+                    <span className="product-price">
+                      {formatPrice(product.pricePerM2 ?? product.price)}
+                    </span>
+                    <div className="product-actions">
+                      <button
+                        type="button"
+                        className="add-btn"
+                        onClick={() => addItem(product, 1)}
+                      >
+                        В кошик
+                      </button>
+                      <Link
+                        to={`/products/${encodeURIComponent(product.id)}`}
+                        className="add-btn"
+                      >
+                        Дізнатись більше
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>

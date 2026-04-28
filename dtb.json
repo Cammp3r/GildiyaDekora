@@ -1,0 +1,884 @@
+{
+  "brand": "Oikos",
+  "dealer": "Гільдія Декору",
+  "updated": "2026-04",
+  "base_url": "https://www.oikos.ua",
+  "base_img": "https://b2ccms.oikos-group.it/upload/",
+  "base_color": "https://www.oikos.ua/public/texture/",
+  "sections": [
+    {
+      "id": "interior-decor",
+      "title": "Внутрішній декор — Фактурні декоративні фарби",
+      "url": "https://www.oikos.ua/interior-decor",
+      "products": [
+        {
+          "id": "id-01",
+          "name": "Argilla Materica",
+          "desc": "Декоративна фарба на основі вапна з додаванням глини. Надзвичайно пластична та легка у нанесенні. Дозволяє створювати унікальні текстури та художні форми значної товщини.",
+          "price_m2": 890,
+          "effect": "Натуральні текстури з ефектом глини",
+          "base": "Вапно + глина",
+          "finish": ["матовий", "фактурний"],
+          "photos": [
+            "https://b2ccms.oikos-group.it/upload/41A_argilla-materica-banner.jpg"
+          ],
+          "colors": [],
+          "colors_count": null,
+          "textures": [],
+          "color_collection": "1984",
+          "color_collection_url": "https://oikos-group.it/it-IT/mazzette/1984-famiglie",
+          "url": "https://www.oikos.ua/textured-decoratives/argilla-materica",
+          "eco": true
+        },
+        {
+          "id": "id-02",
+          "name": "Aureum",
+          "desc": "Краса італійської штукатурки з золотистими відблисками. Натуральне вапно дозволяє створювати варіації від глянцю до матових ефектів з мармуровими поверхнями.",
+          "effect": "Золотисті відблиски, ефект мармуру",
+          "base": "Натуральне вапно",
+          "finish": ["глянцевий", "напівматовий", "матовий"],
+          "photos": [
+            "https://b2ccms.oikos-group.it/upload/46_aureum-casa-Fisic-1920x1080.jpg",
+            "https://b2ccms.oikos-group.it/upload/46_aureum_fs2012_Frau_1920x1080.jpg",
+            "https://b2ccms.oikos-group.it/upload/46_aureum-01-1920x1080.jpg",
+            "https://b2ccms.oikos-group.it/upload/46_aureum-02-1920x1080.jpg"
+          ],
+          "colors": [
+            {"code": "AU 8 MIDAS",   "img": "https://www.oikos.ua/public/texture/aureum/AU8-MIDAS.jpg"},
+            {"code": "AU 56 ZEUS",   "img": "https://www.oikos.ua/public/texture/aureum/AU56-ZEUS.jpg"},
+            {"code": "AU 40 REA",    "img": "https://www.oikos.ua/public/texture/aureum/AU40-REA.jpg"},
+            {"code": "AU 16 MELIA",  "img": "https://www.oikos.ua/public/texture/aureum/AU16-MELIA.jpg"},
+            {"code": "AU 48 ARIS",   "img": "https://www.oikos.ua/public/texture/aureum/AU48-ARIS.jpg"},
+            {"code": "AU 24 GEA",    "img": "https://www.oikos.ua/public/texture/aureum/AU24-GEA.jpg"},
+            {"code": "AU 64 TALIA",  "img": "https://www.oikos.ua/public/texture/aureum/AU64-TALIA.jpg"},
+            {"code": "AU 32 ARCADIA","img": "https://www.oikos.ua/public/texture/aureum/AU32-ARCADIA.jpg"}
+          ],
+          "colors_count": 8,
+          "textures": [],
+          "url": "https://www.oikos.ua/textured-decoratives/aureum",
+          "eco": true
+        },
+        {
+          "id": "id-03",
+          "name": "Cemento Materico",
+          "desc": "Ударостійке покриття з мікронізованих відходів вапняних кар'єрів. Ефект будівельного цементу. 5 текстур, 15 кольорів.",
+          "effect": "Ефект будівельного цементу",
+          "base": "Мікронізовані відходи вапняних кар'єрів",
+          "finish": ["матовий", "індустріальний"],
+          "photos": [
+            "https://b2ccms.oikos-group.it/upload/80G_cemento-1920x1080-04.jpg",
+            "https://b2ccms.oikos-group.it/upload/80G_cemento-1920x1080-05.jpg",
+            "https://b2ccms.oikos-group.it/upload/80G_cemento-1920x1080-01.jpg",
+            "https://b2ccms.oikos-group.it/upload/80G_cemento-1920x1080-02.jpg"
+          ],
+          "colors": [
+            {"code":"CE 1001","img":"https://www.oikos.ua/public/texture/CE1001.jpg"},
+            {"code":"CE 1002","img":"https://www.oikos.ua/public/texture/CE1002.jpg"},
+            {"code":"CE 1003","img":"https://www.oikos.ua/public/texture/CE1003.jpg"},
+            {"code":"CE 1004","img":"https://www.oikos.ua/public/texture/CE1004.jpg"},
+            {"code":"CE 1005","img":"https://www.oikos.ua/public/texture/CE1005.jpg"},
+            {"code":"CE 1006","img":"https://www.oikos.ua/public/texture/CE1006.jpg"},
+            {"code":"CE 1007","img":"https://www.oikos.ua/public/texture/CE1007.jpg"},
+            {"code":"CE 1008","img":"https://www.oikos.ua/public/texture/CE1008.jpg"},
+            {"code":"CE 1009","img":"https://www.oikos.ua/public/texture/CE1009.jpg"},
+            {"code":"CE 1010","img":"https://www.oikos.ua/public/texture/CE1010.jpg"},
+            {"code":"CE 1011","img":"https://www.oikos.ua/public/texture/CE1011.jpg"},
+            {"code":"CE 1012","img":"https://www.oikos.ua/public/texture/CE1012.jpg"},
+            {"code":"CE 1013","img":"https://www.oikos.ua/public/texture/CE1013.jpg"},
+            {"code":"CE 1014","img":"https://www.oikos.ua/public/texture/CE1014.jpg"},
+            {"code":"CE 1015","img":"https://www.oikos.ua/public/texture/CE1015.jpg"}
+          ],
+          "colors_count": 15,
+          "textures": [
+            {"name":"Cemento Casserato",  "url":"https://www.oikos.ua/cementomaterico/cemento-casserato"},
+            {"name":"Cemento Graffiato",  "url":"https://www.oikos.ua/cementomaterico/cemento-graffiato"},
+            {"name":"Cemento Industriale","url":"https://www.oikos.ua/cementomaterico/cemento-industriale"},
+            {"name":"Cemento Spazzolato", "url":"https://www.oikos.ua/cementomaterico/cemento-spazzolato"},
+            {"name":"Cemento Strappato",  "url":"https://www.oikos.ua/cementomaterico/cemento-strappato"}
+          ],
+          "url": "https://www.oikos.ua/textured-decoratives/cementomaterico",
+          "eco": true
+        },
+        {
+          "id": "id-04",
+          "name": "Decorglitter",
+          "desc": "Декоративна емаль з мінливою хроматичною грою. Відтворює красу металізованих поверхонь.",
+          "effect": "Металізований блиск, мінлива хроматична гра",
+          "base": "Водна дисперсія",
+          "finish": ["металізований", "блискучий"],
+          "photos": [
+            "https://b2ccms.oikos-group.it/upload/89_decorglitter-BIANCO-081stellato.jpg",
+            "https://b2ccms.oikos-group.it/upload/89_decorglitter-BIANCO-041stellato.jpg",
+            "https://b2ccms.oikos-group.it/upload/89_decorglitter-BIANCO-056stellato.jpg"
+          ],
+          "colors": [
+            {"code":"Argento",   "img":"https://www.oikos.ua/public/texture/Decorglitter-Argento.jpg"},
+            {"code":"Bronzo",    "img":"https://www.oikos.ua/public/texture/Decorglitter-Bronzo.jpg"},
+            {"code":"Olografico","img":"https://www.oikos.ua/public/texture/Decorglitter-olografico.jpg"},
+            {"code":"Oro",       "img":"https://www.oikos.ua/public/texture/Decorglitter-Oro.jpg"},
+            {"code":"Rame",      "img":"https://www.oikos.ua/public/texture/Decorglitter-Rame.jpg"},
+            {"code":"Metal",     "img":"https://www.oikos.ua/public/texture/decorglitter-metal.jpg"}
+          ],
+          "colors_count": 6,
+          "textures": [],
+          "url": "https://www.oikos.ua/textured-decoratives/decorglitter",
+          "eco": true
+        },
+        {
+          "id": "id-05",
+          "name": "Duca di Venezia",
+          "desc": "Вишукана венеційська штукатурка. Розкішний вигляд для класичних та сучасних інтер'єрів. 91 відтінок.",
+          "effect": "Венеційська штукатурка, ефект глибини",
+          "base": "Натуральне вапно",
+          "finish": ["глянцевий", "напівглянцевий"],
+          "photos": [
+            "https://b2ccms.oikos-group.it/upload/42_duca-venezia-1920x1080-01.jpg",
+            "https://b2ccms.oikos-group.it/upload/42_duca-venezia-1920x1080-02.jpg",
+            "https://b2ccms.oikos-group.it/upload/42_duca-venezia-1920x1080-03.jpg"
+          ],
+          "colors": [
+            {"code":"DUC A340","img":"https://www.oikos.ua/public/texture/duca/DUCA340.jpg"},
+            {"code":"DUC A341","img":"https://www.oikos.ua/public/texture/duca/DUCA341.jpg"},
+            {"code":"DUC A342","img":"https://www.oikos.ua/public/texture/duca/DUCA342.jpg"},
+            {"code":"DUC A343","img":"https://www.oikos.ua/public/texture/duca/DUCA343.jpg"},
+            {"code":"DUC A344","img":"https://www.oikos.ua/public/texture/duca/DUCA344.jpg"},
+            {"code":"DUC A345","img":"https://www.oikos.ua/public/texture/duca/DUCA345.jpg"},
+            {"code":"DUC A346","img":"https://www.oikos.ua/public/texture/duca/DUCA346.jpg"},
+            {"code":"DUC A347","img":"https://www.oikos.ua/public/texture/duca/DUCA347.jpg"},
+            {"code":"DUC A348","img":"https://www.oikos.ua/public/texture/duca/DUCA348.jpg"},
+            {"code":"DUC A349","img":"https://www.oikos.ua/public/texture/duca/DUCA349.jpg"},
+            {"code":"DUC A450","img":"https://www.oikos.ua/public/texture/duca/DUCA450.jpg"},
+            {"code":"DUC A451","img":"https://www.oikos.ua/public/texture/duca/DUCA451.jpg"},
+            {"code":"DUC A560","img":"https://www.oikos.ua/public/texture/duca/DUCA560.jpg"},
+            {"code":"DUC A670","img":"https://www.oikos.ua/public/texture/duca/DUCA670.jpg"},
+            {"code":"DUC A780","img":"https://www.oikos.ua/public/texture/duca/DUCA780.jpg"},
+            {"code":"DUC A890","img":"https://www.oikos.ua/public/texture/duca/DUCA890.jpg"},
+            {"code":"DUC A900","img":"https://www.oikos.ua/public/texture/duca/DUCA900.jpg"}
+          ],
+          "colors_count": 91,
+          "colors_note": "Показані репрезентативні зразки. Повна гама: 91 відтінок (A340–A900)",
+          "textures": [],
+          "url": "https://www.oikos.ua/textured-decoratives/ducadivenezia",
+          "eco": true
+        },
+        {
+          "id": "id-06",
+          "name": "Encanto",
+          "desc": "Мінливі металізовані відтінки (з 2006 р). 7 текстур, 115 кольорів у групах: Bianco, Gold, Grey, Nero, Oro, Rosso, Silver.",
+          "effect": "Мінливі металізовані відтінки",
+          "base": "Водна дисперсія",
+          "finish": ["металізований", "перламутровий", "матовий"],
+          "photos": [
+            "https://b2ccms.oikos-group.it/upload/44_encanto-ELLEDUE_8890.jpg",
+            "https://b2ccms.oikos-group.it/upload/44_encanto-PN-CP-Parete-Nicchia-2.jpg",
+            "https://b2ccms.oikos-group.it/upload/44_encanto-minks-marriot-(1).jpg",
+            "https://b2ccms.oikos-group.it/upload/44_encanto-1920x1080.jpg"
+          ],
+          "colors": [
+            {"code":"BASE",     "img":"https://www.oikos.ua/public/texture//encanto/BASE.jpg"},
+            {"code":"BIANCO",   "img":"https://www.oikos.ua/public/texture//encanto/BIANCO.jpg"},
+            {"code":"BIANCO04", "img":"https://www.oikos.ua/public/texture//encanto/BIANCO04.jpg"},
+            {"code":"BIANCO05", "img":"https://www.oikos.ua/public/texture//encanto/BIANCO05.jpg"},
+            {"code":"GOLD",     "img":"https://www.oikos.ua/public/texture//encanto/GOLD.jpg"},
+            {"code":"GOLD01",   "img":"https://www.oikos.ua/public/texture//encanto/GOLD01.jpg"},
+            {"code":"GOLD02",   "img":"https://www.oikos.ua/public/texture//encanto/GOLD02.jpg"},
+            {"code":"GREY",     "img":"https://www.oikos.ua/public/texture//encanto/GREY.jpg"},
+            {"code":"GREY02",   "img":"https://www.oikos.ua/public/texture//encanto/GREY02.jpg"},
+            {"code":"NERO02",   "img":"https://www.oikos.ua/public/texture//encanto/NERO02.jpg"},
+            {"code":"ORO",      "img":"https://www.oikos.ua/public/texture//encanto/ORO.jpg"},
+            {"code":"ORO02",    "img":"https://www.oikos.ua/public/texture//encanto/ORO02.jpg"},
+            {"code":"ROSSO",    "img":"https://www.oikos.ua/public/texture//encanto/ROSSO.jpg"},
+            {"code":"SILVER",   "img":"https://www.oikos.ua/public/texture//encanto/SILVER.jpg"},
+            {"code":"SILVER01", "img":"https://www.oikos.ua/public/texture//encanto/SILVER01.jpg"},
+            {"code":"SILVER08", "img":"https://www.oikos.ua/public/texture//encanto/SILVER08.jpg"}
+          ],
+          "colors_count": 115,
+          "colors_note": "Показані репрезентативні зразки. Повна гама: 115 відтінків",
+          "textures": [
+            {"name":"Cygnus",   "url":"https://www.oikos.ua/encanto/cygnus"},
+            {"name":"Izar",     "url":"https://www.oikos.ua/encanto/izar"},
+            {"name":"Pegaso",   "url":"https://www.oikos.ua/encanto/pegaso"},
+            {"name":"Perseo",   "url":"https://www.oikos.ua/encanto/perseo"},
+            {"name":"Standard", "url":"https://www.oikos.ua/encanto/standard"},
+            {"name":"Stellato", "url":"https://www.oikos.ua/encanto/stellato"},
+            {"name":"Verticale","url":"https://www.oikos.ua/encanto/verticale"}
+          ],
+          "url": "https://www.oikos.ua/textured-decoratives/encanto",
+          "eco": true
+        },
+        {
+          "id": "id-07",
+          "name": "Finitura Autolucidante",
+          "desc": "Захисне дзеркальне покриття для Marmorino Naturale. Надає поверхні дзеркальний блиск. 61 відтінок (CL8000–CL8590).",
+          "effect": "Дзеркальний блиск, захисне покриття",
+          "base": "Захисна формула",
+          "finish": ["глянцевий", "дзеркальний"],
+          "photos": [
+            "https://b2ccms.oikos-group.it/upload/82A_finitura-autolucidante-03.jpg",
+            "https://b2ccms.oikos-group.it/upload/82A_82A_finitura-autolucidante-03_xl.jpg",
+            "https://b2ccms.oikos-group.it/upload/82A_finitura-autolucidante-01.jpg"
+          ],
+          "colors": [
+            {"code":"CL8000","img":"https://www.oikos.ua/public/texture/CL8000.jpg"},
+            {"code":"CL8010","img":"https://www.oikos.ua/public/texture/CL8010.jpg"},
+            {"code":"CL8020","img":"https://www.oikos.ua/public/texture/CL8020.jpg"},
+            {"code":"CL8030","img":"https://www.oikos.ua/public/texture/CL8030.jpg"},
+            {"code":"CL8040","img":"https://www.oikos.ua/public/texture/CL8040.jpg"},
+            {"code":"CL8050","img":"https://www.oikos.ua/public/texture/CL8050.jpg"},
+            {"code":"CL8100","img":"https://www.oikos.ua/public/texture/CL8100.jpg"},
+            {"code":"CL8200","img":"https://www.oikos.ua/public/texture/CL8200.jpg"},
+            {"code":"CL8300","img":"https://www.oikos.ua/public/texture/CL8300.jpg"},
+            {"code":"CL8400","img":"https://www.oikos.ua/public/texture/CL8400.jpg"},
+            {"code":"CL8500","img":"https://www.oikos.ua/public/texture/CL8500.jpg"},
+            {"code":"CL8590","img":"https://www.oikos.ua/public/texture/CL8590.jpg"}
+          ],
+          "colors_count": 61,
+          "colors_note": "Показані репрезентативні зразки. Повна гама: CL8000–CL8590 (61 відтінок)",
+          "textures": [],
+          "note": "Фінішне покриття для Marmorino Naturale",
+          "url": "https://www.oikos.ua/textured-decoratives/finituraautolucidante",
+          "eco": true
+        },
+        {
+          "id": "id-08",
+          "name": "Finitura Madreperlata",
+          "desc": "Декоративний віск з перламутровим ефектом. Нанесення в один шар. Захищає від стирання. 4 відтінки.",
+          "effect": "Перламутровий ефект, райдужні відблиски",
+          "base": "Декоративний віск",
+          "finish": ["перламутровий", "напівглянцевий"],
+          "photos": [
+            "https://b2ccms.oikos-group.it/upload/P004_finitura-madreperlataprodotto-1920-1080.jpg"
+          ],
+          "colors": [
+            {"code":"R 07 PERLA",      "img":""},
+            {"code":"R 08 MADREPERLA", "img":""},
+            {"code":"R 30 ARGENTO",    "img":""},
+            {"code":"R 31 ORO",        "img":""}
+          ],
+          "colors_count": 4,
+          "textures": [],
+          "url": "https://www.oikos.ua/textured-decoratives/finitura-madreperlata",
+          "eco": true
+        },
+        {
+          "id": "id-09",
+          "name": "Imperium",
+          "desc": "Ефекти дорогоцінних металів у блискучій або матовій версії. Без формальдегіду, можна мити. 8 текстур, 35 кольорів.",
+          "effect": "Ефект дорогоцінних металів",
+          "base": "Водна дисперсія",
+          "finish": ["металізований", "матовий", "глянцевий"],
+          "photos": [
+            "https://b2ccms.oikos-group.it/upload/48_imperium-art-noba-02.jpg",
+            "https://b2ccms.oikos-group.it/upload/48_imperium-laboratorio-lanzani-3637.jpg",
+            "https://b2ccms.oikos-group.it/upload/48_imperium_0111.jpg",
+            "https://b2ccms.oikos-group.it/upload/48_imperium-delabre-negozio-brera-1920x1080.jpg"
+          ],
+          "colors": [
+            {"code":"IMP 03", "img":"https://www.oikos.ua/public/texture/IMP03.jpg"},
+            {"code":"IMP 06", "img":"https://www.oikos.ua/public/texture/IMP06.jpg"},
+            {"code":"IMP 09", "img":"https://www.oikos.ua/public/texture/IMP09.jpg"},
+            {"code":"IMP 12", "img":"https://www.oikos.ua/public/texture/IMP12.jpg"},
+            {"code":"IMP 15", "img":"https://www.oikos.ua/public/texture/IMP15.jpg"},
+            {"code":"IMP 21", "img":"https://www.oikos.ua/public/texture/IMP21.jpg"},
+            {"code":"IMP 24", "img":"https://www.oikos.ua/public/texture/IMP24.jpg"},
+            {"code":"IMP 30", "img":"https://www.oikos.ua/public/texture/IMP30.jpg"},
+            {"code":"IMP 33", "img":"https://www.oikos.ua/public/texture/IMP33.jpg"},
+            {"code":"IMP 36", "img":"https://www.oikos.ua/public/texture/IMP36.jpg"},
+            {"code":"IMP 48", "img":"https://www.oikos.ua/public/texture/IMP48.jpg"},
+            {"code":"IMP 51", "img":"https://www.oikos.ua/public/texture/IMP51.jpg"},
+            {"code":"IMP 54", "img":"https://www.oikos.ua/public/texture/IMP54.jpg"},
+            {"code":"IMP 57", "img":"https://www.oikos.ua/public/texture/IMP57.jpg"},
+            {"code":"IMP 60", "img":"https://www.oikos.ua/public/texture/IMP60.jpg"},
+            {"code":"IMP 63", "img":"https://www.oikos.ua/public/texture/IMP63.jpg"},
+            {"code":"IMP 66", "img":"https://www.oikos.ua/public/texture/IMP66.jpg"},
+            {"code":"IMP 69", "img":"https://www.oikos.ua/public/texture/IMP69.jpg"},
+            {"code":"IMP 75", "img":"https://www.oikos.ua/public/texture/IMP75.jpg"},
+            {"code":"IMP 84", "img":"https://www.oikos.ua/public/texture/IMP84.jpg"},
+            {"code":"IMP 87", "img":"https://www.oikos.ua/public/texture/IMP87.jpg"},
+            {"code":"IMP 90", "img":"https://www.oikos.ua/public/texture/IMP90.jpg"},
+            {"code":"IMP 99", "img":"https://www.oikos.ua/public/texture/IMP99.jpg"},
+            {"code":"IMP 156","img":"https://www.oikos.ua/public/texture/IMP156.jpg"},
+            {"code":"IMP 168","img":"https://www.oikos.ua/public/texture/IMP168.jpg"},
+            {"code":"IMP 171","img":"https://www.oikos.ua/public/texture/IMP171.jpg"},
+            {"code":"IMP 200","img":"https://www.oikos.ua/public/texture/IMP200.jpg"},
+            {"code":"IMP 246","img":"https://www.oikos.ua/public/texture/IMP246.jpg"},
+            {"code":"IMP 261","img":"https://www.oikos.ua/public/texture/IMP261.jpg"},
+            {"code":"IMP 264","img":"https://www.oikos.ua/public/texture/IMP264.jpg"},
+            {"code":"IMP 267","img":"https://www.oikos.ua/public/texture/IMP267.jpg"},
+            {"code":"IMP 273","img":"https://www.oikos.ua/public/texture/IMP273.jpg"},
+            {"code":"IMP 294","img":"https://www.oikos.ua/public/texture/IMP294.jpg"},
+            {"code":"IMP 297","img":"https://www.oikos.ua/public/texture/IMP297.jpg"},
+            {"code":"IMP 300","img":"https://www.oikos.ua/public/texture/IMP300.jpg"}
+          ],
+          "colors_count": 35,
+          "textures": [
+            {"name":"Metallizzato Opaco","url":"https://www.oikos.ua/imperium/metallizzato-opaco"},
+            {"name":"Delabré",          "url":"https://www.oikos.ua/imperium/delabre"},
+            {"name":"Dorature",         "url":"https://www.oikos.ua/imperium/dorature"},
+            {"name":"Foglia Oro",       "url":"https://www.oikos.ua/imperium/foglia-oro"},
+            {"name":"Metallizzato",     "url":"https://www.oikos.ua/imperium/metallizzato"},
+            {"name":"Oro Antico",       "url":"https://www.oikos.ua/imperium/oro-antico"},
+            {"name":"Polvere Oro",      "url":"https://www.oikos.ua/imperium/polvere-oro"},
+            {"name":"Spazzolato",       "url":"https://www.oikos.ua/imperium/spazzolato"}
+          ],
+          "url": "https://www.oikos.ua/textured-decoratives/imperium",
+          "eco": true,
+          "washable": true,
+          "formaldehyde_free": true
+        },
+        {
+          "id": "id-10",
+          "name": "Kreos",
+          "desc": "Ефект тканини на стіні (з 2001 р). 5 текстур, 72 кольори (KR3011–KR4231).",
+          "effect": "Ефект тканини на стіні",
+          "base": "Водна дисперсія",
+          "finish": ["матовий", "шовковий", "текстильний"],
+          "photos": [
+            "https://b2ccms.oikos-group.it/upload/14_kreos-03.jpg",
+            "https://b2ccms.oikos-group.it/upload/14_kreos-bianco-057.jpg",
+            "https://b2ccms.oikos-group.it/upload/14_kreos-slider-ardesia.jpg",
+            "https://b2ccms.oikos-group.it/upload/14_kreos-slider-juta.jpg",
+            "https://b2ccms.oikos-group.it/upload/14_14_kreos-01_xl.jpg"
+          ],
+          "colors": [
+            {"code":"KR 3011","img":"https://www.oikos.ua/public/texture/kreos/KR3011.jpg"},
+            {"code":"KR 3021","img":"https://www.oikos.ua/public/texture/kreos/KR3021.jpg"},
+            {"code":"KR 3031","img":"https://www.oikos.ua/public/texture/kreos/KR3031.jpg"},
+            {"code":"KR 3041","img":"https://www.oikos.ua/public/texture/kreos/KR3041.jpg"},
+            {"code":"KR 3051","img":"https://www.oikos.ua/public/texture/kreos/KR3051.jpg"},
+            {"code":"KR 3061","img":"https://www.oikos.ua/public/texture/kreos/KR3061.jpg"},
+            {"code":"KR 3071","img":"https://www.oikos.ua/public/texture/kreos/KR3071.jpg"},
+            {"code":"KR 3081","img":"https://www.oikos.ua/public/texture/kreos/KR3081.jpg"},
+            {"code":"KR 3101","img":"https://www.oikos.ua/public/texture/kreos/KR3101.jpg"},
+            {"code":"KR 3201","img":"https://www.oikos.ua/public/texture/kreos/KR3201.jpg"},
+            {"code":"KR 4001","img":"https://www.oikos.ua/public/texture/kreos/KR4001.jpg"},
+            {"code":"KR 4101","img":"https://www.oikos.ua/public/texture/kreos/KR4101.jpg"},
+            {"code":"KR 4201","img":"https://www.oikos.ua/public/texture/kreos/KR4201.jpg"},
+            {"code":"KR 4231","img":"https://www.oikos.ua/public/texture/kreos/KR4231.jpg"}
+          ],
+          "colors_count": 72,
+          "colors_note": "Показані репрезентативні зразки. Повна гама: 72 відтінки",
+          "textures": [
+            {"name":"Kreos",          "url":"https://www.oikos.ua/kreos/kreos"},
+            {"name":"Kreos Ardesia",  "url":"https://www.oikos.ua/kreos/ardesia"},
+            {"name":"Kreos Fil Posè", "url":"https://www.oikos.ua/kreos/filpose"},
+            {"name":"Kreos Juta",     "url":"https://www.oikos.ua/kreos/juta"},
+            {"name":"Kreos Motus",    "url":"https://www.oikos.ua/kreos/motus"}
+          ],
+          "url": "https://www.oikos.ua/textured-decoratives/kreos",
+          "eco": true
+        },
+        {
+          "id": "id-11",
+          "name": "Marmora Romana",
+          "desc": "Мармуровий пісок із римських кар'єрів. Повітропроникна, стійка до миття. 6 варіантів.",
+          "effect": "Ефект мармурового піску",
+          "base": "Мармуровий пісок",
+          "finish": ["матовий", "фактурний"],
+          "photos": [
+            "https://b2ccms.oikos-group.it/upload/45_marmora-lunareIMG7897.jpg",
+            "https://b2ccms.oikos-group.it/upload/45_marmora-lunareIMG8724.jpg",
+            "https://b2ccms.oikos-group.it/upload/45_marmora-olivieri-brera-fs2016-011.jpg",
+            "https://b2ccms.oikos-group.it/upload/45_marmora-shutters-65065633.jpg",
+            "https://b2ccms.oikos-group.it/upload/45_marmora-elledue.jpg"
+          ],
+          "colors": [
+            {"code":"LUNARE", "img":"https://www.oikos.ua/public/texture/MR_LUNARE.jpg"},
+            {"code":"FILANTE","img":"https://www.oikos.ua/public/texture/MR_FILANTE.jpg"},
+            {"code":"ARMONIA","img":"https://www.oikos.ua/public/texture/MR_ARMONIA.jpg"},
+            {"code":"MARINA", "img":"https://www.oikos.ua/public/texture/MR_MARINA.jpg"},
+            {"code":"ARCADIA","img":"https://www.oikos.ua/public/texture/MR_ARCADIA.jpg"},
+            {"code":"MATERIA","img":"https://www.oikos.ua/public/texture/MR_MATERIA.jpg"}
+          ],
+          "colors_count": 6,
+          "textures": [],
+          "url": "https://www.oikos.ua/textured-decoratives/marmoraromana",
+          "eco": true
+        },
+        {
+          "id": "id-12",
+          "name": "Marmorino Naturale",
+          "desc": "Давня італійська традиція. Матовий або глянцевий ефект мармуру. 4 текстури, 60 кольорів (MM 01–MM 60).",
+          "effect": "Ефект натурального мармуру",
+          "base": "Натуральне вапно з мармуровим пилом",
+          "finish": ["матовий", "глянцевий"],
+          "photos": [
+            "https://b2ccms.oikos-group.it/upload/82B_marmorino-naturale-casa-showroom.jpg",
+            "https://b2ccms.oikos-group.it/upload/82B_marmorino-naturale-assorbimenti.jpg",
+            "https://b2ccms.oikos-group.it/upload/82B_marmorino-naturale-lenti-2016.jpg",
+            "https://b2ccms.oikos-group.it/upload/82B_marmorino-naturale-bianco-023-01.jpg"
+          ],
+          "colors": [
+            {"code":"MM 01","img":"https://www.oikos.ua/public/texture/marmorinonaturale-int/MM-01.jpg"},
+            {"code":"MM 02","img":"https://www.oikos.ua/public/texture/marmorinonaturale-int/MM-02.jpg"},
+            {"code":"MM 03","img":"https://www.oikos.ua/public/texture/marmorinonaturale-int/MM-03.jpg"},
+            {"code":"MM 04","img":"https://www.oikos.ua/public/texture/marmorinonaturale-int/MM-04.jpg"},
+            {"code":"MM 05","img":"https://www.oikos.ua/public/texture/marmorinonaturale-int/MM-05.jpg"},
+            {"code":"MM 10","img":"https://www.oikos.ua/public/texture/marmorinonaturale-int/MM-10.jpg"},
+            {"code":"MM 15","img":"https://www.oikos.ua/public/texture/marmorinonaturale-int/MM-15.jpg"},
+            {"code":"MM 20","img":"https://www.oikos.ua/public/texture/marmorinonaturale-int/MM-20.jpg"},
+            {"code":"MM 25","img":"https://www.oikos.ua/public/texture/marmorinonaturale-int/MM-25.jpg"},
+            {"code":"MM 30","img":"https://www.oikos.ua/public/texture/marmorinonaturale-int/MM-30.jpg"},
+            {"code":"MM 35","img":"https://www.oikos.ua/public/texture/marmorinonaturale-int/MM-35.jpg"},
+            {"code":"MM 40","img":"https://www.oikos.ua/public/texture/marmorinonaturale-int/MM-40.jpg"},
+            {"code":"MM 45","img":"https://www.oikos.ua/public/texture/marmorinonaturale-int/MM-45.jpg"},
+            {"code":"MM 50","img":"https://www.oikos.ua/public/texture/marmorinonaturale-int/MM-50.jpg"},
+            {"code":"MM 55","img":"https://www.oikos.ua/public/texture/marmorinonaturale-int/MM-55.jpg"},
+            {"code":"MM 60","img":"https://www.oikos.ua/public/texture/marmorinonaturale-int/MM-60.jpg"}
+          ],
+          "colors_count": 60,
+          "colors_note": "Показані репрезентативні зразки. Повна гама: MM 01–MM 60",
+          "textures": [
+            {"name":"Marmorino Naturale",                       "url":"https://www.oikos.ua/marmorino/marmorinonaturale"},
+            {"name":"M.N. Fine + Finitura Autolucidante",       "url":"https://www.oikos.ua/marmorino/marmorinonaturale-finituraautoucidante"},
+            {"name":"M.N. Fine + Superfinish 24",               "url":"https://www.oikos.ua/marmorino/marmorinonaturale-superfinish24"},
+            {"name":"Marmorino Naturale Fine",                  "url":"https://www.oikos.ua/marmorino/marmorinonaturalefine"}
+          ],
+          "url": "https://www.oikos.ua/textured-decoratives/marmorinonaturale",
+          "eco": true
+        },
+        {
+          "id": "id-13",
+          "name": "Multidecor",
+          "desc": "Класичний стиль з сучасним дизайном. 3 версії: E (глянцева), E OPAC (матова), ES (переливчаста). 82 кольори.",
+          "effect": "Класичний декор, 3 версії",
+          "base": "Водна дисперсія",
+          "finish": ["глянцевий", "матовий", "переливчастий"],
+          "photos": [
+            "https://b2ccms.oikos-group.it/upload/10_multidecor-shutterstock-(3).jpg",
+            "https://b2ccms.oikos-group.it/upload/10_multidecor-shutterstock-(1).jpg",
+            "https://b2ccms.oikos-group.it/upload/10_multidecor-shutterstock-(2).jpg"
+          ],
+          "colors": [
+            {"code":"E100", "img":"https://www.oikos.ua/public/texture/E100.jpg"},
+            {"code":"E120", "img":"https://www.oikos.ua/public/texture/E120.jpg"},
+            {"code":"E130", "img":"https://www.oikos.ua/public/texture/E130.jpg"},
+            {"code":"E180", "img":"https://www.oikos.ua/public/texture/E180.jpg"},
+            {"code":"E210", "img":"https://www.oikos.ua/public/texture/E210.jpg"},
+            {"code":"E240", "img":"https://www.oikos.ua/public/texture/E240.jpg"},
+            {"code":"E320", "img":"https://www.oikos.ua/public/texture/E320.jpg"},
+            {"code":"E350", "img":"https://www.oikos.ua/public/texture/E350.jpg"},
+            {"code":"E420", "img":"https://www.oikos.ua/public/texture/E420.jpg"},
+            {"code":"E470", "img":"https://www.oikos.ua/public/texture/E470.jpg"},
+            {"code":"E570", "img":"https://www.oikos.ua/public/texture/E570.jpg"},
+            {"code":"ES1000","img":"https://www.oikos.ua/public/texture/ES1000.jpg"},
+            {"code":"ES1070","img":"https://www.oikos.ua/public/texture/ES1070.jpg"},
+            {"code":"ES1100","img":"https://www.oikos.ua/public/texture/ES1100.jpg"},
+            {"code":"ES5000","img":"https://www.oikos.ua/public/texture/ES5000.jpg"},
+            {"code":"ES5050","img":"https://www.oikos.ua/public/texture/ES5050.jpg"},
+            {"code":"ES5100","img":"https://www.oikos.ua/public/texture/ES5100.jpg"},
+            {"code":"ES5200","img":"https://www.oikos.ua/public/texture/ES5200.jpg"},
+            {"code":"ES700", "img":"https://www.oikos.ua/public/texture/ES700.jpg"},
+            {"code":"ES840", "img":"https://www.oikos.ua/public/texture/ES840.jpg"},
+            {"code":"ES950", "img":"https://www.oikos.ua/public/texture/ES950.jpg"}
+          ],
+          "colors_count": 82,
+          "colors_note": "Показані репрезентативні зразки. E-серія (глянець), ES-серія (переливчаста)",
+          "versions": ["E — глянцева", "E OPAC — матова", "ES — переливчаста"],
+          "textures": [],
+          "url": "https://www.oikos.ua/textured-decoratives/multidecor",
+          "eco": true
+        },
+        {
+          "id": "id-14",
+          "name": "Multidecor Skin",
+          "desc": "Текстильна текстура з м'якими переходами кольору. 9 текстур, 200+ кольорів.",
+          "effect": "Текстильна текстура",
+          "base": "Водна дисперсія",
+          "finish": ["матовий", "текстильний"],
+          "photos": [
+            "https://b2ccms.oikos-group.it/upload/P010_multidecor-skin-01.jpg",
+            "https://b2ccms.oikos-group.it/upload/P010_multidecor-skin-02.jpg"
+          ],
+          "colors": [],
+          "colors_count": 200,
+          "textures": [
+            {"name":"Camoscio"},{"name":"Canapa"},{"name":"Canvas"},
+            {"name":"Cemento"},{"name":"Corten"},{"name":"Fiandra"},
+            {"name":"Filato"},{"name":"Lamiera"},{"name":"Pergamena"}
+          ],
+          "url": "https://www.oikos.ua/textured-decoratives/multidecorskin",
+          "eco": true
+        },
+        {
+          "id": "id-15",
+          "name": "Ottocento",
+          "desc": "Ефект оксамиту (з 1998 р). Як у палацах. 11 текстур, 160 кольорів.",
+          "effect": "Ефект оксамиту",
+          "base": "Водна дисперсія",
+          "finish": ["оксамитовий", "матовий"],
+          "photos": [
+            "https://b2ccms.oikos-group.it/upload/12_12_ottocento-turandot-euromobil.jpg",
+            "https://b2ccms.oikos-group.it/upload/12_12_ottocento-stellato.jpg"
+          ],
+          "colors": [],
+          "colors_count": 160,
+          "textures": [
+            {"name":"Antico Velluto","url":"https://www.oikos.ua/ottocento/antico-velluto"},
+            {"name":"Antico Velluto Opaco"},{"name":"Antico Velluto Verticale"},
+            {"name":"Carmen Effetto Moirè"},{"name":"Desdemona Effetto Garza"},
+            {"name":"Imperiale"},{"name":"Norma Effetto Lino"},
+            {"name":"Rigoletto Effetto Filato"},{"name":"Seta"},
+            {"name":"Seta Stellata"},{"name":"Turandot Effetto Canapa"}
+          ],
+          "url": "https://www.oikos.ua/textured-decoratives/ottocento",
+          "eco": true
+        },
+        {
+          "id": "id-16",
+          "name": "Pallas",
+          "desc": "Ефект шовку. 13 текстур, 52 кольори.",
+          "effect": "Ефект шовку",
+          "base": "Водна дисперсія",
+          "finish": ["шовковий", "матовий", "переливчастий"],
+          "photos": [
+            "https://b2ccms.oikos-group.it/upload/25_torre-velasca-pallas-1920x1080.jpg",
+            "https://b2ccms.oikos-group.it/upload/25_Ristorante_Harsnakar-1920x1080.jpg"
+          ],
+          "colors": [],
+          "colors_count": 52,
+          "textures": [
+            {"name":"Ardesia"},{"name":"Broccato Stellato"},{"name":"Chiffon"},
+            {"name":"Dorature"},{"name":"Drapé"},{"name":"Fil Posè"},
+            {"name":"Marezzato"},{"name":"Organza"},{"name":"Raso"},
+            {"name":"Shantung"},{"name":"Shantung Verticale"},
+            {"name":"Taffetá"},{"name":"Trame Incrociato"}
+          ],
+          "url": "https://www.oikos.ua/textured-decoratives/pallas",
+          "eco": true
+        },
+        {
+          "id": "id-17",
+          "name": "Raffaello Decorstucco",
+          "desc": "Класична штукатурка епохи Відродження. Натуральне вапно, ручна робота. Антицвіль. 8 варіантів стукко, 95 кольорів.",
+          "effect": "Ефект епохи Відродження",
+          "base": "Натуральне вапно",
+          "finish": ["глянцевий", "напівглянцевий", "матовий"],
+          "photos": [
+            "https://b2ccms.oikos-group.it/upload/15_raffaello-slider-oikos-paint-1.jpg",
+            "https://b2ccms.oikos-group.it/upload/15_raffaello-slider-oikos-paint-2.jpg"
+          ],
+          "colors": [],
+          "colors_count": 95,
+          "textures": [
+            {"name":"Stucco Carrara"},{"name":"Stucco Firenze"},
+            {"name":"Stucco Milano"},{"name":"Stucco Roma"},
+            {"name":"Stucco Tivoli"},{"name":"Stucco Venezia"},
+            {"name":"Stucco Vicenza"},{"name":"Stucco Napoli"}
+          ],
+          "url": "https://www.oikos.ua/textured-decoratives/raffaellodecorstucco",
+          "eco": true,
+          "anti_mold": true
+        },
+        {
+          "id": "id-18",
+          "name": "Stucco Romano",
+          "desc": "Давньоримська традиція. Мармур і штукатурка на білому вапні. 196 кольорів.",
+          "effect": "Ефект римського мармуру",
+          "base": "Біле вапно",
+          "finish": ["глянцевий", "матовий", "мармуровий"],
+          "photos": [
+            "https://b2ccms.oikos-group.it/upload/47_stucco-romano-1920x1080-03.jpg",
+            "https://b2ccms.oikos-group.it/upload/47_stucco-romano-1920x1080-01.jpg"
+          ],
+          "colors": [],
+          "colors_count": 196,
+          "textures": [],
+          "url": "https://www.oikos.ua/textured-decoratives/stuccoromano",
+          "eco": true
+        },
+        {
+          "id": "id-19",
+          "name": "Tiepolo",
+          "desc": "Колекція Каппелліні. 5 текстур, 250 кольорів.",
+          "effect": "Художня фактурна поверхня",
+          "base": "Фактурний матеріал",
+          "finish": ["афреско", "гіпсовий", "матеріко", "матовий", "атласний"],
+          "photos": [
+            "https://b2ccms.oikos-group.it/upload/P001_tiepolo-1920x1080-02.jpg",
+            "https://b2ccms.oikos-group.it/upload/P001_tiepolo-1920x1080-03.jpg"
+          ],
+          "colors": [],
+          "colors_count": 250,
+          "textures": [
+            {"name":"Affresco"},{"name":"Gessato"},
+            {"name":"Materico"},{"name":"Opaco"},{"name":"Satinato"}
+          ],
+          "designer": "Giulio Cappellini",
+          "url": "https://www.oikos.ua/textured-decoratives/tiepolo",
+          "eco": true
+        },
+        {
+          "id": "id-20",
+          "name": "Travertino Romano",
+          "desc": "Ефект натурального травертину з відходів кар'єрів (з 2004 р). 8 текстур, 9 кольорів.",
+          "effect": "Ефект натурального травертину",
+          "base": "Відходи обробки каменю",
+          "finish": ["матовий", "фактурний", "кам'яний"],
+          "photos": [
+            "https://b2ccms.oikos-group.it/upload/87B_travertino-BIANCO-054.jpg",
+            "https://b2ccms.oikos-group.it/upload/87B_travertino-bianco-027-01.jpg"
+          ],
+          "colors": [
+            {"code":"Tivoli"},{"code":"Dorato"},{"code":"Striato"},
+            {"code":"Toscano"},{"code":"Bianco Spino"},{"code":"Avana"},
+            {"code":"Acqua Bianca"},{"code":"Natural"},{"code":"Anticato"}
+          ],
+          "colors_count": 9,
+          "textures": [
+            {"name":"Travertino Cassero"},{"name":"Travertino Granato"},
+            {"name":"Travertino Levigato"},{"name":"Travertino Levigato + Superfinish 24"},
+            {"name":"Travertino Metropolitano"},{"name":"Travertino Monolitico"},
+            {"name":"Travertino Pietra Antica"},{"name":"Travertino Spaccato"}
+          ],
+          "url": "https://www.oikos.ua/textured-decoratives/travertinoromano",
+          "eco": true
+        },
+        {
+          "id": "id-21",
+          "name": "Travertino Romano Design",
+          "desc": "Дизайнерська версія травертину. Сучасна палітра: чорний, сірий, білий. 6 кольорів.",
+          "effect": "Дизайнерський травертин",
+          "base": "Відходи обробки каменю",
+          "finish": ["матовий", "фактурний"],
+          "photos": [
+            "https://b2ccms.oikos-group.it/upload/87C_travertino-cierre-oikos-09.jpg",
+            "https://b2ccms.oikos-group.it/upload/87C_travertino-contract-district-ls-007-travertino-design-monolitico.jpg"
+          ],
+          "colors": [
+            {"code":"Black"},{"code":"Grey"},{"code":"White"},
+            {"code":"Beige"},{"code":"Yellow"},{"code":"Red"}
+          ],
+          "colors_count": 6,
+          "textures": [],
+          "url": "https://www.oikos.ua/textured-decoratives/travertinoromanodesign",
+          "eco": true
+        },
+        {
+          "id": "id-22",
+          "name": "Travertino Romano Finitura",
+          "desc": "Захисне покриття для Travertino Romano Natural. Підкреслює малюнок каменю.",
+          "effect": "Захисне покриття для травертину",
+          "base": "Захисна формула",
+          "finish": ["матовий", "захисний"],
+          "photos": [
+            "https://b2ccms.oikos-group.it/upload/87A_travertino-contract-district-ls-013.jpg",
+            "https://b2ccms.oikos-group.it/upload/87A_travertino-romano-finitura-02.jpg"
+          ],
+          "colors": [],
+          "colors_count": null,
+          "textures": [],
+          "note": "Фінішне покриття для Travertino Romano Natural",
+          "url": "https://www.oikos.ua/textured-decoratives/travertinoromanofinitura",
+          "eco": true
+        },
+        {
+          "id": "id-23",
+          "name": "Toner Travertino Romano Finitura",
+          "desc": "Пігментна домішка для Travertino Romano.",
+          "effect": "Колірна домішка",
+          "base": "Суміш пігментів",
+          "finish": ["тонуючий"],
+          "photos": [
+            "https://b2ccms.oikos-group.it/upload/87D_toner-travertino-romano-02.jpg",
+            "https://b2ccms.oikos-group.it/upload/87D_toner-travertino-romano-03.jpg"
+          ],
+          "colors": [],
+          "colors_count": null,
+          "textures": [],
+          "note": "Використовується разом з Travertino Romano",
+          "url": "https://www.oikos.ua/textured-decoratives/tonertravertinoromano",
+          "eco": true
+        }
+      ]
+    },
+    {
+      "id": "interior-paint",
+      "title": "Інтер'єрні фарби",
+      "url": "https://www.oikos.ua/interior-paint",
+      "subcategories": [
+        {
+          "name": "Фарби",
+          "products": [
+            {"id":"ip-01","name":"Biamax","desc":"Фарба з ефектом зістарювання. Версії 0.3 мм і 0.7 мм гранул. Висока стійкість до подряпин.","finish":["матовий","фактурний"],"photos":["https://b2ccms.oikos-group.it/upload/49_biamax-zanotta-saloni-2016-th-01.jpg"],"url":"https://www.oikos.ua/paints/biamax","eco":true},
+            {"id":"ip-02","name":"Coprimax","desc":"Матова паропроникна фарба. Хороші покривні властивості. 116 відтінків (колекція Interior).","finish":["матовий"],"colors_count":116,"colors_collection":"Interior Collection","photos":["https://b2ccms.oikos-group.it/upload/59_coprimax-1920x1080-01.jpg"],"url":"https://www.oikos.ua/paints/coprimax","eco":true},
+            {"id":"ip-03","name":"Drywall Paint","desc":"Для гіпсокартону та будь-якої основи. Без закріплювача. Дерматологічно тестована. 116 відтінків (колекція Interior).","finish":["матовий"],"colors_count":116,"colors_collection":"Interior Collection","photos":["https://b2ccms.oikos-group.it/upload/55L_drywall-via-poma61-011-2.jpg","https://b2ccms.oikos-group.it/upload/55L_drywall-bonita-residence-10.jpg","https://b2ccms.oikos-group.it/upload/55L_drywall-via-poma61-1.jpg"],"url":"https://www.oikos.ua/paints/drywallpaint","eco":true},
+            {"id":"ip-04","name":"Extrapaint","desc":"Акрилова фарба для всіх приміщень. Дуже добре миється. 2000 відтінків.","finish":["матовий","напівматовий"],"colors_count":2000,"photos":["https://b2ccms.oikos-group.it/upload/53_extrapaint-museo-pascali-7017-1920x1080.jpg"],"url":"https://www.oikos.ua/paints/extrapaint","eco":true},
+            {"id":"ip-05","name":"Multifund","desc":"Багатофункціональна ґрунтувальна фарба для різних типів поверхонь.","finish":["матовий"],"photos":[],"url":"https://www.oikos.ua/paints/multifund","eco":true},
+            {"id":"ip-06","name":"Pittura alla Calce Verona","desc":"Вапняна фарба у стилі Верони. Натуральна, повітропроникна, антибактеріальна.","finish":["матовий"],"photos":[],"url":"https://www.oikos.ua/paints/pitturaallacalceverona","eco":true},
+            {"id":"ip-07","name":"Sirius 2001","desc":"Акрилова фарба для стель і технічних приміщень. Біла сяюча, паропроникна. 116 відтінків.","finish":["матовий"],"colors_count":116,"colors_collection":"Interior Collection","photos":["https://b2ccms.oikos-group.it/upload/58_sirius-01.jpg","https://b2ccms.oikos-group.it/upload/58_sirius-03.jpg","https://b2ccms.oikos-group.it/upload/58_sirius-04.jpg"],"url":"https://www.oikos.ua/paints/sirius2001","eco":true},
+            {"id":"ip-08","name":"Supercolor","desc":"Суперкольорова фарба з насиченими відтінками.","finish":["матовий","напівглянцевий"],"photos":[],"url":"https://www.oikos.ua/paints/supercolor","eco":true},
+            {"id":"ip-09","name":"Supermatt","desc":"Без формальдегіду. Готова до застосування. 2000 відтінків.","finish":["матовий"],"colors_count":2000,"formaldehyde_free":true,"photos":["https://b2ccms.oikos-group.it/upload/62M_supermatt-banner.jpg"],"url":"https://www.oikos.ua/paints/supermatt","eco":true},
+            {"id":"ip-10","name":"Topmatt","desc":"Преміальна матова акрилова фарба. Стійка до миття.","finish":["матовий"],"photos":[],"url":"https://www.oikos.ua/paints/topmatt","eco":true},
+            {"id":"ip-11","name":"Ultrasaten","desc":"Атласна фарба для стін. Легко миється.","finish":["атласний","напівглянцевий"],"photos":[],"url":"https://www.oikos.ua/paints/ultrasaten","eco":true},
+            {"id":"ip-12","name":"Wallsatin","desc":"Атласна фарба. Стійкість до миття та подряпин.","finish":["атласний"],"photos":[],"url":"https://www.oikos.ua/paints/wallsatin","eco":true}
+          ]
+        },
+        {
+          "name": "Стерилізатори для поверхні",
+          "products": [
+            {"id":"ip-13","name":"Micotral","desc":"Знищує цвіль та гриби перед фарбуванням.","url":"https://www.oikos.ua/hard-surface-disinfect/micotral","eco":true},
+            {"id":"ip-14","name":"Sterylcalce","desc":"Вапняний стерилізатор. Натуральний антибактеріальний засіб.","url":"https://www.oikos.ua/hard-surface-disinfect/sterylcalce","eco":true},
+            {"id":"ip-15","name":"Sterylfix","desc":"Фіксуючий стерилізатор для зміцнення поверхонь.","url":"https://www.oikos.ua/hard-surface-disinfect/sterylfix","eco":true},
+            {"id":"ip-16","name":"Sterylpaint","desc":"Стерилізуюча фарба з антибактеріальними властивостями.","url":"https://www.oikos.ua/hard-surface-disinfect/sterylpaint","eco":true},
+            {"id":"ip-17","name":"Sterylplus","desc":"Посилений стерилізатор з підвищеною захисною дією.","url":"https://www.oikos.ua/hard-surface-disinfect/sterylplus","eco":true},
+            {"id":"ip-18","name":"Sterylsan","desc":"Санітарний стерилізатор для приміщень з підвищеними вимогами до гігієни.","url":"https://www.oikos.ua/hard-surface-disinfect/sterylsan","eco":true}
+          ]
+        },
+        {
+          "name": "Ґрунтовки-фіксативи",
+          "products": [
+            {"id":"ip-19","name":"Crilux","desc":"Акрилова ґрунтовка-фіксатив.","url":"https://www.oikos.ua/base-coats-primers/crilux","eco":true},
+            {"id":"ip-20","name":"Flexigrap","desc":"Гнучка ґрунтовка для різних поверхонь.","url":"https://www.oikos.ua/base-coats-primers/flexigrap","eco":true},
+            {"id":"ip-21","name":"Fondo Murales","desc":"Ґрунтовка для настінних розписів.","url":"https://www.oikos.ua/base-coats-primers/fondomurales","eco":true},
+            {"id":"ip-22","name":"Il Pigmentato","desc":"Пігментований ґрунт під декоративні покриття.","url":"https://www.oikos.ua/base-coats-primers/ilpigmentato","eco":true},
+            {"id":"ip-23","name":"Il Primer","desc":"Універсальна ґрунтовка.","url":"https://www.oikos.ua/base-coats-primers/ilprimer","eco":true},
+            {"id":"ip-24","name":"Neofix","desc":"Фіксуюча ґрунтовка для пористих поверхонь.","url":"https://www.oikos.ua/base-coats-primers/neofix","eco":true},
+            {"id":"ip-25","name":"Stucco in Pasta per Rasatura","desc":"Пастоподібна шпаклівка для вирівнювання поверхонь.","url":"https://www.oikos.ua/base-coats-primers/stuccorasatura","eco":true}
+          ]
+        },
+        {
+          "name": "Захисні та воскові засоби",
+          "products": [
+            {"id":"ip-26","name":"Cera per Stucco","desc":"Захисний віск для штукатурки.","url":"https://www.oikos.ua/protectives-waxes/ceraperstucco","eco":true},
+            {"id":"ip-27","name":"Igrolux","desc":"Гідрофобне захисне покриття.","url":"https://www.oikos.ua/protectives-waxes/igrolux","eco":true},
+            {"id":"ip-28","name":"Opac","desc":"Матовий захисний лак.","url":"https://www.oikos.ua/protectives-waxes/opac","eco":true},
+            {"id":"ip-29","name":"Protettivo per Stucco e Marmorino","desc":"Захист для штукатурки та мармурино.","url":"https://www.oikos.ua/protectives-waxes/protettivostucco","eco":true},
+            {"id":"ip-30","name":"Watins Lux","desc":"Глянцевий захисний лак на водній основі.","url":"https://www.oikos.ua/protectives-waxes/watinslux","eco":true}
+          ]
+        },
+        {
+          "name": "Додаткові матеріали",
+          "products": [
+            {"id":"ip-31","name":"Decortina New","desc":"Декоративний матеріал для оздоблювальних ефектів.","url":"https://www.oikos.ua/complementary-products/decortinanew","eco":true},
+            {"id":"ip-32","name":"Ekostripper","desc":"Засіб для видалення старої фарби.","url":"https://www.oikos.ua/complementary-products/ekostripper","eco":true}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exterior-paint",
+      "title": "Екстер'єрні фарби",
+      "url": "https://www.oikos.ua/exterior-paint",
+      "subcategories": [
+        {
+          "name": "Підготовка — Акрилові",
+          "products": [
+            {"id":"ep-01","name":"Blankor","desc":"Акрилова ґрунтовка для фасадів.","url":"https://www.oikos.ua/acrylics/blankor","eco":true},
+            {"id":"ep-02","name":"Neokryll","desc":"Акрилова фіксуюча ґрунтовка для зовнішніх поверхонь.","url":"https://www.oikos.ua/acrylics/neokryll","eco":true}
+          ]
+        },
+        {
+          "name": "Підготовка — Силоксанові",
+          "products": [
+            {"id":"ep-03","name":"Decorsil Primer","desc":"Силоксановий ґрунт для фасадів.","url":"https://www.oikos.ua/siloxanics/decorsilprimer","eco":true},
+            {"id":"ep-04","name":"Decorsil Primer Pigmentato","desc":"Пігментований силоксановий ґрунт.","url":"https://www.oikos.ua/siloxanics/decorsilprimerpigmentato","eco":true}
+          ]
+        },
+        {
+          "name": "Підготовка — Вапняна штукатурка",
+          "products": [
+            {"id":"ep-05","name":"Consolidante per Calce","desc":"Зміцнювач для вапняних штукатурок.","url":"https://www.oikos.ua/lime/consolidantepercalce","eco":true},
+            {"id":"ep-06","name":"Rasatura alla Calce","desc":"Вапняна шпаклівка для фасадів.","url":"https://www.oikos.ua/lime/rasaturacalce","eco":true}
+          ]
+        },
+        {
+          "name": "Підготовка — Клеючі та вирівнюючі",
+          "products": [
+            {"id":"ep-07","name":"Rasokol","desc":"Клеючо-вирівнюючий склад для фасадів.","url":"https://www.oikos.ua/skim-coats-adhesives/rasokol","eco":true}
+          ]
+        },
+        {
+          "name": "Фасадні фарби — Акрилові",
+          "products": [
+            {"id":"ep-08","name":"Archital","desc":"Акрилова фасадна фарба.","finish":["матовий"],"photos":["https://b2ccms.oikos-group.it/upload/11_exterior-paint-1920x1080.jpg"],"url":"https://www.oikos.ua/acrylics/archital","eco":true},
+            {"id":"ep-09","name":"Neoquarz","desc":"Акрилова фарба з кварцем. Висока стійкість до атмосферних впливів.","finish":["матовий","фактурний"],"url":"https://www.oikos.ua/acrylics/neoquarz","eco":true},
+            {"id":"ep-10","name":"Neoquarz Plus","desc":"Покращена версія Neoquarz.","finish":["матовий","фактурний"],"url":"https://www.oikos.ua/acrylics/neoquarzplus","eco":true},
+            {"id":"ep-11","name":"O-Addensante","desc":"Акриловий загущувач для фарб.","url":"https://www.oikos.ua/acrylics/oaddensante","eco":true}
+          ]
+        },
+        {
+          "name": "Акрил-силоксанові",
+          "products": [
+            {"id":"ep-12","name":"Biocompact","desc":"Захист від вологи та біологічних забруднень.","finish":["матовий"],"url":"https://www.oikos.ua/acrylsiloxanics/biocompact","eco":true},
+            {"id":"ep-13","name":"Duaflex","desc":"Гнучка фарба для фасадів з тріщинами.","finish":["матовий","еластичний"],"url":"https://www.oikos.ua/acrylsiloxanics/duaflex","eco":true},
+            {"id":"ep-14","name":"Silkos Torino","desc":"Атласна акрил-силоксанова фарба.","finish":["атласний"],"url":"https://www.oikos.ua/acrylsiloxanics/silkostorino","eco":true}
+          ]
+        },
+        {
+          "name": "Фасадні фарби — Силоксанові",
+          "products": [
+            {"id":"ep-15","name":"Decorsil Firenze","desc":"Силоксанова декоративна фарба у флорентійському стилі.","finish":["матовий","фактурний"],"url":"https://www.oikos.ua/siloxanics/decorsilfirenze","eco":true},
+            {"id":"ep-16","name":"Decorsil Roma","desc":"Ефект римської штукатурки.","finish":["матовий","фактурний"],"url":"https://www.oikos.ua/siloxanics/decorsilroma","eco":true},
+            {"id":"ep-17","name":"Veldecor","desc":"Оксамитова силоксанова фарба.","finish":["оксамитовий","матовий"],"url":"https://www.oikos.ua/siloxanics/veldecor","eco":true}
+          ]
+        },
+        {
+          "name": "Еластомеричні",
+          "products": [
+            {"id":"ep-18","name":"Biocompact Elastic","desc":"Перекриває тріщини до 1 мм.","finish":["матовий","еластичний"],"url":"https://www.oikos.ua/elastomerics/biocompactelastic","eco":true},
+            {"id":"ep-19","name":"Elastrong Gum","desc":"Еластомерна мастика для фасадів.","finish":["еластичний"],"url":"https://www.oikos.ua/elastomerics/elastronggum","eco":true},
+            {"id":"ep-20","name":"Elastrong Paint Gum","desc":"Еластомерна фарба-мастика.","finish":["еластичний","матовий"],"url":"https://www.oikos.ua/elastomerics/elastrongpaintgum","eco":true}
+          ]
+        },
+        {
+          "name": "Фасадні фарби — Вапняні",
+          "products": [
+            {"id":"ep-21","name":"Pittura alla Calce","desc":"Натуральна вапняна фасадна фарба. Паропроникна, антибактеріальна.","finish":["матовий"],"url":"https://www.oikos.ua/lime/pitturaallacalce","eco":true}
+          ]
+        },
+        {
+          "name": "Захисні — Акрилові",
+          "products": [
+            {"id":"ep-22","name":"Betoncryll Idrorepellente","desc":"Гідрофобна пропитка для бетону та каменю.","url":"https://www.oikos.ua/protectives/betoncryllidrorepellente","eco":true},
+            {"id":"ep-23","name":"Betoncryll Pigmentato","desc":"Пігментований захист для бетону.","url":"https://www.oikos.ua/protectives/betoncryllpigmentato","eco":true},
+            {"id":"ep-24","name":"Betoncryll Semitrasparente","desc":"Напівпрозоре захисне покриття.","url":"https://www.oikos.ua/protectives/betoncryllsemitrasparente","eco":true},
+            {"id":"ep-25","name":"Betoncryll Trasparente","desc":"Прозоре захисне покриття для бетону.","url":"https://www.oikos.ua/protectives/betoncrylltrasparente","eco":true}
+          ]
+        },
+        {
+          "name": "Захисні — Вапняні",
+          "products": [
+            {"id":"ep-26","name":"Superfinish 24","desc":"Вапняне захисне покриття з надвисокою паропроникністю. Для Travertino та Marmorino.","url":"https://www.oikos.ua/protectives/superfinish24","eco":true}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "novalis-ecoenamel",
+      "title": "Novalis Ecoenamel",
+      "url": "https://www.oikos.ua/novalis-ecoenamel",
+      "subcategories": [
+        {
+          "name": "Універсальні емалі",
+          "products": [
+            {"id":"nv-01","name":"Ecosmalto Ferromicaceo","desc":"Емаль з ефектом залізної слюди. Декоративний і захисний ефект для металу.","effect":"Ефект залізної слюди","finish":["металізований","матовий"],"photos":["https://b2ccms.oikos-group.it/upload/42_home-categoria-novalis.jpg"],"url":"https://www.oikos.ua/novalis-ecoenamels/ferromicaceo","eco":true},
+            {"id":"nv-02","name":"Ecosmalto Metallizzato","desc":"Металізована емаль. Ефект блискучого металу.","effect":"Металізований блиск","finish":["металізований","глянцевий"],"url":"https://www.oikos.ua/novalis-ecoenamels/metallizzato","eco":true},
+            {"id":"nv-03","name":"Ecosmalto per Ceramica","desc":"Емаль для кераміки. Відновлює плитку, ванну, раковину.","effect":"Покриття кераміки","finish":["глянцевий","напівглянцевий"],"url":"https://www.oikos.ua/novalis-ecoenamels/ecosmalto-per-ceramica","eco":true},
+            {"id":"nv-04","name":"Ecosmalto Thermo","desc":"Термостійка емаль для радіаторів та труб.","effect":"Термостійке покриття","finish":["глянцевий","матовий"],"url":"https://www.oikos.ua/novalis-ecoenamels/thermo","eco":true},
+            {"id":"nv-05","name":"Ecosmalto Universale","desc":"Універсальна емаль для дерева, металу та інших поверхонь.","effect":"Універсальне покриття","finish":["глянцевий","напівглянцевий","матовий"],"url":"https://www.oikos.ua/novalis-ecoenamels/universale","eco":true}
+          ]
+        },
+        {
+          "name": "Деревозахисні засоби",
+          "products": [
+            {"id":"nv-06","name":"Ecofondo Riempitivo","desc":"Заповнюючий ґрунт для дерева.","url":"https://www.oikos.ua/novalis-wood/ecofondoriempitivo","eco":true},
+            {"id":"nv-07","name":"Ecoimpregnante Legno","desc":"Просочення для дерева. Захист від вологи та УФ.","url":"https://www.oikos.ua/novalis-wood/ecoimpregnantelegno","eco":true},
+            {"id":"nv-08","name":"Ecoprotettivo Legno","desc":"Захисний лак для дерева.","url":"https://www.oikos.ua/novalis-wood/ecoprotettivolegno","eco":true},
+            {"id":"nv-09","name":"Ecoprotettivo Parquet","desc":"Захисний лак для паркету.","url":"https://www.oikos.ua/novalis-wood/ecoprotettivoparquet","eco":true},
+            {"id":"nv-10","name":"Turapori Ecologico","desc":"Порозаповнювач для дерева.","url":"https://www.oikos.ua/novalis-wood/turaporiecologico","eco":true}
+          ]
+        },
+        {
+          "name": "Ґрунтовки та захист металу",
+          "products": [
+            {"id":"nv-11","name":"Aggrappante Ecologico","desc":"Адгезійна ґрунтовка для металу, скла, кераміки.","url":"https://www.oikos.ua/novalis-base-coats-protectives/aggrappanteecologico","eco":true},
+            {"id":"nv-12","name":"Antiruggine Ecologico","desc":"Антикорозійний ґрунт для металу.","url":"https://www.oikos.ua/novalis-base-coats-protectives/antiruggineecologico","eco":true},
+            {"id":"nv-13","name":"Convertitore Ecologico","desc":"Конвертер іржі.","url":"https://www.oikos.ua/novalis-base-coats-protectives/convertitoreecologico","eco":true},
+            {"id":"nv-14","name":"Ecoprotettivo Ferro","desc":"Захист заліза та металу від корозії.","url":"https://www.oikos.ua/novalis-base-coats-protectives/ecoprotettivoferro","eco":true}
+          ]
+        }
+      ]
+    }
+  ]
+}

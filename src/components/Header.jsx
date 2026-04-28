@@ -1,9 +1,11 @@
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import logo from '../logos/logo-transparent.png'
+import { useCart } from '../cart/CartContext.jsx'
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const { totalDistinctItems } = useCart()
 
   const closeMobileMenu = () => setMobileMenuOpen(false)
 
@@ -11,7 +13,11 @@ export default function Header() {
     { label: 'Про нас', path: '/' },
     { label: 'Продукти', path: '/products' },
     { label: 'Галерея', path: '/gallery' },
-    { label: 'Контакти', path: '/contact' }
+    { label: 'Контакти', path: '/contact' },
+    {
+      label: totalDistinctItems > 0 ? `Кошик (${totalDistinctItems})` : 'Кошик',
+      path: '/cart',
+    },
   ]
 
   return (
@@ -38,7 +44,7 @@ export default function Header() {
         </nav>
         <div className="nav-right">
           <a href="#search">Пошук</a>
-          <a href="#cart">Контакти</a>
+
         </div>
         <button
           className="mobile-toggle"
