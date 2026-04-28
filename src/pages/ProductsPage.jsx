@@ -23,7 +23,7 @@ function LazyImage({ src, alt, className }) {
   }, [src])
 
   return (
-    <div className="image-wrapper" style={{ position: 'relative', overflow: 'hidden' }}>
+    <div className="image-wrapper" style={{ position: 'relative', overflow: 'hidden', width: '100%', height: '100%' }}>
       {isLoading && (
         <div
           className="image-placeholder"
@@ -37,6 +37,7 @@ function LazyImage({ src, alt, className }) {
             justifyContent: 'center',
             fontSize: '12px',
             color: '#999',
+            zIndex: 10,
           }}
         >
           Завантаження...
@@ -47,6 +48,11 @@ function LazyImage({ src, alt, className }) {
         src={imageSrc || src}
         alt={alt}
         style={{
+          position: 'absolute',
+          inset: 0,
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
           opacity: isLoading ? 0.5 : 1,
           transition: 'opacity 0.3s ease-in-out',
         }}
