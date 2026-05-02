@@ -1,9 +1,14 @@
-import { useEffect, useMemo, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useCallback, useEffect, useMemo, useState } from 'react'
+import { Link, useSearchParams } from 'react-router-dom'
 import { productsDb } from '../data/products.js'
 import { useCart } from '../cart/CartContext.jsx'
 
 const ITEMS_PER_PAGE = 15
+
+function getPositivePage(value) {
+  const page = Number(value)
+  return Number.isInteger(page) && page > 0 ? page : 1
+}
 
 // Компонент для ленивой загрузки изображения с плейсхолдером
 function LazyImage({ src, alt, className }) {
@@ -64,19 +69,46 @@ function LazyImage({ src, alt, className }) {
 }
 
 export default function ProductsPage() {
-  const [selectedCategory, setSelectedCategory] = useState('all')
-  const [searchQuery, setSearchQuery] = useState('')
-  const [currentPage, setCurrentPage] = useState(1)
-  const categories = [...new Set(productsDb.map((p) => p.category))]
+  const categories = useMemo(() => [...new Set(productsDb.map((p) => p.category))], [])
+  const [searchParams, setSearchParams] = useSearchParams()
+  const categoryFromUrl = searchParams.get('category') || 'all'
+  const selectedCategory =
+    categoryFromUrl === 'all' || categories.includes(categoryFromUrl)
+      ? categoryFromUrl
+      : 'all'
+  const searchQuery = searchParams.get('q') || ''
+  const currentPage = getPositivePage(searchParams.get('page'))
   const { addItem } = useCart()
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
   }, [])
 
+  const buildCatalogParams = useCallback(
+    ({ category = selectedCategory, query = searchQuery, page = currentPage } = {}) => {
+      const params = new URLSearchParams()
+      if (category && category !== 'all') params.set('category', category)
+      if (query.trim()) params.set('q', query.trim())
+      if (page > 1) params.set('page', String(page))
+      return params
+    },
+    [currentPage, searchQuery, selectedCategory],
+  )
+
+  const updateCatalogParams = useCallback(
+    (nextState) => {
+      setSearchParams(buildCatalogParams(nextState), { replace: true })
+    },
+    [buildCatalogParams, setSearchParams],
+  )
+
+  const getCatalogSearch = useCallback(() => {
+    const search = buildCatalogParams().toString()
+    return search ? `?${search}` : ''
+  }, [buildCatalogParams])
+
   const handleCategoryFilter = (category) => {
-    setSelectedCategory(category)
-    setCurrentPage(1) // Сброс на первую страницу
+    updateCatalogParams({ category, page: 1 })
   }
 
   const filteredProducts = useMemo(() => {
@@ -118,7 +150,8 @@ export default function ProductsPage() {
 
   // Пагинация
   const totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE)
-  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE
+  const activePage = totalPages > 0 ? Math.min(currentPage, totalPages) : 1
+  const startIndex = (activePage - 1) * ITEMS_PER_PAGE
   const endIndex = startIndex + ITEMS_PER_PAGE
   const paginatedProducts = filteredProducts.slice(startIndex, endIndex)
 
@@ -144,8 +177,8 @@ export default function ProductsPage() {
               placeholder="Пошук фарби (назва, ефект, код кольору…)"
               value={searchQuery}
               onChange={(e) => {
-                setSearchQuery(e.target.value)
-                setCurrentPage(1) // Сброс на першу сторінку при пошуку
+                const query = e.target.value
+                updateCatalogParams({ query, page: 1 })
               }}
               aria-label="Пошук фарби"
             />
@@ -206,7 +239,10 @@ export default function ProductsPage() {
                         В кошик
                       </button>
                       <Link
-                        to={`/products/${encodeURIComponent(product.id)}`}
+                        to={{
+                          pathname: `/products/${encodeURIComponent(product.id)}`,
+                          search: getCatalogSearch(),
+                        }}
                         className="add-btn"
                       >
                         Дізнатись більше
@@ -232,24 +268,29 @@ export default function ProductsPage() {
               }}
             >
               <button
-                onClick={() => setCurrentPage(1)}
-                disabled={currentPage === 1}
+                onClick={() => {
+                  updateCatalogParams({ page: 1 })
+                }}
+                disabled={activePage === 1}
                 style={{
                   padding: '8px 12px',
-                  cursor: currentPage === 1 ? 'not-allowed' : 'pointer',
-                  opacity: currentPage === 1 ? 0.5 : 1,
+                  cursor: activePage === 1 ? 'not-allowed' : 'pointer',
+                  opacity: activePage === 1 ? 0.5 : 1,
                 }}
               >
                 ← Першa
               </button>
 
               <button
-                onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
-                disabled={currentPage === 1}
+                onClick={() => {
+                  const page = Math.max(1, activePage - 1)
+                  updateCatalogParams({ page })
+                }}
+                disabled={activePage === 1}
                 style={{
                   padding: '8px 12px',
-                  cursor: currentPage === 1 ? 'not-allowed' : 'pointer',
-                  opacity: currentPage === 1 ? 0.5 : 1,
+                  cursor: activePage === 1 ? 'not-allowed' : 'pointer',
+                  opacity: activePage === 1 ? 0.5 : 1,
                 }}
               >
                 ← Назад
@@ -264,7 +305,7 @@ export default function ProductsPage() {
               >
                 {Array.from({ length: totalPages }, (_, i) => i + 1)
                   .filter((page) => {
-                    const distance = Math.abs(page - currentPage)
+                    const distance = Math.abs(page - activePage)
                     return distance === 0 || distance === 1 || page === 1 || page === totalPages
                   })
                   .map((page, idx, arr) => (
@@ -272,15 +313,15 @@ export default function ProductsPage() {
                       {idx > 0 && arr[idx - 1] !== page - 1 && <span>...</span>}
                       <button
                         onClick={() => {
-                          setCurrentPage(page)
+                          updateCatalogParams({ page })
                           window.scrollTo({ top: 0, behavior: 'smooth' })
                         }}
                         style={{
                           padding: '8px 12px',
-                          fontWeight: page === currentPage ? 'bold' : 'normal',
-                          backgroundColor: page === currentPage ? '#007bff' : 'transparent',
-                          color: page === currentPage ? 'white' : 'inherit',
-                          border: page === currentPage ? 'none' : '1px solid #ccc',
+                          fontWeight: page === activePage ? 'bold' : 'normal',
+                          backgroundColor: page === activePage ? '#007bff' : 'transparent',
+                          color: page === activePage ? 'white' : 'inherit',
+                          border: page === activePage ? 'none' : '1px solid #ccc',
                           cursor: 'pointer',
                           borderRadius: '4px',
                         }}
@@ -292,24 +333,29 @@ export default function ProductsPage() {
               </div>
 
               <button
-                onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
-                disabled={currentPage === totalPages}
+                onClick={() => {
+                  const page = Math.min(totalPages, activePage + 1)
+                  updateCatalogParams({ page })
+                }}
+                disabled={activePage === totalPages}
                 style={{
                   padding: '8px 12px',
-                  cursor: currentPage === totalPages ? 'not-allowed' : 'pointer',
-                  opacity: currentPage === totalPages ? 0.5 : 1,
+                  cursor: activePage === totalPages ? 'not-allowed' : 'pointer',
+                  opacity: activePage === totalPages ? 0.5 : 1,
                 }}
               >
                 Далі →
               </button>
 
               <button
-                onClick={() => setCurrentPage(totalPages)}
-                disabled={currentPage === totalPages}
+                onClick={() => {
+                  updateCatalogParams({ page: totalPages })
+                }}
+                disabled={activePage === totalPages}
                 style={{
                   padding: '8px 12px',
-                  cursor: currentPage === totalPages ? 'not-allowed' : 'pointer',
-                  opacity: currentPage === totalPages ? 0.5 : 1,
+                  cursor: activePage === totalPages ? 'not-allowed' : 'pointer',
+                  opacity: activePage === totalPages ? 0.5 : 1,
                 }}
               >
                 Остання →
@@ -322,7 +368,7 @@ export default function ProductsPage() {
                   color: '#666',
                 }}
               >
-                Сторінка {currentPage} з {totalPages} ({filteredProducts.length} товарів)
+                Сторінка {activePage} з {totalPages} ({filteredProducts.length} товарів)
               </div>
             </div>
           )}

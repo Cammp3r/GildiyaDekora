@@ -1,10 +1,11 @@
 import { useEffect, useMemo, useState } from 'react'
-import { Link, Navigate, useParams } from 'react-router-dom'
+import { Link, Navigate, useLocation, useParams } from 'react-router-dom'
 import { productsDb } from '../data/products.js'
 import { useCart } from '../cart/CartContext.jsx'
 
 export default function ProductDetailsPage() {
   const { id } = useParams()
+  const location = useLocation()
   const { addItem } = useCart()
   const product = useMemo(() => {
     if (!id) return undefined
@@ -58,7 +59,10 @@ export default function ProductDetailsPage() {
     <section className="product-details">
       <div className="container">
         <div className="product-details-top">
-          <Link to="/products" className="product-details-back">
+          <Link
+            to={{ pathname: '/products', search: location.search }}
+            className="product-details-back"
+          >
             ← Назад до каталогу
           </Link>
         </div>
