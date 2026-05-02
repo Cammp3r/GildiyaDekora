@@ -111,6 +111,9 @@ export default function ContactPage() {
       <section className="contact">
         <div className="container">
           <h2 className="section-title">Зв'яжіться з <em>нами</em></h2>
+          <div className="contact-order-banner">
+            Щоб замовити заповніть форму та з вами зв'яжуться
+          </div>
           <div className="contact-content">
             <div className="contact-info">
               <div className="contact-item">

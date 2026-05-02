@@ -2,9 +2,9 @@ import { Link } from 'react-router-dom'
 import { useCart } from '../cart/CartContext.jsx'
 
 function formatMoneyUAH(value) {
-  if (value === null || value === undefined || value === '') return '—'
+  if (value === null || value === undefined || value === '') return '-'
   const num = typeof value === 'number' ? value : Number(value)
-  if (!Number.isFinite(num)) return '—'
+  if (!Number.isFinite(num)) return '-'
   return `${num.toLocaleString('uk-UA')} грн`
 }
 
@@ -23,10 +23,8 @@ export default function CartPage() {
               <Link to="/products" className="add-btn">
                 Перейти до каталогу
               </Link>
-              
             </div>
           </div>
-          
         ) : (
           <>
             <div className="cart-list">
@@ -62,7 +60,7 @@ export default function CartPage() {
                             min="0.1"
                             step="0.1"
                             value={item.areaM2}
-                            onChange={(e) => setAreaM2(item.id, e.target.value)}
+                            onChange={(event) => setAreaM2(item.id, event.target.value)}
                           />
                         </label>
 
@@ -87,7 +85,10 @@ export default function CartPage() {
                 <span>Разом</span>
                 <strong>{formatMoneyUAH(totalPrice)}</strong>
               </div>
-              <div className="cart-summary-note">Ціна розрахована як грн/м² × площа.</div>
+              <div className="cart-summary-note">Ціна розрахована як грн/м² x площа.</div>
+              <Link to="/contact" className="cart-order-button">
+                Замовити
+              </Link>
             </div>
           </>
         )}

@@ -52,7 +52,7 @@ export default function ProductDetailsPage() {
   const priceLabel =
     Number.isFinite(pricePerM2) && pricePerM2 > 0
       ? `${pricePerM2.toLocaleString('uk-UA')} грн/м²`
-      : 'Дізнатись ціну'
+      : ''
 
   return (
     <section className="product-details">

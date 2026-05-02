@@ -33,7 +33,7 @@ export default function Header() {
         <nav className={`nav ${mobileMenuOpen ? 'open' : ''}`}>
           {navItems.map((item) => (
             <NavLink
-              key={item.path}
+              key={`${item.path}-${item.label}`}
               to={item.path}
               className={({ isActive }) => isActive ? 'active' : ''}
               onClick={closeMobileMenu}
@@ -45,6 +45,7 @@ export default function Header() {
         <button
           className="mobile-toggle"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label="Відкрити меню"
         >
           ☰
         </button>

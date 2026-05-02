@@ -784,6 +784,19 @@ section {
   margin-top: 2rem;
 }
 
+.contact-order-banner {
+  border: 1px solid var(--soft);
+  background: rgba(232, 221, 208, 0.55);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  line-height: 1.6;
+  margin: -1rem 0 2rem;
+  padding: 1rem 1.2rem;
+  text-transform: uppercase;
+}
+
 .contact-info {
   display: grid;
   grid-template-columns: 1fr;
@@ -1276,6 +1289,28 @@ section {
   font-size: 0.95rem;
 }
 
+.cart-order-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.2rem;
+  background: var(--ink);
+  color: var(--cream);
+  border: 1px solid var(--ink);
+  padding: 0.9rem 1.4rem;
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.3s;
+}
+
+.cart-order-button:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
 @media (max-width: 768px) {
   .cart {
     padding: 5rem 1.5rem;
@@ -1338,6 +1373,54 @@ section {
   font-size: 0.75rem;
 }
 
+.product-details-textures {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(112px, 1fr));
+  gap: 10px;
+}
+
+.product-details-texture {
+  position: relative;
+  border: 1px solid var(--soft);
+  border-radius: 4px;
+  padding: 0;
+  background: rgba(245, 240, 232, 0.55);
+  overflow: hidden;
+  cursor: pointer;
+  aspect-ratio: 1 / 1;
+  display: grid;
+  place-items: center;
+  transition: border-color 0.3s, transform 0.3s;
+}
+
+.product-details-texture:hover {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.product-details-texture.active {
+  border-color: var(--accent);
+  box-shadow: inset 0 0 0 2px var(--accent);
+}
+
+.product-details-texture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.product-details-texture-name {
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+  padding: 0.6rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
 .product-details-colors {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -1389,6 +1472,7 @@ section {
   }
 
   .product-details-thumbs,
+  .product-details-textures,
   .product-details-colors {
     grid-template-columns: repeat(4, 1fr);
   }

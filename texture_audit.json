@@ -1,0 +1,772 @@
+{
+  "checkedProducts": 95,
+  "productsWithSiteTextures": 11,
+  "missingLocalTextures": [],
+  "differentTextureNameSets": [],
+  "errors": [],
+  "found": [
+    {
+      "name": "Cemento Materico",
+      "url": "https://www.oikos.ua/textured-decoratives/cementomaterico",
+      "section": "interior-decor",
+      "site": [
+        {
+          "name": "CEMENTO CASSERATO",
+          "url": "https://b2ccms.oikos-group.it/upload/F80G_casserato-400x300.jpg"
+        },
+        {
+          "name": "CEMENTO GRAFFIATO",
+          "url": "https://b2ccms.oikos-group.it/upload/F80G_graffiato-400x300.jpg"
+        },
+        {
+          "name": "CEMENTO INDUSTRIALE",
+          "url": "https://b2ccms.oikos-group.it/upload/F80G_elicotterato-400x300.jpg"
+        },
+        {
+          "name": "CEMENTO SPAZZOLATO",
+          "url": "https://b2ccms.oikos-group.it/upload/F80G_spazzolato-400x300.jpg"
+        },
+        {
+          "name": "CEMENTO STRAPPATO",
+          "url": "https://b2ccms.oikos-group.it/upload/F80G_strappato-400x300.jpg"
+        }
+      ],
+      "local": [
+        {
+          "name": "CEMENTO CASSERATO",
+          "url": "https://b2ccms.oikos-group.it/upload/F80G_casserato-400x300.jpg"
+        },
+        {
+          "name": "CEMENTO GRAFFIATO",
+          "url": "https://b2ccms.oikos-group.it/upload/F80G_graffiato-400x300.jpg"
+        },
+        {
+          "name": "CEMENTO INDUSTRIALE",
+          "url": "https://b2ccms.oikos-group.it/upload/F80G_elicotterato-400x300.jpg"
+        },
+        {
+          "name": "CEMENTO SPAZZOLATO",
+          "url": "https://b2ccms.oikos-group.it/upload/F80G_spazzolato-400x300.jpg"
+        },
+        {
+          "name": "CEMENTO STRAPPATO",
+          "url": "https://b2ccms.oikos-group.it/upload/F80G_strappato-400x300.jpg"
+        }
+      ]
+    },
+    {
+      "name": "Encanto",
+      "url": "https://www.oikos.ua/textured-decoratives/encanto",
+      "section": "interior-decor",
+      "site": [
+        {
+          "name": "CYGNUS",
+          "url": "https://b2ccms.oikos-group.it/upload/F44_encanto-cygnus.jpg"
+        },
+        {
+          "name": "IZAR",
+          "url": "https://b2ccms.oikos-group.it/upload/F44_encanto-izar.jpg"
+        },
+        {
+          "name": "PEGASO",
+          "url": "https://b2ccms.oikos-group.it/upload/F44_encanto-pegaso.jpg"
+        },
+        {
+          "name": "PERSEO",
+          "url": "https://b2ccms.oikos-group.it/upload/F44_encanto-perseo.jpg"
+        },
+        {
+          "name": "STANDARD",
+          "url": "https://b2ccms.oikos-group.it/upload/F44_encanto.jpg"
+        },
+        {
+          "name": "STELLATO",
+          "url": "https://b2ccms.oikos-group.it/upload/F44_encanto-stellato.jpg"
+        },
+        {
+          "name": "VERTICALE",
+          "url": "https://b2ccms.oikos-group.it/upload/F44_encanto-verticale.jpg"
+        }
+      ],
+      "local": [
+        {
+          "name": "CYGNUS",
+          "url": "https://b2ccms.oikos-group.it/upload/F44_encanto-cygnus.jpg"
+        },
+        {
+          "name": "IZAR",
+          "url": "https://b2ccms.oikos-group.it/upload/F44_encanto-izar.jpg"
+        },
+        {
+          "name": "PEGASO",
+          "url": "https://b2ccms.oikos-group.it/upload/F44_encanto-pegaso.jpg"
+        },
+        {
+          "name": "PERSEO",
+          "url": "https://b2ccms.oikos-group.it/upload/F44_encanto-perseo.jpg"
+        },
+        {
+          "name": "STANDARD",
+          "url": "https://b2ccms.oikos-group.it/upload/F44_encanto.jpg"
+        },
+        {
+          "name": "STELLATO",
+          "url": "https://b2ccms.oikos-group.it/upload/F44_encanto-stellato.jpg"
+        },
+        {
+          "name": "VERTICALE",
+          "url": "https://b2ccms.oikos-group.it/upload/F44_encanto-verticale.jpg"
+        }
+      ]
+    },
+    {
+      "name": "Imperium",
+      "url": "https://www.oikos.ua/textured-decoratives/imperium",
+      "section": "interior-decor",
+      "site": [
+        {
+          "name": "METALLIZZATO OPACO",
+          "url": "https://b2ccms.oikos-group.it/upload/F48_300x300-imperium-metallizzato-opaco.jpg"
+        },
+        {
+          "name": "DELABRÉ",
+          "url": "https://b2ccms.oikos-group.it/upload/F48_300x300-imperium-delabre.jpg"
+        },
+        {
+          "name": "DORATURE",
+          "url": "https://b2ccms.oikos-group.it/upload/F48_300x300-imperium-dorature.jpg"
+        },
+        {
+          "name": "FOGLIA ORO",
+          "url": "https://b2ccms.oikos-group.it/upload/F48_300x300-imperium-foglia-oro.jpg"
+        },
+        {
+          "name": "METALLIZZATO",
+          "url": "https://b2ccms.oikos-group.it/upload/F48_300x300-imperium-metallizzato.jpg"
+        },
+        {
+          "name": "ORO ANTICO",
+          "url": "https://b2ccms.oikos-group.it/upload/F48_300x300-imperium-oro-antico.jpg"
+        },
+        {
+          "name": "POLVERE ORO",
+          "url": "https://b2ccms.oikos-group.it/upload/F48_300x300-imperium-polvere-oro.jpg"
+        },
+        {
+          "name": "SPAZZOLATO",
+          "url": "https://b2ccms.oikos-group.it/upload/F48_300x300-imperium-spazzolato.jpg"
+        }
+      ],
+      "local": [
+        {
+          "name": "METALLIZZATO OPACO",
+          "url": "https://b2ccms.oikos-group.it/upload/F48_300x300-imperium-metallizzato-opaco.jpg"
+        },
+        {
+          "name": "DELABRÉ",
+          "url": "https://b2ccms.oikos-group.it/upload/F48_300x300-imperium-delabre.jpg"
+        },
+        {
+          "name": "DORATURE",
+          "url": "https://b2ccms.oikos-group.it/upload/F48_300x300-imperium-dorature.jpg"
+        },
+        {
+          "name": "FOGLIA ORO",
+          "url": "https://b2ccms.oikos-group.it/upload/F48_300x300-imperium-foglia-oro.jpg"
+        },
+        {
+          "name": "METALLIZZATO",
+          "url": "https://b2ccms.oikos-group.it/upload/F48_300x300-imperium-metallizzato.jpg"
+        },
+        {
+          "name": "ORO ANTICO",
+          "url": "https://b2ccms.oikos-group.it/upload/F48_300x300-imperium-oro-antico.jpg"
+        },
+        {
+          "name": "POLVERE ORO",
+          "url": "https://b2ccms.oikos-group.it/upload/F48_300x300-imperium-polvere-oro.jpg"
+        },
+        {
+          "name": "SPAZZOLATO",
+          "url": "https://b2ccms.oikos-group.it/upload/F48_300x300-imperium-spazzolato.jpg"
+        }
+      ]
+    },
+    {
+      "name": "Kreos",
+      "url": "https://www.oikos.ua/textured-decoratives/kreos",
+      "section": "interior-decor",
+      "site": [
+        {
+          "name": "KREOS",
+          "url": "https://b2ccms.oikos-group.it/upload/F14_kreos-300x300.jpg"
+        },
+        {
+          "name": "KREOS ARDESIA",
+          "url": "https://b2ccms.oikos-group.it/upload/F14_kreos-300x300-ardesia.jpg"
+        },
+        {
+          "name": "KREOS FIL POSÈ",
+          "url": "https://b2ccms.oikos-group.it/upload/F14_kreos-300x300-fil-pose.jpg"
+        },
+        {
+          "name": "KREOS JUTA",
+          "url": "https://b2ccms.oikos-group.it/upload/F14_kreos-300x300-juta.jpg"
+        },
+        {
+          "name": "KREOS MOTUS",
+          "url": "https://b2ccms.oikos-group.it/upload/F14_kreos-300x300-motus.jpg"
+        }
+      ],
+      "local": [
+        {
+          "name": "KREOS",
+          "url": "https://b2ccms.oikos-group.it/upload/F14_kreos-300x300.jpg"
+        },
+        {
+          "name": "KREOS ARDESIA",
+          "url": "https://b2ccms.oikos-group.it/upload/F14_kreos-300x300-ardesia.jpg"
+        },
+        {
+          "name": "KREOS FIL POSÈ",
+          "url": "https://b2ccms.oikos-group.it/upload/F14_kreos-300x300-fil-pose.jpg"
+        },
+        {
+          "name": "KREOS JUTA",
+          "url": "https://b2ccms.oikos-group.it/upload/F14_kreos-300x300-juta.jpg"
+        },
+        {
+          "name": "KREOS MOTUS",
+          "url": "https://b2ccms.oikos-group.it/upload/F14_kreos-300x300-motus.jpg"
+        }
+      ]
+    },
+    {
+      "name": "Marmorino Naturale",
+      "url": "https://www.oikos.ua/textured-decoratives/marmorinonaturale",
+      "section": "interior-decor",
+      "site": [
+        {
+          "name": "MARMORINO NATURALE",
+          "url": "https://b2ccms.oikos-group.it/upload/F82B_marmorino-naturale-mini.jpg"
+        },
+        {
+          "name": "MARMORINO NATURALE / M.N. FINE + FINITURA AUTOLUCIDANTE",
+          "url": "https://b2ccms.oikos-group.it/upload/F82B_fine-finitura-autolucidante-mini.jpg"
+        },
+        {
+          "name": "MARMORINO NATURALE / M.N. FINE + SUPERFINISH 24",
+          "url": "https://b2ccms.oikos-group.it/upload/F82B_marm-superfinish24-mini.jpg"
+        },
+        {
+          "name": "MARMORINO NATURALE FINE",
+          "url": "https://b2ccms.oikos-group.it/upload/F82B_marmorino-naturale-fine-mini.jpg"
+        }
+      ],
+      "local": [
+        {
+          "name": "MARMORINO NATURALE",
+          "url": "https://b2ccms.oikos-group.it/upload/F82B_marmorino-naturale-mini.jpg"
+        },
+        {
+          "name": "MARMORINO NATURALE / M.N. FINE + FINITURA AUTOLUCIDANTE",
+          "url": "https://b2ccms.oikos-group.it/upload/F82B_fine-finitura-autolucidante-mini.jpg"
+        },
+        {
+          "name": "MARMORINO NATURALE / M.N. FINE + SUPERFINISH 24",
+          "url": "https://b2ccms.oikos-group.it/upload/F82B_marm-superfinish24-mini.jpg"
+        },
+        {
+          "name": "MARMORINO NATURALE FINE",
+          "url": "https://b2ccms.oikos-group.it/upload/F82B_marmorino-naturale-fine-mini.jpg"
+        }
+      ]
+    },
+    {
+      "name": "Multidecor Skin",
+      "url": "https://www.oikos.ua/textured-decoratives/multidecorskin",
+      "section": "interior-decor",
+      "site": [
+        {
+          "name": "CAMOSCIO",
+          "url": "https://b2ccms.oikos-group.it/upload/FP010_camoscio-th.jpg"
+        },
+        {
+          "name": "CANAPA",
+          "url": "https://b2ccms.oikos-group.it/upload/FP010_canapa-th.jpg"
+        },
+        {
+          "name": "CANVAS",
+          "url": "https://b2ccms.oikos-group.it/upload/FP010_canvas-th.jpg"
+        },
+        {
+          "name": "CEMENTO",
+          "url": "https://b2ccms.oikos-group.it/upload/FP010_cemento-th.jpg"
+        },
+        {
+          "name": "CORTEN",
+          "url": "https://b2ccms.oikos-group.it/upload/FP010_corten-th.jpg"
+        },
+        {
+          "name": "FIANDRA",
+          "url": "https://b2ccms.oikos-group.it/upload/FP010_fiandra-th.jpg"
+        },
+        {
+          "name": "FILATO",
+          "url": "https://b2ccms.oikos-group.it/upload/FP010_filato-th.jpg"
+        },
+        {
+          "name": "LAMIERA",
+          "url": "https://b2ccms.oikos-group.it/upload/FP010_lamiera-th.jpg"
+        },
+        {
+          "name": "PERGAMENA",
+          "url": "https://b2ccms.oikos-group.it/upload/FP010_pergamena-th.jpg"
+        }
+      ],
+      "local": [
+        {
+          "name": "CAMOSCIO",
+          "url": "https://b2ccms.oikos-group.it/upload/FP010_camoscio-th.jpg"
+        },
+        {
+          "name": "CANAPA",
+          "url": "https://b2ccms.oikos-group.it/upload/FP010_canapa-th.jpg"
+        },
+        {
+          "name": "CANVAS",
+          "url": "https://b2ccms.oikos-group.it/upload/FP010_canvas-th.jpg"
+        },
+        {
+          "name": "CEMENTO",
+          "url": "https://b2ccms.oikos-group.it/upload/FP010_cemento-th.jpg"
+        },
+        {
+          "name": "CORTEN",
+          "url": "https://b2ccms.oikos-group.it/upload/FP010_corten-th.jpg"
+        },
+        {
+          "name": "FIANDRA",
+          "url": "https://b2ccms.oikos-group.it/upload/FP010_fiandra-th.jpg"
+        },
+        {
+          "name": "FILATO",
+          "url": "https://b2ccms.oikos-group.it/upload/FP010_filato-th.jpg"
+        },
+        {
+          "name": "LAMIERA",
+          "url": "https://b2ccms.oikos-group.it/upload/FP010_lamiera-th.jpg"
+        },
+        {
+          "name": "PERGAMENA",
+          "url": "https://b2ccms.oikos-group.it/upload/FP010_pergamena-th.jpg"
+        }
+      ]
+    },
+    {
+      "name": "Ottocento",
+      "url": "https://www.oikos.ua/textured-decoratives/ottocento",
+      "section": "interior-decor",
+      "site": [
+        {
+          "name": "ANTICO VELLUTO",
+          "url": "https://b2ccms.oikos-group.it/upload/F12_antico-velluto.jpg"
+        },
+        {
+          "name": "ANTICO VELLUTO OPACO",
+          "url": "https://b2ccms.oikos-group.it/upload/F12_antico-velluto-opaco.jpg"
+        },
+        {
+          "name": "ANTICO VELLUTO VERTICALE",
+          "url": "https://b2ccms.oikos-group.it/upload/F12_antico-velluto-verticale.jpg"
+        },
+        {
+          "name": "CARMEN EFFETTO MOIRÈ",
+          "url": "https://b2ccms.oikos-group.it/upload/F12_carmen-effetto-moirè.jpg"
+        },
+        {
+          "name": "DESDEMONA EFFETTO GARZA",
+          "url": "https://b2ccms.oikos-group.it/upload/F12_desdemona-effetto-garza.jpg"
+        },
+        {
+          "name": "IMPERIALE",
+          "url": "https://b2ccms.oikos-group.it/upload/F12_imperiale.jpg"
+        },
+        {
+          "name": "NORMA EFFETTO LINO",
+          "url": "https://b2ccms.oikos-group.it/upload/F12_norma-effetto-lino.jpg"
+        },
+        {
+          "name": "RIGOLETTO EFFETTO FILATO",
+          "url": "https://b2ccms.oikos-group.it/upload/F12_rigoletto-effetto-filato.jpg"
+        },
+        {
+          "name": "SETA",
+          "url": "https://b2ccms.oikos-group.it/upload/F12_seta.jpg"
+        },
+        {
+          "name": "SETA STELLATA",
+          "url": "https://b2ccms.oikos-group.it/upload/F12_seta-stellata.jpg"
+        },
+        {
+          "name": "TURANDOT EFFETTO CANAPA",
+          "url": "https://b2ccms.oikos-group.it/upload/F12_turandot-effetto-canapa.jpg"
+        }
+      ],
+      "local": [
+        {
+          "name": "ANTICO VELLUTO",
+          "url": "https://b2ccms.oikos-group.it/upload/F12_antico-velluto.jpg"
+        },
+        {
+          "name": "ANTICO VELLUTO OPACO",
+          "url": "https://b2ccms.oikos-group.it/upload/F12_antico-velluto-opaco.jpg"
+        },
+        {
+          "name": "ANTICO VELLUTO VERTICALE",
+          "url": "https://b2ccms.oikos-group.it/upload/F12_antico-velluto-verticale.jpg"
+        },
+        {
+          "name": "CARMEN EFFETTO MOIRÈ",
+          "url": "https://b2ccms.oikos-group.it/upload/F12_carmen-effetto-moirè.jpg"
+        },
+        {
+          "name": "DESDEMONA EFFETTO GARZA",
+          "url": "https://b2ccms.oikos-group.it/upload/F12_desdemona-effetto-garza.jpg"
+        },
+        {
+          "name": "IMPERIALE",
+          "url": "https://b2ccms.oikos-group.it/upload/F12_imperiale.jpg"
+        },
+        {
+          "name": "NORMA EFFETTO LINO",
+          "url": "https://b2ccms.oikos-group.it/upload/F12_norma-effetto-lino.jpg"
+        },
+        {
+          "name": "RIGOLETTO EFFETTO FILATO",
+          "url": "https://b2ccms.oikos-group.it/upload/F12_rigoletto-effetto-filato.jpg"
+        },
+        {
+          "name": "SETA",
+          "url": "https://b2ccms.oikos-group.it/upload/F12_seta.jpg"
+        },
+        {
+          "name": "SETA STELLATA",
+          "url": "https://b2ccms.oikos-group.it/upload/F12_seta-stellata.jpg"
+        },
+        {
+          "name": "TURANDOT EFFETTO CANAPA",
+          "url": "https://b2ccms.oikos-group.it/upload/F12_turandot-effetto-canapa.jpg"
+        }
+      ]
+    },
+    {
+      "name": "Pallas",
+      "url": "https://www.oikos.ua/textured-decoratives/pallas",
+      "section": "interior-decor",
+      "site": [
+        {
+          "name": "ARDESIA",
+          "url": "https://b2ccms.oikos-group.it/upload/F25_300x300-pallas-ardesia.jpg"
+        },
+        {
+          "name": "BROCCATO STELLATO",
+          "url": "https://b2ccms.oikos-group.it/upload/F25_300x300-pallas-broccato-stellato.jpg"
+        },
+        {
+          "name": "CHIFFON",
+          "url": "https://b2ccms.oikos-group.it/upload/F25_300x300-pallas-chiffon.jpg"
+        },
+        {
+          "name": "DORATURE",
+          "url": "https://b2ccms.oikos-group.it/upload/F25_300x300-pallas-dorature.jpg"
+        },
+        {
+          "name": "DRAPÉ",
+          "url": "https://b2ccms.oikos-group.it/upload/F25_300x300-pallas-drape.jpg"
+        },
+        {
+          "name": "FIL POSÈ",
+          "url": "https://b2ccms.oikos-group.it/upload/F25_300x300-pallas-fil-pose.jpg"
+        },
+        {
+          "name": "MAREZZATO",
+          "url": "https://b2ccms.oikos-group.it/upload/F25_300x300-pallas-marezzato.jpg"
+        },
+        {
+          "name": "ORGANZA",
+          "url": "https://b2ccms.oikos-group.it/upload/F25_300x300-pallas-organza.jpg"
+        },
+        {
+          "name": "RASO",
+          "url": "https://b2ccms.oikos-group.it/upload/F25_300x300-pallas-raso.jpg"
+        },
+        {
+          "name": "SHANTUNG",
+          "url": "https://b2ccms.oikos-group.it/upload/F25_300x300-pallas-shantung.jpg"
+        },
+        {
+          "name": "SHANTUNG VERTICALE",
+          "url": "https://b2ccms.oikos-group.it/upload/F25_300x300-pallas-shantung-verticale.jpg"
+        },
+        {
+          "name": "TAFFETÁ",
+          "url": "https://b2ccms.oikos-group.it/upload/F25_300x300-pallas-taffeta.jpg"
+        },
+        {
+          "name": "TRAME INCROCIATO",
+          "url": "https://b2ccms.oikos-group.it/upload/F25_300x300-pallas-trame-incrociato.jpg"
+        }
+      ],
+      "local": [
+        {
+          "name": "ARDESIA",
+          "url": "https://b2ccms.oikos-group.it/upload/F25_300x300-pallas-ardesia.jpg"
+        },
+        {
+          "name": "BROCCATO STELLATO",
+          "url": "https://b2ccms.oikos-group.it/upload/F25_300x300-pallas-broccato-stellato.jpg"
+        },
+        {
+          "name": "CHIFFON",
+          "url": "https://b2ccms.oikos-group.it/upload/F25_300x300-pallas-chiffon.jpg"
+        },
+        {
+          "name": "DORATURE",
+          "url": "https://b2ccms.oikos-group.it/upload/F25_300x300-pallas-dorature.jpg"
+        },
+        {
+          "name": "DRAPÉ",
+          "url": "https://b2ccms.oikos-group.it/upload/F25_300x300-pallas-drape.jpg"
+        },
+        {
+          "name": "FIL POSÈ",
+          "url": "https://b2ccms.oikos-group.it/upload/F25_300x300-pallas-fil-pose.jpg"
+        },
+        {
+          "name": "MAREZZATO",
+          "url": "https://b2ccms.oikos-group.it/upload/F25_300x300-pallas-marezzato.jpg"
+        },
+        {
+          "name": "ORGANZA",
+          "url": "https://b2ccms.oikos-group.it/upload/F25_300x300-pallas-organza.jpg"
+        },
+        {
+          "name": "RASO",
+          "url": "https://b2ccms.oikos-group.it/upload/F25_300x300-pallas-raso.jpg"
+        },
+        {
+          "name": "SHANTUNG",
+          "url": "https://b2ccms.oikos-group.it/upload/F25_300x300-pallas-shantung.jpg"
+        },
+        {
+          "name": "SHANTUNG VERTICALE",
+          "url": "https://b2ccms.oikos-group.it/upload/F25_300x300-pallas-shantung-verticale.jpg"
+        },
+        {
+          "name": "TAFFETÁ",
+          "url": "https://b2ccms.oikos-group.it/upload/F25_300x300-pallas-taffeta.jpg"
+        },
+        {
+          "name": "TRAME INCROCIATO",
+          "url": "https://b2ccms.oikos-group.it/upload/F25_300x300-pallas-trame-incrociato.jpg"
+        }
+      ]
+    },
+    {
+      "name": "Raffaello Decorstucco",
+      "url": "https://www.oikos.ua/textured-decoratives/raffaellodecorstucco",
+      "section": "interior-decor",
+      "site": [
+        {
+          "name": "STUCCO CARRARA",
+          "url": "https://b2ccms.oikos-group.it/upload/F15_stucco-carrara-300X300.jpg"
+        },
+        {
+          "name": "STUCCO FIRENZE",
+          "url": "https://b2ccms.oikos-group.it/upload/F15_stucco-firenze-300x300.jpg"
+        },
+        {
+          "name": "STUCCO MILANO",
+          "url": "https://b2ccms.oikos-group.it/upload/F15_stucco-milano-300x300.jpg"
+        },
+        {
+          "name": "STUCCO ROMA",
+          "url": "https://b2ccms.oikos-group.it/upload/F15_stucco-roma-300x300.jpg"
+        },
+        {
+          "name": "STUCCO TIVOLI",
+          "url": "https://b2ccms.oikos-group.it/upload/F15_stucco-tivoli-300x300.jpg"
+        },
+        {
+          "name": "STUCCO VENEZIA",
+          "url": "https://b2ccms.oikos-group.it/upload/F15_stucco-venezia-300x300.jpg"
+        },
+        {
+          "name": "STUCCO VICENZA",
+          "url": "https://b2ccms.oikos-group.it/upload/F15_stucco-vicenza-300x300.jpg"
+        },
+        {
+          "name": "СТУККО НАПОЛИ",
+          "url": "https://b2ccms.oikos-group.it/upload/F15_stucco-napoli-300x300.jpg"
+        }
+      ],
+      "local": [
+        {
+          "name": "STUCCO CARRARA",
+          "url": "https://b2ccms.oikos-group.it/upload/F15_stucco-carrara-300X300.jpg"
+        },
+        {
+          "name": "STUCCO FIRENZE",
+          "url": "https://b2ccms.oikos-group.it/upload/F15_stucco-firenze-300x300.jpg"
+        },
+        {
+          "name": "STUCCO MILANO",
+          "url": "https://b2ccms.oikos-group.it/upload/F15_stucco-milano-300x300.jpg"
+        },
+        {
+          "name": "STUCCO ROMA",
+          "url": "https://b2ccms.oikos-group.it/upload/F15_stucco-roma-300x300.jpg"
+        },
+        {
+          "name": "STUCCO TIVOLI",
+          "url": "https://b2ccms.oikos-group.it/upload/F15_stucco-tivoli-300x300.jpg"
+        },
+        {
+          "name": "STUCCO VENEZIA",
+          "url": "https://b2ccms.oikos-group.it/upload/F15_stucco-venezia-300x300.jpg"
+        },
+        {
+          "name": "STUCCO VICENZA",
+          "url": "https://b2ccms.oikos-group.it/upload/F15_stucco-vicenza-300x300.jpg"
+        },
+        {
+          "name": "СТУККО НАПОЛИ",
+          "url": "https://b2ccms.oikos-group.it/upload/F15_stucco-napoli-300x300.jpg"
+        }
+      ]
+    },
+    {
+      "name": "Tiepolo",
+      "url": "https://www.oikos.ua/textured-decoratives/tiepolo",
+      "section": "interior-decor",
+      "site": [
+        {
+          "name": "AFFRESCO",
+          "url": "https://b2ccms.oikos-group.it/upload/FP001_affresco.jpg"
+        },
+        {
+          "name": "GESSATO",
+          "url": "https://b2ccms.oikos-group.it/upload/FP001_gessato.jpg"
+        },
+        {
+          "name": "MATERICO",
+          "url": "https://b2ccms.oikos-group.it/upload/FP001_materico.jpg"
+        },
+        {
+          "name": "OPACO",
+          "url": "https://b2ccms.oikos-group.it/upload/FP001_opaco.jpg"
+        },
+        {
+          "name": "SATINATO",
+          "url": "https://b2ccms.oikos-group.it/upload/FP001_satinato.jpg"
+        }
+      ],
+      "local": [
+        {
+          "name": "AFFRESCO",
+          "url": "https://b2ccms.oikos-group.it/upload/FP001_affresco.jpg"
+        },
+        {
+          "name": "GESSATO",
+          "url": "https://b2ccms.oikos-group.it/upload/FP001_gessato.jpg"
+        },
+        {
+          "name": "MATERICO",
+          "url": "https://b2ccms.oikos-group.it/upload/FP001_materico.jpg"
+        },
+        {
+          "name": "OPACO",
+          "url": "https://b2ccms.oikos-group.it/upload/FP001_opaco.jpg"
+        },
+        {
+          "name": "SATINATO",
+          "url": "https://b2ccms.oikos-group.it/upload/FP001_satinato.jpg"
+        }
+      ]
+    },
+    {
+      "name": "Travertino Romano",
+      "url": "https://www.oikos.ua/textured-decoratives/travertinoromano",
+      "section": "interior-decor",
+      "site": [
+        {
+          "name": "TRAVERTINO CASSERO",
+          "url": "https://b2ccms.oikos-group.it/upload/F87B_cassero-mini.jpg"
+        },
+        {
+          "name": "TRAVERTINO GRANATO",
+          "url": "https://b2ccms.oikos-group.it/upload/F87B_granato-mini.jpg"
+        },
+        {
+          "name": "TRAVERTINO LEVIGATO",
+          "url": "https://b2ccms.oikos-group.it/upload/F87B_levigato-mini.jpg"
+        },
+        {
+          "name": "TRAVERTINO LEVIGATO + SUPERFINISH 24",
+          "url": "https://b2ccms.oikos-group.it/upload/F87B_levigato-mini.jpg"
+        },
+        {
+          "name": "TRAVERTINO METROPOLITANO",
+          "url": "https://b2ccms.oikos-group.it/upload/F87B_metropolitano-mini.jpg"
+        },
+        {
+          "name": "TRAVERTINO MONOLITICO",
+          "url": "https://b2ccms.oikos-group.it/upload/F87B_monolitico-mini.jpg"
+        },
+        {
+          "name": "TRAVERTINO PIETRA ANTICA",
+          "url": "https://b2ccms.oikos-group.it/upload/F87B_pietra-antica-mini.jpg"
+        },
+        {
+          "name": "TRAVERTINO SPACCATO",
+          "url": "https://b2ccms.oikos-group.it/upload/F87B_spaccato-mini.jpg"
+        }
+      ],
+      "local": [
+        {
+          "name": "TRAVERTINO CASSERO",
+          "url": "https://b2ccms.oikos-group.it/upload/F87B_cassero-mini.jpg"
+        },
+        {
+          "name": "TRAVERTINO GRANATO",
+          "url": "https://b2ccms.oikos-group.it/upload/F87B_granato-mini.jpg"
+        },
+        {
+          "name": "TRAVERTINO LEVIGATO",
+          "url": "https://b2ccms.oikos-group.it/upload/F87B_levigato-mini.jpg"
+        },
+        {
+          "name": "TRAVERTINO LEVIGATO + SUPERFINISH 24",
+          "url": "https://b2ccms.oikos-group.it/upload/F87B_levigato-mini.jpg"
+        },
+        {
+          "name": "TRAVERTINO METROPOLITANO",
+          "url": "https://b2ccms.oikos-group.it/upload/F87B_metropolitano-mini.jpg"
+        },
+        {
+          "name": "TRAVERTINO MONOLITICO",
+          "url": "https://b2ccms.oikos-group.it/upload/F87B_monolitico-mini.jpg"
+        },
+        {
+          "name": "TRAVERTINO PIETRA ANTICA",
+          "url": "https://b2ccms.oikos-group.it/upload/F87B_pietra-antica-mini.jpg"
+        },
+        {
+          "name": "TRAVERTINO SPACCATO",
+          "url": "https://b2ccms.oikos-group.it/upload/F87B_spaccato-mini.jpg"
+        }
+      ]
+    }
+  ]
+}

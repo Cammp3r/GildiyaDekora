@@ -123,9 +123,9 @@ export default function ProductsPage() {
   const paginatedProducts = filteredProducts.slice(startIndex, endIndex)
 
   const formatPrice = (price) => {
-    if (price === null || price === undefined || price === '') return 'Дізнатись ціну'
+    if (price === null || price === undefined || price === '') return 
     const num = typeof price === 'number' ? price : Number(price)
-    if (!Number.isFinite(num) || num <= 0) return 'Дізнатись ціну'
+    if (!Number.isFinite(num) || num <= 0) return 
     return `${num.toLocaleString('uk-UA')} грн/м²`
   }
 
