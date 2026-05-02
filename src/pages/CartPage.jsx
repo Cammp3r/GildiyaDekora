@@ -23,8 +23,10 @@ export default function CartPage() {
               <Link to="/products" className="add-btn">
                 Перейти до каталогу
               </Link>
+              
             </div>
           </div>
+          
         ) : (
           <>
             <div className="cart-list">
