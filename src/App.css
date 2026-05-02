@@ -817,6 +817,12 @@ section {
   gap: 1rem;
 }
 
+.contact-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
 .contact-form input,
 .contact-form textarea {
   padding: 1rem;
@@ -840,6 +846,19 @@ section {
   border-color: var(--accent);
 }
 
+.contact-form input[aria-invalid="true"],
+.contact-form textarea[aria-invalid="true"] {
+  border-color: #b3422f;
+}
+
+.contact-field-error {
+  color: #b3422f;
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.06em;
+  line-height: 1.4;
+}
+
 .submit-button {
   background: var(--ink);
   color: var(--cream);
@@ -855,6 +874,26 @@ section {
 
 .submit-button:hover {
   background: var(--accent);
+}
+
+.submit-button:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.contact-form-status {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  line-height: 1.5;
+}
+
+.contact-form-status-success {
+  color: #2f7d4f;
+}
+
+.contact-form-status-error {
+  color: #b3422f;
 }
 
 /* ============== ABOUT PAGE ============== */
