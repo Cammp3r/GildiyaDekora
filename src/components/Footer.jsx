@@ -7,8 +7,8 @@ export default function Footer() {
       <Link to="/" className="logo" style={{ color: '#f5f0e8' }}>
         <img src={logo} alt="Гільдія Декору" />
         <div className="logo-text" style={{ color: '#f5f0e8' }}>
-          <span className="logo-main">GILDIYA</span>
-          <span className="logo-sub">DEKORA</span>
+          <span className="logo-main">Гільдія</span>
+          <span className="logo-sub">Декора</span>
         </div>
       </Link>
       <p className="footer-desc">

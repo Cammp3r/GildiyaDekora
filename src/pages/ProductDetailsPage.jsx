@@ -132,22 +132,35 @@ export default function ProductDetailsPage() {
             {hasTextures && (
               <div className="product-details-option">
                 <div className="product-details-option-title">Текстура</div>
-                <select
-                  className="product-details-select"
-                  value={selectedTexture}
-                  onChange={(e) =>
-                    setSelectedTextureByProduct((prev) => ({
-                      ...prev,
-                      [product.id]: e.target.value,
-                    }))
-                  }
-                >
+                <div className="product-details-textures">
                   {textures.map((t) => (
-                    <option key={t.name || t.url} value={t.name || ''}>
-                      {t.name || 'Текстура'}
-                    </option>
+                    <button
+                      key={t.name || t.url}
+                      type="button"
+                      className={`product-details-texture ${(t.name || t.url) === selectedTexture ? 'active' : ''}`}
+                      onClick={() =>
+                        setSelectedTextureByProduct((prev) => ({
+                          ...prev,
+                          [product.id]: t.name || t.url,
+                        }))
+                      }
+                      title={t.name}
+                      aria-label={t.name}
+                    >
+                      {t.url ? (
+                        <img src={t.url} alt={t.name} loading="lazy" decoding="async" />
+                      ) : (
+                        <span className="product-details-texture-name">{t.name}</span>
+                      )}
+                    </button>
                   ))}
-                </select>
+                </div>
+
+                {selectedTexture && (
+                  <div className="product-details-selected">
+                    <strong>Обрано:</strong> {selectedTexture}
+                  </div>
+                )}
               </div>
             )}
 

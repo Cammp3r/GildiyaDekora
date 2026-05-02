@@ -26,8 +26,8 @@ export default function Header() {
         <NavLink to="/" className="logo" onClick={closeMobileMenu}>
           <img src={logo} alt="Гільдія Декору" />
           <div className="logo-text">
-            <span className="logo-main">GILDIYA</span>
-            <span className="logo-sub">DEKORA</span>
+            <span className="logo-main">Гільдія</span>
+            <span className="logo-sub">Декора</span>
           </div>
         </NavLink>
         <nav className={`nav ${mobileMenuOpen ? 'open' : ''}`}>
