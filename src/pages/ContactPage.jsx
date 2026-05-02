@@ -2,6 +2,11 @@ import { useEffect, useState } from 'react'
 
 const CONTACT_EMAIL = 'geogen2007@gmail.com'
 const CONTACT_FORM_ENDPOINT = `https://formsubmit.co/ajax/${CONTACT_EMAIL}`
+const CONTACT_RATE_LIMIT_KEY = 'gildiyaDekoraContactSubmissions'
+const CONTACT_RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000
+const CONTACT_RATE_LIMIT_MAX = 3
+const CONTACT_COOLDOWN_MS = 60 * 1000
+const CONTACT_MIN_FILL_TIME_MS = 3000
 
 const initialErrors = {
   name: '',
@@ -40,10 +45,48 @@ function hasErrors(errors) {
   return Object.values(errors).some(Boolean)
 }
 
+function getContactSubmissions(now = Date.now()) {
+  try {
+    const saved = JSON.parse(localStorage.getItem(CONTACT_RATE_LIMIT_KEY) || '[]')
+
+    if (!Array.isArray(saved)) {
+      return []
+    }
+
+    return saved
+      .filter((timestamp) => Number.isFinite(timestamp))
+      .filter((timestamp) => now - timestamp < CONTACT_RATE_LIMIT_WINDOW_MS)
+  } catch {
+    return []
+  }
+}
+
+function getRateLimitMessage(now = Date.now()) {
+  const submissions = getContactSubmissions(now)
+  const lastSubmission = submissions.at(-1)
+
+  if (lastSubmission && now - lastSubmission < CONTACT_COOLDOWN_MS) {
+    const secondsLeft = Math.ceil((CONTACT_COOLDOWN_MS - (now - lastSubmission)) / 1000)
+    return `Зачекайте ${secondsLeft} секунд перед наступним повідомленням.`
+  }
+
+  if (submissions.length >= CONTACT_RATE_LIMIT_MAX) {
+    return 'Занадто багато повідомлень за короткий час. Спробуйте ще раз через 10 хвилин або зателефонуйте нам.'
+  }
+
+  return ''
+}
+
+function saveContactSubmission(now = Date.now()) {
+  const submissions = [...getContactSubmissions(now), now]
+  localStorage.setItem(CONTACT_RATE_LIMIT_KEY, JSON.stringify(submissions))
+}
+
 export default function ContactPage() {
   const [status, setStatus] = useState('idle')
   const [statusMessage, setStatusMessage] = useState('')
   const [errors, setErrors] = useState(initialErrors)
+  const [formStartedAt] = useState(() => Date.now())
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
@@ -54,6 +97,8 @@ export default function ContactPage() {
 
     const form = event.currentTarget
     const formData = new FormData(form)
+    const honeypot = String(formData.get('_honey') || '').trim()
+    const now = Date.now()
     const values = {
       name: String(formData.get('name') || '').trim(),
       email: String(formData.get('email') || '').trim(),
@@ -70,10 +115,33 @@ export default function ContactPage() {
       return
     }
 
+    if (honeypot) {
+      form.reset()
+      setErrors(initialErrors)
+      setStatus('success')
+      setStatusMessage('Дякуємо! Повідомлення відправлено.')
+      return
+    }
+
+    if (now - formStartedAt < CONTACT_MIN_FILL_TIME_MS) {
+      setStatus('error')
+      setStatusMessage('Спробуйте відправити повідомлення ще раз через кілька секунд.')
+      return
+    }
+
+    const rateLimitMessage = getRateLimitMessage(now)
+
+    if (rateLimitMessage) {
+      setStatus('error')
+      setStatusMessage(rateLimitMessage)
+      return
+    }
+
     const cleanFormData = new FormData()
     cleanFormData.append('_subject', 'Нове повідомлення з сайту Gildiya Dekora')
     cleanFormData.append('_template', 'table')
     cleanFormData.append('_captcha', 'false')
+    cleanFormData.append('_honey', '')
     cleanFormData.append("Ім'я", values.name)
     cleanFormData.append('Email', values.email)
     cleanFormData.append('Телефон', values.phone)
@@ -96,6 +164,7 @@ export default function ContactPage() {
       }
 
       form.reset()
+      saveContactSubmission()
       setErrors(initialErrors)
       setStatus('success')
       setStatusMessage('Дякуємо! Повідомлення відправлено.')
@@ -130,6 +199,16 @@ export default function ContactPage() {
               </div>
             </div>
             <form className="contact-form" onSubmit={handleSubmit} noValidate>
+              <label className="contact-honeypot" aria-hidden="true">
+                <span>Website</span>
+                <input
+                  type="text"
+                  name="_honey"
+                  tabIndex="-1"
+                  autoComplete="off"
+                />
+              </label>
+
               <label className="contact-field">
                 <input
                   type="text"

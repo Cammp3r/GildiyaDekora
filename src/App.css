@@ -836,6 +836,16 @@ section {
   gap: 0.35rem;
 }
 
+.contact-honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .contact-form input,
 .contact-form textarea {
   padding: 1rem;
