@@ -35,6 +35,17 @@ function normalizePhotos(photos) {
   return toArray(photos).filter((p) => typeof p === 'string' && p.trim().length > 0)
 }
 
+function normalizePriceVariants(variants) {
+  return toArray(variants)
+    .filter(Boolean)
+    .map((variant) => ({
+      title: variant.title ?? variant.name ?? '',
+      volume: variant.volume ?? '',
+      price: variant.price ?? null,
+    }))
+    .filter((variant) => variant.title && Number.isFinite(Number(variant.price)))
+}
+
 function mapProduct(product, { category, subcategory, sectionId }) {
   const photos = normalizePhotos(product.photos)
   const colors = normalizeColors(product.colors)
@@ -61,6 +72,9 @@ function mapProduct(product, { category, subcategory, sectionId }) {
     textures,
     pricePerM2,
     price: pricePerM2,
+    priceCurrency: product.price_currency ?? '',
+    priceSource: product.price_source ?? '',
+    priceVariants: normalizePriceVariants(product.price_variants ?? product.priceVariants),
     finish: toArray(product.finish),
     base: product.base ?? '',
     effect: product.effect ?? '',

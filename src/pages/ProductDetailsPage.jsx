@@ -52,8 +52,11 @@ export default function ProductDetailsPage() {
     typeof rawPricePerM2 === 'number' ? rawPricePerM2 : Number(rawPricePerM2)
   const priceLabel =
     Number.isFinite(pricePerM2) && pricePerM2 > 0
-      ? `${pricePerM2.toLocaleString('uk-UA')} грн/м²`
+      ? `${product.priceVariants?.length > 1 ? 'from ' : ''}${pricePerM2.toLocaleString('uk-UA')} ${
+          product.priceCurrency === 'EUR' ? 'EUR' : 'грн/м²'
+        }`
       : ''
+  const priceVariants = Array.isArray(product.priceVariants) ? product.priceVariants : []
 
   return (
     <section className="product-details">
@@ -214,6 +217,20 @@ export default function ProductDetailsPage() {
             )}
 
             <div className="product-details-price">{priceLabel}</div>
+
+            {priceVariants.length > 0 && (
+              <div className="product-price-variants">
+                {priceVariants.map((variant) => (
+                  <div key={`${variant.title}-${variant.price}`} className="product-price-variant">
+                    <span>{variant.title}</span>
+                    <strong>
+                      {Number(variant.price).toLocaleString('uk-UA')}{' '}
+                      {product.priceCurrency === 'EUR' ? 'EUR' : 'грн'}
+                    </strong>
+                  </div>
+                ))}
+              </div>
+            )}
 
             <div className="product-details-actions">
               <div className="product-details-buy">

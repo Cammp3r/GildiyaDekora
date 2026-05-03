@@ -155,11 +155,14 @@ export default function ProductsPage() {
   const endIndex = startIndex + ITEMS_PER_PAGE
   const paginatedProducts = filteredProducts.slice(startIndex, endIndex)
 
-  const formatPrice = (price) => {
+  const formatPrice = (product) => {
+    const price = product.pricePerM2 ?? product.price
     if (price === null || price === undefined || price === '') return 
     const num = typeof price === 'number' ? price : Number(price)
     if (!Number.isFinite(num) || num <= 0) return 
-    return `${num.toLocaleString('uk-UA')} грн/м²`
+    const label = product.priceCurrency === 'EUR' ? 'EUR' : 'грн/м²'
+    const prefix = product.priceVariants?.length > 1 ? 'from ' : ''
+    return `${prefix}${num.toLocaleString('uk-UA')} ${label}`
   }
 
   return (
@@ -228,7 +231,7 @@ export default function ProductsPage() {
                   )}
                   <div className="product-footer">
                     <span className="product-price">
-                      {formatPrice(product.pricePerM2 ?? product.price)}
+                      {formatPrice(product)}
                     </span>
                     <div className="product-actions">
                       <button

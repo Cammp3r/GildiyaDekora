@@ -1181,6 +1181,31 @@ section {
   margin: 1rem 0;
 }
 
+.product-price-variants {
+  border-top: 1px solid var(--soft);
+  border-bottom: 1px solid var(--soft);
+  margin: 0 0 1rem;
+  max-height: 320px;
+  overflow: auto;
+}
+
+.product-price-variant {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid var(--soft);
+  font-size: 0.9rem;
+}
+
+.product-price-variant:last-child {
+  border-bottom: 0;
+}
+
+.product-price-variant span {
+  min-width: 0;
+}
+
 .product-details-buy {
   display: flex;
   gap: 1rem;

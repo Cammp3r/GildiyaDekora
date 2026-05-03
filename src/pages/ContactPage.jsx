@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-const CONTACT_EMAIL = 'geogen2007@gmail.com'
+const CONTACT_EMAIL = 'gildiya@meta.ua'
 const CONTACT_FORM_ENDPOINT = `https://formsubmit.co/ajax/${CONTACT_EMAIL}`
 const CONTACT_RATE_LIMIT_KEY = 'gildiyaDekoraContactSubmissions'
 const CONTACT_RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000

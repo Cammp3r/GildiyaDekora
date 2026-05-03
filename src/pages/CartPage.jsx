@@ -1,15 +1,16 @@
 import { Link } from 'react-router-dom'
 import { useCart } from '../cart/CartContext.jsx'
 
-function formatMoneyUAH(value) {
+function formatMoney(value, currency = '') {
   if (value === null || value === undefined || value === '') return '-'
   const num = typeof value === 'number' ? value : Number(value)
   if (!Number.isFinite(num)) return '-'
-  return `${num.toLocaleString('uk-UA')} грн`
+  return `${num.toLocaleString('uk-UA')} ${currency === 'EUR' ? 'EUR' : 'грн'}`
 }
 
 export default function CartPage() {
   const { items, totalPrice, setAreaM2, removeItem } = useCart()
+  const totalCurrency = items.find((item) => item.priceCurrency)?.priceCurrency ?? ''
 
   return (
     <section className="cart">
@@ -48,7 +49,7 @@ export default function CartPage() {
                     <div className="cart-item-main">
                       <div className="cart-item-title">{item.title}</div>
                       <div className="cart-item-meta">
-                        <span>{formatMoneyUAH(item.pricePerM2)} / м²</span>
+                        <span>{formatMoney(item.pricePerM2, item.priceCurrency)} / м²</span>
                       </div>
 
                       <div className="cart-item-controls">
@@ -74,7 +75,7 @@ export default function CartPage() {
                       </div>
                     </div>
 
-                    <div className="cart-item-total">{formatMoneyUAH(lineTotal)}</div>
+                    <div className="cart-item-total">{formatMoney(lineTotal, item.priceCurrency)}</div>
                   </div>
                 )
               })}
@@ -83,7 +84,7 @@ export default function CartPage() {
             <div className="cart-summary">
               <div className="cart-summary-row">
                 <span>Разом</span>
-                <strong>{formatMoneyUAH(totalPrice)}</strong>
+                <strong>{formatMoney(totalPrice, totalCurrency)}</strong>
               </div>
               <div className="cart-summary-note">Ціна розрахована як грн/м² x площа.</div>
               <Link to="/contact" className="cart-order-button">

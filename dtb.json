@@ -36,6 +36,36 @@
             "глина",
             "натуральний",
             "вапно"
+          ],
+          "price": 13,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "ARGILLA MATERICA P KG. 1",
+              "volume": "KG. 1",
+              "price": 13
+            },
+            {
+              "title": "ARGILLA MATERICA P KG. 5",
+              "volume": "KG. 5",
+              "price": 54
+            },
+            {
+              "title": "ARGILLA MATERICA P KG.20",
+              "volume": "KG.20",
+              "price": 179
+            },
+            {
+              "title": "ARGILLA MATERICA TR KG. 5",
+              "volume": "KG. 5",
+              "price": 52
+            },
+            {
+              "title": "ARGILLA MATERICA TR KG.20",
+              "volume": "KG.20",
+              "price": 174
+            }
           ]
         },
         {
@@ -66,6 +96,101 @@
             "мармур",
             "вапно",
             "розкіш"
+          ],
+          "price": 155.8,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "AUREUM AU 08 MIDAS KG. 1",
+              "volume": "KG. 1",
+              "price": 155.8
+            },
+            {
+              "title": "AUREUM AU 08 MIDAS KG. 5",
+              "volume": "KG. 5",
+              "price": 721.8
+            },
+            {
+              "title": "AUREUM AU 16 MELIA KG. 1",
+              "volume": "KG. 1",
+              "price": 155.8
+            },
+            {
+              "title": "AUREUM AU 16 MELIA KG. 5",
+              "volume": "KG. 5",
+              "price": 721.8
+            },
+            {
+              "title": "AUREUM AU 24 GEA KG. 1",
+              "volume": "KG. 1",
+              "price": 155.8
+            },
+            {
+              "title": "AUREUM AU 24 GEA KG. 5",
+              "volume": "KG. 5",
+              "price": 721.8
+            },
+            {
+              "title": "AUREUM AU 32 ARCADIA KG. 1",
+              "volume": "KG. 1",
+              "price": 155.8
+            },
+            {
+              "title": "AUREUM AU 32 ARCADIA KG. 5",
+              "volume": "KG. 5",
+              "price": 721.8
+            },
+            {
+              "title": "AUREUM AU 40 REA KG. 1",
+              "volume": "KG. 1",
+              "price": 155.8
+            },
+            {
+              "title": "AUREUM AU 40 REA KG. 5",
+              "volume": "KG. 5",
+              "price": 721.8
+            },
+            {
+              "title": "AUREUM AU 48 ARIS KG. 1",
+              "volume": "KG. 1",
+              "price": 155.8
+            },
+            {
+              "title": "AUREUM AU 48 ARIS KG. 5",
+              "volume": "KG. 5",
+              "price": 721.8
+            },
+            {
+              "title": "AUREUM AU 56 ZEUS KG. 1",
+              "volume": "KG. 1",
+              "price": 155.8
+            },
+            {
+              "title": "AUREUM AU 56 ZEUS KG. 5",
+              "volume": "KG. 5",
+              "price": 721.8
+            },
+            {
+              "title": "AUREUM AU 64 TALIA KG. 1",
+              "volume": "KG. 1",
+              "price": 155.8
+            },
+            {
+              "title": "AUREUM AU 64 TALIA KG. 5",
+              "volume": "KG. 5",
+              "price": 721.8
+            },
+            {
+              "title": "AUREUM AU 72 ERA KG. 1",
+              "volume": "KG. 1",
+              "price": 155.8
+            },
+            {
+              "title": "AUREUM AU 72 ERA KG. 5",
+              "volume": "KG. 5",
+              "price": 721.8
+            }
           ]
         },
         {
@@ -116,6 +241,21 @@
             "індустріальний",
             "лофт",
             "камінь"
+          ],
+          "price": 66.6,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "CEMENTO MATERICO BIANCO KG. 5",
+              "volume": "KG. 5",
+              "price": 66.6
+            },
+            {
+              "title": "CEMENTO MATERICO BIANCO KG.20",
+              "volume": "KG.20",
+              "price": 217.4
+            }
           ]
         },
         {
@@ -145,6 +285,41 @@
             "глітер",
             "золото",
             "срібло"
+          ],
+          "price": 11.1,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "DECORGLITTER ARGENTO GR.90",
+              "volume": "GR.90",
+              "price": 11.1
+            },
+            {
+              "title": "DECORGLITTER ORO GR.90",
+              "volume": "GR.90",
+              "price": 11.1
+            },
+            {
+              "title": "DECORGLITTER BRONZO GR.90",
+              "volume": "GR.90",
+              "price": 12.7
+            },
+            {
+              "title": "DECORGLITTER METAL GR.90",
+              "volume": "GR.90",
+              "price": 12.7
+            },
+            {
+              "title": "DECORGLITTER RAME GR.90",
+              "volume": "GR.90",
+              "price": 12.7
+            },
+            {
+              "title": "DECORGLITTER OLOGR. GR.90",
+              "volume": "GR.90",
+              "price": 15.4
+            }
           ]
         },
         {
@@ -174,6 +349,21 @@
             "розкіш",
             "глянець",
             "класика"
+          ],
+          "price": 35.9,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "DUCA VENEZIA BASE LT. 1",
+              "volume": "LT. 1",
+              "price": 35.9
+            },
+            {
+              "title": "DUCA VENEZIA BASE LT. 4",
+              "volume": "LT. 4",
+              "price": 134.2
+            }
           ]
         },
         {
@@ -232,6 +422,81 @@
             "металік",
             "перламутр",
             "мінливий"
+          ],
+          "price": 67.6,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "ENCANTO SILVER BASE LT. 1",
+              "volume": "LT. 1",
+              "price": 67.6
+            },
+            {
+              "title": "ENCANTO SILVER BASE LT. 4",
+              "volume": "LT. 4",
+              "price": 243.4
+            },
+            {
+              "title": "ENCANTO GOLD BASE LT. 1",
+              "volume": "LT. 1",
+              "price": 67.6
+            },
+            {
+              "title": "ENCANTO GOLD BASE LT. 4",
+              "volume": "LT. 4",
+              "price": 243.4
+            },
+            {
+              "title": "ENCANTO GREY BASE LT. 1",
+              "volume": "LT. 1",
+              "price": 67.6
+            },
+            {
+              "title": "ENCANTO GREY BASE LT. 4",
+              "volume": "LT. 4",
+              "price": 243.4
+            },
+            {
+              "title": "ENCANTO BIANCO BASE LT. 1",
+              "volume": "LT. 1",
+              "price": 76.9
+            },
+            {
+              "title": "ENCANTO BIANCO BASE LT. 4",
+              "volume": "LT. 4",
+              "price": 278.7
+            },
+            {
+              "title": "ENCANTO NERO BASE LT. 1",
+              "volume": "LT. 1",
+              "price": 76.9
+            },
+            {
+              "title": "ENCANTO NERO BASE LT. 4",
+              "volume": "LT. 4",
+              "price": 278.7
+            },
+            {
+              "title": "ENCANTO ORO BASE LT. 1",
+              "volume": "LT. 1",
+              "price": 76.9
+            },
+            {
+              "title": "ENCANTO ORO BASE LT. 4",
+              "volume": "LT. 4",
+              "price": 278.7
+            },
+            {
+              "title": "ENCANTO ROSSO BASE LT. 1",
+              "volume": "LT. 1",
+              "price": 76.9
+            },
+            {
+              "title": "ENCANTO ROSSO BASE LT. 4",
+              "volume": "LT. 4",
+              "price": 278.7
+            }
           ]
         },
         {
@@ -260,6 +525,51 @@
             "захисне",
             "дзеркало",
             "фінішне"
+          ],
+          "price": 21.3,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "FINITURA AUTOL. BASE TR KG. 1",
+              "volume": "KG. 1",
+              "price": 21.3
+            },
+            {
+              "title": "FINITURA AUTOL. BASE TR KG. 5",
+              "volume": "KG. 5",
+              "price": 92.5
+            },
+            {
+              "title": "FINITURA AUTOL. BASE TR KG. 20",
+              "volume": "KG. 20",
+              "price": 324.5
+            },
+            {
+              "title": "FINITURA AUTOL. P/BIANCO KG. 1",
+              "volume": "KG. 1",
+              "price": 22.9
+            },
+            {
+              "title": "FINITURA AUTOL. P/BIANCO KG. 5",
+              "volume": "KG. 5",
+              "price": 96.7
+            },
+            {
+              "title": "FINITURA AUTOL. P/BIANCO KG. 20",
+              "volume": "KG. 20",
+              "price": 341.1
+            },
+            {
+              "title": "FINITURA AUTOL. BASE TGL KG. 1",
+              "volume": "KG. 1",
+              "price": 27.1
+            },
+            {
+              "title": "FINITURA AUTOL. BASE TGL KG. 5",
+              "volume": "KG. 5",
+              "price": 121.7
+            }
           ]
         },
         {
@@ -285,6 +595,31 @@
             "перламутр",
             "віск",
             "захисне"
+          ],
+          "price": 110.2,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "FINITURA MADREPERLATO ORO 0,5 KG",
+              "volume": "0,5 KG",
+              "price": 110.2
+            },
+            {
+              "title": "FINITURA MADREPERLATO ARGENTO 0,5 KG",
+              "volume": "0,5 KG",
+              "price": 110.2
+            },
+            {
+              "title": "FINITURA MADREPERLATO MADREPER 0,5 KG",
+              "volume": "0,5 KG",
+              "price": 146.6
+            },
+            {
+              "title": "FINITURA MADREPERLATO PERLA 0,5 KG",
+              "volume": "0,5 KG",
+              "price": 110.2
+            }
           ]
         },
         {
@@ -349,6 +684,76 @@
             "метал",
             "золото",
             "розкіш"
+          ],
+          "price": 26,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "IMPERIUM IMP 09 BASE LT. 1",
+              "volume": "LT. 1",
+              "price": 88.4
+            },
+            {
+              "title": "IMPERIUM IMP 09 BASE LT. 4",
+              "volume": "LT. 4",
+              "price": 333.8
+            },
+            {
+              "title": "IMPERIUM IMP 48 BASE LT. 0,25",
+              "volume": "LT. 0,25",
+              "price": 41.4
+            },
+            {
+              "title": "IMPERIUM IMP 48 BASE LT. 1",
+              "volume": "LT. 1",
+              "price": 134.2
+            },
+            {
+              "title": "IMPERIUM IMP 48 BASE LT. 4",
+              "volume": "LT. 4",
+              "price": 517.9
+            },
+            {
+              "title": "IMPERIUM IMP 54 BASE LT. 1",
+              "volume": "LT. 1",
+              "price": 134.2
+            },
+            {
+              "title": "IMPERIUM IMP 81 BASE LT. 1",
+              "volume": "LT. 1",
+              "price": 134.2
+            },
+            {
+              "title": "IMPERIUM IMP 99 BASE LT. 1",
+              "volume": "LT. 1",
+              "price": 134.2
+            },
+            {
+              "title": "IMPERIUM IMP 99 BASE LT. 4",
+              "volume": "LT. 4",
+              "price": 517.9
+            },
+            {
+              "title": "IMPERIUM IMP TR BASE LT. 4",
+              "volume": "LT. 4",
+              "price": 333.8
+            },
+            {
+              "title": "IMPERIUM IMP 03 BIANCO LT. 1",
+              "volume": "LT. 1",
+              "price": 26
+            },
+            {
+              "title": "IMPERIUM IMP 03 BIANCO LT. 4",
+              "volume": "LT. 4",
+              "price": 95.7
+            },
+            {
+              "title": "IMPERIUM IMP 03 BIANCO LT. 14",
+              "volume": "LT. 14",
+              "price": 303.7
+            }
           ]
         },
         {
@@ -399,6 +804,36 @@
             "тканина",
             "текстиль",
             "джут"
+          ],
+          "price": 45.2,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "KREOS BIANCO LT. 1",
+              "volume": "LT. 1",
+              "price": 45.2
+            },
+            {
+              "title": "KREOS BIANCO LT. 4",
+              "volume": "LT. 4",
+              "price": 167.4
+            },
+            {
+              "title": "KREOS BIANCO LT. 10",
+              "volume": "LT. 10",
+              "price": 396.2
+            },
+            {
+              "title": "KREOS BIANCO LT. 14",
+              "volume": "LT. 14",
+              "price": 543.9
+            },
+            {
+              "title": "KREOS BASE D LT. 4",
+              "volume": "LT. 4",
+              "price": 165.4
+            }
           ]
         },
         {
@@ -426,6 +861,21 @@
             "мармур",
             "пісок",
             "Рим"
+          ],
+          "price": 76.9,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "MARMORA ROMANA 5 kg",
+              "volume": "5 kg",
+              "price": 76.9
+            },
+            {
+              "title": "MARMORA ROMANA 20 kg",
+              "volume": "20 kg",
+              "price": 234
+            }
           ]
         },
         {
@@ -471,6 +921,91 @@
             "натуральний",
             "вапно",
             "класика"
+          ],
+          "price": 10.3,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "MARMORINO NAT. P/BIANCO KG. 1",
+              "volume": "KG. 1",
+              "price": 10.5
+            },
+            {
+              "title": "MARMORINO NAT. P/BIANCO KG. 5",
+              "volume": "KG. 5",
+              "price": 45.8
+            },
+            {
+              "title": "MARMORINO NAT. P/BIANCO KG.20",
+              "volume": "KG.20",
+              "price": 170.6
+            },
+            {
+              "title": "MARMORINO NAT. BASE TGL KG. 5",
+              "volume": "KG. 5",
+              "price": 73.8
+            },
+            {
+              "title": "MARMORINO NAT. BASE TGL KG.20",
+              "volume": "KG.20",
+              "price": 271.4
+            },
+            {
+              "title": "MARMORINO NAT. BASE TR KG. 1",
+              "volume": "KG. 1",
+              "price": 10.3
+            },
+            {
+              "title": "MARMORINO NAT. BASE TR KG. 5",
+              "volume": "KG. 5",
+              "price": 44.7
+            },
+            {
+              "title": "MARMORINO NAT. BASE TR KG.20",
+              "volume": "KG.20",
+              "price": 164.3
+            },
+            {
+              "title": "MARMOR.NAT.FINE P/B.CO KG. 1",
+              "volume": "KG. 1",
+              "price": 10.5
+            },
+            {
+              "title": "MARMOR.NAT.FINE P/B.CO KG. 5",
+              "volume": "KG. 5",
+              "price": 45.8
+            },
+            {
+              "title": "MARMOR.NAT.FINE P/B.CO KG.20",
+              "volume": "KG.20",
+              "price": 170.6
+            },
+            {
+              "title": "MARMOR.NAT.FINE BASE TGL KG. 5",
+              "volume": "KG. 5",
+              "price": 73.8
+            },
+            {
+              "title": "MARMOR.NAT.FINE BASE TGL KG.20",
+              "volume": "KG.20",
+              "price": 271.4
+            },
+            {
+              "title": "MARMOR.NAT.FINE BASE TR KG. 1",
+              "volume": "KG. 1",
+              "price": 10.3
+            },
+            {
+              "title": "MARMOR.NAT.FINE BASE TR KG. 5",
+              "volume": "KG. 5",
+              "price": 44.7
+            },
+            {
+              "title": "MARMOR.NAT.FINE BASE TR KG.20",
+              "volume": "KG.20",
+              "price": 164.3
+            }
           ]
         },
         {
@@ -504,6 +1039,91 @@
             "класика",
             "глянець",
             "перламутр"
+          ],
+          "price": 64.5,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "MULTIDECOR ES 710 LT. 1 B",
+              "volume": "LT. 1",
+              "price": 69.7
+            },
+            {
+              "title": "MULTIDECOR ES 710 LT. 4 B",
+              "volume": "LT. 4",
+              "price": 256.9
+            },
+            {
+              "title": "MULTIDECOR ES 840 LT. 1 B",
+              "volume": "LT. 1",
+              "price": 69.7
+            },
+            {
+              "title": "MULTIDECOR ES 840 LT. 4 B",
+              "volume": "LT. 4",
+              "price": 256.9
+            },
+            {
+              "title": "MULTIDECOR ES 950 LT. 1 B",
+              "volume": "LT. 1",
+              "price": 69.7
+            },
+            {
+              "title": "MULTIDECOR ES 950 LT. 4 B",
+              "volume": "LT. 4",
+              "price": 256.9
+            },
+            {
+              "title": "MULTIDECOR ES 990 LT. 1 B",
+              "volume": "LT. 1",
+              "price": 69.7
+            },
+            {
+              "title": "MULTIDECOR ES 990 LT. 4 B",
+              "volume": "LT. 4",
+              "price": 256.9
+            },
+            {
+              "title": "MULTIDECOR ES 1100 LT. 1 B",
+              "volume": "LT. 1",
+              "price": 69.7
+            },
+            {
+              "title": "MULTIDECOR ES 1100 LT. 4 B",
+              "volume": "LT. 4",
+              "price": 256.9
+            },
+            {
+              "title": "MULTIDECOR E 210 OPAC LT. 1",
+              "volume": "LT. 1",
+              "price": 64.5
+            },
+            {
+              "title": "MULTIDECOR E 210 OPAC LT. 4",
+              "volume": "LT. 4",
+              "price": 238.2
+            },
+            {
+              "title": "MULTIDECOR E 220 OPAC LT. 1",
+              "volume": "LT. 1",
+              "price": 64.5
+            },
+            {
+              "title": "MULTIDECOR E 220 OPAC LT. 4",
+              "volume": "LT. 4",
+              "price": 238.2
+            },
+            {
+              "title": "MULTIDECOR E 240 OPAC LT. 1",
+              "volume": "LT. 1",
+              "price": 64.5
+            },
+            {
+              "title": "MULTIDECOR E 240 OPAC LT. 4",
+              "volume": "LT. 4",
+              "price": 238.2
+            }
           ]
         },
         {
@@ -567,6 +1187,21 @@
             "текстиль",
             "матовий",
             "сучасний"
+          ],
+          "price": 85.2,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "MULTIDECOR SKIN LT.1",
+              "volume": "LT.1",
+              "price": 85.2
+            },
+            {
+              "title": "MULTIDECOR SKIN LT.4",
+              "volume": "LT.4",
+              "price": 297.5
+            }
           ]
         },
         {
@@ -640,6 +1275,81 @@
             "шовк",
             "класика",
             "палац"
+          ],
+          "price": 86.3,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "OTTOCENTO BIANCO LT. 1",
+              "volume": "LT. 1",
+              "price": 120.6
+            },
+            {
+              "title": "OTTOCENTO BIANCO LT. 4",
+              "volume": "LT. 4",
+              "price": 439.9
+            },
+            {
+              "title": "OTTOCENTO BASE P LT. 1",
+              "volume": "LT. 1",
+              "price": 91.5
+            },
+            {
+              "title": "OTTOCENTO BASE P LT. 4",
+              "volume": "LT. 4",
+              "price": 341.1
+            },
+            {
+              "title": "OTTOCENTO BASE D LT. 1",
+              "volume": "LT. 1",
+              "price": 90.5
+            },
+            {
+              "title": "OTTOCENTO BASE D LT. 4",
+              "volume": "LT. 4",
+              "price": 333.8
+            },
+            {
+              "title": "OTTOCENTO BASE TR LT. 1",
+              "volume": "LT. 1",
+              "price": 86.3
+            },
+            {
+              "title": "OTTOCENTO BASE TR LT. 4",
+              "volume": "LT. 4",
+              "price": 321.4
+            },
+            {
+              "title": "OTTOCENTO OPACO BASE P LT. 1",
+              "volume": "LT. 1",
+              "price": 91.5
+            },
+            {
+              "title": "OTTOCENTO OPACO BASE P LT. 4",
+              "volume": "LT. 4",
+              "price": 341.1
+            },
+            {
+              "title": "OTTOCENTO OPACO BASE D LT. 1",
+              "volume": "LT. 1",
+              "price": 90.5
+            },
+            {
+              "title": "OTTOCENTO OPACO BASE D LT. 4",
+              "volume": "LT. 4",
+              "price": 333.8
+            },
+            {
+              "title": "OTTOCENTO BASE AN 740 LT. 1",
+              "volume": "LT. 1",
+              "price": 121.7
+            },
+            {
+              "title": "OTTOCENTO BASE AN 740 LT. 4",
+              "volume": "LT. 4",
+              "price": 437.8
+            }
           ]
         },
         {
@@ -720,6 +1430,41 @@
             "шовк",
             "тканина",
             "ексклюзив"
+          ],
+          "price": 60.3,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "PALLAS BASE P LT. 1",
+              "volume": "LT. 1",
+              "price": 64.5
+            },
+            {
+              "title": "PALLAS BASE P LT. 4",
+              "volume": "LT. 4",
+              "price": 246.5
+            },
+            {
+              "title": "PALLAS BASE D LT. 1",
+              "volume": "LT. 1",
+              "price": 60.3
+            },
+            {
+              "title": "PALLAS BASE D LT. 4",
+              "volume": "LT. 4",
+              "price": 227.2
+            },
+            {
+              "title": "PALLAS BASE G LT. 1",
+              "volume": "LT. 1",
+              "price": 68.1
+            },
+            {
+              "title": "PALLAS BASE G LT. 4",
+              "volume": "LT. 4",
+              "price": 261
+            }
           ]
         },
         {
@@ -782,6 +1527,31 @@
             "мармур",
             "вапно",
             "штукатурка"
+          ],
+          "price": 88.4,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "RAFFAEL.D.S. R00 BIANCO KG. 5",
+              "volume": "KG. 5",
+              "price": 93.6
+            },
+            {
+              "title": "RAFFAEL.D.S. R00 BIANCO KG.20",
+              "volume": "KG.20",
+              "price": 333.8
+            },
+            {
+              "title": "RAFFAEL.D.S. R TR KG.5",
+              "volume": "KG.5",
+              "price": 88.4
+            },
+            {
+              "title": "RAFFAEL.D.S. R TR KG.20",
+              "volume": "KG.20",
+              "price": 315.1
+            }
           ]
         },
         {
@@ -810,6 +1580,21 @@
             "класика",
             "мармур",
             "штукатурка"
+          ],
+          "price": 73.8,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "STUCCO ROM.OIKOS BIANCO KG. 5",
+              "volume": "KG. 5",
+              "price": 78
+            },
+            {
+              "title": "STUCCO ROM.OIKOS BAS.TR KG. 5",
+              "volume": "KG. 5",
+              "price": 73.8
+            }
           ]
         },
         {
@@ -861,6 +1646,81 @@
             "мистецтво",
             "класика",
             "природний"
+          ],
+          "price": 10.7,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "TIEPOLO SATINATO BASE P LT. 1",
+              "volume": "LT. 1",
+              "price": 40
+            },
+            {
+              "title": "TIEPOLO SATINATO BASE P LT. 4",
+              "volume": "LT. 4",
+              "price": 151.8
+            },
+            {
+              "title": "TIEPOLO SATINATO BASE TR LT. 1",
+              "volume": "LT. 1",
+              "price": 33.3
+            },
+            {
+              "title": "TIEPOLO SATINATO BASE TR LT. 4",
+              "volume": "LT. 4",
+              "price": 123.8
+            },
+            {
+              "title": "TIEPOLO GESSATO BASE P KG. 1",
+              "volume": "KG. 1",
+              "price": 11.1
+            },
+            {
+              "title": "TIEPOLO GESSATO BASE P KG. 5",
+              "volume": "KG. 5",
+              "price": 49.9
+            },
+            {
+              "title": "TIEPOLO GESSATO BASE P KG. 15",
+              "volume": "KG. 15",
+              "price": 134.2
+            },
+            {
+              "title": "TIEPOLO GESSATO BASE TR KG. 1",
+              "volume": "KG. 1",
+              "price": 10.7
+            },
+            {
+              "title": "TIEPOLO GESSATO BASE TR KG. 5",
+              "volume": "KG. 5",
+              "price": 48.4
+            },
+            {
+              "title": "TIEPOLO GESSATO BASE TR KG. 15",
+              "volume": "KG. 15",
+              "price": 130
+            },
+            {
+              "title": "TIEPOLO OPACO BASE P LT. 1",
+              "volume": "LT. 1",
+              "price": 26
+            },
+            {
+              "title": "TIEPOLO OPACO BASE P LT. 4",
+              "volume": "LT. 4",
+              "price": 90.5
+            },
+            {
+              "title": "TIEPOLO OPACO BASE TR LT. 1",
+              "volume": "LT. 1",
+              "price": 24.8
+            },
+            {
+              "title": "TIEPOLO OPACO BASE TR LT. 4",
+              "volume": "LT. 4",
+              "price": 88.4
+            }
           ]
         },
         {
@@ -922,6 +1782,21 @@
             "камінь",
             "натуральний",
             "Рим"
+          ],
+          "price": 60.3,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "TRAVER.ROM.NATUR./WHITE KG. 5",
+              "volume": "KG. 5",
+              "price": 60.3
+            },
+            {
+              "title": "TRAVER.ROM.NATUR./WHITE KG.20",
+              "volume": "KG.20",
+              "price": 196.5
+            }
           ]
         },
         {
@@ -950,6 +1825,21 @@
             "дизайн",
             "сучасний",
             "монохром"
+          ],
+          "price": 89.4,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "TRAVER.ROM. DESIGN BLACK KG. 5",
+              "volume": "KG. 5",
+              "price": 89.4
+            },
+            {
+              "title": "TRAVER.ROM. DESIGN BLACK KG. 20",
+              "volume": "KG. 20",
+              "price": 298.5
+            }
           ]
         },
         {
@@ -976,6 +1866,21 @@
           "tags": [
             "захисне",
             "фінішне"
+          ],
+          "price": 49.9,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "TRAVERTINO ROMANO FINIT.LT.1",
+              "volume": "LT.1",
+              "price": 49.9
+            },
+            {
+              "title": "TRAVERTINO ROMANO FINIT.LT.4",
+              "volume": "LT.4",
+              "price": 186.2
+            }
           ]
         },
         {
@@ -1002,6 +1907,51 @@
             "тонер",
             "пігмент",
             "домішка"
+          ],
+          "price": 8.8,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "TONER P/TRAV. DORATO ML.100",
+              "volume": "ML.100",
+              "price": 8.8
+            },
+            {
+              "title": "TONER P/TRAV. STRIATO ML.100",
+              "volume": "ML.100",
+              "price": 8.8
+            },
+            {
+              "title": "TONER P/TRAV. TIVOLI ML.100",
+              "volume": "ML.100",
+              "price": 8.8
+            },
+            {
+              "title": "TONER P/TRAV. AVANA ML.100",
+              "volume": "ML.100",
+              "price": 8.8
+            },
+            {
+              "title": "TONER P/TRAV. ACQUABIAN. ML.100",
+              "volume": "ML.100",
+              "price": 8.8
+            },
+            {
+              "title": "TONER P/TRAV. ANTICATO ML.100",
+              "volume": "ML.100",
+              "price": 8.8
+            },
+            {
+              "title": "TONER P/TRAV. BIANCOSP. ML.100",
+              "volume": "ML.100",
+              "price": 8.8
+            },
+            {
+              "title": "TONER P/TRAV. TOSCANO ML.100",
+              "volume": "ML.100",
+              "price": 8.8
+            }
           ]
         }
       ]
@@ -1031,7 +1981,52 @@
           ],
           "eco": true,
           "url": "https://www.oikos.ua/paints/biamax",
-          "textures": []
+          "textures": [],
+          "price": 65.5,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "BIAMAX 03 BIANCO LT. 4",
+              "volume": "LT. 4",
+              "price": 74.9
+            },
+            {
+              "title": "BIAMAX 03 BIANCO LT.14",
+              "volume": "LT.14",
+              "price": 234
+            },
+            {
+              "title": "BIAMAX 03 BASE D LT. 4",
+              "volume": "LT. 4",
+              "price": 68.6
+            },
+            {
+              "title": "BIAMAX 03 BASE TR LT. 4",
+              "volume": "LT. 4",
+              "price": 65.5
+            },
+            {
+              "title": "BIAMAX 07 BIANCO LT. 4",
+              "volume": "LT. 4",
+              "price": 74.9
+            },
+            {
+              "title": "BIAMAX 07 BIANCO LT.14",
+              "volume": "LT.14",
+              "price": 234
+            },
+            {
+              "title": "BIAMAX 07 BASE D LT. 4",
+              "volume": "LT. 4",
+              "price": 68.6
+            },
+            {
+              "title": "BIAMAX 07 BASE TR LT. 4",
+              "volume": "LT. 4",
+              "price": 65.5
+            }
+          ]
         },
         {
           "id": "ip-002",
@@ -1052,7 +2047,22 @@
           ],
           "eco": true,
           "url": "https://www.oikos.ua/paints/coprimax",
-          "textures": []
+          "textures": [],
+          "price": 40,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "COPRIMAX LT. 4",
+              "volume": "LT. 4",
+              "price": 40
+            },
+            {
+              "title": "COPRIMAX LT.10",
+              "volume": "LT.10",
+              "price": 85.3
+            }
+          ]
         },
         {
           "id": "ip-003",
@@ -1075,7 +2085,22 @@
           ],
           "eco": true,
           "url": "https://www.oikos.ua/paints/drywallpaint",
-          "textures": []
+          "textures": [],
+          "price": 70.7,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "DRYWALL PAINT OIK.BIANCO LT. 4",
+              "volume": "LT. 4",
+              "price": 70.7
+            },
+            {
+              "title": "DRYWALL PAINT OIK.BIANCO LT.14",
+              "volume": "LT.14",
+              "price": 215.3
+            }
+          ]
         },
         {
           "id": "ip-004",
@@ -1096,7 +2121,52 @@
           ],
           "eco": true,
           "url": "https://www.oikos.ua/paints/extrapaint",
-          "textures": []
+          "textures": [],
+          "price": 22.9,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "EXTRAPAINT BIANCO LT.1",
+              "volume": "LT.1",
+              "price": 26
+            },
+            {
+              "title": "EXTRAPAINT BIANCO LT.14",
+              "volume": "LT.14",
+              "price": 309.9
+            },
+            {
+              "title": "EXTRAPAINT BASE P LT. 1",
+              "volume": "LT. 1",
+              "price": 24.9
+            },
+            {
+              "title": "EXTRAPAINT BASE P LT.14",
+              "volume": "LT.14",
+              "price": 293.3
+            },
+            {
+              "title": "EXTRAPAINT BASE I LT. 1",
+              "volume": "LT. 1",
+              "price": 23.9
+            },
+            {
+              "title": "EXTRAPAINT BASE I LT.14",
+              "volume": "LT.14",
+              "price": 275.6
+            },
+            {
+              "title": "EXTRAPAINT BASE TR LT. 1",
+              "volume": "LT. 1",
+              "price": 22.9
+            },
+            {
+              "title": "EXTRAPAINT BASE TR LT.14",
+              "volume": "LT.14",
+              "price": 258.9
+            }
+          ]
         },
         {
           "id": "ip-005",
@@ -1118,7 +2188,42 @@
           ],
           "eco": true,
           "url": "https://www.oikos.ua/paints/multifund",
-          "textures": []
+          "textures": [],
+          "price": 101.4,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "MULTIFUND BIANCO LT4",
+              "volume": "LT4",
+              "price": 122.2
+            },
+            {
+              "title": "MULTIFUND BIANCO LT.10",
+              "volume": "LT.10",
+              "price": 272.5
+            },
+            {
+              "title": "MULTIFUND BASE P LT. 4",
+              "volume": "LT. 4",
+              "price": 115.4
+            },
+            {
+              "title": "MULTIFUND BASE P LT.10",
+              "volume": "LT.10",
+              "price": 260
+            },
+            {
+              "title": "MULTIFUND BASE I LT. 4",
+              "volume": "LT. 4",
+              "price": 110.8
+            },
+            {
+              "title": "MULTIFUND BASE TR NEW LT. 4",
+              "volume": "LT. 4",
+              "price": 101.4
+            }
+          ]
         },
         {
           "id": "ip-006",
@@ -1138,7 +2243,32 @@
           ],
           "eco": true,
           "url": "https://www.oikos.ua/paints/pitturaallacalceverona",
-          "textures": []
+          "textures": [],
+          "price": 62.4,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "PITTURA CALCE VERONA D LT. 4",
+              "volume": "LT. 4",
+              "price": 62.4
+            },
+            {
+              "title": "PITTURA CALCE VERONA P/B LT. 4",
+              "volume": "LT. 4",
+              "price": 63.4
+            },
+            {
+              "title": "PITTURA CALCE VERONA TGL LT. 4",
+              "volume": "LT. 4",
+              "price": 90.5
+            },
+            {
+              "title": "PITTURA CALCE VERONA P/B LT.14",
+              "volume": "LT.14",
+              "price": 201.8
+            }
+          ]
         },
         {
           "id": "ip-007",
@@ -1161,7 +2291,27 @@
           ],
           "eco": true,
           "url": "https://www.oikos.ua/paints/sirius2001",
-          "textures": []
+          "textures": [],
+          "price": 14.5,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "SIRIUS 2001 LT. 1",
+              "volume": "LT. 1",
+              "price": 14.5
+            },
+            {
+              "title": "SIRIUS 2001 LT.4",
+              "volume": "LT.4",
+              "price": 53
+            },
+            {
+              "title": "SIRIUS 2001 LT.10",
+              "volume": "LT.10",
+              "price": 115.4
+            }
+          ]
         },
         {
           "id": "ip-008",
@@ -1185,7 +2335,82 @@
           ],
           "eco": true,
           "url": "https://www.oikos.ua/paints/supercolor",
-          "textures": []
+          "textures": [],
+          "price": 18.7,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "SUPERCOLOR BIANCO LT. 1",
+              "volume": "LT. 1",
+              "price": 21.8
+            },
+            {
+              "title": "SUPERCOLOR BIANCO LT. 4",
+              "volume": "LT. 4",
+              "price": 76.9
+            },
+            {
+              "title": "SUPERCOLOR BIANCO LT.10",
+              "volume": "LT.10",
+              "price": 175.8
+            },
+            {
+              "title": "SUPERCOLOR BIANCO LT.14",
+              "volume": "LT.14",
+              "price": 230.9
+            },
+            {
+              "title": "SUPERCOLOR BASE P LT. 1",
+              "volume": "LT. 1",
+              "price": 20.3
+            },
+            {
+              "title": "SUPERCOLOR BASE P LT. 4",
+              "volume": "LT. 4",
+              "price": 75.9
+            },
+            {
+              "title": "SUPERCOLOR BASE P LT.10",
+              "volume": "LT.10",
+              "price": 171.6
+            },
+            {
+              "title": "SUPERCOLOR BASE P LT.14",
+              "volume": "LT.14",
+              "price": 225.7
+            },
+            {
+              "title": "SUPERCOLOR BASE I LT. 1",
+              "volume": "LT. 1",
+              "price": 19.8
+            },
+            {
+              "title": "SUPERCOLOR BASE I LT. 4",
+              "volume": "LT. 4",
+              "price": 73.8
+            },
+            {
+              "title": "SUPERCOLOR BASE I LT.10",
+              "volume": "LT.10",
+              "price": 170.6
+            },
+            {
+              "title": "SUPERCOLOR BASE TR NEW LT. 1",
+              "volume": "LT. 1",
+              "price": 18.7
+            },
+            {
+              "title": "SUPERCOLOR BASE TR NEW LT. 4",
+              "volume": "LT. 4",
+              "price": 68.6
+            },
+            {
+              "title": "SUPERCOLOR BASE TR NEW LT.10",
+              "volume": "LT.10",
+              "price": 162.2
+            }
+          ]
         },
         {
           "id": "ip-009",
@@ -1206,7 +2431,42 @@
           ],
           "eco": true,
           "url": "https://www.oikos.ua/paints/supermatt",
-          "textures": []
+          "textures": [],
+          "price": 16,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "SUPERMATT BIANCO LT.1",
+              "volume": "LT.1",
+              "price": 19
+            },
+            {
+              "title": "SUPERMATT BIANCO LT.10",
+              "volume": "LT.10",
+              "price": 152.9
+            },
+            {
+              "title": "SUPERMATT BASE I LT.1",
+              "volume": "LT.1",
+              "price": 17
+            },
+            {
+              "title": "SUPERMATT BASE I LT.10",
+              "volume": "LT.10",
+              "price": 137.3
+            },
+            {
+              "title": "SUPERMATT BASE TR LT.1",
+              "volume": "LT.1",
+              "price": 16
+            },
+            {
+              "title": "SUPERMATT BASE TR LT.10",
+              "volume": "LT.10",
+              "price": 131
+            }
+          ]
         },
         {
           "id": "ip-010",
@@ -1227,7 +2487,22 @@
           ],
           "eco": true,
           "url": "https://www.oikos.ua/paints/topmatt",
-          "textures": []
+          "textures": [],
+          "price": 40.5,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "TOPMATT BIANCO LT. 4",
+              "volume": "LT. 4",
+              "price": 40.5
+            },
+            {
+              "title": "TOPMATT BIANCO LT. 10",
+              "volume": "LT. 10",
+              "price": 89.4
+            }
+          ]
         },
         {
           "id": "ip-011",
@@ -1251,7 +2526,172 @@
           ],
           "eco": true,
           "url": "https://www.oikos.ua/paints/ultrasaten",
-          "textures": []
+          "textures": [],
+          "price": 28,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "ULTRASATEN OPACO BIANCO LT.1",
+              "volume": "LT.1",
+              "price": 33.3
+            },
+            {
+              "title": "ULTRASATEN OPACO BIANCO LT.4",
+              "volume": "LT.4",
+              "price": 122.7
+            },
+            {
+              "title": "ULTRASATEN OPACO BIANCO LT.10",
+              "volume": "LT.10",
+              "price": 297.4
+            },
+            {
+              "title": "ULTRASATEN OPACO P LT.1",
+              "volume": "LT.1",
+              "price": 32.2
+            },
+            {
+              "title": "ULTRASATEN OPACO P LT.4",
+              "volume": "LT.4",
+              "price": 121.7
+            },
+            {
+              "title": "ULTRASATEN OPACO P LT.10",
+              "volume": "LT.10",
+              "price": 289.1
+            },
+            {
+              "title": "ULTRASATEN OPACO I LT.1",
+              "volume": "LT.1",
+              "price": 30.2
+            },
+            {
+              "title": "ULTRASATEN OPACO I LT.4",
+              "volume": "LT.4",
+              "price": 112.3
+            },
+            {
+              "title": "ULTRASATEN OPACO I LT.10",
+              "volume": "LT.10",
+              "price": 268.3
+            },
+            {
+              "title": "ULTRASATEN OPACO TR LT.1",
+              "volume": "LT.1",
+              "price": 28
+            },
+            {
+              "title": "ULTRASATEN OPACO TR LT.4",
+              "volume": "LT.4",
+              "price": 98.8
+            },
+            {
+              "title": "ULTRASATEN OPACO TR LT.10",
+              "volume": "LT.10",
+              "price": 236.1
+            },
+            {
+              "title": "ULTRASATEN LUCIDO P LT.1",
+              "volume": "LT.1",
+              "price": 34.3
+            },
+            {
+              "title": "ULTRASATEN LUCIDO P LT.4",
+              "volume": "LT.4",
+              "price": 130
+            },
+            {
+              "title": "ULTRASATEN LUCIDO P LT.10",
+              "volume": "LT.10",
+              "price": 308.9
+            },
+            {
+              "title": "ULTRASATEN LUCIDO BIANCO LT.1",
+              "volume": "LT.1",
+              "price": 35.4
+            },
+            {
+              "title": "ULTRASATEN LUCIDO BIANCO LT.4",
+              "volume": "LT.4",
+              "price": 132.1
+            },
+            {
+              "title": "ULTRASATEN LUCIDO BIANCO LT.10",
+              "volume": "LT.10",
+              "price": 313
+            },
+            {
+              "title": "ULTRASATEN LUCIDO I LT.10",
+              "volume": "LT.10",
+              "price": 286
+            },
+            {
+              "title": "ULTRASATEN LUCIDO TR LT.1",
+              "volume": "LT.1",
+              "price": 29.1
+            },
+            {
+              "title": "ULTRASATEN LUCIDO TR LT.4",
+              "volume": "LT.4",
+              "price": 108.2
+            },
+            {
+              "title": "ULTRASATEN LUCIDO TR LT.10",
+              "volume": "LT.10",
+              "price": 254.8
+            },
+            {
+              "title": "ULTRASATEN SATINATO P LT.1",
+              "volume": "LT.1",
+              "price": 33.3
+            },
+            {
+              "title": "ULTRASATEN SATINATO P LT.4",
+              "volume": "LT.4",
+              "price": 126.9
+            },
+            {
+              "title": "ULTRASATEN SATINATO P LT.10",
+              "volume": "LT.10",
+              "price": 299.5
+            },
+            {
+              "title": "ULTRASATEN SATINATO I LT.10",
+              "volume": "LT.10",
+              "price": 275.6
+            },
+            {
+              "title": "ULTRASATEN SATINATO TR LT.1",
+              "volume": "LT.1",
+              "price": 28.1
+            },
+            {
+              "title": "ULTRASATEN SATINATO TR LT.4",
+              "volume": "LT.4",
+              "price": 105
+            },
+            {
+              "title": "ULTRASATEN SATINATO TR LT.10",
+              "volume": "LT.10",
+              "price": 247.5
+            },
+            {
+              "title": "ULTRASATEN SATINATO BIANCO LT.1",
+              "volume": "LT.1",
+              "price": 34.3
+            },
+            {
+              "title": "ULTRASATEN SATINATO BIANCO LT.4",
+              "volume": "LT.4",
+              "price": 127.9
+            },
+            {
+              "title": "ULTRASATEN SATINATO BIANCO LT.10",
+              "volume": "LT.10",
+              "price": 308.9
+            }
+          ]
         },
         {
           "id": "ip-012",
@@ -1272,7 +2712,67 @@
           ],
           "eco": true,
           "url": "https://www.oikos.ua/paints/wallsatin",
-          "textures": []
+          "textures": [],
+          "price": 18.7,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "WALLSATIN BIANCO LT.1",
+              "volume": "LT.1",
+              "price": 22.4
+            },
+            {
+              "title": "WALLSATIN BIANCO LT.4",
+              "volume": "LT.4",
+              "price": 78
+            },
+            {
+              "title": "WALLSATIN BIANCO LT.10",
+              "volume": "LT.10",
+              "price": 175.8
+            },
+            {
+              "title": "WALLSATIN BIANCO LT.14",
+              "volume": "LT.14",
+              "price": 234
+            },
+            {
+              "title": "WALLSATIN BIANCO LT.1",
+              "volume": "LT.1",
+              "price": 22.4
+            },
+            {
+              "title": "WALLSATIN BASE TR LT.1",
+              "volume": "LT.1",
+              "price": 18.7
+            },
+            {
+              "title": "WALLSATIN BASE TR LT.4",
+              "volume": "LT.4",
+              "price": 68
+            },
+            {
+              "title": "WALLSATIN BASE TR LT.10",
+              "volume": "LT.10",
+              "price": 151.8
+            },
+            {
+              "title": "WALLSATIN BASE I LT.1",
+              "volume": "LT.1",
+              "price": 19.8
+            },
+            {
+              "title": "WALLSATIN BASE I LT.4",
+              "volume": "LT.4",
+              "price": 71
+            },
+            {
+              "title": "WALLSATIN BASE I LT.10",
+              "volume": "LT.10",
+              "price": 159.1
+            }
+          ]
         },
         {
           "id": "ip-013",
@@ -1295,7 +2795,22 @@
             "https://b2ccms.oikos-group.it/upload/57A_micotral-1920x1080-02.jpg",
             "https://b2ccms.oikos-group.it/upload/57A_Micotral_foto-principale_1920x1080_lg.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 27.5,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "MICOTRAL LT. 1",
+              "volume": "LT. 1",
+              "price": 27.5
+            },
+            {
+              "title": "MICOTRAL LT. 10",
+              "volume": "LT. 10",
+              "price": 251.7
+            }
+          ]
         },
         {
           "id": "ip-014",
@@ -1315,7 +2830,27 @@
           "photos": [
             "https://b2ccms.oikos-group.it/upload/P006_SterylCalce_foto-principale_1920x1080.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 16.1,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "STERYLCALCE BIANCO LT. 1",
+              "volume": "LT. 1",
+              "price": 16.1
+            },
+            {
+              "title": "STERYLCALCE BIANCO LT. 4",
+              "volume": "LT. 4",
+              "price": 56.2
+            },
+            {
+              "title": "STERYLCALCE BIANCO LT. 14",
+              "volume": "LT. 14",
+              "price": 178.9
+            }
+          ]
         },
         {
           "id": "ip-015",
@@ -1337,7 +2872,17 @@
             "https://b2ccms.oikos-group.it/upload/57C_banner-1920x1080-01.jpg",
             "https://b2ccms.oikos-group.it/upload/57C_SterylFix_foto-principale_1920x1080.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 18.2,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "STERYLFIX LT. 1",
+              "volume": "LT. 1",
+              "price": 18.2
+            }
+          ]
         },
         {
           "id": "ip-016",
@@ -1360,7 +2905,27 @@
             "https://b2ccms.oikos-group.it/upload/51_banner-1920x1080-03.jpg",
             "https://b2ccms.oikos-group.it/upload/51_SterylPaint_foto-principale_1920x1080_lg.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 19.8,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "STERYLPAINT LT. 1",
+              "volume": "LT. 1",
+              "price": 19.8
+            },
+            {
+              "title": "STERYLPAINT LT. 4",
+              "volume": "LT. 4",
+              "price": 78
+            },
+            {
+              "title": "STERYLPAINT LT. 10",
+              "volume": "LT. 10",
+              "price": 186.2
+            }
+          ]
         },
         {
           "id": "ip-017",
@@ -1383,7 +2948,17 @@
             "https://b2ccms.oikos-group.it/upload/57D_banner-1920x1080-02.jpg",
             "https://b2ccms.oikos-group.it/upload/57D_SterylPlus_foto-principale_1920x1080.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 59.3,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "STERYLPLUS LT.0,75",
+              "volume": "LT.0,75",
+              "price": 59.3
+            }
+          ]
         },
         {
           "id": "ip-018",
@@ -1405,7 +2980,22 @@
             "https://b2ccms.oikos-group.it/upload/57E_banner-1920x1080-01.jpg",
             "https://b2ccms.oikos-group.it/upload/57E_SterylSan_foto-principale_1920x1080.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 23.9,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "STERYLSAN LT. 1",
+              "volume": "LT. 1",
+              "price": 23.9
+            },
+            {
+              "title": "STERYLSAN LT. 4",
+              "volume": "LT. 4",
+              "price": 90.5
+            }
+          ]
         },
         {
           "id": "ip-019",
@@ -1425,7 +3015,27 @@
           "photos": [
             "https://b2ccms.oikos-group.it/upload/60A_fix-crilux.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 20.3,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "CRILUX LT. 1",
+              "volume": "LT. 1",
+              "price": 20.3
+            },
+            {
+              "title": "CRILUX LT. 4",
+              "volume": "LT. 4",
+              "price": 70.2
+            },
+            {
+              "title": "CRILUX LT.10",
+              "volume": "LT.10",
+              "price": 166.4
+            }
+          ]
         },
         {
           "id": "ip-020",
@@ -1447,7 +3057,47 @@
             "https://b2ccms.oikos-group.it/upload/641_flexigrap-1920x1080-banner.jpg",
             "https://b2ccms.oikos-group.it/upload/641_flexigrap-01.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 28,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "FLEXIGRAP BASE TR LT. 4",
+              "volume": "LT. 4",
+              "price": 72.8
+            },
+            {
+              "title": "FLEXIGRAP BASE I LT. 4",
+              "volume": "LT. 4",
+              "price": 76.9
+            },
+            {
+              "title": "FLEXIGRAP P/BIANCO LT.14",
+              "volume": "LT.14",
+              "price": 249.6
+            },
+            {
+              "title": "FLEXIGRAP P/BIANCO LT.4",
+              "volume": "LT.4",
+              "price": 80.1
+            },
+            {
+              "title": "FLEXIGRAP LISCIO B.CO LT.1",
+              "volume": "LT.1",
+              "price": 28
+            },
+            {
+              "title": "FLEXIGRAP LISCIO B.CO LT.4",
+              "volume": "LT.4",
+              "price": 100.9
+            },
+            {
+              "title": "FLEXIGRAP LISCIO B.CO LT.14",
+              "volume": "LT.14",
+              "price": 313
+            }
+          ]
         },
         {
           "id": "ip-021",
@@ -1469,7 +3119,27 @@
             "https://b2ccms.oikos-group.it/upload/33_fondo-murales-02.jpg",
             "https://b2ccms.oikos-group.it/upload/33_fondo-murales-03.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 28.1,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "FONDO MURALES LT. 1",
+              "volume": "LT. 1",
+              "price": 28.1
+            },
+            {
+              "title": "FONDO MURALES LT. 4",
+              "volume": "LT. 4",
+              "price": 105
+            },
+            {
+              "title": "FONDO MURALES LT. 10",
+              "volume": "LT. 10",
+              "price": 236.1
+            }
+          ]
         },
         {
           "id": "ip-022",
@@ -1489,7 +3159,27 @@
           "photos": [
             "https://b2ccms.oikos-group.it/upload/60B_fix-il-pigmentato.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 24.4,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "IL PIGMENTATO BIANCO LT. 1",
+              "volume": "LT. 1",
+              "price": 24.4
+            },
+            {
+              "title": "IL PIGMENTATO BIANCO LT. 4",
+              "volume": "LT. 4",
+              "price": 83.2
+            },
+            {
+              "title": "IL PIGMENTATO BIANCO LT.10",
+              "volume": "LT.10",
+              "price": 192.4
+            }
+          ]
         },
         {
           "id": "ip-023",
@@ -1511,7 +3201,27 @@
             "https://b2ccms.oikos-group.it/upload/63D_decorsil-primer-1920x1080-02.jpg",
             "https://b2ccms.oikos-group.it/upload/63D_decorsil-primer-1920x1080-03.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 26,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "IL PRIMER LT. 1",
+              "volume": "LT. 1",
+              "price": 26
+            },
+            {
+              "title": "IL PRIMER LT. 4",
+              "volume": "LT. 4",
+              "price": 87.9
+            },
+            {
+              "title": "IL PRIMER LT.10",
+              "volume": "LT.10",
+              "price": 201.8
+            }
+          ]
         },
         {
           "id": "ip-024",
@@ -1531,7 +3241,27 @@
           "photos": [
             "https://b2ccms.oikos-group.it/upload/60D_fix-neofix.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 15.6,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "NEOFIX LT. 1",
+              "volume": "LT. 1",
+              "price": 15.6
+            },
+            {
+              "title": "NEOFIX LT. 4",
+              "volume": "LT. 4",
+              "price": 58.2
+            },
+            {
+              "title": "NEOFIX LT.10",
+              "volume": "LT.10",
+              "price": 137.3
+            }
+          ]
         },
         {
           "id": "ip-025",
@@ -1551,7 +3281,17 @@
           "photos": [
             "https://b2ccms.oikos-group.it/upload/61A_stucco-in-pasta-per-rasatura-1920x1080-00.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 113.3,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "STUCCO IN PASTA PER RASATURA 14 LT",
+              "volume": "",
+              "price": 113.3
+            }
+          ]
         },
         {
           "id": "ip-026",
@@ -1574,7 +3314,17 @@
             "https://b2ccms.oikos-group.it/upload/56H_cera-per-stucco-1920x1080-02.jpg",
             "https://b2ccms.oikos-group.it/upload/56H_cera-per-stucco-1920x1080-01.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 50.9,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "CERA PER STUCCO LT.1",
+              "volume": "LT.1",
+              "price": 50.9
+            }
+          ]
         },
         {
           "id": "ip-027",
@@ -1597,7 +3347,42 @@
             "https://b2ccms.oikos-group.it/upload/56E_igrolux-1920x1080-01.jpg",
             "https://b2ccms.oikos-group.it/upload/56E_igrolux-1920x1080-03.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 46.8,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "IGROLUX SATINATO LT. 0,75",
+              "volume": "LT. 0,75",
+              "price": 46.8
+            },
+            {
+              "title": "IGROLUX SATINATO LT. 2,25",
+              "volume": "LT. 2,25",
+              "price": 120.6
+            },
+            {
+              "title": "IGROLUX LUCIDO LT. 0,75",
+              "volume": "LT. 0,75",
+              "price": 46.8
+            },
+            {
+              "title": "IGROLUX LUCIDO LT. 2,25",
+              "volume": "LT. 2,25",
+              "price": 120.6
+            },
+            {
+              "title": "IGROLUX TOUCH LT. 1",
+              "volume": "LT. 1",
+              "price": 85.3
+            },
+            {
+              "title": "IGROLUX TOUCH LT. 4",
+              "volume": "LT. 4",
+              "price": 329.7
+            }
+          ]
         },
         {
           "id": "ip-028",
@@ -1617,7 +3402,17 @@
           "photos": [
             "https://b2ccms.oikos-group.it/upload/56F_box-green-1920x1080.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 39.5,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "OPAC LT. 1",
+              "volume": "LT. 1",
+              "price": 39.5
+            }
+          ]
         },
         {
           "id": "ip-029",
@@ -1640,7 +3435,22 @@
             "https://b2ccms.oikos-group.it/upload/56C_protettivo-1920x1080-03.jpg",
             "https://b2ccms.oikos-group.it/upload/56C_protettivo-1920x1080-01.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 37.4,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "PROTETTIVO STUCCO /MARM. LT. 1",
+              "volume": "LT. 1",
+              "price": 37.4
+            },
+            {
+              "title": "PROTETTIVO STUCCO /MARM. LT. 4",
+              "volume": "LT. 4",
+              "price": 139.4
+            }
+          ]
         },
         {
           "id": "ip-030",
@@ -1661,7 +3471,22 @@
             "https://b2ccms.oikos-group.it/upload/56G_watinslux-02.jpg",
             "https://b2ccms.oikos-group.it/upload/56G_watinslux-03.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 27,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "WATINS LUX LT.0,75",
+              "volume": "LT.0,75",
+              "price": 27
+            },
+            {
+              "title": "WATINS LUX LT.2,25",
+              "volume": "LT.2,25",
+              "price": 71.7
+            }
+          ]
         },
         {
           "id": "ip-031",
@@ -1682,7 +3507,17 @@
           "photos": [
             "https://b2ccms.oikos-group.it/upload/57B_decortina-gallery-01.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 128.9,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "DECORTINA NEW LT. 4",
+              "volume": "LT. 4",
+              "price": 128.9
+            }
+          ]
         },
         {
           "id": "ip-032",
@@ -1702,7 +3537,27 @@
           "photos": [
             "https://b2ccms.oikos-group.it/upload/78B_ekostripper-gallery-01.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 40.5,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "EKOSTRIPPER LT1",
+              "volume": "LT1",
+              "price": 40.5
+            },
+            {
+              "title": "EKOSTRIPPER LT4",
+              "volume": "LT4",
+              "price": 137.3
+            },
+            {
+              "title": "EKOSTRIPPER LT14",
+              "volume": "LT14",
+              "price": 436.8
+            }
+          ]
         }
       ]
     },
@@ -1730,7 +3585,42 @@
           "photos": [
             "https://b2ccms.oikos-group.it/upload/78A_fix-blankor.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 71.8,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "BLANKOR BIANCO LT.4",
+              "volume": "LT.4",
+              "price": 72.8
+            },
+            {
+              "title": "BLANKOR BIANCO LT.14",
+              "volume": "LT.14",
+              "price": 231.9
+            },
+            {
+              "title": "BLANKOR BASA P LT.4",
+              "volume": "LT.4",
+              "price": 71.8
+            },
+            {
+              "title": "BLANKOR BASA P LT.14",
+              "volume": "LT.14",
+              "price": 226.7
+            },
+            {
+              "title": "BLANKOR BASA I LT.14",
+              "volume": "LT.14",
+              "price": 205.9
+            },
+            {
+              "title": "BLANKOR BASA TR 14L",
+              "volume": "14L",
+              "price": 185.1
+            }
+          ]
         },
         {
           "id": "ep-002",
@@ -1750,7 +3640,27 @@
           "photos": [
             "https://b2ccms.oikos-group.it/upload/78C_fix-neokryll.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 17.1,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "NEOKRYLL LT. 1",
+              "volume": "LT. 1",
+              "price": 17.1
+            },
+            {
+              "title": "NEOKRYLL LT. 4",
+              "volume": "LT. 4",
+              "price": 64.5
+            },
+            {
+              "title": "NEOKRYLL LT.10",
+              "volume": "LT.10",
+              "price": 152.9
+            }
+          ]
         },
         {
           "id": "ep-003",
@@ -1772,7 +3682,22 @@
             "https://b2ccms.oikos-group.it/upload/63D_decorsil-primer-1920x1080-02.jpg",
             "https://b2ccms.oikos-group.it/upload/63D_decorsil-primer-1920x1080-03.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 32.2,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "DECORSIL PRIMER LT. 1",
+              "volume": "LT. 1",
+              "price": 32.2
+            },
+            {
+              "title": "DECORSIL PRIMER LT. 10",
+              "volume": "LT. 10",
+              "price": 291.2
+            }
+          ]
         },
         {
           "id": "ep-004",
@@ -1794,7 +3719,37 @@
             "https://b2ccms.oikos-group.it/upload/63E_decorsil-primer-pigmentato-1920x1080-02.jpg",
             "https://b2ccms.oikos-group.it/upload/63E_decorsil-primer-pigmentato-1920x1080-03_lg.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 97.8,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "DECOR.PRIMER PIGMEMTATO BASE P LT. 4",
+              "volume": "LT. 4",
+              "price": 97.8
+            },
+            {
+              "title": "DECOR.PRIMER PIGMEMTATO BIANCO LT. 4",
+              "volume": "LT. 4",
+              "price": 98.8
+            },
+            {
+              "title": "DECOR.PRIMER PIGMEMTATO BIANCA LT. 14",
+              "volume": "LT. 14",
+              "price": 313
+            },
+            {
+              "title": "DECOR.PRIMER PIGMEMTATO BASA TR LT. 14",
+              "volume": "LT. 14",
+              "price": 263.1
+            },
+            {
+              "title": "DECOR.PRIMER PIGMEMTATO BASA I LT. 14",
+              "volume": "LT. 14",
+              "price": 289.1
+            }
+          ]
         },
         {
           "id": "ep-005",
@@ -1814,7 +3769,17 @@
           "photos": [
             "https://b2ccms.oikos-group.it/upload/84C_consolidante x calce_1920x1080.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 20.8,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "CONSOLIDANTE CALCE LT. 1",
+              "volume": "LT. 1",
+              "price": 20.8
+            }
+          ]
         },
         {
           "id": "ep-006",
@@ -1836,7 +3801,27 @@
             "https://b2ccms.oikos-group.it/upload/84E_rasatura-calce-1920x1080-02.jpg",
             "https://b2ccms.oikos-group.it/upload/84E_rasatura-calce-1920x1080-03.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 115.4,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "RASAT.ALLA CALCE MEDIO KG.20",
+              "volume": "KG.20",
+              "price": 115.4
+            },
+            {
+              "title": "RASAT.ALLA CALCE GROSSO KG.20",
+              "volume": "KG.20",
+              "price": 115.4
+            },
+            {
+              "title": "RASAT.ALLA CALCE FINE KG.20",
+              "volume": "KG.20",
+              "price": 115.4
+            }
+          ]
         },
         {
           "id": "ep-007",
@@ -1878,7 +3863,52 @@
           ],
           "eco": true,
           "url": "https://www.oikos.ua/acrylics/archital",
-          "textures": []
+          "textures": [],
+          "price": 17.7,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "ARCHITAL BIANCO LT. 1",
+              "volume": "LT. 1",
+              "price": 20.8
+            },
+            {
+              "title": "ARCHITAL BIANCO LT.14",
+              "volume": "LT.14",
+              "price": 244.4
+            },
+            {
+              "title": "ARCHITAL BASE P LT. 1",
+              "volume": "LT. 1",
+              "price": 19.8
+            },
+            {
+              "title": "ARCHITAL BASE P LT.14",
+              "volume": "LT.14",
+              "price": 237.1
+            },
+            {
+              "title": "ARCHITAL BASE I LT. 1",
+              "volume": "LT. 1",
+              "price": 18.7
+            },
+            {
+              "title": "ARCHITAL BASE I LT.14",
+              "volume": "LT.14",
+              "price": 218.4
+            },
+            {
+              "title": "ARCHITAL BASE TR LT. 1",
+              "volume": "LT. 1",
+              "price": 17.7
+            },
+            {
+              "title": "ARCHITAL BASE TR LT.14",
+              "volume": "LT.14",
+              "price": 198.6
+            }
+          ]
         },
         {
           "id": "ep-009",
@@ -1900,7 +3930,37 @@
             "https://b2ccms.oikos-group.it/upload/71_neoquarz-2.jpg",
             "https://b2ccms.oikos-group.it/upload/71_neoquarz-1_lg.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 63.4,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "NEOQUARZ BASE P LT. 4",
+              "volume": "LT. 4",
+              "price": 63.4
+            },
+            {
+              "title": "NEOQUARZ BASE P LT.14",
+              "volume": "LT.14",
+              "price": 197.6
+            },
+            {
+              "title": "NEOQUARZ BASE TR LT.14",
+              "volume": "LT.14",
+              "price": 162.2
+            },
+            {
+              "title": "NEOQUARZ BASE I LT.14",
+              "volume": "LT.14",
+              "price": 178.9
+            },
+            {
+              "title": "NEOQUARZ BIANCO LT.14",
+              "volume": "LT.14",
+              "price": 208
+            }
+          ]
         },
         {
           "id": "ep-010",
@@ -1923,7 +3983,47 @@
             "https://b2ccms.oikos-group.it/upload/71A_neoquarz-plus-1920x1080-01_lg.jpg",
             "https://b2ccms.oikos-group.it/upload/71A_neoquarz-plus-1920x1080-02.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 21.8,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "NEOQUARZ PLUS BASE P LT. 4",
+              "volume": "LT. 4",
+              "price": 67.6
+            },
+            {
+              "title": "NEOQUARZ PLUS BASE P LT.14",
+              "volume": "LT.14",
+              "price": 215.3
+            },
+            {
+              "title": "NEOQUARZ PLUS BASE TR LT.14",
+              "volume": "LT.14",
+              "price": 176.8
+            },
+            {
+              "title": "NEOQUARZ PLUS BASE I LT.14",
+              "volume": "LT.14",
+              "price": 195.5
+            },
+            {
+              "title": "NEOQUARZ PLUS BIANCO LT.1",
+              "volume": "LT.1",
+              "price": 21.8
+            },
+            {
+              "title": "NEOQUARZ PLUS BIANCO LT.4",
+              "volume": "LT.4",
+              "price": 70.7
+            },
+            {
+              "title": "NEOQUARZ PLUS BIANCO LT.14",
+              "volume": "LT.14",
+              "price": 226.7
+            }
+          ]
         },
         {
           "id": "ep-011",
@@ -1943,7 +4043,17 @@
           "photos": [
             "https://b2ccms.oikos-group.it/upload/56A_56A_O-addensante-01_xl-1.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 6.8,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "ADDENSANTE OIKOS ML. 50",
+              "volume": "ML. 50",
+              "price": 6.8
+            }
+          ]
         },
         {
           "id": "ep-012",
@@ -1964,7 +4074,67 @@
             "https://b2ccms.oikos-group.it/upload/64A_Biocompact-Edificio-Residenziale-Life.jpg",
             "https://b2ccms.oikos-group.it/upload/64A_biocompact-bonita-residence-24_lg.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 43.7,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "BIOCOMPACT 10 BASE P/BI. LT. 4",
+              "volume": "LT. 4",
+              "price": 45.2
+            },
+            {
+              "title": "BIOCOMPACT 10 BASE P/BI. LT.14",
+              "volume": "LT.14",
+              "price": 141.4
+            },
+            {
+              "title": "BIOCOMPACT 10 BASE I . LT.14",
+              "volume": "LT.14",
+              "price": 136.2
+            },
+            {
+              "title": "BIOCOMPACT 10 BASE TR LT.14",
+              "volume": "LT.14",
+              "price": 130
+            },
+            {
+              "title": "BIOCOMPACT 12 BASE P/BI. LT.14",
+              "volume": "LT.14",
+              "price": 141.4
+            },
+            {
+              "title": "BIOCOMPACT 12 BASE I LT.4",
+              "volume": "LT.4",
+              "price": 43.7
+            },
+            {
+              "title": "BIOCOMPACT 12 BASE I LT.14",
+              "volume": "LT.14",
+              "price": 136.2
+            },
+            {
+              "title": "BIOCOMPACT 12 BASE TR LT.14",
+              "volume": "LT.14",
+              "price": 131
+            },
+            {
+              "title": "BIOCOMPACT 15 BASE P/BI. LT.14",
+              "volume": "LT.14",
+              "price": 141.4
+            },
+            {
+              "title": "BIOCOMPACT 15 BASE I . LT.14",
+              "volume": "LT.14",
+              "price": 136.2
+            },
+            {
+              "title": "BIOCOMPACT 15 BASE TR LT.14",
+              "volume": "LT.14",
+              "price": 131
+            }
+          ]
         },
         {
           "id": "ep-013",
@@ -1986,7 +4156,57 @@
             "https://b2ccms.oikos-group.it/upload/645_porta-di-roma.jpg",
             "https://b2ccms.oikos-group.it/upload/645_duaflex-01_lg.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 79,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "DUAFLEX 03 BASE I LT. 4",
+              "volume": "LT. 4",
+              "price": 79
+            },
+            {
+              "title": "DUAFLEX 03 P/BIANCO LT.14",
+              "volume": "LT.14",
+              "price": 254.8
+            },
+            {
+              "title": "DUAFLEX 03 BASE TR LT.14",
+              "volume": "LT.14",
+              "price": 231.9
+            },
+            {
+              "title": "DUAFLEX 03 BASE I LT.14",
+              "volume": "LT.14",
+              "price": 244.4
+            },
+            {
+              "title": "DUAFLEX 07 BASE I LT. 4",
+              "volume": "LT. 4",
+              "price": 79
+            },
+            {
+              "title": "DUAFLEX 07 P/BIANCO LT.4",
+              "volume": "LT.4",
+              "price": 81.1
+            },
+            {
+              "title": "DUAFLEX 07 P/BIANCO LT.14",
+              "volume": "LT.14",
+              "price": 254.8
+            },
+            {
+              "title": "DUAFLEX 07 BASE TR LT.14",
+              "volume": "LT.14",
+              "price": 231.9
+            },
+            {
+              "title": "DUAFLEX 07 BASE I LT.14",
+              "volume": "LT.14",
+              "price": 244.4
+            }
+          ]
         },
         {
           "id": "ep-014",
@@ -2007,7 +4227,22 @@
             "https://b2ccms.oikos-group.it/upload/73A_silkos-torino-2.jpg",
             "https://b2ccms.oikos-group.it/upload/73A_silkos-torino-1_lg.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 93.6,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "SILKOS TORINO BASE P LT. 4",
+              "volume": "LT. 4",
+              "price": 93.6
+            },
+            {
+              "title": "SILKOS TORINO BIANCO LT. 14",
+              "volume": "LT. 14",
+              "price": 301.6
+            }
+          ]
         },
         {
           "id": "ep-015",
@@ -2029,7 +4264,37 @@
             "https://b2ccms.oikos-group.it/upload/63C_decorsil-firenze_00_1920x1080.jpg",
             "https://b2ccms.oikos-group.it/upload/63C_decorsil-firenze_01_1920x1080_lg.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 86.3,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "DECORSIL FIRENZE BASE P LT. 4",
+              "volume": "LT. 4",
+              "price": 92.6
+            },
+            {
+              "title": "DECORSIL FIRENZE BASE D LT. 4",
+              "volume": "LT. 4",
+              "price": 86.3
+            },
+            {
+              "title": "DECORSIL FIRENZE BASE TR LT.14",
+              "volume": "LT.14",
+              "price": 274
+            },
+            {
+              "title": "DECORSIL FIRENZE BASE P LT.14",
+              "volume": "LT.14",
+              "price": 304.7
+            },
+            {
+              "title": "DECORSIL FIRENZE BIANCO LT.14",
+              "volume": "LT.14",
+              "price": 313
+            }
+          ]
         },
         {
           "id": "ep-016",
@@ -2051,7 +4316,32 @@
             "https://b2ccms.oikos-group.it/upload/63G_decorsil-roma_01_1920x1080.jpg",
             "https://b2ccms.oikos-group.it/upload/63G_decorsil-roma_00_1920x1080_lg.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 32.2,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "DECORSIL ROMA BASE P LT. 1",
+              "volume": "LT. 1",
+              "price": 32.2
+            },
+            {
+              "title": "DECORSIL ROMA BASE P LT. 4",
+              "volume": "LT. 4",
+              "price": 125.8
+            },
+            {
+              "title": "DECORSIL ROMA BIANCO LT. 14",
+              "volume": "LT. 14",
+              "price": 435.7
+            },
+            {
+              "title": "DECORSIL ROMA BASE P LT. 14",
+              "volume": "LT. 14",
+              "price": 419.1
+            }
+          ]
         },
         {
           "id": "ep-017",
@@ -2073,7 +4363,32 @@
             "https://b2ccms.oikos-group.it/upload/66_veldecor-02.jpg",
             "https://b2ccms.oikos-group.it/upload/66_veldecor-01_lg.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 34.3,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "VELDECOR BASE P LT. 1",
+              "volume": "LT. 1",
+              "price": 34.3
+            },
+            {
+              "title": "VELDECOR BASE P LT. 4",
+              "volume": "LT. 4",
+              "price": 125.8
+            },
+            {
+              "title": "VELDECOR BASE P LT.14",
+              "volume": "LT.14",
+              "price": 421.2
+            },
+            {
+              "title": "VELDECOR BASE TR LT.14",
+              "volume": "LT.14",
+              "price": 410.8
+            }
+          ]
         },
         {
           "id": "ep-018",
@@ -2096,7 +4411,77 @@
             "https://b2ccms.oikos-group.it/upload/64G_biocompact-03.jpg",
             "https://b2ccms.oikos-group.it/upload/64G_biocompact-edificio-residenziale-torino-3982_lg.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 57.2,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "BIOCOM.ELASTIC 10 BASE I LT. 4",
+              "volume": "LT. 4",
+              "price": 57.2
+            },
+            {
+              "title": "BIOCOM.ELASTIC 10 BASE I LT. 14",
+              "volume": "LT. 14",
+              "price": 177.8
+            },
+            {
+              "title": "BIOCOM.ELASTIC 10 P/BIAN.LT.4",
+              "volume": "LT.4",
+              "price": 62.7
+            },
+            {
+              "title": "BIOCOM.ELASTIC 10 P/BIAN.LT.14",
+              "volume": "LT.14",
+              "price": 184.6
+            },
+            {
+              "title": "BIOCOM.ELASTIC 10 TR.LT.14",
+              "volume": "LT.14",
+              "price": 166.4
+            },
+            {
+              "title": "BIOCOM.ELASTIC 12 BASE I LT. 4",
+              "volume": "LT. 4",
+              "price": 57.2
+            },
+            {
+              "title": "BIOCOM.ELASTIC 12 BASE I LT. 14",
+              "volume": "LT. 14",
+              "price": 177.8
+            },
+            {
+              "title": "BIOCOM.ELASTIC 12 P/BIAN.LT.14",
+              "volume": "LT.14",
+              "price": 184.6
+            },
+            {
+              "title": "BIOCOM.ELASTIC 12 BASE TR .LT.14",
+              "volume": "LT.14",
+              "price": 166.4
+            },
+            {
+              "title": "BIOCOM.ELASTIC 15 BASE I LT. 4",
+              "volume": "LT. 4",
+              "price": 57.2
+            },
+            {
+              "title": "BIOCOM.ELASTIC 15 BASE I LT. 14",
+              "volume": "LT. 14",
+              "price": 177.8
+            },
+            {
+              "title": "BIOCOM.ELASTIC 15 P/BIAN.LT.14",
+              "volume": "LT.14",
+              "price": 184.6
+            },
+            {
+              "title": "BIOCOM.ELASTIC 15 BASE TR LT. 14",
+              "volume": "LT. 14",
+              "price": 166.4
+            }
+          ]
         },
         {
           "id": "ep-019",
@@ -2118,7 +4503,42 @@
             "https://b2ccms.oikos-group.it/upload/74A_elastrong-gum-1920x1080-02.jpg",
             "https://b2ccms.oikos-group.it/upload/74A_elastrong-gum-1920x1080-03_lg.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 115.4,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "ELASTRONG GUM BASE P LT. 4",
+              "volume": "LT. 4",
+              "price": 126.9
+            },
+            {
+              "title": "ELASTRONG GUM BASE P LT. 14",
+              "volume": "LT. 14",
+              "price": 404.5
+            },
+            {
+              "title": "ELASTRONG GUM TR 4L",
+              "volume": "4L",
+              "price": 115.4
+            },
+            {
+              "title": "ELASTRONG GUM TR 14L",
+              "volume": "14L",
+              "price": 364
+            },
+            {
+              "title": "ELASTRONG GUM BIANCA LT. 4",
+              "volume": "LT. 4",
+              "price": 123.2
+            },
+            {
+              "title": "ELASTRONG GUM BIANCA LT. 14",
+              "volume": "LT. 14",
+              "price": 394.7
+            }
+          ]
         },
         {
           "id": "ep-020",
@@ -2141,7 +4561,52 @@
             "https://b2ccms.oikos-group.it/upload/74B_elastrong-paintgum-1920x1080-02.jpg",
             "https://b2ccms.oikos-group.it/upload/74B_elastrong-paintgum-1920x1080-03_lg.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 92.6,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "ELASTRONG PAINT GUM P LT. 4",
+              "volume": "LT. 4",
+              "price": 107.1
+            },
+            {
+              "title": "ELASTRONG PAINT GUM P LT. 14",
+              "volume": "LT. 14",
+              "price": 340.1
+            },
+            {
+              "title": "ELASTRONG PAINT GUM I LT. 4",
+              "volume": "LT. 4",
+              "price": 97.2
+            },
+            {
+              "title": "ELASTRONG PAINT GUM I LT. 14",
+              "volume": "LT. 14",
+              "price": 320.3
+            },
+            {
+              "title": "ELASTRONG PAINT GUM TR LT. 4",
+              "volume": "LT. 4",
+              "price": 92.6
+            },
+            {
+              "title": "ELASTRONG PAINT GUM TR LT. 14",
+              "volume": "LT. 14",
+              "price": 299.5
+            },
+            {
+              "title": "ELASTRONG PAINT GUM BIANCO LT. 4",
+              "volume": "LT. 4",
+              "price": 105
+            },
+            {
+              "title": "ELASTRONG PAINT GUM BIANCO LT. 14",
+              "volume": "LT. 14",
+              "price": 348.4
+            }
+          ]
         },
         {
           "id": "ep-021",
@@ -2162,7 +4627,22 @@
             "https://b2ccms.oikos-group.it/upload/P005_pittura-alla-calce_01_1920x1080.jpg",
             "https://b2ccms.oikos-group.it/upload/P005_pittura-alla-calce_02_1920x1080.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 217.3,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "PITTURA CALCE ADIGE D LT.14",
+              "volume": "LT.14",
+              "price": 217.3
+            },
+            {
+              "title": "PITTURA CALCE ADIGE P/B LT. 14",
+              "volume": "LT. 14",
+              "price": 270.4
+            }
+          ]
         },
         {
           "id": "ep-022",
@@ -2185,7 +4665,17 @@
             "https://b2ccms.oikos-group.it/upload/72A_betoncryll-idrorepellente-02.jpg",
             "https://b2ccms.oikos-group.it/upload/72A_betoncryll-idrorepellente-03.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 280.8,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "BETONCRYLL IDROREPELL. LT.10",
+              "volume": "LT.10",
+              "price": 280.8
+            }
+          ]
         },
         {
           "id": "ep-023",
@@ -2207,7 +4697,52 @@
             "https://b2ccms.oikos-group.it/upload/72D_betoncryll-pigmentato-1920x1080-03.jpg",
             "https://b2ccms.oikos-group.it/upload/72D_betoncryll-pigmentato-1920x1080-02_lg.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 31.2,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "BETONCRYLL PIGM. BASA TR LT.1",
+              "volume": "LT.1",
+              "price": 31.2
+            },
+            {
+              "title": "BETONCRYLL PIGM. BASA TR LT.4",
+              "volume": "LT.4",
+              "price": 116.5
+            },
+            {
+              "title": "BETONCRYLL PIGM. BASA TR LT.14",
+              "volume": "LT.14",
+              "price": 369.2
+            },
+            {
+              "title": "BETONCRYLL PIGM. BASA P LT.1",
+              "volume": "LT.1",
+              "price": 34.3
+            },
+            {
+              "title": "BETONCRYLL PIGM. BASA P LT 4",
+              "volume": "LT 4",
+              "price": 128.9
+            },
+            {
+              "title": "BETONCRYLL PIGM. BASA I LT.4",
+              "volume": "LT.4",
+              "price": 121.7
+            },
+            {
+              "title": "BETONCRYLL PIGM. BIANCA LT.4",
+              "volume": "LT.4",
+              "price": 130
+            },
+            {
+              "title": "BETONCRYLL PIGM. BIANCA LT.14",
+              "volume": "LT.14",
+              "price": 409.8
+            }
+          ]
         },
         {
           "id": "ep-024",
@@ -2228,7 +4763,22 @@
             "https://b2ccms.oikos-group.it/upload/72E_Spagna_Barcellona-Malaga_21.jpg",
             "https://b2ccms.oikos-group.it/upload/72E_Spagna_Barcellona-Malaga_19_lg.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 28.1,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "BETONCRYLL SEMITRASPARENTE BASA LT.1",
+              "volume": "LT.1",
+              "price": 28.1
+            },
+            {
+              "title": "BETONCRYLL SEMITRASPARENTE BASA LT.14",
+              "volume": "LT.14",
+              "price": 338
+            }
+          ]
         },
         {
           "id": "ep-025",
@@ -2250,7 +4800,22 @@
             "https://b2ccms.oikos-group.it/upload/72F_betoncryl-trasparente-1920x1080-02.jpg",
             "https://b2ccms.oikos-group.it/upload/72F_betoncryl-trasparente-1920x1080-03.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 29.1,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "BETONCRYLL TRASPARENTE BASA LT.1",
+              "volume": "LT.1",
+              "price": 29.1
+            },
+            {
+              "title": "BETONCRYLL TRASPARENTE BASA LT.14",
+              "volume": "LT.14",
+              "price": 344.2
+            }
+          ]
         },
         {
           "id": "ep-026",
@@ -2271,7 +4836,27 @@
             "https://b2ccms.oikos-group.it/upload/80I_superfinish24_01_1920x1080.jpg",
             "https://b2ccms.oikos-group.it/upload/80I_superfinish24_02_1920x1080.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 56.2,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "SUPERFINISH24 LT. 1",
+              "volume": "LT. 1",
+              "price": 56.2
+            },
+            {
+              "title": "SUPERFINISH24 LT. 4",
+              "volume": "LT. 4",
+              "price": 205.9
+            },
+            {
+              "title": "SUPERFINISH24 LT. 10",
+              "volume": "LT. 10",
+              "price": 476.3
+            }
+          ]
         }
       ]
     },
@@ -2302,7 +4887,57 @@
           ],
           "eco": true,
           "url": "https://www.oikos.ua/novalis-ecoenamels/ferromicaceo",
-          "textures": []
+          "textures": [],
+          "price": 39.5,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "NV FERROMICAC.NF 2190 LT.0,75",
+              "volume": "LT.0,75",
+              "price": 44.7
+            },
+            {
+              "title": "NV FERROMICAC.NF 2190 LT.2,25",
+              "volume": "LT.2,25",
+              "price": 125.8
+            },
+            {
+              "title": "NV FERROMICAC.NF 2290 LT.0,75",
+              "volume": "LT.0,75",
+              "price": 39.5
+            },
+            {
+              "title": "NV FERROMICAC.NF 2290 LT.2,25",
+              "volume": "LT.2,25",
+              "price": 112.3
+            },
+            {
+              "title": "NV FERROMICAC.NF 2270 LT.0,75",
+              "volume": "LT.0,75",
+              "price": 46.8
+            },
+            {
+              "title": "NV FERROMICAC.NF 2310 LT.0,75",
+              "volume": "LT.0,75",
+              "price": 45
+            },
+            {
+              "title": "NV FERROMICAC.NF 2310 LT.2,25",
+              "volume": "LT.2,25",
+              "price": 129
+            },
+            {
+              "title": "NV FERROMICAC.NF 2110 LT.0,75",
+              "volume": "LT.0,75",
+              "price": 46
+            },
+            {
+              "title": "NV FERROMICAC.NF 2110 LT.2,25",
+              "volume": "LT.2,25",
+              "price": 142.5
+            }
+          ]
         },
         {
           "id": "nv-002",
@@ -2325,7 +4960,27 @@
             "https://b2ccms.oikos-group.it/upload/77B_novalis-metallizzato-1920x1080-03.jpg",
             "https://b2ccms.oikos-group.it/upload/77B_novalis-metallizzato-1920x1080-02_lg.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 148.7,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "NV METTALIZATO BASE 5005 LT.2,25",
+              "volume": "LT.2,25",
+              "price": 148.7
+            },
+            {
+              "title": "NV METTALIZATO BASE 6005 LT.2,25",
+              "volume": "LT.2,25",
+              "price": 187.2
+            },
+            {
+              "title": "NV METTALIZATO BASE 7005 LT.2,25",
+              "volume": "LT.2,25",
+              "price": 150.8
+            }
+          ]
         },
         {
           "id": "nv-003",
@@ -2347,7 +5002,32 @@
             "https://b2ccms.oikos-group.it/upload/P012_ecosmalto-banner-01.jpg",
             "https://b2ccms.oikos-group.it/upload/P012_ecosmalto-banner-02.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 42.6,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "ECOSMALTO PER CERAMICA BASE P/BN LT.0,75",
+              "volume": "LT.0,75",
+              "price": 42.6
+            },
+            {
+              "title": "ECOSMALTO PER CERAMICA BASE P/BN LT.2,25",
+              "volume": "LT.2,25",
+              "price": 121.7
+            },
+            {
+              "title": "ECOSMALTO PER CERAMICA BASE I LT.2,25",
+              "volume": "LT.2,25",
+              "price": 110.2
+            },
+            {
+              "title": "ECOSMALTO PER CERAMICA BASE TR LT.2,25",
+              "volume": "LT.2,25",
+              "price": 100.9
+            }
+          ]
         },
         {
           "id": "nv-004",
@@ -2370,7 +5050,17 @@
             "https://b2ccms.oikos-group.it/upload/76C_novalis-thermo-1920x1080-02.jpg",
             "https://b2ccms.oikos-group.it/upload/76C_novalis-thermo-1920x1080-03.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 99.8,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "NV THERMO LT.2,25",
+              "volume": "LT.2,25",
+              "price": 99.8
+            }
+          ]
         },
         {
           "id": "nv-005",
@@ -2394,7 +5084,47 @@
             "https://b2ccms.oikos-group.it/upload/77_novalis-1920x1080-03.jpg",
             "https://b2ccms.oikos-group.it/upload/77_novalis-1920x1080-01_lg.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 34,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "NV SMALTO OPACO BAS. Р LT.0,75",
+              "volume": "LT.0,75",
+              "price": 34
+            },
+            {
+              "title": "NV SMALTO OPACO BAS. Р LT.2,25",
+              "volume": "LT.2,25",
+              "price": 98.8
+            },
+            {
+              "title": "NV SMALTO OPACO BAS. I LT.2,25",
+              "volume": "LT.2,25",
+              "price": 88.4
+            },
+            {
+              "title": "NV SMALTO OPACO BAS. TR LT.2,25",
+              "volume": "LT.2,25",
+              "price": 81.1
+            },
+            {
+              "title": "NV SMALTO SATIN. BAS. TR LT.2,25",
+              "volume": "LT.2,25",
+              "price": 86.3
+            },
+            {
+              "title": "NV SMALTO SATIN. BAS. I LT.2,25",
+              "volume": "LT.2,25",
+              "price": 94.6
+            },
+            {
+              "title": "NV SMALTO SATIN. BAS. P LT.2,25",
+              "volume": "LT.2,25",
+              "price": 101.9
+            }
+          ]
         },
         {
           "id": "nv-006",
@@ -2416,7 +5146,22 @@
             "https://b2ccms.oikos-group.it/upload/75D_novalis-riempitivo-1920x1080-01.jpg",
             "https://b2ccms.oikos-group.it/upload/75D_novalis-riempitivo-1920x1080-02_lg.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 22.5,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "NV Ecofondo Riempitivo LT.0,75",
+              "volume": "LT.0,75",
+              "price": 22.5
+            },
+            {
+              "title": "NV Ecofondo Riempitivo LT.2,25",
+              "volume": "LT.2,25",
+              "price": 62
+            }
+          ]
         },
         {
           "id": "nv-007",
@@ -2439,7 +5184,32 @@
             "https://b2ccms.oikos-group.it/upload/75_novalis-impregnante-legno-1920x1080-03.jpg",
             "https://b2ccms.oikos-group.it/upload/75_novalis-impregnante-legno-1920x1080-02_lg.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 31.5,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "NV Impregante LEGNO NP4900 LT.0,75",
+              "volume": "LT.0,75",
+              "price": 32
+            },
+            {
+              "title": "NV Impregante LEGNO NP4900 LT.2,25",
+              "volume": "LT.2,25",
+              "price": 91
+            },
+            {
+              "title": "NV Impregante LEGNO NP5900 LT.0,75",
+              "volume": "LT.0,75",
+              "price": 31.5
+            },
+            {
+              "title": "NV Impregante LEGNO NP5900 LT.2,25",
+              "volume": "LT.2,25",
+              "price": 88
+            }
+          ]
         },
         {
           "id": "nv-008",
@@ -2463,7 +5233,32 @@
             "https://b2ccms.oikos-group.it/upload/75C_novalis-legno-protettivo-1920x1080-03.jpg",
             "https://b2ccms.oikos-group.it/upload/75C_novalis-legno-protettivo-1920x1080-02_lg.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 33.5,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "NV Pritettivo LEGNO NP2900/2910 LT.0,75",
+              "volume": "LT.0,75",
+              "price": 35.5
+            },
+            {
+              "title": "NV Pritettivo LEGNO NP2900/2910 LT.2,25",
+              "volume": "LT.2,25",
+              "price": 98
+            },
+            {
+              "title": "NV Pritettivo LEGNO NP3900/3910 LT.0,75",
+              "volume": "LT.0,75",
+              "price": 33.5
+            },
+            {
+              "title": "NV Pritettivo LEGNO NP3900/3910 LT.2,25",
+              "volume": "LT.2,25",
+              "price": 96
+            }
+          ]
         },
         {
           "id": "nv-009",
@@ -2486,7 +5281,32 @@
             "https://b2ccms.oikos-group.it/upload/75B_novalis-protettivo-parquet-1920x1080-02.jpg",
             "https://b2ccms.oikos-group.it/upload/75B_novalis-protettivo-parquet-1920x1080-03.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 57,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "NV PARQUET OPACO LT.0,75",
+              "volume": "LT.0,75",
+              "price": 57
+            },
+            {
+              "title": "NV PARQUET OPACO LT.2,25",
+              "volume": "LT.2,25",
+              "price": 169
+            },
+            {
+              "title": "NV PARQUET LUCIDO LT.0,75",
+              "volume": "LT.0,75",
+              "price": 57
+            },
+            {
+              "title": "NV PARQUET LUCIDO LT.2,25",
+              "volume": "LT.2,25",
+              "price": 169
+            }
+          ]
         },
         {
           "id": "nv-010",
@@ -2508,7 +5328,22 @@
             "https://b2ccms.oikos-group.it/upload/75A_novalis-turapori-1920x1080-02.jpg",
             "https://b2ccms.oikos-group.it/upload/75A_novalis-turapori-1920x1080-03.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 26.5,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "NV TURAPORI LT.0,75",
+              "volume": "LT.0,75",
+              "price": 26.5
+            },
+            {
+              "title": "NV TURAPORI LT.2,25",
+              "volume": "LT.2,25",
+              "price": 74
+            }
+          ]
         },
         {
           "id": "nv-011",
@@ -2530,7 +5365,22 @@
             "https://b2ccms.oikos-group.it/upload/76D_novalis-aggrappante-02.jpg",
             "https://b2ccms.oikos-group.it/upload/76D_novalis-aggrappante-01_lg.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 34.3,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "NV AGGRAPPANTE BIANCO LT.0,75",
+              "volume": "LT.0,75",
+              "price": 34.3
+            },
+            {
+              "title": "NV AGGRAPPANTE BIANCO LT.2,25",
+              "volume": "LT.2,25",
+              "price": 99.8
+            }
+          ]
         },
         {
           "id": "nv-012",
@@ -2551,7 +5401,17 @@
             "https://b2ccms.oikos-group.it/upload/76A_novalis-antiruggine-1920x1080-03.jpg",
             "https://b2ccms.oikos-group.it/upload/76A_novalis-antiruggine-1920x1080-01_lg.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 100.9,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "NV ANTIRUGGINE ECOLOGICO LT.2,25",
+              "volume": "LT.2,25",
+              "price": 100.9
+            }
+          ]
         },
         {
           "id": "nv-013",
@@ -2573,7 +5433,17 @@
             "https://b2ccms.oikos-group.it/upload/76B_novalis-convertitore-ecologico-1920x1080-02.jpg",
             "https://b2ccms.oikos-group.it/upload/76B_novalis-convertitore-ecologico-1920x1080-03.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 46.8,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "NV CONVERTITORE ECOLOGICO LT.0,75",
+              "volume": "LT.0,75",
+              "price": 46.8
+            }
+          ]
         },
         {
           "id": "nv-014",
@@ -2596,7 +5466,22 @@
             "https://b2ccms.oikos-group.it/upload/76E_novalis-ferro-protettivo-03.jpg",
             "https://b2ccms.oikos-group.it/upload/76E_novalis-ferro-protettivo-fissa.jpg"
           ],
-          "textures": []
+          "textures": [],
+          "price": 35.4,
+          "price_currency": "EUR",
+          "price_source": "Прайс з 01.03.25 Олеся",
+          "price_variants": [
+            {
+              "title": "NV FERRO PROTTETIVO LT.0,75",
+              "volume": "LT.0,75",
+              "price": 35.4
+            },
+            {
+              "title": "NV FERRO PROTTETIVO LT.2,25",
+              "volume": "LT.2,25",
+              "price": 99.8
+            }
+          ]
         }
       ]
     }

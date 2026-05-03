@@ -109,6 +109,7 @@ export function CartProvider({ children }) {
               title: product.title ?? '',
               image: product.image ?? '',
               pricePerM2: toNumber(product.pricePerM2 ?? product.price, null),
+              priceCurrency: product.priceCurrency ?? '',
             },
             areaM2,
           },
