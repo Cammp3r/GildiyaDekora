@@ -1,8 +1,58 @@
 import dtb from '../../dtb.json'
 import fallbackImage from '../logos/logo.png'
 
+export const PRIVATBANK_EUR_TO_UAH = 51.95
+export const PRIVATBANK_RATE_DATE = '03.05.2026'
+
 function toArray(value) {
   return Array.isArray(value) ? value : []
+}
+
+function toNumber(value, fallback = null) {
+  if (value === null || value === undefined || value === '') return fallback
+  const num = typeof value === 'number' ? value : Number(value)
+  return Number.isFinite(num) ? num : fallback
+}
+
+function toUah(price, currency) {
+  const num = toNumber(price)
+  if (num === null) return null
+  return currency === 'EUR' ? Math.round(num * PRIVATBANK_EUR_TO_UAH) : num
+}
+
+function normalizeVolume(volume) {
+  const value = String(volume ?? '').trim()
+  if (!value) return ''
+
+  const compact = value
+    .replace(/\s+/g, ' ')
+    .replace(/^([A-Za-z]+)\.\s*/i, '$1 ')
+    .replace(/^([A-Za-z]+)(?=\d)/i, '$1 ')
+    .trim()
+
+  const match = compact.match(/^([A-Za-z]+)\s*([0-9]+(?:[,.][0-9]+)?)$/)
+  if (!match) return value
+
+  const unit = match[1].toUpperCase()
+  const amount = match[2].replace('.', ',')
+  const units = {
+    KG: 'кг',
+    GR: 'г',
+    G: 'г',
+    LT: 'л',
+    L: 'л',
+    ML: 'мл',
+  }
+
+  return units[unit] ? `${amount} ${units[unit]}` : value
+}
+
+function normalizeVariantTitle(title, rawVolume, volume) {
+  const value = String(title ?? '').trim()
+  if (!value) return volume
+  const raw = String(rawVolume ?? '').trim()
+  if (!raw || !volume) return value
+  return value.replace(raw, volume).replace(/\s+/g, ' ').trim()
 }
 
 function normalizeColors(colors) {
@@ -35,15 +85,22 @@ function normalizePhotos(photos) {
   return toArray(photos).filter((p) => typeof p === 'string' && p.trim().length > 0)
 }
 
-function normalizePriceVariants(variants) {
+function normalizePriceVariants(variants, currency = '') {
   return toArray(variants)
     .filter(Boolean)
-    .map((variant) => ({
-      title: variant.title ?? variant.name ?? '',
-      volume: variant.volume ?? '',
-      price: variant.price ?? null,
-    }))
-    .filter((variant) => variant.title && Number.isFinite(Number(variant.price)))
+    .map((variant, index) => {
+      const rawVolume = variant.volume ?? ''
+      const volume = normalizeVolume(rawVolume)
+      const price = toUah(variant.price, variant.price_currency ?? currency)
+
+      return {
+        id: `${index}-${variant.title ?? variant.name ?? rawVolume}`,
+        title: normalizeVariantTitle(variant.title ?? variant.name ?? '', rawVolume, volume),
+        volume,
+        price,
+      }
+    })
+    .filter((variant) => variant.volume && Number.isFinite(Number(variant.price)))
 }
 
 function mapProduct(product, { category, subcategory, sectionId }) {
@@ -53,12 +110,20 @@ function mapProduct(product, { category, subcategory, sectionId }) {
   const primaryImage =
     photos[0] || colors.find((c) => c.img)?.img || product.image || fallbackImage
 
-  const pricePerM2 =
+  const priceCurrency = product.price_currency ?? ''
+  const price =
     product.price_m2 ??
     product.pricePerM2 ??
     product.price_per_m2 ??
     product.price ??
     null
+  const priceVariants = normalizePriceVariants(
+    product.price_variants ?? product.priceVariants,
+    priceCurrency
+  )
+  const convertedPrice = priceVariants.length
+    ? Math.min(...priceVariants.map((variant) => Number(variant.price)))
+    : toUah(price, priceCurrency)
 
   return {
     id: String(product.id ?? product.url ?? product.name),
@@ -70,11 +135,13 @@ function mapProduct(product, { category, subcategory, sectionId }) {
     photos,
     colors,
     textures,
-    pricePerM2,
-    price: pricePerM2,
-    priceCurrency: product.price_currency ?? '',
+    unitPrice: convertedPrice,
+    price: convertedPrice,
+    priceCurrency: 'UAH',
     priceSource: product.price_source ?? '',
-    priceVariants: normalizePriceVariants(product.price_variants ?? product.priceVariants),
+    priceVariants,
+    originalPriceCurrency: priceCurrency,
+    exchangeRate: priceCurrency === 'EUR' ? PRIVATBANK_EUR_TO_UAH : null,
     finish: toArray(product.finish),
     base: product.base ?? '',
     effect: product.effect ?? '',

@@ -1,16 +1,15 @@
 import { Link } from 'react-router-dom'
 import { useCart } from '../cart/CartContext.jsx'
 
-function formatMoney(value, currency = '') {
+function formatMoney(value) {
   if (value === null || value === undefined || value === '') return '-'
   const num = typeof value === 'number' ? value : Number(value)
   if (!Number.isFinite(num)) return '-'
-  return `${num.toLocaleString('uk-UA')} ${currency === 'EUR' ? 'EUR' : 'грн'}`
+  return `${num.toLocaleString('uk-UA')} грн`
 }
 
 export default function CartPage() {
-  const { items, totalPrice, setAreaM2, removeItem } = useCart()
-  const totalCurrency = items.find((item) => item.priceCurrency)?.priceCurrency ?? ''
+  const { items, totalPrice, setQuantity, removeItem } = useCart()
 
   return (
     <section className="cart">
@@ -30,11 +29,11 @@ export default function CartPage() {
           <>
             <div className="cart-list">
               {items.map((item) => {
-                const pricePerM2 = Number(item.pricePerM2)
-                const areaM2 = Number(item.areaM2)
+                const unitPrice = Number(item.unitPrice)
+                const quantity = Number(item.quantity)
                 const lineTotal =
-                  (Number.isFinite(pricePerM2) ? pricePerM2 : 0) *
-                  (Number.isFinite(areaM2) ? areaM2 : 0)
+                  (Number.isFinite(unitPrice) ? unitPrice : 0) *
+                  (Number.isFinite(quantity) ? quantity : 0)
 
                 return (
                   <div key={item.id} className="cart-item">
@@ -49,19 +48,20 @@ export default function CartPage() {
                     <div className="cart-item-main">
                       <div className="cart-item-title">{item.title}</div>
                       <div className="cart-item-meta">
-                        <span>{formatMoney(item.pricePerM2, item.priceCurrency)} / м²</span>
+                        {item.volume && <span>{item.volume}</span>}
+                        <span>{formatMoney(item.unitPrice)} / шт.</span>
                       </div>
 
                       <div className="cart-item-controls">
                         <label className="cart-label">
-                          Площа, м²
+                          Кількість
                           <input
                             className="cart-input"
                             type="number"
-                            min="0.1"
-                            step="0.1"
-                            value={item.areaM2}
-                            onChange={(event) => setAreaM2(item.id, event.target.value)}
+                            min="1"
+                            step="1"
+                            value={item.quantity}
+                            onChange={(event) => setQuantity(item.id, event.target.value)}
                           />
                         </label>
 
@@ -75,7 +75,7 @@ export default function CartPage() {
                       </div>
                     </div>
 
-                    <div className="cart-item-total">{formatMoney(lineTotal, item.priceCurrency)}</div>
+                    <div className="cart-item-total">{formatMoney(lineTotal)}</div>
                   </div>
                 )
               })}
@@ -84,9 +84,11 @@ export default function CartPage() {
             <div className="cart-summary">
               <div className="cart-summary-row">
                 <span>Разом</span>
-                <strong>{formatMoney(totalPrice, totalCurrency)}</strong>
+                <strong>{formatMoney(totalPrice)}</strong>
               </div>
-              <div className="cart-summary-note">Ціна розрахована як грн/м² x площа.</div>
+              <div className="cart-summary-note">
+                Ціна розрахована як вартість обраного об'єму x кількість.
+              </div>
               <Link to="/contact" className="cart-order-button">
                 Замовити
               </Link>

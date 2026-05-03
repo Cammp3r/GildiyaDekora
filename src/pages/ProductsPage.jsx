@@ -10,7 +10,6 @@ function getPositivePage(value) {
   return Number.isInteger(page) && page > 0 ? page : 1
 }
 
-// Компонент для ленивой загрузки изображения с плейсхолдером
 function LazyImage({ src, alt, className }) {
   const [imageSrc, setImageSrc] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
@@ -148,7 +147,6 @@ export default function ProductsPage() {
     })
   }, [searchQuery, selectedCategory])
 
-  // Пагинация
   const totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE)
   const activePage = totalPages > 0 ? Math.min(currentPage, totalPages) : 1
   const startIndex = (activePage - 1) * ITEMS_PER_PAGE
@@ -156,233 +154,223 @@ export default function ProductsPage() {
   const paginatedProducts = filteredProducts.slice(startIndex, endIndex)
 
   const formatPrice = (product) => {
-    const price = product.pricePerM2 ?? product.price
-    if (price === null || price === undefined || price === '') return 
+    const price = product.price
+    if (price === null || price === undefined || price === '') return ''
     const num = typeof price === 'number' ? price : Number(price)
-    if (!Number.isFinite(num) || num <= 0) return 
-    const label = product.priceCurrency === 'EUR' ? 'EUR' : 'грн/м²'
-    const prefix = product.priceVariants?.length > 1 ? 'from ' : ''
-    return `${prefix}${num.toLocaleString('uk-UA')} ${label}`
+    if (!Number.isFinite(num) || num <= 0) return ''
+    const prefix = product.priceVariants?.length > 1 ? 'від ' : ''
+    return `${prefix}${num.toLocaleString('uk-UA')} грн`
   }
 
   return (
-    <>
-      {/* Products Section */}
-      <section className="products">
-        <div className="container">
-          <h2 className="section-title">Лінійки продуктів OIKOS</h2>
+    <section className="products">
+      <div className="container">
+        <h2 className="section-title">Лінійки продуктів OIKOS</h2>
 
-          {/* Search */}
-          <div className="products-search">
-            <input
-              className="products-search-input"
-              type="search"
-              placeholder="Пошук фарби (назва, ефект, код кольору…)"
-              value={searchQuery}
-              onChange={(e) => {
-                const query = e.target.value
-                updateCatalogParams({ query, page: 1 })
-              }}
-              aria-label="Пошук фарби"
-            />
-          </div>
+        <div className="products-search">
+          <input
+            className="products-search-input"
+            type="search"
+            placeholder="Пошук фарби (назва, ефект, код кольору...)"
+            value={searchQuery}
+            onChange={(e) => {
+              const query = e.target.value
+              updateCatalogParams({ query, page: 1 })
+            }}
+            aria-label="Пошук фарби"
+          />
+        </div>
 
-          {/* Category Filter */}
-          <div className="products-filter" style={{ marginBottom: '40px' }}>
+        <div className="products-filter" style={{ marginBottom: '40px' }}>
+          <button
+            className={`filter-btn ${selectedCategory === 'all' ? 'active' : ''}`}
+            onClick={() => handleCategoryFilter('all')}
+          >
+            Усі товари
+          </button>
+          {categories.map((category) => (
             <button
-              className={`filter-btn ${selectedCategory === 'all' ? 'active' : ''}`}
-              onClick={() => handleCategoryFilter('all')}
+              key={category}
+              className={`filter-btn ${selectedCategory === category ? 'active' : ''}`}
+              onClick={() => handleCategoryFilter(category)}
             >
-              Усі товари
+              {category}
             </button>
-            {categories.map((category) => (
-              <button
-                key={category}
-                className={`filter-btn ${selectedCategory === category ? 'active' : ''}`}
-                onClick={() => handleCategoryFilter(category)}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
+          ))}
+        </div>
 
-          {/* Products Grid */}
-          <div className="products-grid">
-            {paginatedProducts.map((product) => (
-              <div key={product.id} className="product-card">
-                <div className="product-swatch">
-                  <LazyImage
-                    className="swatch-color"
-                    src={product.image}
-                    alt={product.title}
-                  />
-                  <div className="product-badges">
-                    <span className="product-tag">{product.category}</span>
-                    {product.eco && <span className="product-eco-badge">🌿 Еко</span>}
-                  </div>
+        <div className="products-grid">
+          {paginatedProducts.map((product) => (
+            <div key={product.id} className="product-card">
+              <div className="product-swatch">
+                <LazyImage
+                  className="swatch-color"
+                  src={product.image}
+                  alt={product.title}
+                />
+                <div className="product-badges">
+                  <span className="product-tag">{product.category}</span>
+                  {product.eco && <span className="product-eco-badge">Еко</span>}
                 </div>
-                <div className="product-info">
-                  <h3 className="product-name">{product.title}</h3>
-                  <p className="product-desc">{product.description}</p>
-                  {product.effect && (
-                    <p className="product-effect">
-                      <strong>Ефект:</strong> {product.effect}
-                    </p>
-                  )}
-                  <div className="product-footer">
-                    <span className="product-price">
-                      {formatPrice(product)}
-                    </span>
-                    <div className="product-actions">
-                      <button
-                        type="button"
-                        className="add-btn"
-                        onClick={() => addItem(product, 1)}
-                      >
-                        В кошик
-                      </button>
-                      <Link
-                        to={{
-                          pathname: `/products/${encodeURIComponent(product.id)}`,
-                          search: getCatalogSearch(),
-                        }}
-                        className="add-btn"
-                      >
-                        Дізнатись більше
-                      </Link>
-                    </div>
+              </div>
+              <div className="product-info">
+                <h3 className="product-name">{product.title}</h3>
+                <p className="product-desc">{product.description}</p>
+                {product.effect && (
+                  <p className="product-effect">
+                    <strong>Ефект:</strong> {product.effect}
+                  </p>
+                )}
+                <div className="product-footer">
+                  <span className="product-price">{formatPrice(product)}</span>
+                  <div className="product-actions">
+                    <button
+                      type="button"
+                      className="add-btn"
+                      onClick={() => addItem(product, product.priceVariants?.[0] ?? null, 1)}
+                    >
+                      В кошик
+                    </button>
+                    <Link
+                      to={{
+                        pathname: `/products/${encodeURIComponent(product.id)}`,
+                        search: getCatalogSearch(),
+                      }}
+                      className="add-btn"
+                    >
+                      Дізнатись більше
+                    </Link>
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
+        </div>
 
-          {/* Pagination */}
-          {totalPages > 1 && (
+        {totalPages > 1 && (
+          <div
+            className="pagination"
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              gap: '10px',
+              margin: '40px 0',
+              flexWrap: 'wrap',
+            }}
+          >
+            <button
+              onClick={() => {
+                updateCatalogParams({ page: 1 })
+              }}
+              disabled={activePage === 1}
+              style={{
+                padding: '8px 12px',
+                cursor: activePage === 1 ? 'not-allowed' : 'pointer',
+                opacity: activePage === 1 ? 0.5 : 1,
+              }}
+            >
+              Перша
+            </button>
+
+            <button
+              onClick={() => {
+                const page = Math.max(1, activePage - 1)
+                updateCatalogParams({ page })
+              }}
+              disabled={activePage === 1}
+              style={{
+                padding: '8px 12px',
+                cursor: activePage === 1 ? 'not-allowed' : 'pointer',
+                opacity: activePage === 1 ? 0.5 : 1,
+              }}
+            >
+              Назад
+            </button>
+
             <div
-              className="pagination"
               style={{
                 display: 'flex',
-                justifyContent: 'center',
+                gap: '5px',
                 alignItems: 'center',
-                gap: '10px',
-                margin: '40px 0',
-                flexWrap: 'wrap',
               }}
             >
-              <button
-                onClick={() => {
-                  updateCatalogParams({ page: 1 })
-                }}
-                disabled={activePage === 1}
-                style={{
-                  padding: '8px 12px',
-                  cursor: activePage === 1 ? 'not-allowed' : 'pointer',
-                  opacity: activePage === 1 ? 0.5 : 1,
-                }}
-              >
-                ← Першa
-              </button>
-
-              <button
-                onClick={() => {
-                  const page = Math.max(1, activePage - 1)
-                  updateCatalogParams({ page })
-                }}
-                disabled={activePage === 1}
-                style={{
-                  padding: '8px 12px',
-                  cursor: activePage === 1 ? 'not-allowed' : 'pointer',
-                  opacity: activePage === 1 ? 0.5 : 1,
-                }}
-              >
-                ← Назад
-              </button>
-
-              <div
-                style={{
-                  display: 'flex',
-                  gap: '5px',
-                  alignItems: 'center',
-                }}
-              >
-                {Array.from({ length: totalPages }, (_, i) => i + 1)
-                  .filter((page) => {
-                    const distance = Math.abs(page - activePage)
-                    return distance === 0 || distance === 1 || page === 1 || page === totalPages
-                  })
-                  .map((page, idx, arr) => (
-                    <span key={page}>
-                      {idx > 0 && arr[idx - 1] !== page - 1 && <span>...</span>}
-                      <button
-                        onClick={() => {
-                          updateCatalogParams({ page })
-                          window.scrollTo({ top: 0, behavior: 'smooth' })
-                        }}
-                        style={{
-                          padding: '8px 12px',
-                          fontWeight: page === activePage ? 'bold' : 'normal',
-                          backgroundColor: page === activePage ? '#007bff' : 'transparent',
-                          color: page === activePage ? 'white' : 'inherit',
-                          border: page === activePage ? 'none' : '1px solid #ccc',
-                          cursor: 'pointer',
-                          borderRadius: '4px',
-                        }}
-                      >
-                        {page}
-                      </button>
-                    </span>
-                  ))}
-              </div>
-
-              <button
-                onClick={() => {
-                  const page = Math.min(totalPages, activePage + 1)
-                  updateCatalogParams({ page })
-                }}
-                disabled={activePage === totalPages}
-                style={{
-                  padding: '8px 12px',
-                  cursor: activePage === totalPages ? 'not-allowed' : 'pointer',
-                  opacity: activePage === totalPages ? 0.5 : 1,
-                }}
-              >
-                Далі →
-              </button>
-
-              <button
-                onClick={() => {
-                  updateCatalogParams({ page: totalPages })
-                }}
-                disabled={activePage === totalPages}
-                style={{
-                  padding: '8px 12px',
-                  cursor: activePage === totalPages ? 'not-allowed' : 'pointer',
-                  opacity: activePage === totalPages ? 0.5 : 1,
-                }}
-              >
-                Остання →
-              </button>
-
-              <div
-                style={{
-                  marginLeft: '20px',
-                  fontSize: '14px',
-                  color: '#666',
-                }}
-              >
-                Сторінка {activePage} з {totalPages} ({filteredProducts.length} товарів)
-              </div>
+              {Array.from({ length: totalPages }, (_, i) => i + 1)
+                .filter((page) => {
+                  const distance = Math.abs(page - activePage)
+                  return distance === 0 || distance === 1 || page === 1 || page === totalPages
+                })
+                .map((page, idx, arr) => (
+                  <span key={page}>
+                    {idx > 0 && arr[idx - 1] !== page - 1 && <span>...</span>}
+                    <button
+                      onClick={() => {
+                        updateCatalogParams({ page })
+                        window.scrollTo({ top: 0, behavior: 'smooth' })
+                      }}
+                      style={{
+                        padding: '8px 12px',
+                        fontWeight: page === activePage ? 'bold' : 'normal',
+                        backgroundColor: page === activePage ? '#007bff' : 'transparent',
+                        color: page === activePage ? 'white' : 'inherit',
+                        border: page === activePage ? 'none' : '1px solid #ccc',
+                        cursor: 'pointer',
+                        borderRadius: '4px',
+                      }}
+                    >
+                      {page}
+                    </button>
+                  </span>
+                ))}
             </div>
-          )}
 
-          {filteredProducts.length === 0 && (
-            <div style={{ textAlign: 'center', padding: '40px' }}>
-              <p>Товари в цій категорії не знайдені</p>
+            <button
+              onClick={() => {
+                const page = Math.min(totalPages, activePage + 1)
+                updateCatalogParams({ page })
+              }}
+              disabled={activePage === totalPages}
+              style={{
+                padding: '8px 12px',
+                cursor: activePage === totalPages ? 'not-allowed' : 'pointer',
+                opacity: activePage === totalPages ? 0.5 : 1,
+              }}
+            >
+              Далі
+            </button>
+
+            <button
+              onClick={() => {
+                updateCatalogParams({ page: totalPages })
+              }}
+              disabled={activePage === totalPages}
+              style={{
+                padding: '8px 12px',
+                cursor: activePage === totalPages ? 'not-allowed' : 'pointer',
+                opacity: activePage === totalPages ? 0.5 : 1,
+              }}
+            >
+              Остання
+            </button>
+
+            <div
+              style={{
+                marginLeft: '20px',
+                fontSize: '14px',
+                color: '#666',
+              }}
+            >
+              Сторінка {activePage} з {totalPages} ({filteredProducts.length} товарів)
             </div>
-          )}
-        </div>
-      </section>
-    </>
+          </div>
+        )}
+
+        {filteredProducts.length === 0 && (
+          <div style={{ textAlign: 'center', padding: '40px' }}>
+            <p>Товари в цій категорії не знайдені</p>
+          </div>
+        )}
+      </div>
+    </section>
   )
 }

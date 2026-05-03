@@ -16,7 +16,8 @@ export default function ProductDetailsPage() {
   const [activePhotoByProduct, setActivePhotoByProduct] = useState({})
   const [selectedTextureByProduct, setSelectedTextureByProduct] = useState({})
   const [selectedColorByProduct, setSelectedColorByProduct] = useState({})
-  const [areaM2ByProduct, setAreaM2ByProduct] = useState({})
+  const [selectedVariantByProduct, setSelectedVariantByProduct] = useState({})
+  const [quantityByProduct, setQuantityByProduct] = useState({})
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
@@ -35,8 +36,7 @@ export default function ProductDetailsPage() {
   const textures = Array.isArray(product.textures) ? product.textures : []
   const hasTextures = textures.length > 0
 
-  const defaultTexture =
-    (hasTextures && (textures[0]?.name || '')) || ''
+  const defaultTexture = (hasTextures && (textures[0]?.name || '')) || ''
   const selectedTexture = selectedTextureByProduct[product.id] ?? defaultTexture
 
   const colors = Array.isArray(product.colors) ? product.colors : []
@@ -45,18 +45,17 @@ export default function ProductDetailsPage() {
   const selectedColor = selectedColorByProduct[product.id] ?? defaultColor
   const selectedColorObj = colors.find((c) => c?.code === selectedColor)
 
-  const areaM2 = areaM2ByProduct[product.id] ?? 1
-
-  const rawPricePerM2 = product.pricePerM2 ?? product.price
-  const pricePerM2 =
-    typeof rawPricePerM2 === 'number' ? rawPricePerM2 : Number(rawPricePerM2)
-  const priceLabel =
-    Number.isFinite(pricePerM2) && pricePerM2 > 0
-      ? `${product.priceVariants?.length > 1 ? 'from ' : ''}${pricePerM2.toLocaleString('uk-UA')} ${
-          product.priceCurrency === 'EUR' ? 'EUR' : 'грн/м²'
-        }`
-      : ''
   const priceVariants = Array.isArray(product.priceVariants) ? product.priceVariants : []
+  const selectedVariantId = selectedVariantByProduct[product.id] ?? priceVariants[0]?.id ?? ''
+  const selectedVariant =
+    priceVariants.find((variant) => variant.id === selectedVariantId) ?? priceVariants[0] ?? null
+  const quantity = quantityByProduct[product.id] ?? 1
+  const rawPrice = selectedVariant?.price ?? product.price
+  const price = typeof rawPrice === 'number' ? rawPrice : Number(rawPrice)
+  const priceLabel =
+    Number.isFinite(price) && price > 0 ? `${price.toLocaleString('uk-UA')} грн` : ''
+  const lineTotal =
+    Number.isFinite(price) && price > 0 ? price * Number(quantity || 0) : 0
 
   return (
     <section className="product-details">
@@ -66,7 +65,7 @@ export default function ProductDetailsPage() {
             to={{ pathname: '/products', search: location.search }}
             className="product-details-back"
           >
-            ← Назад до каталогу
+            Назад до каталогу
           </Link>
         </div>
 
@@ -111,7 +110,7 @@ export default function ProductDetailsPage() {
               {product.subcategory && (
                 <span className="product-details-subcategory">{product.subcategory}</span>
               )}
-              {product.eco && <span className="product-eco-badge">🌿 Еко</span>}
+              {product.eco && <span className="product-eco-badge">Еко</span>}
             </div>
 
             {product.description && <p className="product-details-desc">{product.description}</p>}
@@ -126,7 +125,7 @@ export default function ProductDetailsPage() {
               <p className="product-details-desc" style={{ marginTop: '-0.5rem' }}>
                 <strong>Кольорова гамма:</strong>{' '}
                 {product.colorsCollection ? product.colorsCollection : 'Колекція'}
-                {product.colorsCount ? ` — ${product.colorsCount} відтінків` : ''}
+                {product.colorsCount ? ` - ${product.colorsCount} відтінків` : ''}
               </p>
             )}
 
@@ -221,12 +220,9 @@ export default function ProductDetailsPage() {
             {priceVariants.length > 0 && (
               <div className="product-price-variants">
                 {priceVariants.map((variant) => (
-                  <div key={`${variant.title}-${variant.price}`} className="product-price-variant">
-                    <span>{variant.title}</span>
-                    <strong>
-                      {Number(variant.price).toLocaleString('uk-UA')}{' '}
-                      {product.priceCurrency === 'EUR' ? 'EUR' : 'грн'}
-                    </strong>
+                  <div key={`${variant.id}-${variant.price}`} className="product-price-variant">
+                    <span>{variant.title || variant.volume}</span>
+                    <strong>{Number(variant.price).toLocaleString('uk-UA')} грн</strong>
                   </div>
                 ))}
               </div>
@@ -234,16 +230,37 @@ export default function ProductDetailsPage() {
 
             <div className="product-details-actions">
               <div className="product-details-buy">
+                {priceVariants.length > 0 && (
+                  <label className="cart-label">
+                    Об'єм
+                    <select
+                      className="cart-input"
+                      value={selectedVariantId}
+                      onChange={(e) =>
+                        setSelectedVariantByProduct((prev) => ({
+                          ...prev,
+                          [product.id]: e.target.value,
+                        }))
+                      }
+                    >
+                      {priceVariants.map((variant) => (
+                        <option key={variant.id} value={variant.id}>
+                          {variant.volume} - {Number(variant.price).toLocaleString('uk-UA')} грн
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+                )}
                 <label className="cart-label">
-                  Площа, м²
+                  Кількість
                   <input
                     className="cart-input"
                     type="number"
-                    min="0.1"
-                    step="0.1"
-                    value={areaM2}
+                    min="1"
+                    step="1"
+                    value={quantity}
                     onChange={(e) =>
-                      setAreaM2ByProduct((prev) => ({
+                      setQuantityByProduct((prev) => ({
                         ...prev,
                         [product.id]: e.target.value,
                       }))
@@ -253,11 +270,16 @@ export default function ProductDetailsPage() {
                 <button
                   type="button"
                   className="add-btn"
-                  onClick={() => addItem(product, areaM2)}
+                  onClick={() => addItem(product, selectedVariant, quantity)}
                 >
                   В кошик
                 </button>
               </div>
+              {lineTotal > 0 && (
+                <div className="product-details-total">
+                  Разом: <strong>{lineTotal.toLocaleString('uk-UA')} грн</strong>
+                </div>
+              )}
               <Link to="/contact" className="add-btn">
                 Замовити консультацію
               </Link>

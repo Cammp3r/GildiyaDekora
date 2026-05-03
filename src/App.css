@@ -1173,6 +1173,7 @@ section {
   display: flex;
   gap: 1rem;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .product-details-price {
@@ -1213,6 +1214,14 @@ section {
   flex-wrap: wrap;
 }
 
+.product-details-total {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
 .cart-label {
   font-family: var(--mono);
   font-size: 0.6rem;
@@ -1225,7 +1234,7 @@ section {
 }
 
 .cart-input {
-  width: 140px;
+  width: 180px;
   border: 1px solid var(--soft);
   border-radius: 4px;
   padding: 0.5rem 0.6rem;
@@ -1282,6 +1291,9 @@ section {
 }
 
 .cart-item-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
   font-family: var(--mono);
   font-size: 0.6rem;
   letter-spacing: 0.12em;

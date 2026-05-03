@@ -19,14 +19,14 @@ function clampMin(value, min) {
 function cartReducer(state, action) {
   switch (action.type) {
     case 'ADD_ITEM': {
-      const { item, areaM2 } = action.payload
-      const nextArea = clampMin(toNumber(areaM2, 1), 0.1)
+      const { item, quantity } = action.payload
+      const nextQuantity = clampMin(toNumber(quantity, 1), 1)
 
       const existingIndex = state.items.findIndex((x) => x.id === item.id)
       if (existingIndex === -1) {
         return {
           ...state,
-          items: [...state.items, { ...item, areaM2: nextArea }],
+          items: [...state.items, { ...item, quantity: nextQuantity }],
         }
       }
 
@@ -34,7 +34,7 @@ function cartReducer(state, action) {
       const merged = {
         ...existing,
         ...item,
-        areaM2: toNumber(existing.areaM2, 0) + nextArea,
+        quantity: toNumber(existing.quantity, 0) + nextQuantity,
       }
 
       const nextItems = state.items.slice()
@@ -50,11 +50,11 @@ function cartReducer(state, action) {
       }
     }
 
-    case 'SET_AREA': {
-      const { id, areaM2 } = action.payload
-      const nextArea = toNumber(areaM2, 0)
+    case 'SET_QUANTITY': {
+      const { id, quantity } = action.payload
+      const nextQuantity = toNumber(quantity, 0)
 
-      if (nextArea <= 0) {
+      if (nextQuantity <= 0) {
         return {
           ...state,
           items: state.items.filter((x) => x.id !== id),
@@ -64,7 +64,7 @@ function cartReducer(state, action) {
       return {
         ...state,
         items: state.items.map((x) =>
-          x.id === id ? { ...x, areaM2: clampMin(nextArea, 0.1) } : x
+          x.id === id ? { ...x, quantity: clampMin(nextQuantity, 1) } : x
         ),
       }
     }
@@ -82,36 +82,45 @@ export function CartProvider({ children }) {
 
   const api = useMemo(() => {
     const totalDistinctItems = state.items.length
-    const totalAreaM2 = state.items.reduce(
-      (sum, x) => sum + toNumber(x.areaM2, 0),
+    const totalQuantity = state.items.reduce(
+      (sum, x) => sum + toNumber(x.quantity, 0),
       0
     )
 
     const totalPrice = state.items.reduce((sum, x) => {
-      const pricePerM2 = toNumber(x.pricePerM2, 0)
-      const areaM2 = toNumber(x.areaM2, 0)
-      return sum + pricePerM2 * areaM2
+      const unitPrice = toNumber(x.unitPrice, 0)
+      const quantity = toNumber(x.quantity, 0)
+      return sum + unitPrice * quantity
     }, 0)
 
     return {
       items: state.items,
       totalDistinctItems,
-      totalAreaM2,
+      totalQuantity,
       totalPrice,
 
-      addItem: (product, areaM2 = 1) => {
+      addItem: (product, variant = null, quantity = 1) => {
         if (!product?.id) return
+        const selectedVariant = variant ?? product.priceVariants?.[0] ?? null
+        const variantId = selectedVariant?.id ?? selectedVariant?.volume ?? 'default'
+        const unitPrice = toNumber(selectedVariant?.price ?? product.price, null)
+        const volume = selectedVariant?.volume ?? ''
+
         dispatch({
           type: 'ADD_ITEM',
           payload: {
             item: {
-              id: String(product.id),
+              id: `${product.id}:${variantId}`,
+              productId: String(product.id),
+              variantId: String(variantId),
               title: product.title ?? '',
               image: product.image ?? '',
-              pricePerM2: toNumber(product.pricePerM2 ?? product.price, null),
-              priceCurrency: product.priceCurrency ?? '',
+              variantTitle: selectedVariant?.title ?? '',
+              volume,
+              unitPrice,
+              priceCurrency: 'UAH',
             },
-            areaM2,
+            quantity,
           },
         })
       },
@@ -120,8 +129,8 @@ export function CartProvider({ children }) {
         dispatch({ type: 'REMOVE_ITEM', payload: { id: String(id) } })
       },
 
-      setAreaM2: (id, areaM2) => {
-        dispatch({ type: 'SET_AREA', payload: { id: String(id), areaM2 } })
+      setQuantity: (id, quantity) => {
+        dispatch({ type: 'SET_QUANTITY', payload: { id: String(id), quantity } })
       },
 
       clear: () => dispatch({ type: 'CLEAR' }),

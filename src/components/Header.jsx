@@ -27,7 +27,7 @@ export default function Header() {
           <img src={logo} alt="Гільдія Декору" />
           <div className="logo-text">
             <span className="logo-main">Гільдія</span>
-            <span className="logo-sub">Декора</span>
+            <span className="logo-sub">Декору</span>
           </div>
         </NavLink>
         <nav className={`nav ${mobileMenuOpen ? 'open' : ''}`}>
