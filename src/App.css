@@ -146,6 +146,98 @@ body {
   opacity: 1;
 }
 
+/* ============== DROPDOWN MENU ============== */
+.nav-item {
+  position: relative;
+}
+
+.nav-item.has-dropdown {
+  display: flex;
+  align-items: center;
+}
+
+.nav-link {
+  background: none;
+  border: none;
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ink);
+  opacity: 0.6;
+  transition: opacity 0.3s;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.dropdown-arrow {
+  font-size: 0.4rem;
+  transition: transform 0.3s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  opacity: 1;
+  color: var(--accent);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--cream);
+  border: 1px solid rgba(218, 201, 184, 0.5);
+  border-radius: 4px;
+  min-width: 180px;
+  margin-top: 0.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+  z-index: 101;
+  box-shadow: 0 4px 12px rgba(26, 23, 20, 0.1);
+}
+
+.dropdown-menu.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.dropdown-item {
+  display: block;
+  padding: 0.8rem 1.2rem;
+  color: var(--ink);
+  text-decoration: none;
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  transition: all 0.3s;
+  border-left: 2px solid transparent;
+}
+
+.dropdown-item:first-child {
+  border-radius: 3px 3px 0 0;
+}
+
+.dropdown-item:last-child {
+  border-radius: 0 0 3px 3px;
+}
+
+.dropdown-item:hover,
+.dropdown-item.active {
+  opacity: 1;
+  color: var(--accent);
+  background: rgba(196, 112, 58, 0.08);
+  border-left-color: var(--accent);
+  padding-left: 1.1rem;
+}
+
 .mobile-toggle {
   display: none;
   background: none;
@@ -195,6 +287,51 @@ body {
 
   .container {
     padding: 0 1.5rem;
+  }
+
+  .dropdown-menu {
+    position: static;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    margin-top: 0;
+    min-width: auto;
+    display: none;
+  }
+
+  .dropdown-menu.open {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .dropdown-item {
+    padding: 0.6rem 1rem;
+    border-left: none;
+  }
+
+  .dropdown-item:first-child {
+    border-radius: 0;
+  }
+
+  .dropdown-item:last-child {
+    border-radius: 0;
+  }
+
+  .dropdown-item:hover,
+  .dropdown-item.active {
+    padding-left: 1rem;
+    border-left: none;
+  }
+
+  .nav-link {
+    font-size: 0.6rem;
+  }
+
+  .dropdown-arrow {
+    display: none;
   }
 }
 

@@ -68,8 +68,14 @@ function LazyImage({ src, alt, className }) {
 }
 
 export default function ProductsPage() {
-  const categories = useMemo(() => [...new Set(productsDb.map((p) => p.category))], [])
   const [searchParams, setSearchParams] = useSearchParams()
+  const brandFromUrl = searchParams.get('brand') || 'oikos'
+  
+  const categories = useMemo(
+    () => [...new Set(productsDb.filter((p) => p.brand === brandFromUrl).map((p) => p.category))],
+    [brandFromUrl]
+  )
+  
   const categoryFromUrl = searchParams.get('category') || 'all'
   const selectedCategory =
     categoryFromUrl === 'all' || categories.includes(categoryFromUrl)
@@ -84,14 +90,15 @@ export default function ProductsPage() {
   }, [])
 
   const buildCatalogParams = useCallback(
-    ({ category = selectedCategory, query = searchQuery, page = currentPage } = {}) => {
+    ({ brand = brandFromUrl, category = selectedCategory, query = searchQuery, page = currentPage } = {}) => {
       const params = new URLSearchParams()
+      if (brand && brand !== 'oikos') params.set('brand', brand)
       if (category && category !== 'all') params.set('category', category)
       if (query.trim()) params.set('q', query.trim())
       if (page > 1) params.set('page', String(page))
       return params
     },
-    [currentPage, searchQuery, selectedCategory],
+    [brandFromUrl, currentPage, searchQuery, selectedCategory],
   )
 
   const updateCatalogParams = useCallback(
@@ -112,10 +119,11 @@ export default function ProductsPage() {
 
   const filteredProducts = useMemo(() => {
     const query = searchQuery.trim().toLowerCase()
+    const byBrand = productsDb.filter((p) => p.brand === brandFromUrl)
     const byCategory =
       selectedCategory === 'all'
-        ? productsDb
-        : productsDb.filter((p) => p.category === selectedCategory)
+        ? byBrand
+        : byBrand.filter((p) => p.category === selectedCategory)
 
     if (!query) return byCategory
 
@@ -145,7 +153,7 @@ export default function ProductsPage() {
 
       return haystack.includes(query)
     })
-  }, [searchQuery, selectedCategory])
+  }, [searchQuery, selectedCategory, brandFromUrl])
 
   const totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE)
   const activePage = totalPages > 0 ? Math.min(currentPage, totalPages) : 1
@@ -165,7 +173,9 @@ export default function ProductsPage() {
   return (
     <section className="products">
       <div className="container">
-        <h2 className="section-title">Лінійки продуктів OIKOS</h2>
+        <h2 className="section-title">
+          Лінійки продуктів {brandFromUrl === 'orac-decor' ? 'ORAC DECOR' : 'OIKOS'}
+        </h2>
 
         <div className="products-search">
           <input

@@ -1,4 +1,5 @@
 import dtb from '../../dtb.json'
+import oracDecor from '../../orac_decor.json'
 import fallbackImage from '../logos/logo.png'
 
 export const PRIVATBANK_EUR_TO_UAH = 51.95
@@ -103,7 +104,7 @@ function normalizePriceVariants(variants, currency = '') {
     .filter((variant) => variant.volume && Number.isFinite(Number(variant.price)))
 }
 
-function mapProduct(product, { category, subcategory, sectionId }) {
+function mapProduct(product, { brand = 'oikos', category, subcategory, sectionId }) {
   const photos = normalizePhotos(product.photos)
   const colors = normalizeColors(product.colors)
   const textures = normalizeTextures(product.textures)
@@ -128,6 +129,7 @@ function mapProduct(product, { category, subcategory, sectionId }) {
   return {
     id: String(product.id ?? product.url ?? product.name),
     title: product.name ?? '',
+    brand,
     category,
     subcategory,
     description: product.desc ?? product.description ?? '',
@@ -167,6 +169,7 @@ function mapProduct(product, { category, subcategory, sectionId }) {
 function transformProductsData() {
   const products = []
 
+  // Завантажуємо OIKOS продукти
   toArray(dtb.sections).forEach((section) => {
     const categoryName = section.title ?? section.id ?? ''
 
@@ -175,6 +178,7 @@ function transformProductsData() {
       section.products.forEach((product) => {
         products.push(
           mapProduct(product, {
+            brand: 'oikos',
             category: categoryName,
             subcategory: product.subcategory ?? '',
             sectionId: section.id,
@@ -190,12 +194,31 @@ function transformProductsData() {
         toArray(subCategory.products).forEach((product) => {
           products.push(
             mapProduct(product, {
+              brand: 'oikos',
               category: categoryName,
               subcategory: subCategory.name ?? '',
               sectionId: section.id,
             })
           )
         })
+      })
+    }
+  })
+
+  // Завантажуємо ORAC DECOR продукти
+  toArray(oracDecor.sections).forEach((section) => {
+    const categoryName = section.title ?? section.id ?? ''
+
+    if (Array.isArray(section.products) && section.products.length > 0) {
+      section.products.forEach((product) => {
+        products.push(
+          mapProduct(product, {
+            brand: 'orac-decor',
+            category: categoryName,
+            subcategory: product.subcategory ?? '',
+            sectionId: section.id,
+          })
+        )
       })
     }
   })

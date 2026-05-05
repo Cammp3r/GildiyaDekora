@@ -1,0 +1,124 @@
+{
+  "brand": "ORAC DECOR",
+  "dealer": "Гільдія Декору",
+  "country": "Україна",
+  "updated": "2026-05-05",
+  "base_url": "https://orac-decor.com",
+  "total_products": 66,
+  "sections": [
+    {
+      "id": "orac-molding",
+      "title": "Молдинг",
+      "description": "Молдинги ORAC DECOR із поліуретану та полістиролу. Легкі, міцні та зручні у встановленні.",
+      "url": "https://orac-decor.com/product-category/молдинг/",
+      "products": [
+        {"id": "orac-dx119-2300", "name": "DX119 2300", "price": 804, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/06/dx119-1-300x300.png"], "url": "https://orac-decor.com/product/dx119-2300/"},
+        {"id": "orac-dx119-2600", "name": "DX119 2600", "price": 936, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/06/dx119-1-300x300.png"], "url": "https://orac-decor.com/product/dx119-2600/"},
+        {"id": "orac-dx121-2300", "name": "DX121 2300", "price": 804, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/06/dx119-1-300x300.png"], "url": "https://orac-decor.com/product/dx121-2300/"},
+        {"id": "orac-dx121-2600", "name": "DX121 2600", "price": 960, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/06/dx119-1-300x300.png"], "url": "https://orac-decor.com/product/dx121-2600/"},
+        {"id": "orac-dx170-2300", "name": "DX170 2300", "price": 2046, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/06/dx170-300x300.png"], "url": "https://orac-decor.com/product/dx170-2300/"},
+        {"id": "orac-dx170-2600", "name": "DX170 2600", "price": 1620, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/06/dx170-300x300.png"], "url": "https://orac-decor.com/product/dx170-2600/"},
+        {"id": "orac-dx174-2300", "name": "DX174 2300", "price": 714, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/06/dx174-300x300.png"], "url": "https://orac-decor.com/product/dx174-2300/"},
+        {"id": "orac-dx174-2300-flex", "name": "DX174 2300 Flex", "price": 2850, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/06/dx174-300x300.png"], "url": "https://orac-decor.com/product/dx174-2300-flex/"},
+        {"id": "orac-dx174-2600", "name": "DX174 2600", "price": 594, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/06/dx174-300x300.png"], "url": "https://orac-decor.com/product/dx174-2600/"},
+        {"id": "orac-dx180-2600", "name": "DX180 2600", "price": 1452, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2026/04/dx180-300x300.png"], "url": "https://orac-decor.com/product/dx180-2600/"},
+        {"id": "orac-dx187-2600", "name": "DX187 2600", "price": 846, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2026/04/sx187-300x300.png"], "url": "https://orac-decor.com/product/dx187-2600/"},
+        {"id": "orac-p101a", "name": "P101A", "price": 774, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/06/P101A-300x300.png"], "url": "https://orac-decor.com/product/p101a/"}
+      ]
+    },
+    {
+      "id": "orac-decorative",
+      "title": "Декоративні елементи",
+      "description": "Декоративні елементи ORAC DECOR для оздоблення та прикрашання приміщень.",
+      "url": "https://orac-decor.com/product-category/декоративні-елементи/",
+      "products": [
+        {"id": "orac-d170", "name": "D170", "price": 6642, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/06/D170-300x300.png"], "url": "https://orac-decor.com/product/d170/"},
+        {"id": "orac-d200", "name": "D200", "price": 384, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/06/D200-300x300.png"], "url": "https://orac-decor.com/product/d200/"},
+        {"id": "orac-d210", "name": "D210", "price": 408, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/06/D210-300x300.png"], "url": "https://orac-decor.com/product/d210/"},
+        {"id": "orac-d310", "name": "D310", "price": 750, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/06/D310-300x300.png"], "url": "https://orac-decor.com/product/d310/"},
+        {"id": "orac-d330lr", "name": "D330LR", "price": 936, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/06/D330LR-300x300.png"], "url": "https://orac-decor.com/product/d330lr/"},
+        {"id": "orac-d340", "name": "D340", "price": 546, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/06/D340-1-300x300.png"], "url": "https://orac-decor.com/product/d340/"},
+        {"id": "orac-d400", "name": "D400", "price": 4542, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/06/D400-300x300.png"], "url": "https://orac-decor.com/product/d400/"},
+        {"id": "orac-d401", "name": "D401", "price": 4542, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/06/D401-300x300.png"], "url": "https://orac-decor.com/product/d401/"},
+        {"id": "orac-d402", "name": "D402", "price": 876, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/06/D402-300x300.png"], "url": "https://orac-decor.com/product/d402/"},
+        {"id": "orac-d503", "name": "D503", "price": 3030, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/06/d503-300x300.png"], "url": "https://orac-decor.com/product/d503/"},
+        {"id": "orac-d504", "name": "D504", "price": 1950, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/06/d504-300x300.png"], "url": "https://orac-decor.com/product/d504/"},
+        {"id": "orac-d507", "name": "D507", "price": 4422, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/06/d507-300x300.png"], "url": "https://orac-decor.com/product/d507/"}
+      ]
+    },
+    {
+      "id": "orac-cornice",
+      "title": "Карнизи",
+      "description": "Карнизи ORAC DECOR для оздоблення стелі та створення архітектурних ефектів.",
+      "url": "https://orac-decor.com/product-category/карнизи/",
+      "products": [
+        {"id": "orac-c200", "name": "C200", "price": 1278, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/05/C200-300x300.png"], "url": "https://orac-decor.com/product/c200/"},
+        {"id": "orac-c200-flex", "name": "C200 Flex", "price": 900, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/05/C200-300x300.png"], "url": "https://orac-decor.com/product/c200-flex/"},
+        {"id": "orac-c201", "name": "C201", "price": 1854, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/05/C201-300x300.png"], "url": "https://orac-decor.com/product/c201/"},
+        {"id": "orac-c201-flex", "name": "C201 Flex", "price": 950, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/05/C201-300x300.png"], "url": "https://orac-decor.com/product/c201-flex/"},
+        {"id": "orac-c211", "name": "C211", "price": 2244, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/05/C211-300x300.png"], "url": "https://orac-decor.com/product/c211/"},
+        {"id": "orac-c211-flex", "name": "C211 Flex", "price": 4488, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/05/C211-300x300.png"], "url": "https://orac-decor.com/product/c211-flex/"},
+        {"id": "orac-c212", "name": "C212", "price": 1266, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/05/C212-300x300.png"], "url": "https://orac-decor.com/product/c212/"},
+        {"id": "orac-c213", "name": "C213", "price": 1332, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/05/C213-300x300.png"], "url": "https://orac-decor.com/product/c213/"},
+        {"id": "orac-c213-flex", "name": "C213 Flex", "price": 2664, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/05/C213-300x300.png"], "url": "https://orac-decor.com/product/c213-flex/"},
+        {"id": "orac-c215", "name": "C215", "price": 894, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/05/C215-300x300.png"], "url": "https://orac-decor.com/product/c215/"},
+        {"id": "orac-c215-flex", "name": "C215 Flex", "price": 1788, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/05/C215-300x300.png"], "url": "https://orac-decor.com/product/c215-flex/"},
+        {"id": "orac-c216", "name": "C216", "price": 2184, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/05/C216-300x300.png"], "url": "https://orac-decor.com/product/c216/"}
+      ]
+    },
+    {
+      "id": "orac-plinth",
+      "title": "Плінтус",
+      "description": "Плінтуси ORAC DECOR для оздоблення стикування стін і підлоги.",
+      "url": "https://orac-decor.com/product-category/плінтус/",
+      "products": [
+        {"id": "orac-dx157-2600", "name": "DX157 2600", "price": 576, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/06/sx157-300x300.png"], "url": "https://orac-decor.com/product/dx157/"},
+        {"id": "orac-dx163-2600", "name": "DX163 2600", "price": 780, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/06/sx163-300x300.png"], "url": "https://orac-decor.com/product/dx163/"},
+        {"id": "orac-sx104", "name": "SX104", "price": 972, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/06/SX104-300x300.png"], "url": "https://orac-decor.com/product/sx104/"},
+        {"id": "orac-sx104-flex", "name": "SX104 Flex", "price": 3882, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/06/SX104-300x300.png"], "url": "https://orac-decor.com/product/sx104-flex/"},
+        {"id": "orac-sx105", "name": "SX105", "price": 702, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/06/SX105-300x300.png"], "url": "https://orac-decor.com/product/sx105-2/"},
+        {"id": "orac-sx105-flex", "name": "SX105 Flex", "price": 2808, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/06/SX105-300x300.png"], "url": "https://orac-decor.com/product/sx105-flex/"},
+        {"id": "orac-sx118", "name": "SX118", "price": 984, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/06/SX118-CONTOUR-300x300.png"], "url": "https://orac-decor.com/product/sx105/"},
+        {"id": "orac-sx118-flex", "name": "SX118 Flex", "price": 3996, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/06/SX118-CONTOUR-300x300.png"], "url": "https://orac-decor.com/product/sx118-flex/"},
+        {"id": "orac-sx118-ral9003", "name": "SX118 RAL9003", "price": 1086, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/06/SX118-CONTOUR-300x300.png"], "url": "https://orac-decor.com/product/sx118ral9003/"},
+        {"id": "orac-sx125", "name": "SX125", "price": 432, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/06/SX125-300x300.png"], "url": "https://orac-decor.com/product/sx125/"},
+        {"id": "orac-sx137", "name": "SX137", "price": 654, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/06/SX137-300x300.png"], "url": "https://orac-decor.com/product/sx137/"},
+        {"id": "orac-sx137-flex", "name": "SX137 Flex", "price": 2598, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/06/SX137-300x300.png"], "url": "https://orac-decor.com/product/sx137-flex/"}
+      ]
+    },
+    {
+      "id": "orac-lighting",
+      "title": "Приховане освітлення",
+      "description": "Системи прихованого освітлення ORAC DECOR для створення атмосферних ефектів.",
+      "url": "https://orac-decor.com/product-category/приховане-освітлення/",
+      "products": [
+        {"id": "orac-c323", "name": "C323", "price": 1416, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2020/01/c323_2-300x300.png"], "url": "https://orac-decor.com/product/c323/"},
+        {"id": "orac-c324", "name": "C324", "price": 1932, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2020/01/c324_2-300x300.png"], "url": "https://orac-decor.com/product/c324/"},
+        {"id": "orac-c328", "name": "C328", "price": 2832, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2026/04/c328_il_1_-300x300.png"], "url": "https://orac-decor.com/product/c328/"},
+        {"id": "orac-c351", "name": "C351", "price": 1800, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/05/c351-300x300.png"], "url": "https://orac-decor.com/product/c351/"},
+        {"id": "orac-c352", "name": "C352", "price": 3480, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/05/c352-300x300.png"], "url": "https://orac-decor.com/product/c352/"},
+        {"id": "orac-c357", "name": "C357", "price": 2700, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/05/c357-300x300.png"], "url": "https://orac-decor.com/product/c357/"},
+        {"id": "orac-c361", "name": "C361", "price": 1932, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/05/c361-300x300.png"], "url": "https://orac-decor.com/product/c361/"},
+        {"id": "orac-c362", "name": "C362", "price": 1926, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/05/c362-300x300.png"], "url": "https://orac-decor.com/product/c362/"},
+        {"id": "orac-c364", "name": "C364", "price": 1800, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/05/c364-300x300.png"], "url": "https://orac-decor.com/product/c364/"},
+        {"id": "orac-c371", "name": "C371", "price": 2964, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/05/C371-SHADE-300x300.png"], "url": "https://orac-decor.com/product/c371/"},
+        {"id": "orac-c372", "name": "C372", "price": 1800, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/05/C372-FLUXUS-300x300.png"], "url": "https://orac-decor.com/product/c372/"},
+        {"id": "orac-c373", "name": "C373", "price": 1992, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/05/C373-ANTONIO-300x300.png"], "url": "https://orac-decor.com/product/c373/"}
+      ]
+    },
+    {
+      "id": "orac-glue",
+      "title": "Клей",
+      "description": "Клеї ORAC DECOR для монтажу декоративних елементів.",
+      "url": "https://orac-decor.com/product-category/клей/",
+      "products": [
+        {"id": "orac-adefix-p5", "name": "Adefix P5", "price": 1100, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/05/adhefix-nf-300x300.jpg"], "url": "https://orac-decor.com/product/adefix-p5/"},
+        {"id": "orac-adefix-p5-310ml", "name": "Adefix P5 310мл", "price": 200, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/05/adhefix-nf-300x300.jpg"], "url": "https://orac-decor.com/product/adefix-p5-310ml/"},
+        {"id": "orac-deco-filler-fl300", "name": "Deco Filler FL300", "price": 588, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/05/deco-filler-300x300.jpg"], "url": "https://orac-decor.com/product/deco-filler-fl300/"},
+        {"id": "orac-decofix-extra-fx400", "name": "Decofix Extra FX 400", "price": 1488, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/05/decofix-extra-300x300.jpg"], "url": "https://orac-decor.com/product/decofix-extra-fx-400/"},
+        {"id": "orac-decofix-hydro-fdp700", "name": "Decofix Hydro FDP 700", "price": 840, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/05/decofix-hydro-300x300.jpg"], "url": "https://orac-decor.com/product/decofix-hydro-fdp-700/"},
+        {"id": "orac-decofix-pro-fdp500", "name": "Decofix Pro FDP 500", "price": 294, "price_currency": "UAH", "photos": ["https://orac-decor.com/wp-content/uploads/2018/05/decofix-pro-300x300.jpg"], "url": "https://orac-decor.com/product/decofix-pro-fdp-500/"}
+      ]
+    }
+  ]
+}
