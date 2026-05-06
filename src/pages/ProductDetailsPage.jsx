@@ -121,13 +121,7 @@ export default function ProductDetailsPage() {
               </p>
             )}
 
-            {(product.colorsCollection || product.colorsCount) && !hasColors && (
-              <p className="product-details-desc" style={{ marginTop: '-0.5rem' }}>
-                <strong>Кольорова гамма:</strong>{' '}
-                {product.colorsCollection ? product.colorsCollection : 'Колекція'}
-                {product.colorsCount ? ` - ${product.colorsCount} відтінків` : ''}
-              </p>
-            )}
+          
 
             {product.colorsNote && !hasColors && (
               <p className="product-details-desc" style={{ marginTop: '-0.5rem' }}>
@@ -205,17 +199,7 @@ export default function ProductDetailsPage() {
               </div>
             )}
 
-            {Array.isArray(product.tags) && product.tags.length > 0 && (
-              <div className="product-details-tags">
-                {product.tags.map((tag) => (
-                  <span key={tag} className="product-details-tag">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            )}
-
-            <div className="product-details-price">{priceLabel}</div>
+            {priceLabel && <div className="product-details-price">{priceLabel}</div>}
 
             {priceVariants.length > 0 && (
               <div className="product-price-variants">

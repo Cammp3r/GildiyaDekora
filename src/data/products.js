@@ -349,7 +349,10 @@ function normalizePriceVariants(variants, currency = '') {
         price,
       }
     })
-    .filter((variant) => variant.volume && Number.isFinite(Number(variant.price)))
+    .filter((variant) => {
+      const price = Number(variant.price)
+      return variant.volume && Number.isFinite(price) && price > 0
+    })
 }
 
 function mapProduct(product, { brand = 'oikos', category, subcategory, sectionId }) {
