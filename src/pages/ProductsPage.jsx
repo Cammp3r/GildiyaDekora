@@ -94,7 +94,7 @@ export default function ProductsPage() {
       const params = new URLSearchParams()
       if (brand && brand !== 'oikos') params.set('brand', brand)
       if (category && category !== 'all') params.set('category', category)
-      if (query.trim()) params.set('q', query.trim())
+      if (query) params.set('q', query)
       if (page > 1) params.set('page', String(page))
       return params
     },
@@ -225,7 +225,6 @@ export default function ProductsPage() {
               </div>
               <div className="product-info">
                 <h3 className="product-name">{product.title}</h3>
-                <p className="product-desc">{product.description}</p>
                 {product.effect && (
                   <p className="product-effect">
                     <strong>Ефект:</strong> {product.effect}
