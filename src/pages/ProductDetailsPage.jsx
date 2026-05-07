@@ -52,10 +52,10 @@ export default function ProductDetailsPage() {
   const quantity = quantityByProduct[product.id] ?? 1
   const rawPrice = selectedVariant?.price ?? product.price
   const price = typeof rawPrice === 'number' ? rawPrice : Number(rawPrice)
-  const priceLabel =
-    Number.isFinite(price) && price > 0 ? `${price.toLocaleString('uk-UA')} грн` : ''
-  const lineTotal =
-    Number.isFinite(price) && price > 0 ? price * Number(quantity || 0) : 0
+  const hasPrice = Number.isFinite(price) && price > 0
+  const shouldShowContactPriceButton = product.brand === 'orac-decor' && !hasPrice
+  const priceLabel = hasPrice ? `${price.toLocaleString('uk-UA')} грн` : ''
+  const lineTotal = hasPrice ? price * Number(quantity || 0) : 0
 
   return (
     <section className="product-details">
@@ -213,60 +213,68 @@ export default function ProductDetailsPage() {
             )}
 
             <div className="product-details-actions">
-              <div className="product-details-buy">
-                {priceVariants.length > 0 && (
+              {!shouldShowContactPriceButton && (
+                <div className="product-details-buy">
+                  {priceVariants.length > 0 && (
+                    <label className="cart-label">
+                      Об'єм
+                      <select
+                        className="cart-input"
+                        value={selectedVariantId}
+                        onChange={(e) =>
+                          setSelectedVariantByProduct((prev) => ({
+                            ...prev,
+                            [product.id]: e.target.value,
+                          }))
+                        }
+                      >
+                        {priceVariants.map((variant) => (
+                          <option key={variant.id} value={variant.id}>
+                            {variant.volume} - {Number(variant.price).toLocaleString('uk-UA')} грн
+                          </option>
+                        ))}
+                      </select>
+                    </label>
+                  )}
                   <label className="cart-label">
-                    Об'єм
-                    <select
+                    Кількість
+                    <input
                       className="cart-input"
-                      value={selectedVariantId}
+                      type="number"
+                      min="1"
+                      step="1"
+                      value={quantity}
                       onChange={(e) =>
-                        setSelectedVariantByProduct((prev) => ({
+                        setQuantityByProduct((prev) => ({
                           ...prev,
                           [product.id]: e.target.value,
                         }))
                       }
-                    >
-                      {priceVariants.map((variant) => (
-                        <option key={variant.id} value={variant.id}>
-                          {variant.volume} - {Number(variant.price).toLocaleString('uk-UA')} грн
-                        </option>
-                      ))}
-                    </select>
+                    />
                   </label>
-                )}
-                <label className="cart-label">
-                  Кількість
-                  <input
-                    className="cart-input"
-                    type="number"
-                    min="1"
-                    step="1"
-                    value={quantity}
-                    onChange={(e) =>
-                      setQuantityByProduct((prev) => ({
-                        ...prev,
-                        [product.id]: e.target.value,
-                      }))
-                    }
-                  />
-                </label>
-                <button
-                  type="button"
-                  className="add-btn"
-                  onClick={() => addItem(product, selectedVariant, quantity)}
-                >
-                  В кошик
-                </button>
-              </div>
+                  <button
+                    type="button"
+                    className="add-btn"
+                    onClick={() => addItem(product, selectedVariant, quantity)}
+                  >
+                    В кошик
+                  </button>
+                </div>
+              )}
               {lineTotal > 0 && (
                 <div className="product-details-total">
                   Разом: <strong>{lineTotal.toLocaleString('uk-UA')} грн</strong>
                 </div>
               )}
-              <Link to="/contact" className="add-btn">
+              {shouldShowContactPriceButton && (
+                <Link to="/contact" className="add-btn">
+                  Дізнатись ціну
+                </Link>
+              )}
+              {shouldShowContactPriceButton || (<Link to="/contact" className="add-btn">
                 Замовити консультацію
-              </Link>
+              </Link>)}
+              
             </div>
           </div>
         </div>
