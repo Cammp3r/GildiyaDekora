@@ -255,7 +255,7 @@ export default function ProductDetailsPage() {
                   <button
                     type="button"
                     className="add-btn"
-                    onClick={() => addItem(product, selectedVariant, quantity)}
+                    onClick={() => addItem(product, selectedVariant, quantity, selectedTexture, selectedColor)}
                   >
                     В кошик
                   </button>

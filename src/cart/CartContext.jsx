@@ -19,21 +19,21 @@ function clampMin(value, min) {
 function cartReducer(state, action) {
   switch (action.type) {
     case 'ADD_ITEM': {
-      const { item, quantity } = action.payload
+      const { item, quantity, texture, color } = action.payload
       const nextQuantity = clampMin(toNumber(quantity, 1), 1)
 
-      const existingIndex = state.items.findIndex((x) => x.id === item.id)
+      const itemId = `${item.id}:${item.variantId}:${texture || ''}:${color || ''}`
+      const existingIndex = state.items.findIndex((x) => x.cartId === itemId)
       if (existingIndex === -1) {
         return {
           ...state,
-          items: [...state.items, { ...item, quantity: nextQuantity }],
+          items: [...state.items, { ...item, cartId: itemId, quantity: nextQuantity, texture, color }],
         }
       }
 
       const existing = state.items[existingIndex]
       const merged = {
         ...existing,
-        ...item,
         quantity: toNumber(existing.quantity, 0) + nextQuantity,
       }
 
@@ -99,7 +99,7 @@ export function CartProvider({ children }) {
       totalQuantity,
       totalPrice,
 
-      addItem: (product, variant = null, quantity = 1) => {
+      addItem: (product, variant = null, quantity = 1, texture = null, color = null) => {
         if (!product?.id) return
         const selectedVariant = variant ?? product.priceVariants?.[0] ?? null
         const variantId = selectedVariant?.id ?? selectedVariant?.volume ?? 'default'
@@ -121,6 +121,8 @@ export function CartProvider({ children }) {
               priceCurrency: 'UAH',
             },
             quantity,
+            texture,
+            color,
           },
         })
       },
@@ -134,6 +136,7 @@ export function CartProvider({ children }) {
       },
 
       clear: () => dispatch({ type: 'CLEAR' }),
+      clearCart: () => dispatch({ type: 'CLEAR' }),
     }
   }, [state.items])
 

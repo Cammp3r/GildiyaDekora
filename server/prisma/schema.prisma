@@ -1,0 +1,48 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Order {
+  id        Int     @id @default(autoincrement())
+  orderId   String  @unique // Внешний ID для LiqPay
+  items     String  @db.Text // JSON array
+  amount    Float
+  currency  String  @default("UAH")
+  status    String  @default("pending") // pending, paid, failed, cancelled
+  
+  // Customer info
+  customerName String?
+  customerEmail String?
+  customerPhone String?
+  
+  // Payment info
+  liqpayOrderId String? @unique
+  liqpayData    String? @db.Text
+  liqpaySignature String?
+  
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  @@index([status])
+  @@index([orderId])
+}
+
+model PaymentLog {
+  id        Int     @id @default(autoincrement())
+  orderId   String
+  action    String  // webhook_received, signature_verified, status_updated, etc
+  payload   String  @db.Text // JSON
+  timestamp DateTime @default(now())
+  
+  @@index([orderId])
+  @@index([timestamp])
+}
