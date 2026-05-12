@@ -1,6 +1,7 @@
-import { createContext, useContext, useMemo, useReducer } from 'react'
+import { createContext, useContext, useEffect, useMemo, useReducer } from 'react'
 
 const CartContext = createContext(null)
+const CART_STORAGE_KEY = 'gildiya-dekora-cart-v1'
 
 const initialState = {
   items: [],
@@ -14,6 +15,44 @@ function toNumber(value, fallback = 0) {
 
 function clampMin(value, min) {
   return value < min ? min : value
+}
+
+function normalizeStoredItem(item) {
+  if (!item || typeof item !== 'object' || !item.id) return null
+
+  return {
+    id: String(item.id),
+    cartId: String(item.cartId ?? item.id),
+    productId: String(item.productId ?? ''),
+    variantId: String(item.variantId ?? 'default'),
+    title: String(item.title ?? ''),
+    image: String(item.image ?? ''),
+    variantTitle: String(item.variantTitle ?? ''),
+    volume: String(item.volume ?? ''),
+    unitPrice: toNumber(item.unitPrice, null),
+    priceCurrency: String(item.priceCurrency ?? 'UAH'),
+    quantity: clampMin(toNumber(item.quantity, 1), 1),
+    texture: item.texture ?? null,
+    color: item.color ?? null,
+  }
+}
+
+function loadStoredCart() {
+  if (typeof window === 'undefined') return initialState
+
+  try {
+    const raw = window.localStorage.getItem(CART_STORAGE_KEY)
+    if (!raw) return initialState
+
+    const parsed = JSON.parse(raw)
+    const items = Array.isArray(parsed?.items)
+      ? parsed.items.map(normalizeStoredItem).filter(Boolean)
+      : []
+
+    return { items }
+  } catch {
+    return initialState
+  }
 }
 
 function cartReducer(state, action) {
@@ -78,7 +117,15 @@ function cartReducer(state, action) {
 }
 
 export function CartProvider({ children }) {
-  const [state, dispatch] = useReducer(cartReducer, initialState)
+  const [state, dispatch] = useReducer(cartReducer, initialState, loadStoredCart)
+
+  useEffect(() => {
+    try {
+      window.localStorage.setItem(CART_STORAGE_KEY, JSON.stringify({ items: state.items }))
+    } catch {
+      // localStorage can be unavailable in private browsing or restricted environments.
+    }
+  }, [state.items])
 
   const api = useMemo(() => {
     const totalDistinctItems = state.items.length

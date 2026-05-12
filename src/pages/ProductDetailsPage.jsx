@@ -73,10 +73,16 @@ export default function ProductDetailsPage() {
 
         <h2 className="section-title">{product.title}</h2>
 
-        <div className={`product-details-grid ${product.brand === 'orac-decor' ? 'orac-details-grid' : ''}`}>
+        <div
+          className={`product-details-grid ${
+            product.brand === 'orac-decor' ? 'orac-details-grid' : 'oikos-details-grid'
+          }`}
+        >
           <div className="product-details-media">
             <img
-              className={`product-details-image ${product.brand === 'orac-decor' ? 'orac-image' : ''}`}
+              className={`product-details-image ${
+                product.brand === 'orac-decor' ? 'orac-image' : 'oikos-image'
+              }`}
               src={activePhoto || product.image}
               alt={product.title}
               loading="eager"

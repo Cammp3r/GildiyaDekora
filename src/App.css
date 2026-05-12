@@ -1275,6 +1275,10 @@ section {
   grid-template-columns: minmax(0, 1.35fr) minmax(340px, 0.85fr);
 }
 
+.product-details-grid.oikos-details-grid {
+  grid-template-columns: minmax(0, 1.2fr) minmax(340px, 0.9fr);
+}
+
 .product-details-image {
   width: 100%;
   aspect-ratio: 4 / 3;
@@ -1290,6 +1294,11 @@ section {
   min-height: 560px;
   object-fit: contain;
   background: #fff;
+}
+
+.product-details-image.oikos-image {
+  aspect-ratio: 16 / 10;
+  min-height: 520px;
 }
 
 .product-details-badges {
@@ -1734,6 +1743,10 @@ section {
     grid-template-columns: 1fr;
   }
 
+  .product-details-grid.oikos-details-grid {
+    grid-template-columns: 1fr;
+  }
+
   .product-details-thumbs,
   .product-details-textures,
   .product-details-colors {
@@ -2033,6 +2046,10 @@ footer .logo-text {
     min-height: 420px;
   }
 
+  .product-details-image.oikos-image {
+    min-height: 420px;
+  }
+
   .gallery-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -2108,6 +2125,10 @@ footer .logo-text {
   }
 
   .product-details-image.orac-image {
+    min-height: 320px;
+  }
+
+  .product-details-image.oikos-image {
     min-height: 320px;
   }
 
