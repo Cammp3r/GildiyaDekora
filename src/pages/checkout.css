@@ -10,6 +10,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
   margin-top: 2rem;
+  min-width: 0;
 }
 
 /* Form Section */
@@ -18,6 +19,7 @@
   padding: 2rem;
   border-radius: 8px;
   border: 1px solid #e5e5e5;
+  min-width: 0;
 }
 
 .checkout-form fieldset {
@@ -48,6 +50,7 @@
 
 .checkout-input {
   width: 100%;
+  min-width: 0;
   padding: 0.75rem;
   margin-top: 0.5rem;
   border: 1px solid #ddd;
@@ -108,6 +111,7 @@
   padding: 2rem;
   border-radius: 8px;
   border: 1px solid #e5e5e5;
+  min-width: 0;
 }
 
 .checkout-summary h3 {
@@ -137,6 +141,7 @@
   margin-bottom: 0.5rem;
   color: #333;
   font-size: 0.95rem;
+  overflow-wrap: anywhere;
 }
 
 .checkout-item-details {
@@ -174,6 +179,7 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1.5rem;
+  gap: 1rem;
 }
 
 .checkout-total-label {
@@ -185,6 +191,7 @@
   font-size: 1.5rem;
   font-weight: 700;
   color: #667eea;
+  overflow-wrap: anywhere;
 }
 
 .checkout-info {
@@ -211,8 +218,13 @@
 
 /* Responsive */
 @media (max-width: 768px) {
+  .checkout {
+    padding: 3.5rem 1rem;
+  }
+
   .checkout-grid {
     grid-template-columns: 1fr;
+    gap: 1.25rem;
   }
 
   .checkout-summary-section {
@@ -226,5 +238,25 @@
 
   .checkout-items {
     max-height: none;
+  }
+
+  .checkout-total {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 520px) {
+  .checkout-form-section,
+  .checkout-summary {
+    padding: 1rem;
+  }
+
+  .checkout-submit {
+    font-size: 0.95rem;
+  }
+
+  .checkout-total-amount {
+    font-size: 1.25rem;
   }
 }

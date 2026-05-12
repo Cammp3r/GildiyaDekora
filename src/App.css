@@ -303,13 +303,30 @@ body {
   }
 
   .dropdown-menu.open {
-    display: flex;
+    display: grid;
     flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+    margin-top: 0.7rem;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.45);
+    border: 1px solid rgba(218, 201, 184, 0.55);
+    border-radius: 6px;
   }
 
   .dropdown-item {
-    padding: 0.6rem 1rem;
-    border-left: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 0.7rem 0.85rem;
+    border: 1px solid rgba(218, 201, 184, 0.65);
+    border-radius: 4px;
+    background: rgba(245, 240, 232, 0.78);
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-align: center;
+    opacity: 1;
   }
 
   .dropdown-item:first-child {
@@ -322,12 +339,16 @@ body {
 
   .dropdown-item:hover,
   .dropdown-item.active {
-    padding-left: 1rem;
-    border-left: none;
+    padding-left: 0.85rem;
+    border-left: 1px solid var(--accent);
+    border-color: var(--accent);
+    background: rgba(196, 112, 58, 0.1);
   }
 
   .nav-link {
     font-size: 0.6rem;
+    justify-content: center;
+    width: 100%;
   }
 
   .dropdown-arrow {
@@ -1329,6 +1350,7 @@ section {
   color: var(--muted);
   margin-bottom: 1rem;
   line-height: 1.8;
+  overflow-wrap: anywhere;
 }
 
 .product-characteristics {
@@ -1357,6 +1379,7 @@ section {
   grid-template-columns: minmax(90px, 0.8fr) minmax(0, 1fr);
   gap: 1rem;
   align-items: baseline;
+  min-width: 0;
 }
 
 .product-characteristics dt,
@@ -1371,6 +1394,7 @@ section {
 .product-characteristics dd {
   color: var(--ink);
   font-weight: 700;
+  overflow-wrap: anywhere;
 }
 
 .product-details-tags {
@@ -1509,6 +1533,7 @@ section {
 .cart-item-title {
   font-size: 1.1rem;
   font-weight: 300;
+  overflow-wrap: anywhere;
 }
 
 .cart-item-meta {
@@ -2015,11 +2040,11 @@ footer .logo-text {
   }
 
   section {
-    padding: 4rem 1.5rem;
+    padding: 3.5rem 1rem;
   }
 
   .container {
-    padding: 0 1.5rem;
+    padding: 0 1rem;
   }
 
   .products,
@@ -2027,7 +2052,18 @@ footer .logo-text {
   .contact,
   .about,
   .product-details {
-    padding: 4rem 1.5rem;
+    padding: 3.5rem 1rem;
+  }
+
+  .products > .container,
+  .gallery > .container,
+  .contact > .container,
+  .about > .container,
+  .cart > .container,
+  .checkout > .container,
+  .product-details > .container {
+    padding-left: 0;
+    padding-right: 0;
   }
 
   footer {
@@ -2039,15 +2075,17 @@ footer .logo-text {
   }
 
   .orac-swatch {
-    height: 340px;
+    height: clamp(280px, 82vw, 340px);
   }
 
   .product-details-image.orac-image {
-    min-height: 420px;
+    min-height: 0;
+    height: clamp(300px, 82vw, 420px);
   }
 
   .product-details-image.oikos-image {
-    min-height: 420px;
+    min-height: 0;
+    height: clamp(280px, 76vw, 420px);
   }
 
   .gallery-grid {
@@ -2109,6 +2147,35 @@ footer .logo-text {
     gap: 0.75rem;
     align-items: baseline;
   }
+
+  .product-actions {
+    width: 100%;
+  }
+
+  .product-actions .add-btn {
+    flex: 1 1 150px;
+    min-width: 0;
+  }
+
+  .product-details-buy,
+  .product-details-actions,
+  .cart-item-controls {
+    align-items: stretch;
+  }
+
+  .product-details-buy,
+  .product-details-buy .cart-label,
+  .product-details-actions,
+  .product-details-actions .add-btn,
+  .cart-input {
+    width: 100%;
+  }
+
+  .cart-summary-row,
+  .checkout-total {
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
 }
 
 @media (max-width: 520px) {
@@ -2121,15 +2188,15 @@ footer .logo-text {
   }
 
   .orac-swatch {
-    height: 300px;
+    height: clamp(240px, 78vw, 300px);
   }
 
   .product-details-image.orac-image {
-    min-height: 320px;
+    height: clamp(260px, 86vw, 320px);
   }
 
   .product-details-image.oikos-image {
-    min-height: 320px;
+    height: clamp(240px, 78vw, 320px);
   }
 
   .logo img {
@@ -2148,5 +2215,16 @@ footer .logo-text {
   .filter-btn {
     padding: 0.6rem 1rem;
     font-size: 0.65rem;
+  }
+
+  .product-characteristics-row {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
+  }
+
+  .product-details-thumbs,
+  .product-details-textures,
+  .product-details-colors {
+    gap: 8px;
   }
 }
