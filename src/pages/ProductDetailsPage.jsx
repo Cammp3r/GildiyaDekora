@@ -56,6 +56,8 @@ export default function ProductDetailsPage() {
   const shouldShowContactPriceButton = product.brand === 'orac-decor' && !hasPrice
   const priceLabel = hasPrice ? `${price.toLocaleString('uk-UA')} грн` : ''
   const lineTotal = hasPrice ? price * Number(quantity || 0) : 0
+  const characteristics = Array.isArray(product.characteristics) ? product.characteristics : []
+  const hasCharacteristics = characteristics.length > 0
 
   return (
     <section className="product-details">
@@ -114,6 +116,20 @@ export default function ProductDetailsPage() {
             </div>
 
             {product.description && <p className="product-details-desc">{product.description}</p>}
+
+            {hasCharacteristics && (
+              <div className="product-characteristics">
+                <h3>Характеристики</h3>
+                <dl>
+                  {characteristics.map((item) => (
+                    <div key={item.key} className="product-characteristics-row">
+                      <dt>{item.label}</dt>
+                      <dd>{item.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            )}
 
             {product.effect && (
               <p className="product-effect">

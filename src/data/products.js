@@ -334,6 +334,47 @@ function translateOracText(text) {
     .trim()
 }
 
+const ORAC_CHARACTERISTIC_LABELS = {
+  length: 'Довжина',
+  height: 'Висота',
+  width: 'Ширина',
+  material: 'Матеріал',
+  country: 'Країна-виробник',
+}
+
+const ORAC_CHARACTERISTIC_ORDER = ['length', 'height', 'width', 'material', 'country']
+
+const ORAC_CHARACTERISTIC_VALUE_REPLACEMENTS = [
+  [/Полиуретан/gi, 'Поліуретан'],
+  [/Дюрополимер/gi, 'Дюрополімер'],
+  [/Полистирол/gi, 'Полістирол'],
+  [/Бельгия/gi, 'Бельгія'],
+]
+
+function formatOracCharacteristicValue(key, value) {
+  const rawValue = String(value ?? '').trim()
+  if (!rawValue) return ''
+
+  if (['length', 'height', 'width'].includes(key)) {
+    return /\bмм\b/i.test(rawValue) ? rawValue : `${rawValue} мм`
+  }
+
+  return ORAC_CHARACTERISTIC_VALUE_REPLACEMENTS.reduce(
+    (result, [pattern, replacement]) => result.replace(pattern, replacement),
+    rawValue
+  )
+}
+
+function normalizeOracCharacteristics(characteristics) {
+  if (!characteristics || typeof characteristics !== 'object') return []
+
+  return ORAC_CHARACTERISTIC_ORDER.map((key) => ({
+    key,
+    label: ORAC_CHARACTERISTIC_LABELS[key],
+    value: formatOracCharacteristicValue(key, characteristics[key]),
+  })).filter((item) => item.value)
+}
+
 function normalizePriceVariants(variants, currency = '') {
   return toArray(variants)
     .filter(Boolean)
@@ -397,6 +438,8 @@ function mapProduct(product, { brand = 'oikos', category, subcategory, sectionId
     photos,
     colors,
     textures,
+    characteristics:
+      brand === 'orac-decor' ? normalizeOracCharacteristics(product.characteristics) : [],
     unitPrice: convertedPrice,
     price: convertedPrice,
     priceCurrency: 'UAH',
