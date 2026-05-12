@@ -28,7 +28,7 @@
           "colors_count": 0,
           "textures": [],
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/41A_argilla-materica-banner.jpg"
+            "/products/oikos/41a-argilla-materica-banner-ee039210ab.webp"
           ],
           "eco": true,
           "url": "https://www.oikos.ua/textured-decoratives/argilla-materica",
@@ -84,10 +84,10 @@
           "colors_count": 0,
           "textures": [],
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/46_aureum-casa-Fisic-1920x1080.jpg",
-            "https://b2ccms.oikos-group.it/upload/46_aureum_fs2012_Frau_1920x1080.jpg",
-            "https://b2ccms.oikos-group.it/upload/46_aureum-01-1920x1080.jpg",
-            "https://b2ccms.oikos-group.it/upload/46_aureum-02-1920x1080.jpg"
+            "/products/oikos/46-aureum-casa-fisic-1920x1080-e45da24223.webp",
+            "/products/oikos/46-aureum-fs2012-frau-1920x1080-19b47709a4.webp",
+            "/products/oikos/46-aureum-01-1920x1080-2cfa4f93b9.webp",
+            "/products/oikos/46-aureum-02-1920x1080-5b95bbe101.webp"
           ],
           "eco": true,
           "url": "https://www.oikos.ua/textured-decoratives/aureum",
@@ -209,30 +209,30 @@
           "textures": [
             {
               "name": "CEMENTO CASSERATO",
-              "url": "https://b2ccms.oikos-group.it/upload/F80G_casserato-400x300.jpg"
+              "url": "/products/oikos/f80g-casserato-400x300-8efaa80993.webp"
             },
             {
               "name": "CEMENTO GRAFFIATO",
-              "url": "https://b2ccms.oikos-group.it/upload/F80G_graffiato-400x300.jpg"
+              "url": "/products/oikos/f80g-graffiato-400x300-be9d129c56.webp"
             },
             {
               "name": "CEMENTO INDUSTRIALE",
-              "url": "https://b2ccms.oikos-group.it/upload/F80G_elicotterato-400x300.jpg"
+              "url": "/products/oikos/f80g-elicotterato-400x300-0902974dcd.webp"
             },
             {
               "name": "CEMENTO SPAZZOLATO",
-              "url": "https://b2ccms.oikos-group.it/upload/F80G_spazzolato-400x300.jpg"
+              "url": "/products/oikos/f80g-spazzolato-400x300-85ce8d91e3.webp"
             },
             {
               "name": "CEMENTO STRAPPATO",
-              "url": "https://b2ccms.oikos-group.it/upload/F80G_strappato-400x300.jpg"
+              "url": "/products/oikos/f80g-strappato-400x300-8bfb85a008.webp"
             }
           ],
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/80G_cemento-1920x1080-04.jpg",
-            "https://b2ccms.oikos-group.it/upload/80G_cemento-1920x1080-05.jpg",
-            "https://b2ccms.oikos-group.it/upload/80G_cemento-1920x1080-01.jpg",
-            "https://b2ccms.oikos-group.it/upload/80G_cemento-1920x1080-02.jpg"
+            "/products/oikos/80g-cemento-1920x1080-04-23da57f7b3.webp",
+            "/products/oikos/80g-cemento-1920x1080-05-7be737dd33.webp",
+            "/products/oikos/80g-cemento-1920x1080-01-7924667ea5.webp",
+            "/products/oikos/80g-cemento-1920x1080-02-24cd069341.webp"
           ],
           "eco": true,
           "url": "https://www.oikos.ua/textured-decoratives/cementomaterico",
@@ -273,9 +273,9 @@
           "colors_count": 0,
           "textures": [],
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/89_decorglitter-BIANCO-081stellato.jpg",
-            "https://b2ccms.oikos-group.it/upload/89_decorglitter-BIANCO-041stellato.jpg",
-            "https://b2ccms.oikos-group.it/upload/89_decorglitter-BIANCO-056stellato.jpg"
+            "/products/oikos/89-decorglitter-bianco-081stellato-314241c875.webp",
+            "/products/oikos/89-decorglitter-bianco-041stellato-404f7a6add.webp",
+            "/products/oikos/89-decorglitter-bianco-056stellato-1fd422b4dd.webp"
           ],
           "eco": true,
           "url": "https://www.oikos.ua/textured-decoratives/decorglitter",
@@ -338,9 +338,9 @@
           "colors_note": "Повна гама: 91 відтінок (A340–A900)",
           "textures": [],
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/42_duca-venezia-1920x1080-01.jpg",
-            "https://b2ccms.oikos-group.it/upload/42_duca-venezia-1920x1080-02.jpg",
-            "https://b2ccms.oikos-group.it/upload/42_duca-venezia-1920x1080-03.jpg"
+            "/products/oikos/42-duca-venezia-1920x1080-01-48fa72eca4.webp",
+            "/products/oikos/42-duca-venezia-1920x1080-02-6dfe63158a.webp",
+            "/products/oikos/42-duca-venezia-1920x1080-03-02f117fe86.webp"
           ],
           "eco": true,
           "url": "https://www.oikos.ua/textured-decoratives/ducadivenezia",
@@ -383,38 +383,38 @@
           "textures": [
             {
               "name": "CYGNUS",
-              "url": "https://b2ccms.oikos-group.it/upload/F44_encanto-cygnus.jpg"
+              "url": "/products/oikos/f44-encanto-cygnus-1d1d643957.webp"
             },
             {
               "name": "IZAR",
-              "url": "https://b2ccms.oikos-group.it/upload/F44_encanto-izar.jpg"
+              "url": "/products/oikos/f44-encanto-izar-bfa8964b30.webp"
             },
             {
               "name": "PEGASO",
-              "url": "https://b2ccms.oikos-group.it/upload/F44_encanto-pegaso.jpg"
+              "url": "/products/oikos/f44-encanto-pegaso-aa7fa25b41.webp"
             },
             {
               "name": "PERSEO",
-              "url": "https://b2ccms.oikos-group.it/upload/F44_encanto-perseo.jpg"
+              "url": "/products/oikos/f44-encanto-perseo-7c8b352aa7.webp"
             },
             {
               "name": "STANDARD",
-              "url": "https://b2ccms.oikos-group.it/upload/F44_encanto.jpg"
+              "url": "/products/oikos/f44-encanto-a49c220bfd.webp"
             },
             {
               "name": "STELLATO",
-              "url": "https://b2ccms.oikos-group.it/upload/F44_encanto-stellato.jpg"
+              "url": "/products/oikos/f44-encanto-stellato-b775779edd.webp"
             },
             {
               "name": "VERTICALE",
-              "url": "https://b2ccms.oikos-group.it/upload/F44_encanto-verticale.jpg"
+              "url": "/products/oikos/f44-encanto-verticale-e495a3f238.webp"
             }
           ],
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/44_encanto-ELLEDUE_8890.jpg",
-            "https://b2ccms.oikos-group.it/upload/44_encanto-PN-CP-Parete-Nicchia-2.jpg",
-            "https://b2ccms.oikos-group.it/upload/44_encanto-minks-marriot-(1).jpg",
-            "https://b2ccms.oikos-group.it/upload/44_encanto-1920x1080.jpg"
+            "/products/oikos/44-encanto-elledue-8890-94c930d859.webp",
+            "/products/oikos/44-encanto-pn-cp-parete-nicchia-2-dd1d73dc5b.webp",
+            "/products/oikos/44-encanto-minks-marriot-1-fbcc68ddb9.webp",
+            "/products/oikos/44-encanto-1920x1080-f00ddd0984.webp"
           ],
           "eco": true,
           "url": "https://www.oikos.ua/textured-decoratives/encanto",
@@ -514,9 +514,9 @@
           "colors_count": 0,
           "textures": [],
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/82A_finitura-autolucidante-03.jpg",
-            "https://b2ccms.oikos-group.it/upload/82A_82A_finitura-autolucidante-03_xl.jpg",
-            "https://b2ccms.oikos-group.it/upload/82A_finitura-autolucidante-01.jpg"
+            "/products/oikos/82a-finitura-autolucidante-03-28d7753df2.webp",
+            "/products/oikos/82a-82a-finitura-autolucidante-03-xl-c0e19d518d.webp",
+            "/products/oikos/82a-finitura-autolucidante-01-306a142ecd.webp"
           ],
           "eco": true,
           "note": "Фінішне покриття для Marmorino Naturale",
@@ -587,7 +587,7 @@
           "colors_count": 0,
           "textures": [],
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/P004_finitura-madreperlataprodotto-1920-1080.jpg"
+            "/products/oikos/p004-finitura-madreperlataprodotto-1920-1080-7dd84c199a.webp"
           ],
           "eco": true,
           "url": "https://www.oikos.ua/textured-decoratives/finitura-madreperlata",
@@ -639,42 +639,42 @@
           "textures": [
             {
               "name": "METALLIZZATO OPACO",
-              "url": "https://b2ccms.oikos-group.it/upload/F48_300x300-imperium-metallizzato-opaco.jpg"
+              "url": "/products/oikos/f48-300x300-imperium-metallizzato-opaco-76efada0ff.webp"
             },
             {
               "name": "DELABRÉ",
-              "url": "https://b2ccms.oikos-group.it/upload/F48_300x300-imperium-delabre.jpg"
+              "url": "/products/oikos/f48-300x300-imperium-delabre-c4facb7bb1.webp"
             },
             {
               "name": "DORATURE",
-              "url": "https://b2ccms.oikos-group.it/upload/F48_300x300-imperium-dorature.jpg"
+              "url": "/products/oikos/f48-300x300-imperium-dorature-82e9875eca.webp"
             },
             {
               "name": "FOGLIA ORO",
-              "url": "https://b2ccms.oikos-group.it/upload/F48_300x300-imperium-foglia-oro.jpg"
+              "url": "/products/oikos/f48-300x300-imperium-foglia-oro-f744eea5e1.webp"
             },
             {
               "name": "METALLIZZATO",
-              "url": "https://b2ccms.oikos-group.it/upload/F48_300x300-imperium-metallizzato.jpg"
+              "url": "/products/oikos/f48-300x300-imperium-metallizzato-c114555b53.webp"
             },
             {
               "name": "ORO ANTICO",
-              "url": "https://b2ccms.oikos-group.it/upload/F48_300x300-imperium-oro-antico.jpg"
+              "url": "/products/oikos/f48-300x300-imperium-oro-antico-98dfc3e2f8.webp"
             },
             {
               "name": "POLVERE ORO",
-              "url": "https://b2ccms.oikos-group.it/upload/F48_300x300-imperium-polvere-oro.jpg"
+              "url": "/products/oikos/f48-300x300-imperium-polvere-oro-4fb97f008d.webp"
             },
             {
               "name": "SPAZZOLATO",
-              "url": "https://b2ccms.oikos-group.it/upload/F48_300x300-imperium-spazzolato.jpg"
+              "url": "/products/oikos/f48-300x300-imperium-spazzolato-63e6ae3c8f.webp"
             }
           ],
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/48_imperium-art-noba-02.jpg",
-            "https://b2ccms.oikos-group.it/upload/48_imperium-laboratorio-lanzani-3637.jpg",
-            "https://b2ccms.oikos-group.it/upload/48_imperium_0111.jpg",
-            "https://b2ccms.oikos-group.it/upload/48_imperium-delabre-negozio-brera-1920x1080.jpg"
+            "/products/oikos/48-imperium-art-noba-02-b81e8caee9.webp",
+            "/products/oikos/48-imperium-laboratorio-lanzani-3637-48939abfc8.webp",
+            "/products/oikos/48-imperium-0111-082172f9d6.webp",
+            "/products/oikos/48-imperium-delabre-negozio-brera-1920x1080-7ae3aa88ec.webp"
           ],
           "eco": true,
           "washable": true,
@@ -773,30 +773,30 @@
           "textures": [
             {
               "name": "KREOS",
-              "url": "https://b2ccms.oikos-group.it/upload/F14_kreos-300x300.jpg"
+              "url": "/products/oikos/f14-kreos-300x300-9d14e21171.webp"
             },
             {
               "name": "KREOS ARDESIA",
-              "url": "https://b2ccms.oikos-group.it/upload/F14_kreos-300x300-ardesia.jpg"
+              "url": "/products/oikos/f14-kreos-300x300-ardesia-cd6e531904.webp"
             },
             {
               "name": "KREOS FIL POSÈ",
-              "url": "https://b2ccms.oikos-group.it/upload/F14_kreos-300x300-fil-pose.jpg"
+              "url": "/products/oikos/f14-kreos-300x300-fil-pose-1b279d1903.webp"
             },
             {
               "name": "KREOS JUTA",
-              "url": "https://b2ccms.oikos-group.it/upload/F14_kreos-300x300-juta.jpg"
+              "url": "/products/oikos/f14-kreos-300x300-juta-f5637fa42a.webp"
             },
             {
               "name": "KREOS MOTUS",
-              "url": "https://b2ccms.oikos-group.it/upload/F14_kreos-300x300-motus.jpg"
+              "url": "/products/oikos/f14-kreos-300x300-motus-097977f68e.webp"
             }
           ],
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/14_kreos-03.jpg",
-            "https://b2ccms.oikos-group.it/upload/14_kreos-bianco-057.jpg",
-            "https://b2ccms.oikos-group.it/upload/14_kreos-slider-ardesia.jpg",
-            "https://b2ccms.oikos-group.it/upload/14_kreos-slider-juta.jpg"
+            "/products/oikos/14-kreos-03-a8dbac86a3.webp",
+            "/products/oikos/14-kreos-bianco-057-ad4764fd05.webp",
+            "/products/oikos/14-kreos-slider-ardesia-26b163b748.webp",
+            "/products/oikos/14-kreos-slider-juta-d977d83d6f.webp"
           ],
           "eco": true,
           "url": "https://www.oikos.ua/textured-decoratives/kreos",
@@ -851,9 +851,9 @@
           "colors_count": 0,
           "textures": [],
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/45_marmora-lunareIMG7897.jpg",
-            "https://b2ccms.oikos-group.it/upload/45_marmora-lunareIMG8724.jpg",
-            "https://b2ccms.oikos-group.it/upload/45_marmora-olivieri-brera-fs2016-011.jpg"
+            "/products/oikos/45-marmora-lunareimg7897-24c53c9caa.webp",
+            "/products/oikos/45-marmora-lunareimg8724-d0c31beb40.webp",
+            "/products/oikos/45-marmora-olivieri-brera-fs2016-011-e67491be4c.webp"
           ],
           "eco": true,
           "url": "https://www.oikos.ua/textured-decoratives/marmoraromana",
@@ -894,25 +894,25 @@
           "textures": [
             {
               "name": "MARMORINO NATURALE",
-              "url": "https://b2ccms.oikos-group.it/upload/F82B_marmorino-naturale-mini.jpg"
+              "url": "/products/oikos/f82b-marmorino-naturale-mini-c67fdb82d2.webp"
             },
             {
               "name": "MARMORINO NATURALE / M.N. FINE + FINITURA AUTOLUCIDANTE",
-              "url": "https://b2ccms.oikos-group.it/upload/F82B_fine-finitura-autolucidante-mini.jpg"
+              "url": "/products/oikos/f82b-fine-finitura-autolucidante-mini-566438c3cc.webp"
             },
             {
               "name": "MARMORINO NATURALE / M.N. FINE + SUPERFINISH 24",
-              "url": "https://b2ccms.oikos-group.it/upload/F82B_marm-superfinish24-mini.jpg"
+              "url": "/products/oikos/f82b-marm-superfinish24-mini-156621c23a.webp"
             },
             {
               "name": "MARMORINO NATURALE FINE",
-              "url": "https://b2ccms.oikos-group.it/upload/F82B_marmorino-naturale-fine-mini.jpg"
+              "url": "/products/oikos/f82b-marmorino-naturale-fine-mini-772b0f850e.webp"
             }
           ],
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/82B_marmorino-naturale-casa-showroom.jpg",
-            "https://b2ccms.oikos-group.it/upload/82B_marmorino-naturale-assorbimenti.jpg",
-            "https://b2ccms.oikos-group.it/upload/82B_marmorino-naturale-lenti-2016.jpg"
+            "/products/oikos/82b-marmorino-naturale-casa-showroom-932fa466ec.webp",
+            "/products/oikos/82b-marmorino-naturale-assorbimenti-d370952881.webp",
+            "/products/oikos/82b-marmorino-naturale-lenti-2016-cdeb4509c3.webp"
           ],
           "eco": true,
           "url": "https://www.oikos.ua/textured-decoratives/marmorinonaturale",
@@ -1029,9 +1029,9 @@
           ],
           "textures": [],
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/10_multidecor-shutterstock-(3).jpg",
-            "https://b2ccms.oikos-group.it/upload/10_multidecor-shutterstock-(1).jpg",
-            "https://b2ccms.oikos-group.it/upload/10_multidecor-shutterstock-(2).jpg"
+            "/products/oikos/10-multidecor-shutterstock-3-0c8b79452a.webp",
+            "/products/oikos/10-multidecor-shutterstock-1-d773266ed3.webp",
+            "/products/oikos/10-multidecor-shutterstock-2-76984a9e1c.webp"
           ],
           "eco": true,
           "url": "https://www.oikos.ua/textured-decoratives/multidecor",
@@ -1142,44 +1142,44 @@
           "textures": [
             {
               "name": "CAMOSCIO",
-              "url": "https://b2ccms.oikos-group.it/upload/FP010_camoscio-th.jpg"
+              "url": "/products/oikos/fp010-camoscio-th-4b32a196e1.webp"
             },
             {
               "name": "CANAPA",
-              "url": "https://b2ccms.oikos-group.it/upload/FP010_canapa-th.jpg"
+              "url": "/products/oikos/fp010-canapa-th-3030cf362a.webp"
             },
             {
               "name": "CANVAS",
-              "url": "https://b2ccms.oikos-group.it/upload/FP010_canvas-th.jpg"
+              "url": "/products/oikos/fp010-canvas-th-9bf3efaa5f.webp"
             },
             {
               "name": "CEMENTO",
-              "url": "https://b2ccms.oikos-group.it/upload/FP010_cemento-th.jpg"
+              "url": "/products/oikos/fp010-cemento-th-c5c1746748.webp"
             },
             {
               "name": "CORTEN",
-              "url": "https://b2ccms.oikos-group.it/upload/FP010_corten-th.jpg"
+              "url": "/products/oikos/fp010-corten-th-df4e2b5e7b.webp"
             },
             {
               "name": "FIANDRA",
-              "url": "https://b2ccms.oikos-group.it/upload/FP010_fiandra-th.jpg"
+              "url": "/products/oikos/fp010-fiandra-th-fd3ad05ce0.webp"
             },
             {
               "name": "FILATO",
-              "url": "https://b2ccms.oikos-group.it/upload/FP010_filato-th.jpg"
+              "url": "/products/oikos/fp010-filato-th-a735325d3f.webp"
             },
             {
               "name": "LAMIERA",
-              "url": "https://b2ccms.oikos-group.it/upload/FP010_lamiera-th.jpg"
+              "url": "/products/oikos/fp010-lamiera-th-d4d7206e88.webp"
             },
             {
               "name": "PERGAMENA",
-              "url": "https://b2ccms.oikos-group.it/upload/FP010_pergamena-th.jpg"
+              "url": "/products/oikos/fp010-pergamena-th-7c04d720c4.webp"
             }
           ],
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/P010_multidecor-skin-01.jpg",
-            "https://b2ccms.oikos-group.it/upload/P010_multidecor-skin-02.jpg"
+            "/products/oikos/p010-multidecor-skin-01-f558ad6d6b.webp",
+            "/products/oikos/p010-multidecor-skin-02-aac27a6929.webp"
           ],
           "eco": true,
           "url": "https://www.oikos.ua/textured-decoratives/multidecorskin",
@@ -1221,52 +1221,52 @@
           "textures": [
             {
               "name": "ANTICO VELLUTO",
-              "url": "https://b2ccms.oikos-group.it/upload/F12_antico-velluto.jpg"
+              "url": "/products/oikos/f12-antico-velluto-c73ded1f5f.webp"
             },
             {
               "name": "ANTICO VELLUTO OPACO",
-              "url": "https://b2ccms.oikos-group.it/upload/F12_antico-velluto-opaco.jpg"
+              "url": "/products/oikos/f12-antico-velluto-opaco-58208eefca.webp"
             },
             {
               "name": "ANTICO VELLUTO VERTICALE",
-              "url": "https://b2ccms.oikos-group.it/upload/F12_antico-velluto-verticale.jpg"
+              "url": "/products/oikos/f12-antico-velluto-verticale-8beb1cf237.webp"
             },
             {
               "name": "CARMEN EFFETTO MOIRÈ",
-              "url": "https://b2ccms.oikos-group.it/upload/F12_carmen-effetto-moirè.jpg"
+              "url": "/products/oikos/f12-carmen-effetto-moir-c3-a8-3ad85c10d4.webp"
             },
             {
               "name": "DESDEMONA EFFETTO GARZA",
-              "url": "https://b2ccms.oikos-group.it/upload/F12_desdemona-effetto-garza.jpg"
+              "url": "/products/oikos/f12-desdemona-effetto-garza-3576e08eef.webp"
             },
             {
               "name": "IMPERIALE",
-              "url": "https://b2ccms.oikos-group.it/upload/F12_imperiale.jpg"
+              "url": "/products/oikos/f12-imperiale-6fe7d66f5b.webp"
             },
             {
               "name": "NORMA EFFETTO LINO",
-              "url": "https://b2ccms.oikos-group.it/upload/F12_norma-effetto-lino.jpg"
+              "url": "/products/oikos/f12-norma-effetto-lino-e05754ebbb.webp"
             },
             {
               "name": "RIGOLETTO EFFETTO FILATO",
-              "url": "https://b2ccms.oikos-group.it/upload/F12_rigoletto-effetto-filato.jpg"
+              "url": "/products/oikos/f12-rigoletto-effetto-filato-f69a6b61cc.webp"
             },
             {
               "name": "SETA",
-              "url": "https://b2ccms.oikos-group.it/upload/F12_seta.jpg"
+              "url": "/products/oikos/f12-seta-b6fd597f50.webp"
             },
             {
               "name": "SETA STELLATA",
-              "url": "https://b2ccms.oikos-group.it/upload/F12_seta-stellata.jpg"
+              "url": "/products/oikos/f12-seta-stellata-65b04eb03d.webp"
             },
             {
               "name": "TURANDOT EFFETTO CANAPA",
-              "url": "https://b2ccms.oikos-group.it/upload/F12_turandot-effetto-canapa.jpg"
+              "url": "/products/oikos/f12-turandot-effetto-canapa-1375aff43f.webp"
             }
           ],
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/12_12_ottocento-turandot-euromobil.jpg",
-            "https://b2ccms.oikos-group.it/upload/12_12_ottocento-stellato.jpg"
+            "/products/oikos/12-12-ottocento-turandot-euromobil-7c0b546b34.webp",
+            "/products/oikos/12-12-ottocento-stellato-e392d43551.webp"
           ],
           "eco": true,
           "url": "https://www.oikos.ua/textured-decoratives/ottocento",
@@ -1369,60 +1369,60 @@
           "textures": [
             {
               "name": "ARDESIA",
-              "url": "https://b2ccms.oikos-group.it/upload/F25_300x300-pallas-ardesia.jpg"
+              "url": "/products/oikos/f25-300x300-pallas-ardesia-aa0a7177ab.webp"
             },
             {
               "name": "BROCCATO STELLATO",
-              "url": "https://b2ccms.oikos-group.it/upload/F25_300x300-pallas-broccato-stellato.jpg"
+              "url": "/products/oikos/f25-300x300-pallas-broccato-stellato-40e505e0a5.webp"
             },
             {
               "name": "CHIFFON",
-              "url": "https://b2ccms.oikos-group.it/upload/F25_300x300-pallas-chiffon.jpg"
+              "url": "/products/oikos/f25-300x300-pallas-chiffon-ac5cc4a43b.webp"
             },
             {
               "name": "DORATURE",
-              "url": "https://b2ccms.oikos-group.it/upload/F25_300x300-pallas-dorature.jpg"
+              "url": "/products/oikos/f25-300x300-pallas-dorature-79667d3e00.webp"
             },
             {
               "name": "DRAPÉ",
-              "url": "https://b2ccms.oikos-group.it/upload/F25_300x300-pallas-drape.jpg"
+              "url": "/products/oikos/f25-300x300-pallas-drape-b1d5b16d59.webp"
             },
             {
               "name": "FIL POSÈ",
-              "url": "https://b2ccms.oikos-group.it/upload/F25_300x300-pallas-fil-pose.jpg"
+              "url": "/products/oikos/f25-300x300-pallas-fil-pose-427356cfbd.webp"
             },
             {
               "name": "MAREZZATO",
-              "url": "https://b2ccms.oikos-group.it/upload/F25_300x300-pallas-marezzato.jpg"
+              "url": "/products/oikos/f25-300x300-pallas-marezzato-db3955eafd.webp"
             },
             {
               "name": "ORGANZA",
-              "url": "https://b2ccms.oikos-group.it/upload/F25_300x300-pallas-organza.jpg"
+              "url": "/products/oikos/f25-300x300-pallas-organza-9b60e30df2.webp"
             },
             {
               "name": "RASO",
-              "url": "https://b2ccms.oikos-group.it/upload/F25_300x300-pallas-raso.jpg"
+              "url": "/products/oikos/f25-300x300-pallas-raso-a95cedebe6.webp"
             },
             {
               "name": "SHANTUNG",
-              "url": "https://b2ccms.oikos-group.it/upload/F25_300x300-pallas-shantung.jpg"
+              "url": "/products/oikos/f25-300x300-pallas-shantung-3b9b38c0b3.webp"
             },
             {
               "name": "SHANTUNG VERTICALE",
-              "url": "https://b2ccms.oikos-group.it/upload/F25_300x300-pallas-shantung-verticale.jpg"
+              "url": "/products/oikos/f25-300x300-pallas-shantung-verticale-2704e30197.webp"
             },
             {
               "name": "TAFFETÁ",
-              "url": "https://b2ccms.oikos-group.it/upload/F25_300x300-pallas-taffeta.jpg"
+              "url": "/products/oikos/f25-300x300-pallas-taffeta-941ef9b5b4.webp"
             },
             {
               "name": "TRAME INCROCIATO",
-              "url": "https://b2ccms.oikos-group.it/upload/F25_300x300-pallas-trame-incrociato.jpg"
+              "url": "/products/oikos/f25-300x300-pallas-trame-incrociato-9eddfaef28.webp"
             }
           ],
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/25_torre-velasca-pallas-1920x1080.jpg",
-            "https://b2ccms.oikos-group.it/upload/25_Ristorante_Harsnakar-1920x1080.jpg"
+            "/products/oikos/25-torre-velasca-pallas-1920x1080-2c472fb6d6.webp",
+            "/products/oikos/25-ristorante-harsnakar-1920x1080-c7d759f952.webp"
           ],
           "eco": true,
           "url": "https://www.oikos.ua/textured-decoratives/pallas",
@@ -1484,40 +1484,40 @@
           "textures": [
             {
               "name": "STUCCO CARRARA",
-              "url": "https://b2ccms.oikos-group.it/upload/F15_stucco-carrara-300X300.jpg"
+              "url": "/products/oikos/f15-stucco-carrara-300x300-828cd79302.webp"
             },
             {
               "name": "STUCCO FIRENZE",
-              "url": "https://b2ccms.oikos-group.it/upload/F15_stucco-firenze-300x300.jpg"
+              "url": "/products/oikos/f15-stucco-firenze-300x300-6b261e97d9.webp"
             },
             {
               "name": "STUCCO MILANO",
-              "url": "https://b2ccms.oikos-group.it/upload/F15_stucco-milano-300x300.jpg"
+              "url": "/products/oikos/f15-stucco-milano-300x300-644d9e0359.webp"
             },
             {
               "name": "STUCCO ROMA",
-              "url": "https://b2ccms.oikos-group.it/upload/F15_stucco-roma-300x300.jpg"
+              "url": "/products/oikos/f15-stucco-roma-300x300-17cedf5c9d.webp"
             },
             {
               "name": "STUCCO TIVOLI",
-              "url": "https://b2ccms.oikos-group.it/upload/F15_stucco-tivoli-300x300.jpg"
+              "url": "/products/oikos/f15-stucco-tivoli-300x300-0353636629.webp"
             },
             {
               "name": "STUCCO VENEZIA",
-              "url": "https://b2ccms.oikos-group.it/upload/F15_stucco-venezia-300x300.jpg"
+              "url": "/products/oikos/f15-stucco-venezia-300x300-7ea58bee23.webp"
             },
             {
               "name": "STUCCO VICENZA",
-              "url": "https://b2ccms.oikos-group.it/upload/F15_stucco-vicenza-300x300.jpg"
+              "url": "/products/oikos/f15-stucco-vicenza-300x300-c020dae183.webp"
             },
             {
               "name": "СТУККО НАПОЛИ",
-              "url": "https://b2ccms.oikos-group.it/upload/F15_stucco-napoli-300x300.jpg"
+              "url": "/products/oikos/f15-stucco-napoli-300x300-d72a789867.webp"
             }
           ],
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/15_raffaello-slider-oikos-paint-1.jpg",
-            "https://b2ccms.oikos-group.it/upload/15_raffaello-slider-oikos-paint-2.jpg"
+            "/products/oikos/15-raffaello-slider-oikos-paint-1-51bb67cede.webp",
+            "/products/oikos/15-raffaello-slider-oikos-paint-2-2e271cc84a.webp"
           ],
           "eco": true,
           "anti_mold": true,
@@ -1570,8 +1570,8 @@
           "colors_count": 0,
           "textures": [],
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/47_stucco-romano-1920x1080-03.jpg",
-            "https://b2ccms.oikos-group.it/upload/47_stucco-romano-1920x1080-01.jpg"
+            "/products/oikos/47-stucco-romano-1920x1080-03-31efece983.webp",
+            "/products/oikos/47-stucco-romano-1920x1080-01-41bb1caf35.webp"
           ],
           "eco": true,
           "url": "https://www.oikos.ua/textured-decoratives/stuccoromano",
@@ -1617,28 +1617,28 @@
           "textures": [
             {
               "name": "AFFRESCO",
-              "url": "https://b2ccms.oikos-group.it/upload/FP001_affresco.jpg"
+              "url": "/products/oikos/fp001-affresco-804d5e0fe5.webp"
             },
             {
               "name": "GESSATO",
-              "url": "https://b2ccms.oikos-group.it/upload/FP001_gessato.jpg"
+              "url": "/products/oikos/fp001-gessato-9d3958c855.webp"
             },
             {
               "name": "MATERICO",
-              "url": "https://b2ccms.oikos-group.it/upload/FP001_materico.jpg"
+              "url": "/products/oikos/fp001-materico-9cd2d3b4f2.webp"
             },
             {
               "name": "OPACO",
-              "url": "https://b2ccms.oikos-group.it/upload/FP001_opaco.jpg"
+              "url": "/products/oikos/fp001-opaco-e86c793e1d.webp"
             },
             {
               "name": "SATINATO",
-              "url": "https://b2ccms.oikos-group.it/upload/FP001_satinato.jpg"
+              "url": "/products/oikos/fp001-satinato-69a7f5ccdf.webp"
             }
           ],
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/P001_tiepolo-1920x1080-02.jpg",
-            "https://b2ccms.oikos-group.it/upload/P001_tiepolo-1920x1080-03.jpg"
+            "/products/oikos/p001-tiepolo-1920x1080-02-5d6cdb80a6.webp",
+            "/products/oikos/p001-tiepolo-1920x1080-03-ee9e7aeb7f.webp"
           ],
           "eco": true,
           "url": "https://www.oikos.ua/textured-decoratives/tiepolo",
@@ -1740,40 +1740,40 @@
           "textures": [
             {
               "name": "TRAVERTINO CASSERO",
-              "url": "https://b2ccms.oikos-group.it/upload/F87B_cassero-mini.jpg"
+              "url": "/products/oikos/f87b-cassero-mini-eaed775853.webp"
             },
             {
               "name": "TRAVERTINO GRANATO",
-              "url": "https://b2ccms.oikos-group.it/upload/F87B_granato-mini.jpg"
+              "url": "/products/oikos/f87b-granato-mini-9db304b4e2.webp"
             },
             {
               "name": "TRAVERTINO LEVIGATO",
-              "url": "https://b2ccms.oikos-group.it/upload/F87B_levigato-mini.jpg"
+              "url": "/products/oikos/f87b-levigato-mini-531df66487.webp"
             },
             {
               "name": "TRAVERTINO LEVIGATO + SUPERFINISH 24",
-              "url": "https://b2ccms.oikos-group.it/upload/F87B_levigato-mini.jpg"
+              "url": "/products/oikos/f87b-levigato-mini-531df66487.webp"
             },
             {
               "name": "TRAVERTINO METROPOLITANO",
-              "url": "https://b2ccms.oikos-group.it/upload/F87B_metropolitano-mini.jpg"
+              "url": "/products/oikos/f87b-metropolitano-mini-ef1981bfde.webp"
             },
             {
               "name": "TRAVERTINO MONOLITICO",
-              "url": "https://b2ccms.oikos-group.it/upload/F87B_monolitico-mini.jpg"
+              "url": "/products/oikos/f87b-monolitico-mini-3b4e1920d0.webp"
             },
             {
               "name": "TRAVERTINO PIETRA ANTICA",
-              "url": "https://b2ccms.oikos-group.it/upload/F87B_pietra-antica-mini.jpg"
+              "url": "/products/oikos/f87b-pietra-antica-mini-02682698b7.webp"
             },
             {
               "name": "TRAVERTINO SPACCATO",
-              "url": "https://b2ccms.oikos-group.it/upload/F87B_spaccato-mini.jpg"
+              "url": "/products/oikos/f87b-spaccato-mini-8ceef6d0fa.webp"
             }
           ],
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/87B_travertino-BIANCO-054.jpg",
-            "https://b2ccms.oikos-group.it/upload/87B_travertino-bianco-027-01.jpg"
+            "/products/oikos/87b-travertino-bianco-054-805819ae6c.webp",
+            "/products/oikos/87b-travertino-bianco-027-01-6e06691110.webp"
           ],
           "eco": true,
           "url": "https://www.oikos.ua/textured-decoratives/travertinoromano",
@@ -1815,8 +1815,8 @@
           "colors_count": 0,
           "textures": [],
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/87C_travertino-cierre-oikos-09.jpg",
-            "https://b2ccms.oikos-group.it/upload/87C_travertino-contract-district-ls-007-travertino-design-monolitico.jpg"
+            "/products/oikos/87c-travertino-cierre-oikos-09-0b137edda2.webp",
+            "/products/oikos/87c-travertino-contract-district-ls-007-travertino-design-monolitico-32d7435503.webp"
           ],
           "eco": true,
           "url": "https://www.oikos.ua/textured-decoratives/travertinoromanodesign",
@@ -1858,8 +1858,8 @@
           "textures": [],
           "note": "Фінішне покриття для Travertino Romano Natural",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/87A_travertino-contract-district-ls-013.jpg",
-            "https://b2ccms.oikos-group.it/upload/87A_travertino-romano-finitura-02.jpg"
+            "/products/oikos/87a-travertino-contract-district-ls-013-458533435e.webp",
+            "/products/oikos/87a-travertino-romano-finitura-02-d6b973c876.webp"
           ],
           "eco": true,
           "url": "https://www.oikos.ua/textured-decoratives/travertinoromanofinitura",
@@ -1898,8 +1898,8 @@
           "textures": [],
           "note": "Використовується спільно з Travertino Romano",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/87D_toner-travertino-romano-02.jpg",
-            "https://b2ccms.oikos-group.it/upload/87D_toner-travertino-romano-03.jpg"
+            "/products/oikos/87d-toner-travertino-romano-02-aef723a720.webp",
+            "/products/oikos/87d-toner-travertino-romano-03-ed452f9ce9.webp"
           ],
           "eco": true,
           "url": "https://www.oikos.ua/textured-decoratives/tonertravertinoromano",
@@ -1977,7 +1977,7 @@
           "colors": [],
           "colors_count": 0,
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/49_biamax-zanotta-saloni-2016-th-01.jpg"
+            "/products/oikos/49-biamax-zanotta-saloni-2016-th-01-b8d9ce35c1.webp"
           ],
           "eco": true,
           "url": "https://www.oikos.ua/paints/biamax",
@@ -2043,7 +2043,7 @@
           "colors_count": 0,
           "colors_collection": "Interior Collection",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/59_coprimax-1920x1080-01.jpg"
+            "/products/oikos/59-coprimax-1920x1080-01-0fe9b34571.webp"
           ],
           "eco": true,
           "url": "https://www.oikos.ua/paints/coprimax",
@@ -2079,9 +2079,9 @@
           "colors_count": 0,
           "colors_collection": "Interior Collection",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/55L_drywall-via-poma61-011-2.jpg",
-            "https://b2ccms.oikos-group.it/upload/55L_drywall-bonita-residence-10.jpg",
-            "https://b2ccms.oikos-group.it/upload/55L_drywall-via-poma61-1.jpg"
+            "/products/oikos/55l-drywall-via-poma61-011-2-d82ee86ffb.webp",
+            "/products/oikos/55l-drywall-bonita-residence-10-41ef44ce6e.webp",
+            "/products/oikos/55l-drywall-via-poma61-1-889bcdea46.webp"
           ],
           "eco": true,
           "url": "https://www.oikos.ua/paints/drywallpaint",
@@ -2117,7 +2117,7 @@
           "colors": [],
           "colors_count": 0,
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/53_extrapaint-museo-pascali-7017-1920x1080.jpg"
+            "/products/oikos/53-extrapaint-museo-pascali-7017-1920x1080-8e60cbb837.webp"
           ],
           "eco": true,
           "url": "https://www.oikos.ua/paints/extrapaint",
@@ -2182,9 +2182,9 @@
           "colors": [],
           "colors_count": 0,
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/50_multifund-1920x1080-02_lg.jpg",
-            "https://b2ccms.oikos-group.it/upload/50_multifund-1920x1080-03.jpg",
-            "https://b2ccms.oikos-group.it/upload/50_multifund-1920x1080-01.jpg"
+            "/products/oikos/50-multifund-1920x1080-02-lg-5b94954962.webp",
+            "/products/oikos/50-multifund-1920x1080-03-9d996fb772.webp",
+            "/products/oikos/50-multifund-1920x1080-01-f76025f8fd.webp"
           ],
           "eco": true,
           "url": "https://www.oikos.ua/paints/multifund",
@@ -2239,7 +2239,7 @@
           "colors": [],
           "colors_count": 0,
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/81B_pittura-alla-calce-verona-1920X1080jpg.jpg"
+            "/products/oikos/81b-pittura-alla-calce-verona-1920x1080jpg-e043e7b12d.webp"
           ],
           "eco": true,
           "url": "https://www.oikos.ua/paints/pitturaallacalceverona",
@@ -2285,9 +2285,9 @@
           "colors_count": 0,
           "colors_collection": "Interior Collection",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/58_sirius-01.jpg",
-            "https://b2ccms.oikos-group.it/upload/58_sirius-03.jpg",
-            "https://b2ccms.oikos-group.it/upload/58_sirius-04.jpg"
+            "/products/oikos/58-sirius-01-49c3820e8f.webp",
+            "/products/oikos/58-sirius-03-5374b7f6d7.webp",
+            "/products/oikos/58-sirius-04-8d34e84d76.webp"
           ],
           "eco": true,
           "url": "https://www.oikos.ua/paints/sirius2001",
@@ -2328,10 +2328,10 @@
           "colors": [],
           "colors_count": 0,
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/55_supercolor-foto-sito-04.jpg",
-            "https://b2ccms.oikos-group.it/upload/55_supercolor-foto-sito-05.jpg",
-            "https://b2ccms.oikos-group.it/upload/55_supercolor-foto-sito-06.jpg",
-            "https://b2ccms.oikos-group.it/upload/55_Casa-Crivelli-002_lg.jpg"
+            "/products/oikos/55-supercolor-foto-sito-04-0b2c4b3385.webp",
+            "/products/oikos/55-supercolor-foto-sito-05-ad200c082b.webp",
+            "/products/oikos/55-supercolor-foto-sito-06-aedeb9a2cd.webp",
+            "/products/oikos/55-casa-crivelli-002-lg-69fd42a575.webp"
           ],
           "eco": true,
           "url": "https://www.oikos.ua/paints/supercolor",
@@ -2427,7 +2427,7 @@
           "colors_count": 0,
           "formaldehyde_free": true,
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/62M_supermatt-banner.jpg"
+            "/products/oikos/62m-supermatt-banner-6dc2aa5080.webp"
           ],
           "eco": true,
           "url": "https://www.oikos.ua/paints/supermatt",
@@ -2482,8 +2482,8 @@
           "colors": [],
           "colors_count": 0,
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/62L_topmatt-banner.jpg",
-            "https://b2ccms.oikos-group.it/upload/62L_topmatt-foto_lg.jpg"
+            "/products/oikos/62l-topmatt-banner-e0041dcc83.webp",
+            "/products/oikos/62l-topmatt-foto-lg-18c4c99008.webp"
           ],
           "eco": true,
           "url": "https://www.oikos.ua/paints/topmatt",
@@ -2519,10 +2519,10 @@
           "colors": [],
           "colors_count": 0,
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/52_ultrasaten-1.jpg",
-            "https://b2ccms.oikos-group.it/upload/52_ultrasaten-2.jpg",
-            "https://b2ccms.oikos-group.it/upload/52_ultrasaten-3.jpg",
-            "https://b2ccms.oikos-group.it/upload/52_ultrasaten-planit.jpg"
+            "/products/oikos/52-ultrasaten-1-a567a4cad5.webp",
+            "/products/oikos/52-ultrasaten-2-fbe14470f2.webp",
+            "/products/oikos/52-ultrasaten-3-dbe350edcc.webp",
+            "/products/oikos/52-ultrasaten-planit-88587b0c28.webp"
           ],
           "eco": true,
           "url": "https://www.oikos.ua/paints/ultrasaten",
@@ -2707,8 +2707,8 @@
           "colors": [],
           "colors_count": 0,
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/62N_wallsatin-banner.jpg",
-            "https://b2ccms.oikos-group.it/upload/62N_wallsatin-foto_lg.jpg"
+            "/products/oikos/62n-wallsatin-banner-160b6d87dd.webp",
+            "/products/oikos/62n-wallsatin-foto-lg-33abb4268f.webp"
           ],
           "eco": true,
           "url": "https://www.oikos.ua/paints/wallsatin",
@@ -2790,10 +2790,10 @@
           "eco": true,
           "url": "https://www.oikos.ua/hard-surface-disinfect/micotral",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/57A_micotral-1920x1080-03.jpg",
-            "https://b2ccms.oikos-group.it/upload/57A_micotral-1920x1080-02.jpg",
-            "https://b2ccms.oikos-group.it/upload/57A_micotral-1920x1080-02.jpg",
-            "https://b2ccms.oikos-group.it/upload/57A_Micotral_foto-principale_1920x1080_lg.jpg"
+            "/products/oikos/57a-micotral-1920x1080-03-aed932c9db.webp",
+            "/products/oikos/57a-micotral-1920x1080-02-c5f76fefa6.webp",
+            "/products/oikos/57a-micotral-1920x1080-02-c5f76fefa6.webp",
+            "/products/oikos/57a-micotral-foto-principale-1920x1080-lg-d629330c00.webp"
           ],
           "textures": [],
           "price": 27.5,
@@ -2828,7 +2828,7 @@
           "eco": true,
           "url": "https://www.oikos.ua/hard-surface-disinfect/sterylcalce",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/P006_SterylCalce_foto-principale_1920x1080.jpg"
+            "/products/oikos/p006-sterylcalce-foto-principale-1920x1080-7333690767.webp"
           ],
           "textures": [],
           "price": 16.1,
@@ -2868,9 +2868,9 @@
           "eco": true,
           "url": "https://www.oikos.ua/hard-surface-disinfect/sterylfix",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/57C_banner-1920x1080-02.jpg",
-            "https://b2ccms.oikos-group.it/upload/57C_banner-1920x1080-01.jpg",
-            "https://b2ccms.oikos-group.it/upload/57C_SterylFix_foto-principale_1920x1080.jpg"
+            "/products/oikos/57c-banner-1920x1080-02-6a03866613.webp",
+            "/products/oikos/57c-banner-1920x1080-01-16dab2479e.webp",
+            "/products/oikos/57c-sterylfix-foto-principale-1920x1080-d45668c4f8.webp"
           ],
           "textures": [],
           "price": 18.2,
@@ -2900,10 +2900,10 @@
           "eco": true,
           "url": "https://www.oikos.ua/hard-surface-disinfect/sterylpaint",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/51_banner-1920x1080-01.jpg",
-            "https://b2ccms.oikos-group.it/upload/51_sterylpaint-2.jpg",
-            "https://b2ccms.oikos-group.it/upload/51_banner-1920x1080-03.jpg",
-            "https://b2ccms.oikos-group.it/upload/51_SterylPaint_foto-principale_1920x1080_lg.jpg"
+            "/products/oikos/51-banner-1920x1080-01-f0ae286430.webp",
+            "/products/oikos/51-sterylpaint-2-aaf0ef8b86.webp",
+            "/products/oikos/51-banner-1920x1080-03-d83c01029e.webp",
+            "/products/oikos/51-sterylpaint-foto-principale-1920x1080-lg-9eebbc3dc3.webp"
           ],
           "textures": [],
           "price": 19.8,
@@ -2943,10 +2943,10 @@
           "eco": true,
           "url": "https://www.oikos.ua/hard-surface-disinfect/sterylplus",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/57D_banner-1920x1080-01.jpg",
-            "https://b2ccms.oikos-group.it/upload/57D_banner-1920x1080-00.jpg",
-            "https://b2ccms.oikos-group.it/upload/57D_banner-1920x1080-02.jpg",
-            "https://b2ccms.oikos-group.it/upload/57D_SterylPlus_foto-principale_1920x1080.jpg"
+            "/products/oikos/57d-banner-1920x1080-01-33a87dd1d0.webp",
+            "/products/oikos/57d-banner-1920x1080-00-4391af84d5.webp",
+            "/products/oikos/57d-banner-1920x1080-02-d56f80b983.webp",
+            "/products/oikos/57d-sterylplus-foto-principale-1920x1080-a01507b3d8.webp"
           ],
           "textures": [],
           "price": 59.3,
@@ -2976,9 +2976,9 @@
           "eco": true,
           "url": "https://www.oikos.ua/hard-surface-disinfect/sterylsan",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/57E_banner-1920x1080-03.jpg",
-            "https://b2ccms.oikos-group.it/upload/57E_banner-1920x1080-01.jpg",
-            "https://b2ccms.oikos-group.it/upload/57E_SterylSan_foto-principale_1920x1080.jpg"
+            "/products/oikos/57e-banner-1920x1080-03-a1bb492262.webp",
+            "/products/oikos/57e-banner-1920x1080-01-50bfc20a45.webp",
+            "/products/oikos/57e-sterylsan-foto-principale-1920x1080-15ee59d822.webp"
           ],
           "textures": [],
           "price": 23.9,
@@ -3013,7 +3013,7 @@
           "eco": true,
           "url": "https://www.oikos.ua/base-coats-primers/crilux",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/60A_fix-crilux.jpg"
+            "/products/oikos/60a-fix-crilux-8f45ddecf0.webp"
           ],
           "textures": [],
           "price": 20.3,
@@ -3053,9 +3053,9 @@
           "eco": true,
           "url": "https://www.oikos.ua/base-coats-primers/flexigrap",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/641_flexigrap-1920x1080-banner-2.jpg",
-            "https://b2ccms.oikos-group.it/upload/641_flexigrap-1920x1080-banner.jpg",
-            "https://b2ccms.oikos-group.it/upload/641_flexigrap-01.jpg"
+            "/products/oikos/641-flexigrap-1920x1080-banner-2-2deac9c95a.webp",
+            "/products/oikos/641-flexigrap-1920x1080-banner-aaeca9e727.webp",
+            "/products/oikos/641-flexigrap-01-5b01adf826.webp"
           ],
           "textures": [],
           "price": 28,
@@ -3115,9 +3115,9 @@
           "eco": true,
           "url": "https://www.oikos.ua/base-coats-primers/fondomurales",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/33_fondo-murales-01.jpg",
-            "https://b2ccms.oikos-group.it/upload/33_fondo-murales-02.jpg",
-            "https://b2ccms.oikos-group.it/upload/33_fondo-murales-03.jpg"
+            "/products/oikos/33-fondo-murales-01-0678d1fbf8.webp",
+            "/products/oikos/33-fondo-murales-02-ad75375285.webp",
+            "/products/oikos/33-fondo-murales-03-26c899d7f0.webp"
           ],
           "textures": [],
           "price": 28.1,
@@ -3157,7 +3157,7 @@
           "eco": true,
           "url": "https://www.oikos.ua/base-coats-primers/ilpigmentato",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/60B_fix-il-pigmentato.jpg"
+            "/products/oikos/60b-fix-il-pigmentato-6d901a3722.webp"
           ],
           "textures": [],
           "price": 24.4,
@@ -3197,9 +3197,9 @@
           "eco": true,
           "url": "https://www.oikos.ua/base-coats-primers/ilprimer",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/63D_decorsil-primer-1920x1080-01.jpg",
-            "https://b2ccms.oikos-group.it/upload/63D_decorsil-primer-1920x1080-02.jpg",
-            "https://b2ccms.oikos-group.it/upload/63D_decorsil-primer-1920x1080-03.jpg"
+            "/products/oikos/63d-decorsil-primer-1920x1080-01-e8a62a2c09.webp",
+            "/products/oikos/63d-decorsil-primer-1920x1080-02-a413e9f8d2.webp",
+            "/products/oikos/63d-decorsil-primer-1920x1080-03-7bd27f6c54.webp"
           ],
           "textures": [],
           "price": 26,
@@ -3239,7 +3239,7 @@
           "eco": true,
           "url": "https://www.oikos.ua/base-coats-primers/neofix",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/60D_fix-neofix.jpg"
+            "/products/oikos/60d-fix-neofix-6e35e00819.webp"
           ],
           "textures": [],
           "price": 15.6,
@@ -3279,7 +3279,7 @@
           "eco": true,
           "url": "https://www.oikos.ua/base-coats-primers/stuccorasatura",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/61A_stucco-in-pasta-per-rasatura-1920x1080-00.jpg"
+            "/products/oikos/61a-stucco-in-pasta-per-rasatura-1920x1080-00-f22a039028.webp"
           ],
           "textures": [],
           "price": 113.3,
@@ -3310,9 +3310,9 @@
           "eco": true,
           "url": "https://www.oikos.ua/protectives-waxes/ceraperstucco",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/56H_cera-per-stucco-1920x1080-03.jpg",
-            "https://b2ccms.oikos-group.it/upload/56H_cera-per-stucco-1920x1080-02.jpg",
-            "https://b2ccms.oikos-group.it/upload/56H_cera-per-stucco-1920x1080-01.jpg"
+            "/products/oikos/56h-cera-per-stucco-1920x1080-03-d29e8cff66.webp",
+            "/products/oikos/56h-cera-per-stucco-1920x1080-02-0fb104c10c.webp",
+            "/products/oikos/56h-cera-per-stucco-1920x1080-01-bf73c0d0f3.webp"
           ],
           "textures": [],
           "price": 50.9,
@@ -3343,9 +3343,9 @@
           "eco": true,
           "url": "https://www.oikos.ua/protectives-waxes/igrolux",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/56E_igrolux-1920x1080-02.jpg",
-            "https://b2ccms.oikos-group.it/upload/56E_igrolux-1920x1080-01.jpg",
-            "https://b2ccms.oikos-group.it/upload/56E_igrolux-1920x1080-03.jpg"
+            "/products/oikos/56e-igrolux-1920x1080-02-ffa73e5b06.webp",
+            "/products/oikos/56e-igrolux-1920x1080-01-3c5b2a1f99.webp",
+            "/products/oikos/56e-igrolux-1920x1080-03-6c657bfa41.webp"
           ],
           "textures": [],
           "price": 46.8,
@@ -3400,7 +3400,7 @@
           "eco": true,
           "url": "https://www.oikos.ua/protectives-waxes/opac",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/56F_box-green-1920x1080.jpg"
+            "/products/oikos/56f-box-green-1920x1080-083a29f37e.webp"
           ],
           "textures": [],
           "price": 39.5,
@@ -3431,9 +3431,9 @@
           "eco": true,
           "url": "https://www.oikos.ua/protectives-waxes/protettivostucco",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/56C_protettivo-1920x1080-02.jpg",
-            "https://b2ccms.oikos-group.it/upload/56C_protettivo-1920x1080-03.jpg",
-            "https://b2ccms.oikos-group.it/upload/56C_protettivo-1920x1080-01.jpg"
+            "/products/oikos/56c-protettivo-1920x1080-02-71e0a7cb11.webp",
+            "/products/oikos/56c-protettivo-1920x1080-03-c1f7faceaa.webp",
+            "/products/oikos/56c-protettivo-1920x1080-01-08f7617548.webp"
           ],
           "textures": [],
           "price": 37.4,
@@ -3468,8 +3468,8 @@
           "eco": true,
           "url": "https://www.oikos.ua/protectives-waxes/watinslux",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/56G_watinslux-02.jpg",
-            "https://b2ccms.oikos-group.it/upload/56G_watinslux-03.jpg"
+            "/products/oikos/56g-watinslux-02-5611c2565c.webp",
+            "/products/oikos/56g-watinslux-03-c8b6ec8842.webp"
           ],
           "textures": [],
           "price": 27,
@@ -3505,7 +3505,7 @@
           "eco": true,
           "url": "https://www.oikos.ua/complementary-products/decortinanew",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/57B_decortina-gallery-01.jpg"
+            "/products/oikos/57b-decortina-gallery-01-c11d5d428b.webp"
           ],
           "textures": [],
           "price": 128.9,
@@ -3535,7 +3535,7 @@
           "eco": true,
           "url": "https://www.oikos.ua/complementary-products/ekostripper",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/78B_ekostripper-gallery-01.jpg"
+            "/products/oikos/78b-ekostripper-gallery-01-2af11d48de.webp"
           ],
           "textures": [],
           "price": 40.5,
@@ -3583,7 +3583,7 @@
           "eco": true,
           "url": "https://www.oikos.ua/acrylics/blankor",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/78A_fix-blankor.jpg"
+            "/products/oikos/78a-fix-blankor-64cbdc5422.webp"
           ],
           "textures": [],
           "price": 71.8,
@@ -3638,7 +3638,7 @@
           "eco": true,
           "url": "https://www.oikos.ua/acrylics/neokryll",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/78C_fix-neokryll.jpg"
+            "/products/oikos/78c-fix-neokryll-66d98ffc3b.webp"
           ],
           "textures": [],
           "price": 17.1,
@@ -3678,9 +3678,9 @@
           "eco": true,
           "url": "https://www.oikos.ua/siloxanics/decorsilprimer",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/63D_decorsil-primer-1920x1080-01.jpg",
-            "https://b2ccms.oikos-group.it/upload/63D_decorsil-primer-1920x1080-02.jpg",
-            "https://b2ccms.oikos-group.it/upload/63D_decorsil-primer-1920x1080-03.jpg"
+            "/products/oikos/63d-decorsil-primer-1920x1080-01-e8a62a2c09.webp",
+            "/products/oikos/63d-decorsil-primer-1920x1080-02-a413e9f8d2.webp",
+            "/products/oikos/63d-decorsil-primer-1920x1080-03-7bd27f6c54.webp"
           ],
           "textures": [],
           "price": 32.2,
@@ -3715,9 +3715,9 @@
           "eco": true,
           "url": "https://www.oikos.ua/siloxanics/decorsilprimerpigmentato",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/63E_decorsil-primer-pigmentato-1920x1080-01.jpg",
-            "https://b2ccms.oikos-group.it/upload/63E_decorsil-primer-pigmentato-1920x1080-02.jpg",
-            "https://b2ccms.oikos-group.it/upload/63E_decorsil-primer-pigmentato-1920x1080-03_lg.jpg"
+            "/products/oikos/63e-decorsil-primer-pigmentato-1920x1080-01-db9376afea.webp",
+            "/products/oikos/63e-decorsil-primer-pigmentato-1920x1080-02-11b9bae972.webp",
+            "/products/oikos/63e-decorsil-primer-pigmentato-1920x1080-03-lg-d3d0d94320.webp"
           ],
           "textures": [],
           "price": 97.8,
@@ -3767,7 +3767,7 @@
           "eco": true,
           "url": "https://www.oikos.ua/lime/consolidantepercalce",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/84C_consolidante x calce_1920x1080.jpg"
+            "/products/oikos/84c-consolidante-20x-20calce-1920x1080-bd7a00e272.webp"
           ],
           "textures": [],
           "price": 20.8,
@@ -3797,9 +3797,9 @@
           "eco": true,
           "url": "https://www.oikos.ua/lime/rasaturacalce",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/84E_rasatura-calce-1920x1080-01.jpg",
-            "https://b2ccms.oikos-group.it/upload/84E_rasatura-calce-1920x1080-02.jpg",
-            "https://b2ccms.oikos-group.it/upload/84E_rasatura-calce-1920x1080-03.jpg"
+            "/products/oikos/84e-rasatura-calce-1920x1080-01-300210e0d9.webp",
+            "/products/oikos/84e-rasatura-calce-1920x1080-02-79da126fa0.webp",
+            "/products/oikos/84e-rasatura-calce-1920x1080-03-f0f1c912b2.webp"
           ],
           "textures": [],
           "price": 115.4,
@@ -3839,9 +3839,9 @@
           "eco": true,
           "url": "https://www.oikos.ua/skim-coats-adhesives/rasokol",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/78F_rasokol-1920x1080-01.jpg",
-            "https://b2ccms.oikos-group.it/upload/78F_rasokol-1920x1080-02.jpg",
-            "https://b2ccms.oikos-group.it/upload/78F_rasokol-1920x1080-03.jpg"
+            "/products/oikos/78f-rasokol-1920x1080-01-038e303f10.webp",
+            "/products/oikos/78f-rasokol-1920x1080-02-90c286b00f.webp",
+            "/products/oikos/78f-rasokol-1920x1080-03-0cef46ac7f.webp"
           ],
           "textures": []
         },
@@ -3859,7 +3859,7 @@
           "colors": [],
           "colors_count": 0,
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/11_exterior-paint-1920x1080.jpg"
+            "/products/oikos/11-exterior-paint-1920x1080-3dd7746928.webp"
           ],
           "eco": true,
           "url": "https://www.oikos.ua/acrylics/archital",
@@ -3927,8 +3927,8 @@
           "eco": true,
           "url": "https://www.oikos.ua/acrylics/neoquarz",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/71_neoquarz-2.jpg",
-            "https://b2ccms.oikos-group.it/upload/71_neoquarz-1_lg.jpg"
+            "/products/oikos/71-neoquarz-2-47437443cd.webp",
+            "/products/oikos/71-neoquarz-1-lg-9007534150.webp"
           ],
           "textures": [],
           "price": 63.4,
@@ -3979,9 +3979,9 @@
           "eco": true,
           "url": "https://www.oikos.ua/acrylics/neoquarzplus",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/71A_neoquarz-plus-1920x1080-03.jpg",
-            "https://b2ccms.oikos-group.it/upload/71A_neoquarz-plus-1920x1080-01_lg.jpg",
-            "https://b2ccms.oikos-group.it/upload/71A_neoquarz-plus-1920x1080-02.jpg"
+            "/products/oikos/71a-neoquarz-plus-1920x1080-03-8d258bc0d8.webp",
+            "/products/oikos/71a-neoquarz-plus-1920x1080-01-lg-1c9e9ff338.webp",
+            "/products/oikos/71a-neoquarz-plus-1920x1080-02-42e3d956c0.webp"
           ],
           "textures": [],
           "price": 21.8,
@@ -4041,7 +4041,7 @@
           "eco": true,
           "url": "https://www.oikos.ua/acrylics/oaddensante",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/56A_56A_O-addensante-01_xl-1.jpg"
+            "/products/oikos/56a-56a-o-addensante-01-xl-1-160397e14a.webp"
           ],
           "textures": [],
           "price": 6.8,
@@ -4071,8 +4071,8 @@
           "eco": true,
           "url": "https://www.oikos.ua/acrylsiloxanics/biocompact",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/64A_Biocompact-Edificio-Residenziale-Life.jpg",
-            "https://b2ccms.oikos-group.it/upload/64A_biocompact-bonita-residence-24_lg.jpg"
+            "/products/oikos/64a-biocompact-edificio-residenziale-life-3102dda0db.webp",
+            "/products/oikos/64a-biocompact-bonita-residence-24-lg-6f9284d8eb.webp"
           ],
           "textures": [],
           "price": 43.7,
@@ -4153,8 +4153,8 @@
           "eco": true,
           "url": "https://www.oikos.ua/acrylsiloxanics/duaflex",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/645_porta-di-roma.jpg",
-            "https://b2ccms.oikos-group.it/upload/645_duaflex-01_lg.jpg"
+            "/products/oikos/645-porta-di-roma-20a6e68886.webp",
+            "/products/oikos/645-duaflex-01-lg-6f273166ec.webp"
           ],
           "textures": [],
           "price": 79,
@@ -4224,8 +4224,8 @@
           "eco": true,
           "url": "https://www.oikos.ua/acrylsiloxanics/silkostorino",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/73A_silkos-torino-2.jpg",
-            "https://b2ccms.oikos-group.it/upload/73A_silkos-torino-1_lg.jpg"
+            "/products/oikos/73a-silkos-torino-2-05f709f793.webp",
+            "/products/oikos/73a-silkos-torino-1-lg-a07b2d2ddf.webp"
           ],
           "textures": [],
           "price": 93.6,
@@ -4261,8 +4261,8 @@
           "eco": true,
           "url": "https://www.oikos.ua/siloxanics/decorsilfirenze",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/63C_decorsil-firenze_00_1920x1080.jpg",
-            "https://b2ccms.oikos-group.it/upload/63C_decorsil-firenze_01_1920x1080_lg.jpg"
+            "/products/oikos/63c-decorsil-firenze-00-1920x1080-d0033d713c.webp",
+            "/products/oikos/63c-decorsil-firenze-01-1920x1080-lg-906c6bcda3.webp"
           ],
           "textures": [],
           "price": 86.3,
@@ -4313,8 +4313,8 @@
           "eco": true,
           "url": "https://www.oikos.ua/siloxanics/decorsilroma",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/63G_decorsil-roma_01_1920x1080.jpg",
-            "https://b2ccms.oikos-group.it/upload/63G_decorsil-roma_00_1920x1080_lg.jpg"
+            "/products/oikos/63g-decorsil-roma-01-1920x1080-a032e653ca.webp",
+            "/products/oikos/63g-decorsil-roma-00-1920x1080-lg-1eb8838065.webp"
           ],
           "textures": [],
           "price": 32.2,
@@ -4360,8 +4360,8 @@
           "eco": true,
           "url": "https://www.oikos.ua/siloxanics/veldecor",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/66_veldecor-02.jpg",
-            "https://b2ccms.oikos-group.it/upload/66_veldecor-01_lg.jpg"
+            "/products/oikos/66-veldecor-02-8e27d6379c.webp",
+            "/products/oikos/66-veldecor-01-lg-5ff2361e57.webp"
           ],
           "textures": [],
           "price": 34.3,
@@ -4407,9 +4407,9 @@
           "eco": true,
           "url": "https://www.oikos.ua/elastomerics/biocompactelastic",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/64G_biocompact-edificio-residenziale-torino-39953.jpg",
-            "https://b2ccms.oikos-group.it/upload/64G_biocompact-03.jpg",
-            "https://b2ccms.oikos-group.it/upload/64G_biocompact-edificio-residenziale-torino-3982_lg.jpg"
+            "/products/oikos/64g-biocompact-edificio-residenziale-torino-39953-f4ee817c75.webp",
+            "/products/oikos/64g-biocompact-03-72272b44ff.webp",
+            "/products/oikos/64g-biocompact-edificio-residenziale-torino-3982-lg-443eb70ae8.webp"
           ],
           "textures": [],
           "price": 57.2,
@@ -4499,9 +4499,9 @@
           "eco": true,
           "url": "https://www.oikos.ua/elastomerics/elastronggum",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/74A_elastrong-gum-1920x1080-01.jpg",
-            "https://b2ccms.oikos-group.it/upload/74A_elastrong-gum-1920x1080-02.jpg",
-            "https://b2ccms.oikos-group.it/upload/74A_elastrong-gum-1920x1080-03_lg.jpg"
+            "/products/oikos/74a-elastrong-gum-1920x1080-01-5cebec3ee0.webp",
+            "/products/oikos/74a-elastrong-gum-1920x1080-02-a4da137afd.webp",
+            "/products/oikos/74a-elastrong-gum-1920x1080-03-lg-707f536b7c.webp"
           ],
           "textures": [],
           "price": 115.4,
@@ -4557,9 +4557,9 @@
           "eco": true,
           "url": "https://www.oikos.ua/elastomerics/elastrongpaintgum",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/74B_elastrong-paintgum-1920x1080-01.jpg",
-            "https://b2ccms.oikos-group.it/upload/74B_elastrong-paintgum-1920x1080-02.jpg",
-            "https://b2ccms.oikos-group.it/upload/74B_elastrong-paintgum-1920x1080-03_lg.jpg"
+            "/products/oikos/74b-elastrong-paintgum-1920x1080-01-a63ae1977d.webp",
+            "/products/oikos/74b-elastrong-paintgum-1920x1080-02-2a5b219880.webp",
+            "/products/oikos/74b-elastrong-paintgum-1920x1080-03-lg-6bd0fae1e0.webp"
           ],
           "textures": [],
           "price": 92.6,
@@ -4624,8 +4624,8 @@
           "eco": true,
           "url": "https://www.oikos.ua/lime/pitturaallacalce",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/P005_pittura-alla-calce_01_1920x1080.jpg",
-            "https://b2ccms.oikos-group.it/upload/P005_pittura-alla-calce_02_1920x1080.jpg"
+            "/products/oikos/p005-pittura-alla-calce-01-1920x1080-79e5390816.webp",
+            "/products/oikos/p005-pittura-alla-calce-02-1920x1080-718714a665.webp"
           ],
           "textures": [],
           "price": 217.3,
@@ -4661,9 +4661,9 @@
           "eco": true,
           "url": "https://www.oikos.ua/protectives/betoncryllidrorepellente",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/72A_betoncryll-idrorepellente-01.jpg",
-            "https://b2ccms.oikos-group.it/upload/72A_betoncryll-idrorepellente-02.jpg",
-            "https://b2ccms.oikos-group.it/upload/72A_betoncryll-idrorepellente-03.jpg"
+            "/products/oikos/72a-betoncryll-idrorepellente-01-aea73e9020.webp",
+            "/products/oikos/72a-betoncryll-idrorepellente-02-9eaa240279.webp",
+            "/products/oikos/72a-betoncryll-idrorepellente-03-a557554aff.webp"
           ],
           "textures": [],
           "price": 280.8,
@@ -4693,9 +4693,9 @@
           "eco": true,
           "url": "https://www.oikos.ua/protectives/betoncryllpigmentato",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/72D_betoncryll-pigmentato-1920x1080-01.jpg",
-            "https://b2ccms.oikos-group.it/upload/72D_betoncryll-pigmentato-1920x1080-03.jpg",
-            "https://b2ccms.oikos-group.it/upload/72D_betoncryll-pigmentato-1920x1080-02_lg.jpg"
+            "/products/oikos/72d-betoncryll-pigmentato-1920x1080-01-8eacc77f60.webp",
+            "/products/oikos/72d-betoncryll-pigmentato-1920x1080-03-3673291721.webp",
+            "/products/oikos/72d-betoncryll-pigmentato-1920x1080-02-lg-89238edd6a.webp"
           ],
           "textures": [],
           "price": 31.2,
@@ -4760,8 +4760,8 @@
           "eco": true,
           "url": "https://www.oikos.ua/protectives/betoncryllsemitrasparente",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/72E_Spagna_Barcellona-Malaga_21.jpg",
-            "https://b2ccms.oikos-group.it/upload/72E_Spagna_Barcellona-Malaga_19_lg.jpg"
+            "/products/oikos/72e-spagna-barcellona-malaga-21-6d4ea49c8f.webp",
+            "/products/oikos/72e-spagna-barcellona-malaga-19-lg-ad45b20deb.webp"
           ],
           "textures": [],
           "price": 28.1,
@@ -4796,9 +4796,9 @@
           "eco": true,
           "url": "https://www.oikos.ua/protectives/betoncrylltrasparente",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/72F_betoncryl-trasparente-1920x1080-01.jpg",
-            "https://b2ccms.oikos-group.it/upload/72F_betoncryl-trasparente-1920x1080-02.jpg",
-            "https://b2ccms.oikos-group.it/upload/72F_betoncryl-trasparente-1920x1080-03.jpg"
+            "/products/oikos/72f-betoncryl-trasparente-1920x1080-01-37b72dbe49.webp",
+            "/products/oikos/72f-betoncryl-trasparente-1920x1080-02-ff7cb9a1cb.webp",
+            "/products/oikos/72f-betoncryl-trasparente-1920x1080-03-8ee08168af.webp"
           ],
           "textures": [],
           "price": 29.1,
@@ -4833,8 +4833,8 @@
           "eco": true,
           "url": "https://www.oikos.ua/protectives/superfinish24",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/80I_superfinish24_01_1920x1080.jpg",
-            "https://b2ccms.oikos-group.it/upload/80I_superfinish24_02_1920x1080.jpg"
+            "/products/oikos/80i-superfinish24-01-1920x1080-f3fd19992c.webp",
+            "/products/oikos/80i-superfinish24-02-1920x1080-f176bc4e36.webp"
           ],
           "textures": [],
           "price": 56.2,
@@ -4881,9 +4881,9 @@
           "colors": [],
           "colors_count": 0,
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/76_novalis-ferromicaceo-02.jpg",
-            "https://b2ccms.oikos-group.it/upload/76_novalis-ferromicaceo-03.jpg",
-            "https://b2ccms.oikos-group.it/upload/76_novalis-ferromicaceo-01_lg.jpg"
+            "/products/oikos/76-novalis-ferromicaceo-02-bd458c369a.webp",
+            "/products/oikos/76-novalis-ferromicaceo-03-458c032a6c.webp",
+            "/products/oikos/76-novalis-ferromicaceo-01-lg-88c146e262.webp"
           ],
           "eco": true,
           "url": "https://www.oikos.ua/novalis-ecoenamels/ferromicaceo",
@@ -4956,9 +4956,9 @@
           "eco": true,
           "url": "https://www.oikos.ua/novalis-ecoenamels/metallizzato",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/77B_novalis-metallizzato-1920x1080-01.jpg",
-            "https://b2ccms.oikos-group.it/upload/77B_novalis-metallizzato-1920x1080-03.jpg",
-            "https://b2ccms.oikos-group.it/upload/77B_novalis-metallizzato-1920x1080-02_lg.jpg"
+            "/products/oikos/77b-novalis-metallizzato-1920x1080-01-1be699c226.webp",
+            "/products/oikos/77b-novalis-metallizzato-1920x1080-03-9fbd5b6d9a.webp",
+            "/products/oikos/77b-novalis-metallizzato-1920x1080-02-lg-86168f67d3.webp"
           ],
           "textures": [],
           "price": 148.7,
@@ -4999,8 +4999,8 @@
           "eco": true,
           "url": "https://www.oikos.ua/novalis-ecoenamels/ecosmalto-per-ceramica",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/P012_ecosmalto-banner-01.jpg",
-            "https://b2ccms.oikos-group.it/upload/P012_ecosmalto-banner-02.jpg"
+            "/products/oikos/p012-ecosmalto-banner-01-053e81360a.webp",
+            "/products/oikos/p012-ecosmalto-banner-02-0ea2497789.webp"
           ],
           "textures": [],
           "price": 42.6,
@@ -5046,9 +5046,9 @@
           "eco": true,
           "url": "https://www.oikos.ua/novalis-ecoenamels/thermo",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/76C_novalis-thermo-1920x1080-01.jpg",
-            "https://b2ccms.oikos-group.it/upload/76C_novalis-thermo-1920x1080-02.jpg",
-            "https://b2ccms.oikos-group.it/upload/76C_novalis-thermo-1920x1080-03.jpg"
+            "/products/oikos/76c-novalis-thermo-1920x1080-01-cfe4e5cec4.webp",
+            "/products/oikos/76c-novalis-thermo-1920x1080-02-5b715c8bac.webp",
+            "/products/oikos/76c-novalis-thermo-1920x1080-03-edeb35893f.webp"
           ],
           "textures": [],
           "price": 99.8,
@@ -5080,9 +5080,9 @@
           "eco": true,
           "url": "https://www.oikos.ua/novalis-ecoenamels/universale",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/77_novalis-1920x1080-02.jpg",
-            "https://b2ccms.oikos-group.it/upload/77_novalis-1920x1080-03.jpg",
-            "https://b2ccms.oikos-group.it/upload/77_novalis-1920x1080-01_lg.jpg"
+            "/products/oikos/77-novalis-1920x1080-02-76f84e991f.webp",
+            "/products/oikos/77-novalis-1920x1080-03-a669ca752d.webp",
+            "/products/oikos/77-novalis-1920x1080-01-lg-783a6a3d33.webp"
           ],
           "textures": [],
           "price": 34,
@@ -5142,9 +5142,9 @@
           "eco": true,
           "url": "https://www.oikos.ua/novalis-wood/ecofondoriempitivo",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/75D_novalis-riempitivo-1920x1080-03.jpg",
-            "https://b2ccms.oikos-group.it/upload/75D_novalis-riempitivo-1920x1080-01.jpg",
-            "https://b2ccms.oikos-group.it/upload/75D_novalis-riempitivo-1920x1080-02_lg.jpg"
+            "/products/oikos/75d-novalis-riempitivo-1920x1080-03-43bca70805.webp",
+            "/products/oikos/75d-novalis-riempitivo-1920x1080-01-a2ad977332.webp",
+            "/products/oikos/75d-novalis-riempitivo-1920x1080-02-lg-3b0a1c36b6.webp"
           ],
           "textures": [],
           "price": 22.5,
@@ -5180,9 +5180,9 @@
           "eco": true,
           "url": "https://www.oikos.ua/novalis-wood/ecoimpregnantelegno",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/75_novalis-impregnante-legno-1920x1080-01.jpg",
-            "https://b2ccms.oikos-group.it/upload/75_novalis-impregnante-legno-1920x1080-03.jpg",
-            "https://b2ccms.oikos-group.it/upload/75_novalis-impregnante-legno-1920x1080-02_lg.jpg"
+            "/products/oikos/75-novalis-impregnante-legno-1920x1080-01-8446cdc137.webp",
+            "/products/oikos/75-novalis-impregnante-legno-1920x1080-03-09b0454a17.webp",
+            "/products/oikos/75-novalis-impregnante-legno-1920x1080-02-lg-f7ea92f718.webp"
           ],
           "textures": [],
           "price": 31.5,
@@ -5229,9 +5229,9 @@
           "eco": true,
           "url": "https://www.oikos.ua/novalis-wood/ecoprotettivolegno",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/75C_novalis-legno-protettivo-1920x1080-01.jpg",
-            "https://b2ccms.oikos-group.it/upload/75C_novalis-legno-protettivo-1920x1080-03.jpg",
-            "https://b2ccms.oikos-group.it/upload/75C_novalis-legno-protettivo-1920x1080-02_lg.jpg"
+            "/products/oikos/75c-novalis-legno-protettivo-1920x1080-01-6527084803.webp",
+            "/products/oikos/75c-novalis-legno-protettivo-1920x1080-03-cfa37edf03.webp",
+            "/products/oikos/75c-novalis-legno-protettivo-1920x1080-02-lg-ebdb9450f6.webp"
           ],
           "textures": [],
           "price": 33.5,
@@ -5277,9 +5277,9 @@
           "eco": true,
           "url": "https://www.oikos.ua/novalis-wood/ecoprotettivoparquet",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/75B_novalis-protettivo-parquet-1920x1080-01.jpg",
-            "https://b2ccms.oikos-group.it/upload/75B_novalis-protettivo-parquet-1920x1080-02.jpg",
-            "https://b2ccms.oikos-group.it/upload/75B_novalis-protettivo-parquet-1920x1080-03.jpg"
+            "/products/oikos/75b-novalis-protettivo-parquet-1920x1080-01-b36d992a62.webp",
+            "/products/oikos/75b-novalis-protettivo-parquet-1920x1080-02-f179b8f873.webp",
+            "/products/oikos/75b-novalis-protettivo-parquet-1920x1080-03-865ebb610e.webp"
           ],
           "textures": [],
           "price": 57,
@@ -5324,9 +5324,9 @@
           "eco": true,
           "url": "https://www.oikos.ua/novalis-wood/turaporiecologico",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/75A_novalis-turapori-1920x1080-01.jpg",
-            "https://b2ccms.oikos-group.it/upload/75A_novalis-turapori-1920x1080-02.jpg",
-            "https://b2ccms.oikos-group.it/upload/75A_novalis-turapori-1920x1080-03.jpg"
+            "/products/oikos/75a-novalis-turapori-1920x1080-01-8bea30ae8f.webp",
+            "/products/oikos/75a-novalis-turapori-1920x1080-02-2d4f3fb7f1.webp",
+            "/products/oikos/75a-novalis-turapori-1920x1080-03-d7fd149f39.webp"
           ],
           "textures": [],
           "price": 26.5,
@@ -5361,9 +5361,9 @@
           "eco": true,
           "url": "https://www.oikos.ua/novalis-base-coats-protectives/aggrappanteecologico",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/76D_aggrappante-ecologico.jpg",
-            "https://b2ccms.oikos-group.it/upload/76D_novalis-aggrappante-02.jpg",
-            "https://b2ccms.oikos-group.it/upload/76D_novalis-aggrappante-01_lg.jpg"
+            "/products/oikos/76d-aggrappante-ecologico-2ab0fcd920.webp",
+            "/products/oikos/76d-novalis-aggrappante-02-6f4f8db530.webp",
+            "/products/oikos/76d-novalis-aggrappante-01-lg-b712f6d429.webp"
           ],
           "textures": [],
           "price": 34.3,
@@ -5398,8 +5398,8 @@
           "eco": true,
           "url": "https://www.oikos.ua/novalis-base-coats-protectives/antiruggineecologico",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/76A_novalis-antiruggine-1920x1080-03.jpg",
-            "https://b2ccms.oikos-group.it/upload/76A_novalis-antiruggine-1920x1080-01_lg.jpg"
+            "/products/oikos/76a-novalis-antiruggine-1920x1080-03-72ff7e3219.webp",
+            "/products/oikos/76a-novalis-antiruggine-1920x1080-01-lg-8220c6a310.webp"
           ],
           "textures": [],
           "price": 100.9,
@@ -5429,9 +5429,9 @@
           "eco": true,
           "url": "https://www.oikos.ua/novalis-base-coats-protectives/convertitoreecologico",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/76B_novalis-convertitore-ecologico-1920x1080-01.jpg",
-            "https://b2ccms.oikos-group.it/upload/76B_novalis-convertitore-ecologico-1920x1080-02.jpg",
-            "https://b2ccms.oikos-group.it/upload/76B_novalis-convertitore-ecologico-1920x1080-03.jpg"
+            "/products/oikos/76b-novalis-convertitore-ecologico-1920x1080-01-6561d6efda.webp",
+            "/products/oikos/76b-novalis-convertitore-ecologico-1920x1080-02-73e3980d63.webp",
+            "/products/oikos/76b-novalis-convertitore-ecologico-1920x1080-03-3db027a010.webp"
           ],
           "textures": [],
           "price": 46.8,
@@ -5462,9 +5462,9 @@
           "eco": true,
           "url": "https://www.oikos.ua/novalis-base-coats-protectives/ecoprotettivoferro",
           "photos": [
-            "https://b2ccms.oikos-group.it/upload/76E_novalis-ferro-protettivo-02.jpg",
-            "https://b2ccms.oikos-group.it/upload/76E_novalis-ferro-protettivo-03.jpg",
-            "https://b2ccms.oikos-group.it/upload/76E_novalis-ferro-protettivo-fissa.jpg"
+            "/products/oikos/76e-novalis-ferro-protettivo-02-1cc55eafd6.webp",
+            "/products/oikos/76e-novalis-ferro-protettivo-03-df4f341590.webp",
+            "/products/oikos/76e-novalis-ferro-protettivo-fissa-ff427fa248.webp"
           ],
           "textures": [],
           "price": 35.4,
