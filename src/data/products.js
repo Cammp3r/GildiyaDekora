@@ -82,8 +82,25 @@ function normalizeTextures(textures) {
     .filter((t) => Boolean(t.name) || Boolean(t.url))
 }
 
-function normalizePhotos(photos) {
-  return toArray(photos).filter((p) => typeof p === 'string' && p.trim().length > 0)
+function upgradeOracImageUrl(url) {
+  return String(url ?? '')
+    .trim()
+    .replace('/image/cache/catalog/', '/image/catalog/')
+    .replace(/-\d+x\d+(?=\.[a-z]{3,4}(?:$|\?))/i, '')
+}
+
+function getImageArea(url) {
+  const match = String(url ?? '').match(/-(\d+)x(\d+)(?=\.[a-z]{3,4}(?:$|\?))/i)
+  if (!match) return Number.MAX_SAFE_INTEGER
+  return Number(match[1]) * Number(match[2])
+}
+
+function normalizePhotos(photos, brand = '') {
+  const normalized = toArray(photos).filter((p) => typeof p === 'string' && p.trim().length > 0)
+  if (brand !== 'orac-decor') return normalized
+
+  const upgraded = normalized.map(upgradeOracImageUrl)
+  return [...new Set(upgraded)].sort((a, b) => getImageArea(b) - getImageArea(a))
 }
 
 const ORAC_CATEGORY_UK = {
@@ -397,7 +414,7 @@ function normalizePriceVariants(variants, currency = '') {
 }
 
 function mapProduct(product, { brand = 'oikos', category, subcategory, sectionId }) {
-  const photos = normalizePhotos(product.photos)
+  const photos = normalizePhotos(product.photos, brand)
   const colors = normalizeColors(product.colors)
   const textures = normalizeTextures(product.textures)
   const primaryImage =

@@ -695,6 +695,10 @@ section {
   align-items: stretch;
 }
 
+.orac-products-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .product-card {
   background: var(--cream);
   overflow: hidden;
@@ -722,6 +726,16 @@ section {
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+.orac-swatch {
+  height: 310px;
+  background: #fff;
+}
+
+.orac-swatch .swatch-color {
+  object-fit: contain;
+  padding: 8px;
 }
 
 .product-card:hover .swatch-color {
@@ -1257,6 +1271,10 @@ section {
   align-items: start;
 }
 
+.product-details-grid.orac-details-grid {
+  grid-template-columns: minmax(0, 1.35fr) minmax(340px, 0.85fr);
+}
+
 .product-details-image {
   width: 100%;
   aspect-ratio: 4 / 3;
@@ -1265,6 +1283,13 @@ section {
   overflow: hidden;
   object-fit: cover;
   display: block;
+}
+
+.product-details-image.orac-image {
+  aspect-ratio: 16 / 11;
+  min-height: 560px;
+  object-fit: contain;
+  background: #fff;
 }
 
 .product-details-badges {
@@ -1705,6 +1730,10 @@ section {
     grid-template-columns: 1fr;
   }
 
+  .product-details-grid.orac-details-grid {
+    grid-template-columns: 1fr;
+  }
+
   .product-details-thumbs,
   .product-details-textures,
   .product-details-colors {
@@ -1946,6 +1975,10 @@ footer .logo-text {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .orac-products-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .about-section {
     grid-template-columns: 1fr;
   }
@@ -1990,6 +2023,14 @@ footer .logo-text {
 
   .products-grid {
     grid-template-columns: 1fr;
+  }
+
+  .orac-swatch {
+    height: 340px;
+  }
+
+  .product-details-image.orac-image {
+    min-height: 420px;
   }
 
   .gallery-grid {
@@ -2060,6 +2101,14 @@ footer .logo-text {
 
   .header {
     padding: 1rem 1.25rem;
+  }
+
+  .orac-swatch {
+    height: 300px;
+  }
+
+  .product-details-image.orac-image {
+    min-height: 320px;
   }
 
   .logo img {
