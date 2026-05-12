@@ -13,7 +13,7 @@ datasource db {
 model Order {
   id        Int     @id @default(autoincrement())
   orderId   String  @unique // Внешний ID для LiqPay
-  items     String  @db.Text // JSON array
+  items     String  // JSON array
   amount    Float
   currency  String  @default("UAH")
   status    String  @default("pending") // pending, paid, failed, cancelled
@@ -25,7 +25,7 @@ model Order {
   
   // Payment info
   liqpayOrderId String? @unique
-  liqpayData    String? @db.Text
+  liqpayData    String?
   liqpaySignature String?
   
   // Timestamps
@@ -40,7 +40,7 @@ model PaymentLog {
   id        Int     @id @default(autoincrement())
   orderId   String
   action    String  // webhook_received, signature_verified, status_updated, etc
-  payload   String  @db.Text // JSON
+  payload   String  // JSON
   timestamp DateTime @default(now())
   
   @@index([orderId])

@@ -1,3 +1,4 @@
+/* global process */
 import express from 'express'
 import { prisma } from '../index.js'
 import {
@@ -7,6 +8,7 @@ import {
   decodePayload,
   generateOrderId,
 } from '../utils/liqpay.js'
+import { resolveLineItemPrice } from '../utils/productCatalog.js'
 
 const router = express.Router()
 
@@ -23,14 +25,25 @@ router.post('/create-order', async (req, res) => {
       return res.status(400).json({ error: 'Items array is required' })
     }
 
-    // ВАЖНО: Пересчитываем сумму на сервере (не доверяем клиенту)
-    // В реальном приложении проверяйте цены в вашей БД
+    // ВАЖНО: Цены считаем только на сервере, клиентские price игнорируем
     let amount = 0
+    const resolvedItems = []
+
     for (const item of items) {
-      if (!item.price || item.price < 0 || !item.quantity || item.quantity < 1) {
-        return res.status(400).json({ error: 'Invalid item data' })
+      const resolved = resolveLineItemPrice(item)
+      if (!resolved.ok) {
+        return res.status(400).json({ error: resolved.error })
       }
-      amount += item.price * item.quantity
+
+      amount += resolved.lineAmount
+      resolvedItems.push({
+        id: String(item.id),
+        title: String(item.title ?? ''),
+        variantId: String(item.variantId ?? ''),
+        volume: String(item.volume ?? ''),
+        quantity: resolved.quantity,
+        unitPrice: resolved.unitPrice,
+      })
     }
 
     // Убедимся, что сумма больше 0
@@ -45,7 +58,7 @@ router.post('/create-order', async (req, res) => {
     const order = await prisma.order.create({
       data: {
         orderId,
-        items: JSON.stringify(items),
+        items: JSON.stringify(resolvedItems),
         amount,
         currency: 'UAH',
         status: 'pending',

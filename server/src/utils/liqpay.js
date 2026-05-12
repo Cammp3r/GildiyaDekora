@@ -1,3 +1,4 @@
+/* global Buffer */
 import crypto from 'crypto'
 
 /**

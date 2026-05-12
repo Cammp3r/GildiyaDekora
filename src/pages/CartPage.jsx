@@ -89,8 +89,8 @@ export default function CartPage() {
               <div className="cart-summary-note">
                 Ціна розрахована як вартість обраного об'єму x кількість.
               </div>
-              <Link to="/contact" className="cart-order-button">
-                Замовити
+              <Link to="/checkout" className="cart-order-button">
+                Перейти до оплати
               </Link>
             </div>
           </>

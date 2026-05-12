@@ -59,7 +59,7 @@ export default function Header() {
                       <NavLink
                         key={brand.brand}
                         to={`/products?brand=${brand.brand}`}
-                        className={({ isActive }) =>
+                        className={() =>
                           searchParams.get('brand') === brand.brand
                             ? 'dropdown-item active'
                             : 'dropdown-item'
