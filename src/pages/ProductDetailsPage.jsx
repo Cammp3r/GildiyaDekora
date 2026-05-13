@@ -58,6 +58,7 @@ export default function ProductDetailsPage() {
   const lineTotal = hasPrice ? price * Number(quantity || 0) : 0
   const characteristics = Array.isArray(product.characteristics) ? product.characteristics : []
   const hasCharacteristics = characteristics.length > 0
+  const shouldShowDescription = product.brand !== 'orac-decor' && product.description
 
   return (
     <section className="product-details">
@@ -121,7 +122,7 @@ export default function ProductDetailsPage() {
               {product.eco && <span className="product-eco-badge">Еко</span>}
             </div>
 
-            {product.description && <p className="product-details-desc">{product.description}</p>}
+            {shouldShowDescription && <p className="product-details-desc">{product.description}</p>}
 
             {hasCharacteristics && (
               <div className="product-characteristics">
