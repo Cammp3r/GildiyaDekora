@@ -10,7 +10,7 @@ dotenv.config()
 
 const app = express()
 const prisma = new PrismaClient()
-const PORT = process.env.SERVER_PORT || 5000
+const PORT = process.env.SERVER_PORT || process.env.SERVER_PORT || 5000
 
 app.set('trust proxy', 1)
 
