@@ -187,7 +187,11 @@ export default function ContactPage() {
             <div className="contact-info">
               <div className="contact-item">
                 <h3>Адреса</h3>
-                <p><a href="https://maps.app.goo.gl/dRX4TLoQzrdfMqeS9">м. Київ, вул. Сергія Гусовського 12/7, оф.10</a></p>
+                <p><a href="https://maps.app.goo.gl/dRX4TLoQzrdfMqeS9">м. Київ, вул. Сергія Гусовського 12/7, оф.10 </a></p>
+              </div>
+              <div className="contact-item">
+                <h3>Email</h3>
+                <p><a>gildiya@meta.ua</a></p>
               </div>
               <div className="contact-item">
                 <h3>Телефон</h3>

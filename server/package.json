@@ -1,0 +1,31 @@
+{
+  "name": "gildiya-dekora-backend",
+  "version": "1.0.0",
+  "description": "Backend for GildiyaDekora e-commerce with LiqPay payment integration",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch src/index.js",
+    "start": "node src/index.js",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:studio": "prisma studio"
+  },
+  "keywords": [
+    "ecommerce",
+    "payment",
+    "liqpay"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@prisma/client": "^5.8.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-rate-limit": "^8.5.1"
+  },
+  "devDependencies": {
+    "prisma": "^5.8.0"
+  }
+}

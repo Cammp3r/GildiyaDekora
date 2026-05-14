@@ -56,6 +56,9 @@ export default function ProductDetailsPage() {
   const shouldShowContactPriceButton = product.brand === 'orac-decor' && !hasPrice
   const priceLabel = hasPrice ? `${price.toLocaleString('uk-UA')} грн` : ''
   const lineTotal = hasPrice ? price * Number(quantity || 0) : 0
+  const characteristics = Array.isArray(product.characteristics) ? product.characteristics : []
+  const hasCharacteristics = characteristics.length > 0
+  const shouldShowDescription = product.brand !== 'orac-decor' && product.description
 
   return (
     <section className="product-details">
@@ -71,10 +74,16 @@ export default function ProductDetailsPage() {
 
         <h2 className="section-title">{product.title}</h2>
 
-        <div className="product-details-grid">
+        <div
+          className={`product-details-grid ${
+            product.brand === 'orac-decor' ? 'orac-details-grid' : 'oikos-details-grid'
+          }`}
+        >
           <div className="product-details-media">
             <img
-              className="product-details-image"
+              className={`product-details-image ${
+                product.brand === 'orac-decor' ? 'orac-image' : 'oikos-image'
+              }`}
               src={activePhoto || product.image}
               alt={product.title}
               loading="eager"
@@ -113,7 +122,21 @@ export default function ProductDetailsPage() {
               {product.eco && <span className="product-eco-badge">Еко</span>}
             </div>
 
-            {product.description && <p className="product-details-desc">{product.description}</p>}
+            {shouldShowDescription && <p className="product-details-desc">{product.description}</p>}
+
+            {hasCharacteristics && (
+              <div className="product-characteristics">
+                <h3>Характеристики</h3>
+                <dl>
+                  {characteristics.map((item) => (
+                    <div key={item.key} className="product-characteristics-row">
+                      <dt>{item.label}</dt>
+                      <dd>{item.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            )}
 
             {product.effect && (
               <p className="product-effect">
@@ -255,7 +278,7 @@ export default function ProductDetailsPage() {
                   <button
                     type="button"
                     className="add-btn"
-                    onClick={() => addItem(product, selectedVariant, quantity)}
+                    onClick={() => addItem(product, selectedVariant, quantity, selectedTexture, selectedColor)}
                   >
                     В кошик
                   </button>

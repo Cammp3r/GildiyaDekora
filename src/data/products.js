@@ -82,8 +82,25 @@ function normalizeTextures(textures) {
     .filter((t) => Boolean(t.name) || Boolean(t.url))
 }
 
-function normalizePhotos(photos) {
-  return toArray(photos).filter((p) => typeof p === 'string' && p.trim().length > 0)
+function upgradeOracImageUrl(url) {
+  return String(url ?? '')
+    .trim()
+    .replace('/image/cache/catalog/', '/image/catalog/')
+    .replace(/-\d+x\d+(?=\.[a-z]{3,4}(?:$|\?))/i, '')
+}
+
+function getImageArea(url) {
+  const match = String(url ?? '').match(/-(\d+)x(\d+)(?=\.[a-z]{3,4}(?:$|\?))/i)
+  if (!match) return Number.MAX_SAFE_INTEGER
+  return Number(match[1]) * Number(match[2])
+}
+
+function normalizePhotos(photos, brand = '') {
+  const normalized = toArray(photos).filter((p) => typeof p === 'string' && p.trim().length > 0)
+  if (brand !== 'orac-decor') return normalized
+
+  const upgraded = normalized.map(upgradeOracImageUrl)
+  return [...new Set(upgraded)].sort((a, b) => getImageArea(b) - getImageArea(a))
 }
 
 const ORAC_CATEGORY_UK = {
@@ -334,6 +351,47 @@ function translateOracText(text) {
     .trim()
 }
 
+const ORAC_CHARACTERISTIC_LABELS = {
+  length: 'Довжина',
+  height: 'Висота',
+  width: 'Ширина',
+  material: 'Матеріал',
+  country: 'Країна-виробник',
+}
+
+const ORAC_CHARACTERISTIC_ORDER = ['length', 'height', 'width', 'material', 'country']
+
+const ORAC_CHARACTERISTIC_VALUE_REPLACEMENTS = [
+  [/Полиуретан/gi, 'Поліуретан'],
+  [/Дюрополимер/gi, 'Дюрополімер'],
+  [/Полистирол/gi, 'Полістирол'],
+  [/Бельгия/gi, 'Бельгія'],
+]
+
+function formatOracCharacteristicValue(key, value) {
+  const rawValue = String(value ?? '').trim()
+  if (!rawValue) return ''
+
+  if (['length', 'height', 'width'].includes(key)) {
+    return /\bмм\b/i.test(rawValue) ? rawValue : `${rawValue} мм`
+  }
+
+  return ORAC_CHARACTERISTIC_VALUE_REPLACEMENTS.reduce(
+    (result, [pattern, replacement]) => result.replace(pattern, replacement),
+    rawValue
+  )
+}
+
+function normalizeOracCharacteristics(characteristics) {
+  if (!characteristics || typeof characteristics !== 'object') return []
+
+  return ORAC_CHARACTERISTIC_ORDER.map((key) => ({
+    key,
+    label: ORAC_CHARACTERISTIC_LABELS[key],
+    value: formatOracCharacteristicValue(key, characteristics[key]),
+  })).filter((item) => item.value)
+}
+
 function normalizePriceVariants(variants, currency = '') {
   return toArray(variants)
     .filter(Boolean)
@@ -356,7 +414,7 @@ function normalizePriceVariants(variants, currency = '') {
 }
 
 function mapProduct(product, { brand = 'oikos', category, subcategory, sectionId }) {
-  const photos = normalizePhotos(product.photos)
+  const photos = normalizePhotos(product.photos, brand)
   const colors = normalizeColors(product.colors)
   const textures = normalizeTextures(product.textures)
   const primaryImage =
@@ -397,6 +455,8 @@ function mapProduct(product, { brand = 'oikos', category, subcategory, sectionId
     photos,
     colors,
     textures,
+    characteristics:
+      brand === 'orac-decor' ? normalizeOracCharacteristics(product.characteristics) : [],
     unitPrice: convertedPrice,
     price: convertedPrice,
     priceCurrency: 'UAH',

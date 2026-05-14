@@ -209,10 +209,10 @@ export default function ProductsPage() {
           ))}
         </div>
 
-        <div className="products-grid">
+        <div className={`products-grid ${brandFromUrl === 'orac-decor' ? 'orac-products-grid' : ''}`}>
           {paginatedProducts.map((product) => (
             <div key={product.id} className="product-card">
-              <div className="product-swatch">
+              <div className={`product-swatch ${product.brand === 'orac-decor' ? 'orac-swatch' : ''}`}>
                 <LazyImage
                   className="swatch-color"
                   src={product.image}

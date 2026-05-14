@@ -12,7 +12,7 @@ export default function Footer() {
         </div>
       </Link>
       <p className="footer-desc">
-        Офіційний дилер итальянської компанії OIKOS в Україні. Забезпечуємо професіональні та побутові матеріали найвищої якості.
+        Офіційний дилер італійської компанії OIKOS в Україні. Забезпечуємо продаж та нанесення матеріалів найвищої якості для внутрішніх та зовнішніх робіт.
       </p>
 
       <div className="footer-col">
@@ -38,6 +38,7 @@ export default function Footer() {
         <ul>
           <li><a href="tel:+380675039352" style={{color: "orange"}}>+38 (067) 503-93-52</a></li>
           <li><a href="https://maps.app.goo.gl/dRX4TLoQzrdfMqeS9" target="_blank" rel="noreferrer" style={{color: "orange"}}>м. Київ, вул. Гусовського 12/7</a></li>
+          <li><a target="_blank" rel="noreferrer" style={{color: "orange"}}>gildiya@meta.ua</a></li>
         </ul>
       </div>
 
