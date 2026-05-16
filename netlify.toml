@@ -1,0 +1,11 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[env.production]
+  VITE_API_URL = "https://gildiyadekora.onrender.com/api"
+
+[[redirects]]
+  from = "/api/*"
+  to = "https://gildiyadekora.onrender.com/api/:splat"
+  status = 200
