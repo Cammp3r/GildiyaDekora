@@ -199,7 +199,7 @@ export default function ContactPage() {
               </div>
               <div className="contact-item">
                 <h3>Замовлення</h3>
-                <p>Заповніть форму справа і ми зв'яжемось з вами найближчим часом</p>
+                <p>Заповніть форму та ми зв'яжемось з вами найближчим часом</p>
               </div>
             </div>
             <form className="contact-form" onSubmit={handleSubmit} noValidate>
