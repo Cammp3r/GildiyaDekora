@@ -12,20 +12,14 @@ import { resolveLineItemPrice } from '../utils/productCatalog.js'
 
 const router = express.Router()
 
-/**
- * POST /api/payment/create-order
- * Создаёт заказ и возвращает LiqPay данные
- */
 router.post('/create-order', async (req, res) => {
   try {
     const { items, customerName, customerEmail, customerPhone } = req.body
 
-    // Валидация
     if (!items || !Array.isArray(items) || items.length === 0) {
       return res.status(400).json({ error: 'Items array is required' })
     }
 
-    // ВАЖНО: Цены считаем только на сервере, клиентские price игнорируем
     let amount = 0
     const resolvedItems = []
 
@@ -46,15 +40,12 @@ router.post('/create-order', async (req, res) => {
       })
     }
 
-    // Убедимся, что сумма больше 0
     if (amount <= 0) {
       return res.status(400).json({ error: 'Order amount must be greater than 0' })
     }
 
-    // Генерируем уникальный order ID
     const orderId = generateOrderId()
 
-    // Сохраняем заказ в БД
     const order = await prisma.order.create({
       data: {
         orderId,
@@ -68,7 +59,6 @@ router.post('/create-order', async (req, res) => {
       },
     })
 
-    // Готовим LiqPay payload
     const payload = {
       public_key: process.env.LIQPAY_PUBLIC_KEY,
       version: '3',
@@ -77,14 +67,14 @@ router.post('/create-order', async (req, res) => {
       currency: 'UAH',
       description: `Order #${order.orderId}`,
       order_id: order.orderId,
+      server_url: process.env.LIQPAY_WEBHOOK_URL,
+      ...(process.env.FRONTEND_URL ? { result_url: `${process.env.FRONTEND_URL.replace(/\/$/, '')}/payment/success/${order.orderId}` } : {}),
       ...(process.env.LIQPAY_SANDBOX === '1' && { sandbox: '1' }),
     }
 
-    // Кодируем и подписываем
     const data = encodePayload(payload)
     const signature = generateSignature(data, process.env.LIQPAY_PRIVATE_KEY)
 
-    // Сохраняем LiqPay данные в заказ
     await prisma.order.update({
       where: { id: order.id },
       data: {
@@ -105,22 +95,11 @@ router.post('/create-order', async (req, res) => {
   }
 })
 
-/**
- * POST /api/payment/webhook
- * Webhook от LiqPay для обновления статуса заказа
- * ВАЖНО: Это endpoint без CSRF защиты, т.к. LiqPay обращается к нему с сервера
- */
 router.post('/webhook', async (req, res) => {
   try {
     const { data, signature } = req.body
 
-    // Логируем вебхук
-    console.log('Webhook received:', { data, signature })
-
-    // Проверяем подпись
     if (!verifySignature(data, signature, process.env.LIQPAY_PRIVATE_KEY)) {
-      console.error('Invalid signature!')
-      // Даём 200 OK чтобы LiqPay не переслал вебхук, но логируем инцидент
       await prisma.paymentLog.create({
         data: {
           orderId: 'UNKNOWN',
@@ -128,22 +107,18 @@ router.post('/webhook', async (req, res) => {
           payload: JSON.stringify({ data, signature }),
         },
       })
-      return res.status(200).send('ok') // 200 OK, но не обновляем заказ
+
+      return res.status(200).send('ok')
     }
 
-    // Декодируем payload
     const payload = decodePayload(data)
-    console.log('Decoded payload:', payload)
-
     const { order_id, status, transaction_id } = payload
 
-    // Ищем заказ в БД
     const order = await prisma.order.findUnique({
       where: { orderId: order_id },
     })
 
     if (!order) {
-      console.error(`Order not found: ${order_id}`)
       await prisma.paymentLog.create({
         data: {
           orderId: order_id,
@@ -151,12 +126,11 @@ router.post('/webhook', async (req, res) => {
           payload: JSON.stringify(payload),
         },
       })
+
       return res.status(200).send('ok')
     }
 
-    // Проверяем, что сумма совпадает (защита от подделок)
-    if (parseFloat(payload.amount) !== order.amount) {
-      console.error(`Amount mismatch! Expected: ${order.amount}, Got: ${payload.amount}`)
+    if (Number.parseFloat(payload.amount) !== order.amount) {
       await prisma.paymentLog.create({
         data: {
           orderId: order_id,
@@ -164,25 +138,20 @@ router.post('/webhook', async (req, res) => {
           payload: JSON.stringify({ expected: order.amount, received: payload.amount }),
         },
       })
+
       return res.status(200).send('ok')
     }
 
-    // Обновляем статус заказа
-    let newStatus = 'failed'
-    if (status === 'success') {
-      newStatus = 'paid'
-    }
+    const newStatus = status === 'success' ? 'paid' : 'failed'
 
     await prisma.order.update({
       where: { id: order.id },
       data: {
         status: newStatus,
         liqpayOrderId: transaction_id,
-        updatedAt: new Date(),
       },
     })
 
-    // Логируем успешное обновление
     await prisma.paymentLog.create({
       data: {
         orderId: order_id,
@@ -191,18 +160,13 @@ router.post('/webhook', async (req, res) => {
       },
     })
 
-    console.log(`Order ${order_id} updated to status: ${newStatus}`)
     res.status(200).send('ok')
   } catch (error) {
     console.error('Webhook error:', error)
-    res.status(200).send('ok') // 200 OK даже при ошибке, чтобы избежать переповтора
+    res.status(200).send('ok')
   }
 })
 
-/**
- * GET /api/payment/order/:orderId
- * Получить статус заказа
- */
 router.get('/order/:orderId', async (req, res) => {
   try {
     const { orderId } = req.params

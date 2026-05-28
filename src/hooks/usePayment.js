@@ -1,6 +1,3 @@
-/**
- * usePayment - Hook для интеграции с платежной системой LiqPay
- */
 import { useState } from 'react'
 
 const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000/api'
@@ -9,9 +6,6 @@ export function usePayment() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
 
-  /**
-   * Создаёт заказ и возвращает LiqPay данные
-   */
   const createOrder = async (items, customerInfo) => {
     setLoading(true)
     setError(null)
@@ -32,8 +26,7 @@ export function usePayment() {
         throw new Error('Failed to create order')
       }
 
-      const result = await response.json()
-      return result
+      return await response.json()
     } catch (err) {
       setError(err.message)
       throw err
@@ -42,9 +35,6 @@ export function usePayment() {
     }
   }
 
-  /**
-   * Отправляет форму оплаты на LiqPay
-   */
   const submitToLiqPay = (data, signature) => {
     const form = document.createElement('form')
     form.method = 'POST'
@@ -67,9 +57,6 @@ export function usePayment() {
     document.body.removeChild(form)
   }
 
-  /**
-   * Получает статус заказа
-   */
   const getOrderStatus = async (orderId) => {
     try {
       const response = await fetch(`${API_BASE}/payment/order/${orderId}`)

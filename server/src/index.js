@@ -1,28 +1,22 @@
-/* global process */
 import express from 'express'
 import cors from 'cors'
 import dotenv from 'dotenv'
 import { PrismaClient } from '@prisma/client'
-import rateLimit from 'express-rate-limit'
 import paymentRoutes from './routes/payment.js'
 
 dotenv.config()
 
 const app = express()
 const prisma = new PrismaClient()
-const PORT = process.env.SERVER_PORT || process.env.SERVER_PORT || 5000
+const PORT = process.env.PORT || process.env.SERVER_PORT || 5000
 
 app.set('trust proxy', 1)
 
 // Middleware
 app.use(cors({
-    origin: [
-        'http://localhost:5173', 
-    'https://endearing-kelpie-00eca5.netlify.app',
-    'https://gihldihja-decora.ua'
-    ],
-    credentials: true,
-}));
+  origin: [process.env.FRONTEND_URL, 'http://localhost:5173'].filter(Boolean),
+  credentials: true,
+}))
 
 app.use((req, res, next) => {
   res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains')
@@ -40,23 +34,9 @@ app.use((req, res, next) => {
   next()
 })
 
-const apiLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 100,
-})
-
-const webhookLimiter = rateLimit({
-  windowMs: 60 * 1000,
-  max: 50,
-})
-
-app.use('/api', apiLimiter)
-
-// Important: Parse webhook data BEFORE JSON middleware
-app.use('/api/payment/webhook', webhookLimiter, express.urlencoded({ extended: true }))
+app.use('/api/payment/webhook', express.urlencoded({ extended: true }))
 app.use(express.json())
 
-// Routes
 app.use('/api/payment', paymentRoutes)
 
 // Health check
@@ -76,4 +56,4 @@ app.listen(PORT, () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`)
 })
 
-export { prisma, app }
+export { app, prisma }
