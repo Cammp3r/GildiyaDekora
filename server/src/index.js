@@ -18,7 +18,8 @@ app.set('trust proxy', 1)
 app.use(cors({
     origin: [
         'http://localhost:5173', 
-        'https://endearing-kelpie-00eca5.netlify.app'
+    'https://endearing-kelpie-00eca5.netlify.app',
+    'https://gihldihja-decora.ua'
     ],
     credentials: true,
 }));
