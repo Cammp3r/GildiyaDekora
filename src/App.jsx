@@ -11,9 +11,7 @@ const ProductDetailsPage = lazy(() => import('./pages/ProductDetailsPage.jsx'))
 const GalleryPage = lazy(() => import('./pages/GalleryPage.jsx'))
 const ContactPage = lazy(() => import('./pages/ContactPage.jsx'))
 const CartPage = lazy(() => import('./pages/CartPage.jsx'))
-const CheckoutPage = lazy(() => import('./pages/CheckoutPage.jsx'))
-const PaymentSuccessPage = lazy(() => import('./pages/PaymentSuccessPage.jsx'))
-const PaymentFailedPage = lazy(() => import('./pages/PaymentFailedPage.jsx'))
+// payment pages removed (will be reimplemented later)
 
 function App() {
   return (
@@ -33,9 +31,7 @@ function App() {
           <Route path="/products" element={<ProductsPage />} />
           <Route path="/products/:id" element={<ProductDetailsPage />} />
           <Route path="/cart" element={<CartPage />} />
-          <Route path="/checkout" element={<CheckoutPage />} />
-          <Route path="/payment/success/:orderId" element={<PaymentSuccessPage />} />
-          <Route path="/payment/failed" element={<PaymentFailedPage />} />
+          {/* Checkout and payment routes temporarily removed */}
           <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
