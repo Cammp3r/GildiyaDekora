@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { productsDb } from '../data/products.js'
 import { useCart } from '../cart/CartContext.jsx'
+import { Seo } from '../seo/Seo.jsx'
 
 const ITEMS_PER_PAGE = 15
 
@@ -84,6 +85,15 @@ export default function ProductsPage() {
   const searchQuery = searchParams.get('q') || ''
   const currentPage = getPositivePage(searchParams.get('page'))
   const { addItem } = useCart()
+  const brandName = brandFromUrl === 'orac-decor' ? 'ORAC DECOR' : 'OIKOS'
+  const seoTitle =
+    selectedCategory === 'all'
+      ? `Каталог ${brandName}`
+      : `${selectedCategory} ${brandName}`
+  const seoDescription =
+    selectedCategory === 'all'
+      ? `Каталог ${brandName} від Гільдії Декору: матеріали для інтерʼєру, ціни, фото, характеристики та консультація у Києві.`
+      : `${selectedCategory} ${brandName}: перегляньте товари, фото, характеристики та замовте консультацію в Гільдії Декору.`
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
@@ -172,10 +182,13 @@ export default function ProductsPage() {
 
   return (
     <section className="products">
+      <Seo
+        title={seoTitle}
+        description={seoDescription}
+        canonicalPath="/products"
+      />
       <div className="container">
-        <h2 className="section-title">
-          Лінійки продуктів {brandFromUrl === 'orac-decor' ? 'ORAC DECOR' : 'OIKOS'}
-        </h2>
+        <h1 className="section-title">Лінійки продуктів {brandName}</h1>
 
         <div className="products-search">
           <input

@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import officePhoto from '../../photos/insget.net_instagram_69e885b88b3ac.jpg'
+import { Seo } from '../seo/Seo.jsx'
 
 export default function HomePage() {
   useEffect(() => {
@@ -9,6 +10,11 @@ export default function HomePage() {
 
   return (
     <>
+      <Seo
+        title="OIKOS та ORAC DECOR у Києві"
+        description="Гільдія Декору: офіційний дилер OIKOS, декоративні фарби, штукатурки, мікроцемент, ліпнина ORAC DECOR та професійна консультація у Києві."
+        canonicalPath="/"
+      />
       {/* Hero Section */}
       <section className="hero">
         <div className="hero-left">

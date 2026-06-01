@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useCart } from '../cart/CartContext.jsx'
 import { useEffect, useState } from 'react'
+import { Seo } from '../seo/Seo.jsx'
 
 function formatMoney(value) {
   if (value === null || value === undefined || value === '') return '-'
@@ -45,8 +46,14 @@ export default function CartPage() {
 
   return (
     <section className="cart">
+      <Seo
+        title="Кошик"
+        description="Кошик замовлення Гільдії Декору."
+        canonicalPath="/cart"
+        noindex
+      />
       <div className="container">
-        <h2 className="section-title">Кошик</h2>
+        <h1 className="section-title">Кошик</h1>
 
         {items.length === 0 ? (
           <div className="cart-empty">

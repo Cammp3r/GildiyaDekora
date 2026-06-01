@@ -2,6 +2,8 @@ import { useEffect, useMemo, useState } from 'react'
 import { Link, Navigate, useLocation, useParams } from 'react-router-dom'
 import { productsDb } from '../data/products.js'
 import { useCart } from '../cart/CartContext.jsx'
+import { Seo } from '../seo/Seo.jsx'
+import { absoluteUrl } from '../seo/seoUtils.js'
 
 export default function ProductDetailsPage() {
   const { id } = useParams()
@@ -59,9 +61,49 @@ export default function ProductDetailsPage() {
   const characteristics = Array.isArray(product.characteristics) ? product.characteristics : []
   const hasCharacteristics = characteristics.length > 0
   const shouldShowDescription = product.brand !== 'orac-decor' && product.description
+  const brandName = product.brand === 'orac-decor' ? 'ORAC DECOR' : 'OIKOS'
+  const productPath = `/products/${encodeURIComponent(product.id)}`
+  const productDescription = [
+    product.title,
+    product.category,
+    product.subcategory,
+    product.effect ? `ефект: ${product.effect}` : '',
+    hasPrice ? `ціна від ${price.toLocaleString('uk-UA')} грн` : 'ціна за запитом',
+    'консультація та замовлення у Гільдії Декору, Київ',
+  ]
+    .filter(Boolean)
+    .join('. ')
+  const productJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: product.title,
+    description: productDescription,
+    image: absoluteUrl(activePhoto || product.image),
+    brand: {
+      '@type': 'Brand',
+      name: brandName,
+    },
+    category: [product.category, product.subcategory].filter(Boolean).join(' / '),
+    url: absoluteUrl(productPath),
+    offers: {
+      '@type': 'Offer',
+      priceCurrency: 'UAH',
+      availability: 'https://schema.org/InStock',
+      url: absoluteUrl(productPath),
+      ...(hasPrice ? { price } : {}),
+    },
+  }
 
   return (
     <section className="product-details">
+      <Seo
+        title={`${product.title} ${brandName}`}
+        description={productDescription}
+        image={activePhoto || product.image}
+        type="product"
+        canonicalPath={productPath}
+        jsonLd={productJsonLd}
+      />
       <div className="container">
         <div className="product-details-top">
           <Link
@@ -72,7 +114,7 @@ export default function ProductDetailsPage() {
           </Link>
         </div>
 
-        <h2 className="section-title">{product.title}</h2>
+        <h1 className="section-title">{product.title}</h1>
 
         <div
           className={`product-details-grid ${

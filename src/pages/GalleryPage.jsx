@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { Seo } from '../seo/Seo.jsx'
 
 const photoModules = import.meta.glob('../../photos/*.jpg', {
   eager: true,
@@ -17,10 +18,15 @@ export default function GalleryPage() {
 
   return (
     <>
+      <Seo
+        title="Галерея робіт"
+        description="Галерея реалізованих обʼєктів Гільдії Декору: декоративні покриття, фарби OIKOS та інтерʼєрні рішення у Києві."
+        canonicalPath="/gallery"
+      />
       {/* Gallery Section */}
       <section className="gallery">
         <div className="container">
-          <h2 className="section-title">Галерея <em>наших об'єктів</em></h2>
+          <h1 className="section-title">Галерея <em>наших об'єктів</em></h1>
           <div className="gallery-grid">
             {galleryPhotos.map((photo, index) => (
               <div className="gallery-item" key={index}>

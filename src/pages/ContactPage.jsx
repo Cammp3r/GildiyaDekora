@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Seo } from '../seo/Seo.jsx'
 
 const CONTACT_EMAIL = 'gildiya@meta.ua'
 const CONTACT_FORM_ENDPOINT = `https://formsubmit.co/ajax/${CONTACT_EMAIL}`
@@ -197,10 +198,15 @@ export default function ContactPage() {
 
   return (
     <>
+      <Seo
+        title="Контакти"
+        description="Контакти Гільдії Декору у Києві: вул. Сергія Гусовського 12/7, офіс 10, телефон +38 (067) 503-93-52, email gildiya@meta.ua."
+        canonicalPath="/contact"
+      />
       {/* Contact Section */}
       <section className="contact">
         <div className="container">
-          <h2 className="section-title">Зв'яжіться з <em>нами</em></h2>
+          <h1 className="section-title">Зв'яжіться з <em>нами</em></h1>
           <div className="contact-order-banner">
             Щоб замовити заповніть форму та з вами зв'яжуться
           </div>

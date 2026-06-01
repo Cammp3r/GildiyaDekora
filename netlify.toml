@@ -4,6 +4,8 @@
 
 [env.production]
   VITE_API_URL = "https://gildiyadekora.onrender.com/api"
+  VITE_SITE_URL = "https://gihldihja-decora.ua"
+  SITE_URL = "https://gihldihja-decora.ua"
 
 [[redirects]]
   from = "/api/*"

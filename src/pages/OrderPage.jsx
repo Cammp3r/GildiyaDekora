@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useCart } from '../cart/CartContext.jsx'
+import { Seo } from '../seo/Seo.jsx'
 
 const CONTACT_EMAIL = 'gildiya@meta.ua'
 const CONTACT_FORM_ENDPOINT = `https://formsubmit.co/ajax/${CONTACT_EMAIL}`
@@ -217,9 +218,15 @@ export default function OrderPage() {
 
   return (
     <>
+      <Seo
+        title="Оформлення замовлення"
+        description="Оформлення замовлення у Гільдії Декору."
+        canonicalPath="/order"
+        noindex
+      />
       <section className="contact">
         <div className="container">
-          <h2 className="section-title">Оформлення замовлення</h2>
+          <h1 className="section-title">Оформлення замовлення</h1>
           <div className="contact-order-banner">Перевірте заявку та заповніть форму</div>
           <div className="contact-content">
             <div className="contact-info">
