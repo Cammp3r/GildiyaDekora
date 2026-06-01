@@ -80,7 +80,11 @@ export default function CartPage() {
                     <div className="cart-item-main">
                       <div className="cart-item-title">{item.title}</div>
                       <div className="cart-item-meta">
-                        {item.volume && <span>{item.volume}</span>}
+                        {item.variantTitle ? (
+                          <span>{item.variantTitle}{item.volume ? ' ' + item.volume : ''}</span>
+                        ) : (
+                          item.volume && <span>{item.volume}</span>
+                        )}
                         <span>{formatMoney(item.unitPrice)} / шт.</span>
                       </div>
 

@@ -253,7 +253,7 @@ export default function ProductDetailsPage() {
                       >
                         {priceVariants.map((variant) => (
                           <option key={variant.id} value={variant.id}>
-                            {variant.volume} - {Number(variant.price).toLocaleString('uk-UA')} грн
+                            {variant.title ? variant.title + ' ' + variant.volume : variant.volume} - {Number(variant.price).toLocaleString('uk-UA')} грн
                           </option>
                         ))}
                       </select>
@@ -277,7 +277,7 @@ export default function ProductDetailsPage() {
                   </label>
                   <button
                     type="button"
-                    className="add-btn"
+                    className="add-btn add-btn-primary"
                     onClick={() => addItem(product, selectedVariant, quantity, selectedTexture, selectedColor)}
                   >
                     В кошик
@@ -290,13 +290,15 @@ export default function ProductDetailsPage() {
                 </div>
               )}
               {shouldShowContactPriceButton && (
-                <Link to="/contact" className="add-btn">
+                <Link to="/contact" className="add-btn add-btn-secondary">
                   Дізнатись ціну
                 </Link>
               )}
-              {shouldShowContactPriceButton || (<Link to="/contact" className="add-btn">
-                Замовити консультацію
-              </Link>)}
+              {shouldShowContactPriceButton || (
+                <Link to="/contact" className="add-btn add-btn-secondary">
+                  Замовити консультацію
+                </Link>
+              )}
               
             </div>
           </div>

@@ -219,12 +219,12 @@ export default function ProductsPage() {
                   alt={product.title}
                 />
                 <div className="product-badges">
-                  <span className="product-tag">{product.category}</span>
                   {product.eco && <span className="product-eco-badge">Еко</span>}
                 </div>
               </div>
               <div className="product-info">
                 <h3 className="product-name">{product.title}</h3>
+                <p className="product-sub">{product.subcategory || product.category}</p>
                 {product.effect && (
                   <p className="product-effect">
                     <strong>Ефект:</strong> {product.effect}

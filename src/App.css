@@ -797,6 +797,8 @@ section {
   font-size: 1.1rem;
   font-weight: 300;
   margin-bottom: 0.2rem;
+  color: var(--ink);
+  transition: color 0.2s ease;
 }
 
 .product-sub {
@@ -810,6 +812,10 @@ section {
 
 .product-card:hover .product-sub {
   color: var(--soft);
+}
+
+.product-card:hover .product-name {
+  color: var(--cream);
 }
 
 .product-footer {
@@ -851,6 +857,40 @@ section {
   background: var(--accent);
   border-color: var(--accent);
   color: var(--cream);
+}
+
+/* Primary: cart button — larger and orange */
+.add-btn-primary {
+  background: var(--accent);
+  color: var(--cream);
+  border-color: var(--accent);
+  padding: 0.6rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border-radius: 6px;
+}
+
+.add-btn-primary:hover {
+  background: #ad5f31;
+  border-color: #ad5f31;
+}
+
+/* Secondary: 'Дізнатись більше' — larger but less prominent, no underline */
+.add-btn-secondary {
+  background: transparent;
+  color: var(--accent2);
+  border-color: rgba(122,92,138,0.25);
+  padding: 0.5rem 0.9rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+.add-btn-secondary:hover {
+  background: rgba(122,92,138,0.06);
+  color: var(--accent2);
+  border-color: rgba(122,92,138,0.45);
 }
 
 /* ============== ABOUT SECTION ============== */

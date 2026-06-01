@@ -162,7 +162,8 @@ export function CartProvider({ children }) {
               variantId: String(variantId),
               title: product.title ?? '',
               image: product.image ?? '',
-              variantTitle: selectedVariant?.title ?? '',
+              // prefer an explicit variant title, fall back to type or volume if title is missing
+              variantTitle: selectedVariant?.title ?? selectedVariant?.type ?? selectedVariant?.volume ?? '',
               volume,
               unitPrice,
               priceCurrency: 'UAH',
