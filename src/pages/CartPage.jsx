@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useCart } from '../cart/CartContext.jsx'
+import { useEffect, useState } from 'react'
 
 function formatMoney(value) {
   if (value === null || value === undefined || value === '') return '-'
@@ -10,6 +11,37 @@ function formatMoney(value) {
 
 export default function CartPage() {
   const { items, totalPrice, setQuantity, removeItem } = useCart()
+  const [localQty, setLocalQty] = useState({})
+
+  useEffect(() => {
+    const map = {}
+    items.forEach((it) => {
+      map[it.id] = String(it.quantity)
+    })
+    setLocalQty(map)
+  }, [items])
+
+  function commitQuantity(id) {
+    const raw = localQty[id]
+    const item = items.find((x) => x.id === id)
+    const current = item ? Number(item.quantity) || 1 : 1
+
+    if (raw == null) return
+    const trimmed = String(raw).trim()
+    if (trimmed === '') {
+      // restore visible value to current quantity without removing item
+      setLocalQty((prev) => ({ ...prev, [id]: String(current) }))
+      return
+    }
+
+    const num = Number(trimmed)
+    if (!Number.isFinite(num) || num < 1) {
+      setQuantity(id, 1)
+      setLocalQty((prev) => ({ ...prev, [id]: '1' }))
+    } else {
+      setQuantity(id, Math.floor(num))
+    }
+  }
 
   return (
     <section className="cart">
@@ -60,8 +92,18 @@ export default function CartPage() {
                             type="number"
                             min="1"
                             step="1"
-                            value={item.quantity}
-                            onChange={(event) => setQuantity(item.id, event.target.value)}
+                            value={localQty[item.id] ?? String(item.quantity)}
+                            onChange={(event) =>
+                              setLocalQty((prev) => ({ ...prev, [item.id]: event.target.value }))
+                            }
+                            onBlur={() => commitQuantity(item.id)}
+                            onKeyDown={(e) => {
+                              if (e.key === 'Enter') {
+                                commitQuantity(item.id)
+                                // remove focus so blur also fires consistently
+                                e.currentTarget.blur()
+                              }
+                            }}
                           />
                         </label>
 
@@ -89,8 +131,8 @@ export default function CartPage() {
               <div className="cart-summary-note">
                 Ціна розрахована як вартість обраного об'єму x кількість.
               </div>
-              <Link to="/contact" className="cart-order-button">
-                Оформити замовлення / Контакти
+              <Link to="/order" className="cart-order-button">
+                Оформити замовлення
               </Link>
             </div>
           </>

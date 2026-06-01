@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useCart } from '../cart/CartContext.jsx'
 
 const CONTACT_EMAIL = 'gildiya@meta.ua'
 const CONTACT_FORM_ENDPOINT = `https://formsubmit.co/ajax/${CONTACT_EMAIL}`
@@ -39,19 +40,6 @@ function validateContactForm(values) {
   }
 
   return errors
-}
-
-function sanitizeInput(value, maxLen = 1000) {
-  if (typeof value !== 'string') return ''
-  // Remove HTML tags
-  let s = value.replace(/<[^>]*>/g, '')
-  // Remove control chars except newline and basic whitespace
-  s = s.replace(/[\u0000-\u001F\u007F]+/g, ' ')
-  // Collapse multiple whitespace
-  s = s.replace(/\s+/g, ' ')
-  s = s.trim()
-  if (s.length > maxLen) s = s.slice(0, maxLen)
-  return s
 }
 
 function hasErrors(errors) {
@@ -95,7 +83,8 @@ function saveContactSubmission(now = Date.now()) {
   localStorage.setItem(CONTACT_RATE_LIMIT_KEY, JSON.stringify(submissions))
 }
 
-export default function ContactPage() {
+export default function OrderPage() {
+  const { items, totalQuantity, totalPrice } = useCart()
   const [status, setStatus] = useState('idle')
   const [statusMessage, setStatusMessage] = useState('')
   const [errors, setErrors] = useState(initialErrors)
@@ -105,6 +94,23 @@ export default function ContactPage() {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
   }, [])
 
+  function sanitizeInput(value, maxLen = 1000) {
+    if (typeof value !== 'string') return ''
+    let s = value.replace(/<[^>]*>/g, '')
+    s = s.replace(/[\u0000-\u001F\u007F]+/g, ' ')
+    s = s.replace(/\s+/g, ' ')
+    s = s.trim()
+    if (s.length > maxLen) s = s.slice(0, maxLen)
+    return s
+  }
+
+  const buildOrderText = () => {
+    if (!items || items.length === 0) return 'Кошик порожній'
+    return items
+      .map((i) => `${sanitizeInput(i.title, 200)} — ${Number(i.quantity)} шт.`)
+      .join('\n')
+  }
+
   const handleSubmit = async (event) => {
     event.preventDefault()
 
@@ -112,7 +118,6 @@ export default function ContactPage() {
     const formData = new FormData(form)
     const honeypot = String(formData.get('_honey') || '').trim()
     const now = Date.now()
-    // Read raw values then sanitize
     const raw = {
       name: String(formData.get('name') || ''),
       email: String(formData.get('email') || ''),
@@ -158,18 +163,33 @@ export default function ContactPage() {
     }
 
     const cleanFormData = new FormData()
-    cleanFormData.append('_subject', 'Нове повідомлення з сайту Gildiya Dekora')
+    cleanFormData.append('_subject', 'Нове замовлення з сайту Gildiya Dekora')
     cleanFormData.append('_template', 'table')
     cleanFormData.append('_captcha', 'false')
     cleanFormData.append('_honey', '')
-    // Use sanitized values
     cleanFormData.append("Ім'я", values.name)
     cleanFormData.append('Email', values.email)
     cleanFormData.append('Телефон', values.phone)
     cleanFormData.append('Повідомлення', values.message)
 
+    // Append cart details (sanitized)
+    cleanFormData.append('Замовлення', buildOrderText())
+    cleanFormData.append('Кількість товарів', String(Number(totalQuantity)))
+    cleanFormData.append('Сума', `${Number(totalPrice)} грн`)
+    try {
+      const orderJson = items.map((it) => ({
+        id: sanitizeInput(it.id, 200),
+        title: sanitizeInput(it.title, 200),
+        quantity: Number(it.quantity) || 0,
+        unitPrice: Number(it.unitPrice) || 0,
+      }))
+      cleanFormData.append('order_json', JSON.stringify(orderJson))
+    } catch {
+      // ignore serialization errors
+    }
+
     setStatus('sending')
-    setStatusMessage('Відправляємо повідомлення...')
+    setStatusMessage('Відправляємо замовлення...')
 
     try {
       const response = await fetch(CONTACT_FORM_ENDPOINT, {
@@ -188,39 +208,25 @@ export default function ContactPage() {
       saveContactSubmission()
       setErrors(initialErrors)
       setStatus('success')
-      setStatusMessage('Дякуємо! Повідомлення відправлено.')
+      setStatusMessage('Дякуємо! Замовлення відправлено. Ми з вами звʼяжемось.')
     } catch {
       setStatus('error')
-      setStatusMessage('Не вдалося відправити повідомлення. Спробуйте ще раз або зателефонуйте нам.')
+      setStatusMessage('Не вдалося відправити замовлення. Спробуйте ще раз або зателефонуйте нам.')
     }
   }
 
   return (
     <>
-      {/* Contact Section */}
       <section className="contact">
         <div className="container">
-          <h2 className="section-title">Зв'яжіться з <em>нами</em></h2>
-          <div className="contact-order-banner">
-            Щоб замовити заповніть форму та з вами зв'яжуться
-          </div>
+          <h2 className="section-title">Оформлення замовлення</h2>
+          <div className="contact-order-banner">Перевірте заявку та заповніть форму</div>
           <div className="contact-content">
             <div className="contact-info">
               <div className="contact-item">
-                <h3>Адреса</h3>
-                <p><a href="https://maps.app.goo.gl/dRX4TLoQzrdfMqeS9">м. Київ, вул. Сергія Гусовського 12/7, оф.10 </a></p>
-              </div>
-              <div className="contact-item">
-                <h3>Email</h3>
-                <p><a>gildiya@meta.ua</a></p>
-              </div>
-              <div className="contact-item">
-                <h3>Телефон</h3>
-                <p><a href="tel:+380675039352">+38 (067) 503-93-52</a></p>
-              </div>
-              <div className="contact-item">
-                <h3>Замовлення</h3>
-                <p>Заповніть форму та ми зв'яжемось з вами найближчим часом</p>
+                <h3>Ваше замовлення</h3>
+                <p style={{ whiteSpace: 'pre-line' }}>{buildOrderText()}</p>
+                <p><strong>Сума:</strong> {totalPrice} грн</p>
               </div>
             </div>
             <form className="contact-form" onSubmit={handleSubmit} noValidate>
@@ -281,19 +287,18 @@ export default function ContactPage() {
               <label className="contact-field">
                 <textarea
                   name="message"
-                  placeholder="Ваше повідомлення"
+                  placeholder="Додаткова інформація (опціонально)"
                   rows="5"
-                  minLength="10"
+                  minLength="0"
                   maxLength="1000"
                   aria-invalid={Boolean(errors.message)}
                   aria-describedby={errors.message ? 'contact-message-error' : undefined}
-                  required
                 ></textarea>
                 {errors.message && <span id="contact-message-error" className="contact-field-error">{errors.message}</span>}
               </label>
 
               <button type="submit" className="submit-button" disabled={status === 'sending'}>
-                {status === 'sending' ? 'Відправляємо...' : 'Надіслати повідомлення'}
+                {status === 'sending' ? 'Відправляємо...' : 'Підтвердити замовлення'}
               </button>
               {statusMessage && (
                 <p className={`contact-form-status contact-form-status-${status}`} role="status">

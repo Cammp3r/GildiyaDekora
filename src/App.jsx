@@ -11,6 +11,7 @@ const ProductDetailsPage = lazy(() => import('./pages/ProductDetailsPage.jsx'))
 const GalleryPage = lazy(() => import('./pages/GalleryPage.jsx'))
 const ContactPage = lazy(() => import('./pages/ContactPage.jsx'))
 const CartPage = lazy(() => import('./pages/CartPage.jsx'))
+const OrderPage = lazy(() => import('./pages/OrderPage.jsx'))
 // payment pages removed (will be reimplemented later)
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
           <Route path="/products" element={<ProductsPage />} />
           <Route path="/products/:id" element={<ProductDetailsPage />} />
           <Route path="/cart" element={<CartPage />} />
+          <Route path="/order" element={<OrderPage />} />
           {/* Checkout and payment routes temporarily removed */}
           <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/contact" element={<ContactPage />} />
