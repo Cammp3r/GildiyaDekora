@@ -12,13 +12,13 @@ export default function HomePage() {
     <>
       <Seo
         title="OIKOS та ORAC DECOR у Києві"
-        description="Гільдія Декору: офіційний дилер OIKOS, декоративні фарби, штукатурки, мікроцемент, ліпнина ORAC DECOR та професійна консультація у Києві."
+        description="Гільдія Декора: офіційний дилер OIKOS, декоративні фарби, штукатурки, мікроцемент, ліпнина ORAC DECOR та професійна консультація у Києві."
         canonicalPath="/"
       />
       {/* Hero Section */}
       <section className="hero">
         <div className="hero-left">
-          <p className="hero-tag">Гільдія Декору · Офіційний дилер OIKOS</p>
+          <p className="hero-tag">Гільдія Декора · Офіційний дилер OIKOS</p>
           <h1>Матеріали<br />які <em>трансформують</em><br />інтер'єри</h1>
           <p className="hero-desc">Офіційна лінійка продуктів OIKOS з 1984 року. Професійні та побутові матеріали найвищої якості для внутрішніх та зовнішніх робіт.</p>
           <Link to="/products" className="btn-primary">Переглянути каталог →</Link>
@@ -103,7 +103,7 @@ export default function HomePage() {
         <div className="container">
           <div className="about-content">
             <div className="about-text">
-              <h2>О компанії "Гільдія Декору"</h2>
+              <h2>О компанії "Гільдія Декора"</h2>
               <p>
                 Ми є офіційним дилером італійської компанії OIKOS в Україні.
                 Протягом років ми забезпечуємо продаж та нанесення
@@ -123,7 +123,7 @@ export default function HomePage() {
             <div className="about-image">
               <img
                 src={officePhoto}
-                alt="Гільдія Декору офіс"
+                alt="Гільдія Декора офіс"
                 loading="lazy"
                 decoding="async"
               />

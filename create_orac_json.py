@@ -49,7 +49,7 @@ for category_name, products in products_by_category.items():
 # Create the complete structure
 new_data = {
     'brand': 'ORAC DECOR',
-    'dealer': 'Гільдія Декору',
+    'dealer': 'Гільдія Декора',
     'country': 'Україна',
     'updated': datetime.now().strftime('%Y-%m-%d'),
     'base_url': 'https://oracdecor.com.ua',

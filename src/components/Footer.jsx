@@ -43,7 +43,7 @@ export default function Footer() {
       </div>
 
       <div className="footer-bottom">
-        <span>&copy; 2026 Гільдія Декору · Офіційний дилер OIKOS · Всі права захищені</span>
+        <span>&copy; 2026 Гільдія Декора · Офіційний дилер OIKOS · Всі права захищені</span>
       </div>
     </footer>
   )

@@ -1,6 +1,6 @@
-export const SITE_NAME = 'Гільдія Декору'
+export const SITE_NAME = 'Гільдія Декора'
 export const DEFAULT_DESCRIPTION =
-  'Гільдія Декору у Києві: декоративні фарби OIKOS, ліпнина ORAC DECOR, консультація, підбір матеріалів та замовлення для інтерʼєру.'
+  'Гільдія Декора у Києві: декоративні фарби OIKOS, ліпнина ORAC DECOR, консультація, підбір матеріалів та замовлення для інтерʼєру.'
 export const DEFAULT_IMAGE = '/logo-transparent.png'
 
 export function getSiteUrl() {

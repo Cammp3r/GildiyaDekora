@@ -113,7 +113,7 @@ def main():
     # Зберігаємо результати
     output = {
         "brand": "ORAC DECOR",
-        "dealer": "Гільдія Декору",
+        "dealer": "Гільдія Декора",
         "country": "Україна",
         "updated": "2026-05-05",
         "base_url": "https://orac-decor.com",
