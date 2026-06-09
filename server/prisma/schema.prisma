@@ -1,0 +1,54 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum OrderStatus {
+  pending
+  paid
+  failed
+  canceled
+  refunded
+}
+
+model Order {
+  id                 String        @id @default(cuid())
+  orderNumber        String        @unique
+  customerName       String
+  customerEmail      String
+  customerPhone      String
+  customerComment    String?
+  currency           String        @default("UAH")
+  amount             Decimal       @db.Decimal(12, 2)
+  status             OrderStatus   @default(pending)
+  items              Json
+  checkoutPayload    Json?
+  liqpayData         String?
+  liqpaySignature    String?
+  liqpayCallbackData Json?
+  liqpayStatus       String?
+  paidAt             DateTime?
+  createdAt          DateTime      @default(now())
+  updatedAt          DateTime      @updatedAt
+
+  paymentLogs        PaymentLog[]
+
+  @@index([status, createdAt])
+}
+
+model PaymentLog {
+  id         String      @id @default(cuid())
+  orderId    String?
+  event      String
+  payload    Json
+  signature  String?
+  verified   Boolean     @default(false)
+  createdAt  DateTime    @default(now())
+  order      Order?      @relation(fields: [orderId], references: [id], onDelete: SetNull)
+
+  @@index([event, createdAt])
+}

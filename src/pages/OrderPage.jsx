@@ -1,14 +1,15 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import { useCart } from '../cart/CartContext.jsx'
 import { Seo } from '../seo/Seo.jsx'
 
 const CONTACT_EMAIL = 'gildiya@meta.ua'
-const CONTACT_FORM_ENDPOINT = `https://formsubmit.co/ajax/${CONTACT_EMAIL}`
-const CONTACT_RATE_LIMIT_KEY = 'gildiyaDekoraContactSubmissions'
-const CONTACT_RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000
-const CONTACT_RATE_LIMIT_MAX = 3
-const CONTACT_COOLDOWN_MS = 60 * 1000
-const CONTACT_MIN_FILL_TIME_MS = 3000
+const ORDER_FORM_ENDPOINT = `https://formsubmit.co/ajax/${CONTACT_EMAIL}`
+const ORDER_RATE_LIMIT_KEY = 'gildiyaDekoraOrderSubmissions'
+const ORDER_RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000
+const ORDER_RATE_LIMIT_MAX = 3
+const ORDER_COOLDOWN_MS = 60 * 1000
+const ORDER_MIN_FILL_TIME_MS = 3000
 
 const initialErrors = {
   name: '',
@@ -17,7 +18,23 @@ const initialErrors = {
   message: '',
 }
 
-function validateContactForm(values) {
+function sanitizeInput(value, maxLen = 1000) {
+  if (typeof value !== 'string') return ''
+  let text = value.replace(/<[^>]*>/g, '')
+  text = text
+    .split('')
+    .map((char) => {
+      const code = char.charCodeAt(0)
+      return code <= 31 || code === 127 ? ' ' : char
+    })
+    .join('')
+  text = text.replace(/\s+/g, ' ')
+  text = text.trim()
+  if (text.length > maxLen) text = text.slice(0, maxLen)
+  return text
+}
+
+function validateCheckoutForm(values) {
   const errors = { ...initialErrors }
   const namePattern = /^[A-Za-zА-Яа-яЁёІіЇїЄєҐґ'’ -]{2,60}$/
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
@@ -36,8 +53,8 @@ function validateContactForm(values) {
     errors.phone = 'Вкажіть коректний номер телефону, наприклад +38 (067) 503-93-52.'
   }
 
-  if (values.message.length < 10 || values.message.length > 1000 || !/[A-Za-zА-Яа-яЁёІіЇїЄєҐґ]/.test(values.message)) {
-    errors.message = 'Напишіть повідомлення від 10 до 1000 символів.'
+  if (values.message.length > 1000) {
+    errors.message = 'Повідомлення не повинно перевищувати 1000 символів.'
   }
 
   return errors
@@ -47,9 +64,16 @@ function hasErrors(errors) {
   return Object.values(errors).some(Boolean)
 }
 
-function getContactSubmissions(now = Date.now()) {
+function formatMoney(value) {
+  if (value === null || value === undefined || value === '') return '-'
+  const num = typeof value === 'number' ? value : Number(value)
+  if (!Number.isFinite(num)) return '-'
+  return `${num.toLocaleString('uk-UA')} грн`
+}
+
+function getOrderSubmissions(now = Date.now()) {
   try {
-    const saved = JSON.parse(localStorage.getItem(CONTACT_RATE_LIMIT_KEY) || '[]')
+    const saved = JSON.parse(localStorage.getItem(ORDER_RATE_LIMIT_KEY) || '[]')
 
     if (!Array.isArray(saved)) {
       return []
@@ -57,63 +81,91 @@ function getContactSubmissions(now = Date.now()) {
 
     return saved
       .filter((timestamp) => Number.isFinite(timestamp))
-      .filter((timestamp) => now - timestamp < CONTACT_RATE_LIMIT_WINDOW_MS)
+      .filter((timestamp) => now - timestamp < ORDER_RATE_LIMIT_WINDOW_MS)
   } catch {
     return []
   }
 }
 
 function getRateLimitMessage(now = Date.now()) {
-  const submissions = getContactSubmissions(now)
+  const submissions = getOrderSubmissions(now)
   const lastSubmission = submissions.at(-1)
 
-  if (lastSubmission && now - lastSubmission < CONTACT_COOLDOWN_MS) {
-    const secondsLeft = Math.ceil((CONTACT_COOLDOWN_MS - (now - lastSubmission)) / 1000)
-    return `Зачекайте ${secondsLeft} секунд перед наступним повідомленням.`
+  if (lastSubmission && now - lastSubmission < ORDER_COOLDOWN_MS) {
+    const secondsLeft = Math.ceil((ORDER_COOLDOWN_MS - (now - lastSubmission)) / 1000)
+    return `Зачекайте ${secondsLeft} секунд перед наступним замовленням.`
   }
 
-  if (submissions.length >= CONTACT_RATE_LIMIT_MAX) {
-    return 'Занадто багато повідомлень за короткий час. Спробуйте ще раз через 10 хвилин або зателефонуйте нам.'
+  if (submissions.length >= ORDER_RATE_LIMIT_MAX) {
+    return 'Занадто багато замовлень за короткий час. Спробуйте ще раз через 10 хвилин або зателефонуйте нам.'
   }
 
   return ''
 }
 
-function saveContactSubmission(now = Date.now()) {
-  const submissions = [...getContactSubmissions(now), now]
-  localStorage.setItem(CONTACT_RATE_LIMIT_KEY, JSON.stringify(submissions))
+function saveOrderSubmission(now = Date.now()) {
+  const submissions = [...getOrderSubmissions(now), now]
+  localStorage.setItem(ORDER_RATE_LIMIT_KEY, JSON.stringify(submissions))
 }
 
 export default function OrderPage() {
-  const { items, totalQuantity, totalPrice } = useCart()
+  const { items, totalQuantity, totalPrice, clearCart } = useCart()
   const [status, setStatus] = useState('idle')
   const [statusMessage, setStatusMessage] = useState('')
   const [errors, setErrors] = useState(initialErrors)
+  const location = useLocation()
   const [formStartedAt] = useState(() => Date.now())
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
-  }, [])
+  }, [location.pathname])
 
-  function sanitizeInput(value, maxLen = 1000) {
-    if (typeof value !== 'string') return ''
-    let s = value.replace(/<[^>]*>/g, '')
-    s = s.replace(/[\u0000-\u001F\u007F]+/g, ' ')
-    s = s.replace(/\s+/g, ' ')
-    s = s.trim()
-    if (s.length > maxLen) s = s.slice(0, maxLen)
-    return s
-  }
-
-  const buildOrderText = () => {
+  const orderPreview = useMemo(() => {
     if (!items || items.length === 0) return 'Кошик порожній'
+
     return items
-      .map((i) => `${sanitizeInput(i.title, 200)} — ${Number(i.quantity)} шт.`)
+      .map((item) => {
+        const variant = item.variantTitle ? ` — ${sanitizeInput(item.variantTitle, 80)}` : ''
+        const volume = item.volume ? ` ${sanitizeInput(item.volume, 40)}` : ''
+        return `${sanitizeInput(item.title, 200)}${variant}${volume} × ${Number(item.quantity) || 1}`
+      })
       .join('\n')
-  }
+  }, [items])
+
+  const orderDetails = useMemo(() => {
+    if (!items || items.length === 0) return 'Кошик порожній'
+
+    const lines = items.map((item, index) => {
+      const variant = item.variantTitle ? ` — ${sanitizeInput(item.variantTitle, 80)}` : ''
+      const volume = item.volume ? ` ${sanitizeInput(item.volume, 40)}` : ''
+      const quantity = Number(item.quantity) || 1
+      const unitPrice = Number(item.unitPrice)
+      const lineTotal = Number.isFinite(unitPrice) ? unitPrice * quantity : 0
+      const texture = item.texture ? `\n   Фактура: ${sanitizeInput(String(item.texture), 100)}` : ''
+      const color = item.color ? `\n   Колір: ${sanitizeInput(String(item.color), 100)}` : ''
+      const price = Number.isFinite(unitPrice)
+        ? `\n   Ціна: ${formatMoney(unitPrice)}; разом: ${formatMoney(lineTotal)}`
+        : ''
+
+      return `${index + 1}. ${sanitizeInput(item.title, 200)}${variant}${volume}\n   Кількість: ${quantity}${price}${texture}${color}`
+    })
+
+    return [
+      ...lines,
+      '',
+      `Загальна кількість: ${totalQuantity}`,
+      `Сума: ${formatMoney(totalPrice)}`,
+    ].join('\n')
+  }, [items, totalPrice, totalQuantity])
 
   const handleSubmit = async (event) => {
     event.preventDefault()
+
+    if (!items.length) {
+      setStatus('error')
+      setStatusMessage('Кошик порожній. Додайте товари перед оформленням замовлення.')
+      return
+    }
 
     const form = event.currentTarget
     const formData = new FormData(form)
@@ -125,14 +177,15 @@ export default function OrderPage() {
       phone: String(formData.get('phone') || ''),
       message: String(formData.get('message') || ''),
     }
+
     const values = {
       name: sanitizeInput(raw.name, 60),
       email: sanitizeInput(raw.email, 254),
       phone: sanitizeInput(raw.phone, 20),
       message: sanitizeInput(raw.message, 1000),
     }
-    const nextErrors = validateContactForm(values)
 
+    const nextErrors = validateCheckoutForm(values)
     setErrors(nextErrors)
 
     if (hasErrors(nextErrors)) {
@@ -144,14 +197,15 @@ export default function OrderPage() {
     if (honeypot) {
       form.reset()
       setErrors(initialErrors)
+      clearCart()
       setStatus('success')
-      setStatusMessage('Дякуємо! Повідомлення відправлено.')
+      setStatusMessage('Дякуємо! Замовлення відправлено.')
       return
     }
 
-    if (now - formStartedAt < CONTACT_MIN_FILL_TIME_MS) {
+    if (now - formStartedAt < 3000) {
       setStatus('error')
-      setStatusMessage('Спробуйте відправити повідомлення ще раз через кілька секунд.')
+      setStatusMessage('Спробуйте відправити форму ще раз через кілька секунд.')
       return
     }
 
@@ -171,29 +225,14 @@ export default function OrderPage() {
     cleanFormData.append("Ім'я", values.name)
     cleanFormData.append('Email', values.email)
     cleanFormData.append('Телефон', values.phone)
-    cleanFormData.append('Повідомлення', values.message)
-
-    // Append cart details (sanitized)
-    cleanFormData.append('Замовлення', buildOrderText())
-    cleanFormData.append('Кількість товарів', String(Number(totalQuantity)))
-    cleanFormData.append('Сума', `${Number(totalPrice)} грн`)
-    try {
-      const orderJson = items.map((it) => ({
-        id: sanitizeInput(it.id, 200),
-        title: sanitizeInput(it.title, 200),
-        quantity: Number(it.quantity) || 0,
-        unitPrice: Number(it.unitPrice) || 0,
-      }))
-      cleanFormData.append('order_json', JSON.stringify(orderJson))
-    } catch {
-      // ignore serialization errors
-    }
+    cleanFormData.append('Коментар', values.message || '-')
+    cleanFormData.append('Замовлення', orderDetails)
 
     setStatus('sending')
     setStatusMessage('Відправляємо замовлення...')
 
     try {
-      const response = await fetch(CONTACT_FORM_ENDPOINT, {
+      const response = await fetch(ORDER_FORM_ENDPOINT, {
         method: 'POST',
         headers: {
           Accept: 'application/json',
@@ -202,14 +241,15 @@ export default function OrderPage() {
       })
 
       if (!response.ok) {
-        throw new Error('Message was not sent')
+        throw new Error('Order was not sent')
       }
 
       form.reset()
-      saveContactSubmission()
+      saveOrderSubmission()
+      clearCart()
       setErrors(initialErrors)
       setStatus('success')
-      setStatusMessage('Дякуємо! Замовлення відправлено. Ми з вами звʼяжемось.')
+      setStatusMessage('Дякуємо! Замовлення відправлено. Ми звʼяжемось з вами для підтвердження.')
     } catch {
       setStatus('error')
       setStatusMessage('Не вдалося відправити замовлення. Спробуйте ще раз або зателефонуйте нам.')
@@ -220,31 +260,30 @@ export default function OrderPage() {
     <>
       <Seo
         title="Оформлення замовлення"
-        description="Оформлення замовлення у Гільдії Декору."
+        description="Оформлення замовлення у Гільдії Декора з підтвердженням менеджером."
         canonicalPath="/order"
         noindex
       />
-      <section className="contact">
+      <section className="contact checkout">
         <div className="container">
           <h1 className="section-title">Оформлення замовлення</h1>
-          <div className="contact-order-banner">Перевірте заявку та заповніть форму</div>
+          <div className="contact-order-banner">Заповніть форму, і ми звʼяжемось з вами для підтвердження замовлення</div>
+
           <div className="contact-content">
             <div className="contact-info">
               <div className="contact-item">
                 <h3>Ваше замовлення</h3>
-                <p style={{ whiteSpace: 'pre-line' }}>{buildOrderText()}</p>
-                <p><strong>Сума:</strong> {totalPrice} грн</p>
+                <p style={{ whiteSpace: 'pre-line' }}>{orderPreview}</p>
+                <p><strong>Кількість:</strong> {totalQuantity}</p>
+                <p><strong>Сума:</strong> {formatMoney(totalPrice)}</p>
+                <p>Після відправки замовлення менеджер уточнить наявність, доставку та спосіб оплати.</p>
               </div>
             </div>
+
             <form className="contact-form" onSubmit={handleSubmit} noValidate>
               <label className="contact-honeypot" aria-hidden="true">
                 <span>Website</span>
-                <input
-                  type="text"
-                  name="_honey"
-                  tabIndex="-1"
-                  autoComplete="off"
-                />
+                <input type="text" name="_honey" tabIndex="-1" autoComplete="off" />
               </label>
 
               <label className="contact-field">
@@ -256,10 +295,14 @@ export default function OrderPage() {
                   minLength="2"
                   maxLength="60"
                   aria-invalid={Boolean(errors.name)}
-                  aria-describedby={errors.name ? 'contact-name-error' : undefined}
+                  aria-describedby={errors.name ? 'checkout-name-error' : undefined}
                   required
                 />
-                {errors.name && <span id="contact-name-error" className="contact-field-error">{errors.name}</span>}
+                {errors.name && (
+                  <span id="checkout-name-error" className="contact-field-error">
+                    {errors.name}
+                  </span>
+                )}
               </label>
 
               <label className="contact-field">
@@ -268,49 +311,68 @@ export default function OrderPage() {
                   name="email"
                   placeholder="Ваш email"
                   autoComplete="email"
+                  maxLength="254"
                   aria-invalid={Boolean(errors.email)}
-                  aria-describedby={errors.email ? 'contact-email-error' : undefined}
+                  aria-describedby={errors.email ? 'checkout-email-error' : undefined}
                   required
                 />
-                {errors.email && <span id="contact-email-error" className="contact-field-error">{errors.email}</span>}
+                {errors.email && (
+                  <span id="checkout-email-error" className="contact-field-error">
+                    {errors.email}
+                  </span>
+                )}
               </label>
 
               <label className="contact-field">
                 <input
                   type="tel"
                   name="phone"
-                  placeholder="Ваш номер телефону"
+                  placeholder="Ваш телефон"
                   autoComplete="tel"
-                  inputMode="tel"
-                  minLength="10"
                   maxLength="20"
                   aria-invalid={Boolean(errors.phone)}
-                  aria-describedby={errors.phone ? 'contact-phone-error' : undefined}
+                  aria-describedby={errors.phone ? 'checkout-phone-error' : undefined}
                   required
                 />
-                {errors.phone && <span id="contact-phone-error" className="contact-field-error">{errors.phone}</span>}
+                {errors.phone && (
+                  <span id="checkout-phone-error" className="contact-field-error">
+                    {errors.phone}
+                  </span>
+                )}
               </label>
 
               <label className="contact-field">
                 <textarea
                   name="message"
-                  placeholder="Додаткова інформація (опціонально)"
+                  placeholder="Коментар до замовлення"
                   rows="5"
-                  minLength="0"
                   maxLength="1000"
                   aria-invalid={Boolean(errors.message)}
-                  aria-describedby={errors.message ? 'contact-message-error' : undefined}
-                ></textarea>
-                {errors.message && <span id="contact-message-error" className="contact-field-error">{errors.message}</span>}
+                  aria-describedby={errors.message ? 'checkout-message-error' : undefined}
+                />
+                {errors.message && (
+                  <span id="checkout-message-error" className="contact-field-error">
+                    {errors.message}
+                  </span>
+                )}
               </label>
 
-              <button type="submit" className="submit-button" disabled={status === 'sending'}>
-                {status === 'sending' ? 'Відправляємо...' : 'Підтвердити замовлення'}
+              <button className="add-btn" type="submit" disabled={status === 'sending'}>
+                {status === 'sending' ? 'Відправляємо...' : 'Надіслати замовлення'}
               </button>
+
               {statusMessage && (
-                <p className={`contact-form-status contact-form-status-${status}`} role="status">
+                <div
+                  className={[
+                    'contact-form-status',
+                    status === 'success' ? 'contact-form-status-success' : '',
+                    status === 'error' ? 'contact-form-status-error' : '',
+                  ]
+                    .filter(Boolean)
+                    .join(' ')}
+                >
                   {statusMessage}
-                </p>
+                </div>
               )}
             </form>
           </div>
