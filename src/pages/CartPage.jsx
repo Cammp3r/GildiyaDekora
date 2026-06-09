@@ -143,7 +143,7 @@ export default function CartPage() {
                 Ціна розрахована як вартість обраного об'єму x кількість.
               </div>
               <Link to="/order" className="cart-order-button">
-                Оформити замовлення
+                Оформити і сплатити
               </Link>
             </div>
           </>
