@@ -22,7 +22,7 @@ export default function HomePage() {
           <h1>Матеріали<br />які <em>трансформують</em><br />інтер'єри</h1>
           <p className="hero-desc">Офіційна лінійка продуктів OIKOS з 1984 року. Професійні та побутові матеріали найвищої якості для внутрішніх та зовнішніх робіт.</p>
           <Link to="/products" className="btn-primary">Переглянути каталог →</Link>
-          <a href="#contact" className="btn-secondary">Замовити консультацію</a>
+          <a href="/contact" className="btn-secondary">Замовити консультацію</a>
         </div>
         <div className="hero-right">
           <div className="color-wall">

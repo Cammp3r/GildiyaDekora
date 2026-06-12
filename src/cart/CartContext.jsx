@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useMemo, useReducer } from 'react'
+import { createContext, useContext, useEffect, useMemo, useReducer, useRef, useState } from 'react'
 
 const CartContext = createContext(null)
 const CART_STORAGE_KEY = 'gildiya-dekora-cart-v1'
@@ -118,6 +118,8 @@ function cartReducer(state, action) {
 
 export function CartProvider({ children }) {
   const [state, dispatch] = useReducer(cartReducer, initialState, loadStoredCart)
+  const [toast, setToast] = useState(null)
+  const toastTimer = useRef(null)
 
   useEffect(() => {
     try {
@@ -173,6 +175,18 @@ export function CartProvider({ children }) {
             color,
           },
         })
+
+        if (toastTimer.current) {
+          clearTimeout(toastTimer.current)
+        }
+
+        setToast({
+          id: Date.now(),
+          message: 'Товар додано до кошика',
+        })
+        toastTimer.current = setTimeout(() => {
+          setToast(null)
+        }, 2400)
       },
 
       removeItem: (id) => {
@@ -188,7 +202,22 @@ export function CartProvider({ children }) {
     }
   }, [state.items])
 
-  return <CartContext.Provider value={api}>{children}</CartContext.Provider>
+  useEffect(() => () => {
+    if (toastTimer.current) {
+      clearTimeout(toastTimer.current)
+    }
+  }, [])
+
+  return (
+    <CartContext.Provider value={api}>
+      {children}
+      {toast && (
+        <div className="cart-toast" role="status" aria-live="polite">
+          {toast.message}
+        </div>
+      )}
+    </CartContext.Provider>
+  )
 }
 
 // eslint-disable-next-line react-refresh/only-export-components
