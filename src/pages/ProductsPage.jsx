@@ -86,9 +86,21 @@ export default function ProductsPage() {
   const currentPage = getPositivePage(searchParams.get('page'))
   const { addItem } = useCart()
   const brandName = brandFromUrl === 'orac-decor' ? 'ORAC DECOR' : 'OIKOS'
+  const catalogHeading =
+    brandFromUrl === 'orac-decor'
+      ? 'Ліпнина ORAC DECOR у Києві'
+      : 'Декоративні фарби та штукатурки OIKOS'
+  const searchLabel =
+    brandFromUrl === 'orac-decor'
+      ? 'Пошук товару'
+      : 'Пошук фарби'
+  const searchPlaceholder =
+    brandFromUrl === 'orac-decor'
+      ? 'Пошук товару (назва, категорія, артикул...)'
+      : 'Пошук фарби (назва, ефект, код кольору...)'
   const seoTitle =
     selectedCategory === 'all'
-      ? `Каталог ${brandName}`
+      ? catalogHeading
       : `${selectedCategory} ${brandName}`
   const seoDescription =
     selectedCategory === 'all'
@@ -188,19 +200,19 @@ export default function ProductsPage() {
         canonicalPath="/products"
       />
       <div className="container">
-        <h1 className="section-title">Лінійки продуктів {brandName}</h1>
+        <h1 className="section-title">{catalogHeading}</h1>
 
         <div className="products-search">
           <input
             className="products-search-input"
             type="search"
-            placeholder="Пошук фарби (назва, ефект, код кольору...)"
+            placeholder={searchPlaceholder}
             value={searchQuery}
             onChange={(e) => {
               const query = e.target.value
               updateCatalogParams({ query, page: 1 })
             }}
-            aria-label="Пошук фарби"
+            aria-label={searchLabel}
           />
         </div>
 

@@ -111,7 +111,7 @@ body {
 
 .nav a {
   font-family: var(--mono);
-  font-size: 0.65rem;
+  font-size: 0.72rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   text-decoration: none;
@@ -162,7 +162,7 @@ body {
   background: none;
   border: none;
   font-family: var(--mono);
-  font-size: 0.65rem;
+  font-size: 0.72rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   text-decoration: none;
@@ -215,7 +215,7 @@ body {
   color: var(--ink);
   text-decoration: none;
   font-family: var(--mono);
-  font-size: 0.6rem;
+  font-size: 0.68rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   opacity: 0.7;
@@ -240,6 +240,33 @@ body {
   padding-left: 1.1rem;
 }
 
+.header-cart-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  padding: 0.55rem 0.9rem;
+  border: 1px solid rgba(196, 112, 58, 0.45);
+  border-radius: 4px;
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  line-height: 1;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+  background: rgba(196, 112, 58, 0.08);
+  transition: background 0.25s, border-color 0.25s, color 0.25s;
+}
+
+.header-cart-link:hover,
+.header-cart-link.active {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(196, 112, 58, 0.13);
+}
+
 .mobile-toggle {
   display: none;
   background: none;
@@ -249,10 +276,45 @@ body {
   cursor: pointer;
 }
 
+.cart-toast {
+  position: fixed;
+  right: 1.5rem;
+  top: 90px;
+  z-index: 500;
+  max-width: min(320px, calc(100vw - 2rem));
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(196, 112, 58, 0.45);
+  border-radius: 6px;
+  background: rgba(245, 240, 232, 0.96);
+  box-shadow: 0 12px 32px rgba(26, 23, 20, 0.16);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
 @media (max-width: 768px) {
+  .cart-toast {
+    right: 1rem;
+    top: 70px;
+    left: 1rem;
+    max-width: none;
+    text-align: center;
+  }
+
+  .header-cart-link {
+    margin-left: auto;
+    min-height: 36px;
+    padding: 0.5rem 0.7rem;
+    font-size: 0.62rem;
+    letter-spacing: 0.11em;
+  }
+
   .mobile-toggle {
     display: block;
-    margin-left: auto;
+    margin-left: 0.8rem;
   }
 
   .nav {
@@ -349,7 +411,7 @@ body {
   }
 
   .nav-link {
-    font-size: 0.6rem;
+    font-size: 0.72rem;
     justify-content: center;
     width: 100%;
   }

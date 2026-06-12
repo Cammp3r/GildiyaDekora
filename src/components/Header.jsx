@@ -8,6 +8,7 @@ export default function Header() {
   const [dropdownOpen, setDropdownOpen] = useState(false)
   const { totalDistinctItems } = useCart()
   const [searchParams] = useSearchParams()
+  const cartLabel = totalDistinctItems > 0 ? `Кошик (${totalDistinctItems})` : 'Кошик'
 
   const closeMobileMenu = () => setMobileMenuOpen(false)
 
@@ -16,10 +17,6 @@ export default function Header() {
     { label: 'Продукти', path: '/products', hasDropdown: true },
     { label: 'Галерея', path: '/gallery' },
     { label: 'Контакти', path: '/contact' },
-    {
-      label: totalDistinctItems > 0 ? `Кошик (${totalDistinctItems})` : 'Кошик',
-      path: '/cart',
-    },
   ]
 
   const productBrands = [
@@ -86,6 +83,14 @@ export default function Header() {
             </div>
           ))}
         </nav>
+        <NavLink
+          to="/cart"
+          className={({ isActive }) => `header-cart-link ${isActive ? 'active' : ''}`}
+          onClick={closeMobileMenu}
+          aria-label={cartLabel}
+        >
+          {cartLabel}
+        </NavLink>
         <button
           className="mobile-toggle"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
