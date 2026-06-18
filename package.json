@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && npm run seo:generate",
+    "build": "vite build && npm run seo:generate && npm run prerender",
+    "prerender": "node scripts/prerender.mjs",
     "seo:generate": "node scripts/generate-seo-files.mjs",
     "lint": "eslint .",
     "preview": "vite preview"
@@ -26,6 +27,7 @@
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17.4.0",
     "pngjs": "^7.0.0",
+    "puppeteer": "^25.1.0",
     "sharp": "^0.34.5",
     "vite": "^8.0.4"
   }

@@ -103,254 +103,6 @@ function normalizePhotos(photos, brand = '') {
   return [...new Set(upgraded)].sort((a, b) => getImageArea(b) - getImageArea(a))
 }
 
-const ORAC_CATEGORY_UK = {
-  'Карнизы': 'Карнизи',
-  'Молдинги': 'Молдинги',
-  'Напольный плинтус': 'Підлоговий плінтус',
-  'Скрытое освещение': 'Приховане освітлення',
-  'Декоративные элементы': 'Декоративні елементи',
-}
-
-const ORAC_TEXT_REPLACEMENTS = [
-  [/скрытого освещения/gi, 'прихованого освітлення'],
-  [/скрытое освещение/gi, 'приховане освітлення'],
-  [/скрытым освещением/gi, 'прихованим освітленням'],
-  [/светодиодной лентой/gi, 'світлодіодною стрічкою'],
-  [/светодиодного освещения/gi, 'світлодіодного освітлення'],
-  [/освещения/gi, 'освітлення'],
-  [/освещение/gi, 'освітлення'],
-  [/освещает/gi, 'освітлює'],
-  [/осветить/gi, 'освітити'],
-  [/осветительные/gi, 'освітлювальні'],
-  [/напольный плинтус/gi, 'підлоговий плінтус'],
-  [/напольного плинтуса/gi, 'підлогового плінтуса'],
-  [/напольных покрытий/gi, 'підлогових покриттів'],
-  [/декоративные элементы/gi, 'декоративні елементи'],
-  [/декоративный элемент/gi, 'декоративний елемент'],
-  [/декоративным элементом/gi, 'декоративним елементом'],
-  [/дверное обрамление/gi, 'дверне обрамлення'],
-  [/потолочная розетка/gi, 'стельова розетка'],
-  [/потолочные розетки/gi, 'стельові розетки'],
-  [/стеновая панель/gi, 'стінова панель'],
-  [/стеновые панели/gi, 'стінові панелі'],
-  [/панели/gi, 'панелі'],
-  [/из полиуретана/gi, 'з поліуретану'],
-  [/из поліуретану/gi, 'з поліуретану'],
-  [/из дюрополимера/gi, 'з дюрополімеру'],
-  [/высококачественного/gi, 'високоякісного'],
-  [/высококачественный/gi, 'високоякісний'],
-  [/высококачественная/gi, 'високоякісна'],
-  [/высококачественные/gi, 'високоякісні'],
-  [/высокопрочный/gi, 'високоміцний'],
-  [/прочный/gi, 'міцний'],
-  [/прочная/gi, 'міцна'],
-  [/прочные/gi, 'міцні'],
-  [/прочностью/gi, 'міцністю'],
-  [/долговечный/gi, 'довговічний'],
-  [/долговечная/gi, 'довговічна'],
-  [/долговечное/gi, 'довговічне'],
-  [/долговечность/gi, 'довговічність'],
-  [/изготовлен/gi, 'виготовлений'],
-  [/изготовлена/gi, 'виготовлена'],
-  [/изготовлено/gi, 'виготовлено'],
-  [/произведен/gi, 'вироблений'],
-  [/произведена/gi, 'вироблена'],
-  [/производится/gi, 'виробляється'],
-  [/производятся/gi, 'виробляються'],
-  [/производитель/gi, 'виробник'],
-  [/страна-производитель/gi, 'країна-виробник'],
-  [/бельгийская/gi, 'бельгійська'],
-  [/бельгийский/gi, 'бельгійський'],
-  [/Бельгии/g, 'Бельгії'],
-  [/Бельгия/g, 'Бельгія'],
-  [/это/gi, 'це'],
-  [/этот/gi, 'цей'],
-  [/эта/gi, 'ця'],
-  [/эти/gi, 'ці'],
-  [/элемент/gi, 'елемент'],
-  [/элементы/gi, 'елементи'],
-  [/эстетический/gi, 'естетичний'],
-  [/эстетической/gi, 'естетичної'],
-  [/эстетичный/gi, 'естетичний'],
-  [/эффект/gi, 'ефект'],
-  [/эффектный/gi, 'ефектний'],
-  [/элегантный/gi, 'елегантний'],
-  [/элегантная/gi, 'елегантна'],
-  [/элегантное/gi, 'елегантне'],
-  [/изысканный/gi, 'вишуканий'],
-  [/изысканная/gi, 'вишукана'],
-  [/изысканное/gi, 'вишукане'],
-  [/изысканность/gi, 'вишуканість'],
-  [/роскоши/gi, 'розкоші'],
-  [/уникальный/gi, 'унікальний'],
-  [/уникальная/gi, 'унікальна'],
-  [/уникальные/gi, 'унікальні'],
-  [/отличное решение/gi, 'чудове рішення'],
-  [/лучших выборов/gi, 'найкращих варіантів'],
-  [/выбор/gi, 'вибір'],
-  [/товар/gi, 'товар'],
-  [/изделие/gi, 'виріб'],
-  [/изделия/gi, 'виробу'],
-  [/продукт/gi, 'продукт'],
-  [/материал/gi, 'матеріал'],
-  [/материала/gi, 'матеріалу'],
-  [/материалы/gi, 'матеріали'],
-  [/легкий/gi, 'легкий'],
-  [/лёгкий/gi, 'легкий'],
-  [/легкость/gi, 'легкість'],
-  [/влаг[еи]/gi, 'вологи'],
-  [/влагостойкий/gi, 'вологостійкий'],
-  [/устойчивость/gi, 'стійкість'],
-  [/устойчивый/gi, 'стійкий'],
-  [/устойчивые/gi, 'стійкі'],
-  [/стойкость/gi, 'стійкість'],
-  [/воздействию/gi, 'впливу'],
-  [/повреждений/gi, 'пошкоджень'],
-  [/поверхность/gi, 'поверхню'],
-  [/поверхности/gi, 'поверхні'],
-  [/стены/gi, 'стіни'],
-  [/стен/gi, 'стін'],
-  [/потолка/gi, 'стелі'],
-  [/потолок/gi, 'стеля'],
-  [/помещения/gi, 'приміщення'],
-  [/помещение/gi, 'приміщення'],
-  [/комнаты/gi, 'кімнати'],
-  [/комнату/gi, 'кімнату'],
-  [/интерьера/gi, 'інтер`єру'],
-  [/интерьер/gi, 'інтер`єр'],
-  [/дизайне/gi, 'дизайні'],
-  [/дизайн/gi, 'дизайн'],
-  [/современного/gi, 'сучасного'],
-  [/современный/gi, 'сучасний'],
-  [/классическом/gi, 'класичному'],
-  [/классический/gi, 'класичний'],
-  [/дом[ае]/gi, 'домі'],
-  [/вашем/gi, 'вашому'],
-  [/вашего/gi, 'вашого'],
-  [/вашу/gi, 'вашу'],
-  [/своем/gi, 'своєму'],
-  [/своего/gi, 'свого'],
-  [/позволяет/gi, 'дозволяє'],
-  [/позволят/gi, 'дозволять'],
-  [/можно/gi, 'можна'],
-  [/может быть/gi, 'може бути'],
-  [/создать/gi, 'створити'],
-  [/создает/gi, 'створює'],
-  [/создан/gi, 'створений'],
-  [/создана/gi, 'створена'],
-  [/созданные/gi, 'створені'],
-  [/придает/gi, 'надає'],
-  [/придавая/gi, 'надаючи'],
-  [/добавит/gi, 'додасть'],
-  [/добавляет/gi, 'додає'],
-  [/украшения/gi, 'оздоблення'],
-  [/украшение/gi, 'оздоблення'],
-  [/украсить/gi, 'прикрасити'],
-  [/оформления/gi, 'оформлення'],
-  [/оформить/gi, 'оформити'],
-  [/отделки/gi, 'оздоблення'],
-  [/лепное/gi, 'ліпне'],
-  [/лепка/gi, 'ліпнина'],
-  [/монтажный клей/gi, 'монтажний клей'],
-  [/стыковочный клей/gi, 'стиковий клей'],
-  [/клеится/gi, 'клеїться'],
-  [/установке/gi, 'встановлення'],
-  [/установить/gi, 'встановити'],
-  [/устанавливается/gi, 'встановлюється'],
-  [/монтажа/gi, 'монтажу'],
-  [/монтаж элементов/gi, 'монтаж елементів'],
-  [/Вам понадобится/g, 'Вам знадобиться'],
-  [/вам понадобится/gi, 'вам знадобиться'],
-  [/надежно/gi, 'надійно'],
-  [/надёжно/gi, 'надійно'],
-  [/надежный/gi, 'надійний'],
-  [/надёжный/gi, 'надійний'],
-  [/без швов/gi, 'без швів'],
-  [/внешний вид/gi, 'зовнішній вигляд'],
-  [/идеальный/gi, 'ідеальний'],
-  [/идеальное/gi, 'ідеальне'],
-  [/размеры/gi, 'розміри'],
-  [/размер/gi, 'розмір'],
-  [/длина/gi, 'довжина'],
-  [/длину/gi, 'довжину'],
-  [/ширина/gi, 'ширина'],
-  [/ширину/gi, 'ширину'],
-  [/высота/gi, 'висота'],
-  [/высоту/gi, 'висоту'],
-  [/радиус изгиба/gi, 'радіус вигину'],
-  [/гибкая версия/gi, 'гнучка версія'],
-  [/гибкий/gi, 'гнучкий'],
-  [/гибкая/gi, 'гнучка'],
-  [/гибкие/gi, 'гнучкі'],
-  [/гибкого/gi, 'гнучкого'],
-  [/гибкость/gi, 'гнучкість'],
-  [/изогнутые/gi, 'вигнуті'],
-  [/изогнутые поверхности/gi, 'вигнуті поверхні'],
-  [/любой/gi, 'будь-який'],
-  [/любом/gi, 'будь-якому'],
-  [/любое/gi, 'будь-яке'],
-  [/различных/gi, 'різних'],
-  [/разные/gi, 'різні'],
-  [/несколькими/gi, 'кількома'],
-  [/прекрасный/gi, 'чудовий'],
-  [/прекрасная/gi, 'чудова'],
-  [/привлекательный/gi, 'привабливий'],
-  [/красивая/gi, 'красива'],
-  [/красивым/gi, 'красивим'],
-  [/ярким/gi, 'яскравим'],
-  [/белый/gi, 'білий'],
-  [/белого/gi, 'білого'],
-  [/цвет/gi, 'колір'],
-  [/цвета/gi, 'кольору'],
-  [/цветовые/gi, 'кольорові'],
-  [/качество/gi, 'якість'],
-  [/качества/gi, 'якості'],
-  [/качественных/gi, 'якісних'],
-  [/химикатов/gi, 'хімікатів'],
-  [/пространства/gi, 'простору'],
-  [/пространство/gi, 'простір'],
-  [/дверей/gi, 'дверей'],
-  [/окон/gi, 'вікон'],
-  [/колонны/gi, 'колони'],
-  [/колонну/gi, 'колону'],
-  [/колонна/gi, 'колона'],
-  [/полуколонна/gi, 'напівколона'],
-  [/капитель/gi, 'капітель'],
-  [/пилястра/gi, 'пілястра'],
-  [/трехмерной/gi, 'тривимірної'],
-  [/объем[а]?/gi, 'об`єму'],
-]
-
-function formatOracText(text) {
-  return String(text ?? '')
-    .replace(/Orac\s*Decor/gi, 'Orac Decor')
-    .replace(/Oracdecor/gi, 'Orac Decor')
-    .replace(/Orac\s+Decor(?=[A-ZА-ЯІЇЄҐ0-9])/g, 'Orac Decor ')
-    .replace(/LED(?=[А-ЯІЇЄҐ])/g, 'LED ')
-    .replace(/([а-яіїєґ])(?=Orac Decor)/gi, '$1 ')
-    .replace(/([а-яіїєґ])(?=LED)/gi, '$1 ')
-    .replace(/([а-яіїєґ])(?=[A-Z][0-9])/g, '$1 ')
-    .replace(/([.!?])(?=[А-ЯІЇЄҐA-Z])/g, '$1 ')
-    .replace(/([,:;])(?=[А-Яа-яІіЇїЄєҐґA-Z0-9])/g, '$1 ')
-    .replace(/([–-])(?=[А-Яа-яІіЇїЄєҐґA-Z0-9])/g, '$1 ')
-    .replace(/(?<=[А-Яа-яІіЇїЄєҐґA-Z0-9])([–-])/g, ' $1')
-    .replace(/(\d)(мм|см|м²|м)/gi, '$1 $2')
-    .replace(/(\d)\s*[xх]\s*(\d)/gi, '$1 x $2')
-    .replace(/\s+/g, ' ')
-    .trim()
-}
-
-function translateOracText(text) {
-  const formatted = formatOracText(text)
-  return ORAC_TEXT_REPLACEMENTS.reduce(
-    (value, [pattern, replacement]) => value.replace(pattern, replacement),
-    formatted
-  )
-    .replace(/`/g, "'")
-    .replace(/\s+/g, ' ')
-    .trim()
-}
-
 const ORAC_CHARACTERISTIC_LABELS = {
   length: 'Довжина',
   height: 'Висота',
@@ -361,35 +113,18 @@ const ORAC_CHARACTERISTIC_LABELS = {
 
 const ORAC_CHARACTERISTIC_ORDER = ['length', 'height', 'width', 'material', 'country']
 
-const ORAC_CHARACTERISTIC_VALUE_REPLACEMENTS = [
-  [/Полиуретан/gi, 'Поліуретан'],
-  [/Дюрополимер/gi, 'Дюрополімер'],
-  [/Полистирол/gi, 'Полістирол'],
-  [/Бельгия/gi, 'Бельгія'],
-]
-
-function formatOracCharacteristicValue(key, value) {
-  const rawValue = String(value ?? '').trim()
-  if (!rawValue) return ''
-
-  if (['length', 'height', 'width'].includes(key)) {
-    return /\bмм\b/i.test(rawValue) ? rawValue : `${rawValue} мм`
-  }
-
-  return ORAC_CHARACTERISTIC_VALUE_REPLACEMENTS.reduce(
-    (result, [pattern, replacement]) => result.replace(pattern, replacement),
-    rawValue
-  )
-}
-
 function normalizeOracCharacteristics(characteristics) {
   if (!characteristics || typeof characteristics !== 'object') return []
 
-  return ORAC_CHARACTERISTIC_ORDER.map((key) => ({
-    key,
-    label: ORAC_CHARACTERISTIC_LABELS[key],
-    value: formatOracCharacteristicValue(key, characteristics[key]),
-  })).filter((item) => item.value)
+  return ORAC_CHARACTERISTIC_ORDER.map((key) => {
+    const rawValue = String(characteristics[key] ?? '').trim()
+    if (!rawValue) return null
+    const value =
+      ['length', 'height', 'width'].includes(key) && !/\bмм\b/i.test(rawValue)
+        ? `${rawValue} мм`
+        : rawValue
+    return { key, label: ORAC_CHARACTERISTIC_LABELS[key], value }
+  }).filter(Boolean)
 }
 
 function normalizePriceVariants(variants, currency = '') {
@@ -437,12 +172,12 @@ function mapProduct(product, { brand = 'oikos', category, subcategory, sectionId
 
   const title =
     brand === 'orac-decor'
-      ? translateOracText(product.name_uk ?? product.name ?? '')
-      : product.name ?? ''
+      ? (product.name_uk ?? product.name ?? '')
+      : (product.name ?? '')
   const description =
     brand === 'orac-decor'
-      ? translateOracText(product.description_uk ?? product.desc ?? product.description ?? '')
-      : product.desc ?? product.description ?? ''
+      ? (product.description_uk ?? product.desc ?? product.description ?? '')
+      : (product.desc ?? product.description ?? '')
 
   return {
     id: String(product.id ?? product.url ?? product.name),
@@ -483,17 +218,13 @@ function mapProduct(product, { brand = 'oikos', category, subcategory, sectionId
   }
 }
 
-/**
- * Трансформує дані з dtb.json у формат, сумісний з UI
- */
 function transformProductsData() {
   const products = []
 
-  // Завантажуємо OIKOS продукти
+  // OIKOS products (already in Ukrainian)
   toArray(dtb.sections).forEach((section) => {
     const categoryName = section.title ?? section.id ?? ''
 
-    // 1) Секції з прямим масивом продуктів (наприклад: interior-decor)
     if (Array.isArray(section.products) && section.products.length > 0) {
       section.products.forEach((product) => {
         products.push(
@@ -508,7 +239,6 @@ function transformProductsData() {
       return
     }
 
-    // 2) Секції з підкатегоріями (interior-paint, exterior-paint, інші)
     if (Array.isArray(section.subcategories) && section.subcategories.length > 0) {
       section.subcategories.forEach((subCategory) => {
         toArray(subCategory.products).forEach((product) => {
@@ -525,10 +255,9 @@ function transformProductsData() {
     }
   })
 
-  // Завантажуємо ORAC DECOR продукти
+  // ORAC DECOR products (title_uk, name_uk, description_uk pre-translated in JSON)
   toArray(oracDecor.sections).forEach((section) => {
-    const rawCategoryName = section.title_uk ?? section.title ?? section.id ?? ''
-    const categoryName = ORAC_CATEGORY_UK[rawCategoryName] ?? translateOracText(rawCategoryName)
+    const categoryName = section.title_uk ?? section.title ?? section.id ?? ''
 
     if (Array.isArray(section.products) && section.products.length > 0) {
       section.products.forEach((product) => {

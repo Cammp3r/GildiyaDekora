@@ -1,22 +1,15 @@
 import { useEffect, useMemo, useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useSearchParams } from 'react-router-dom'
 import { useCart } from '../cart/CartContext.jsx'
 import { Seo } from '../seo/Seo.jsx'
 
-const CONTACT_EMAIL = 'gildiya@meta.ua'
-const ORDER_FORM_ENDPOINT = `https://formsubmit.co/ajax/${CONTACT_EMAIL}`
+const API_URL = (import.meta.env.VITE_API_URL ?? 'http://localhost:3001/api').replace(/\/$/, '')
 const ORDER_RATE_LIMIT_KEY = 'gildiyaDekoraOrderSubmissions'
 const ORDER_RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000
 const ORDER_RATE_LIMIT_MAX = 3
 const ORDER_COOLDOWN_MS = 60 * 1000
-const ORDER_MIN_FILL_TIME_MS = 3000
 
-const initialErrors = {
-  name: '',
-  email: '',
-  phone: '',
-  message: '',
-}
+const initialErrors = { name: '', email: '', phone: '', message: '' }
 
 function sanitizeInput(value, maxLen = 1000) {
   if (typeof value !== 'string') return ''
@@ -28,35 +21,33 @@ function sanitizeInput(value, maxLen = 1000) {
       return code <= 31 || code === 127 ? ' ' : char
     })
     .join('')
-  text = text.replace(/\s+/g, ' ')
-  text = text.trim()
+  text = text.replace(/\s+/g, ' ').trim()
   if (text.length > maxLen) text = text.slice(0, maxLen)
   return text
 }
 
 function validateCheckoutForm(values) {
   const errors = { ...initialErrors }
-  const namePattern = /^[A-Za-zА-Яа-яЁёІіЇїЄєҐґ'’ -]{2,60}$/
+  const namePattern = /^[A-Za-zА-Яа-яЁёІіЇїЄєҐґ'' -]{2,60}$/
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
-  const normalizedPhone = values.phone.replace(/[^\d+]/g, '')
-  const phoneDigits = normalizedPhone.replace(/\D/g, '')
+  const phoneDigits = values.phone.replace(/\D/g, '')
 
   if (!namePattern.test(values.name)) {
     errors.name = "Вкажіть ім'я від 2 до 60 літер без цифр і зайвих символів."
   }
-
   if (!emailPattern.test(values.email)) {
     errors.email = 'Вкажіть коректний email, наприклад name@gmail.com.'
   }
-
-  if (!/^\+?[\d\s()-.]{10,20}$/.test(values.phone) || phoneDigits.length < 10 || phoneDigits.length > 15) {
+  if (
+    !/^\+?[\d\s()-.]{10,20}$/.test(values.phone) ||
+    phoneDigits.length < 10 ||
+    phoneDigits.length > 15
+  ) {
     errors.phone = 'Вкажіть коректний номер телефону, наприклад +38 (067) 503-93-52.'
   }
-
   if (values.message.length > 1000) {
     errors.message = 'Повідомлення не повинно перевищувати 1000 символів.'
   }
-
   return errors
 }
 
@@ -74,14 +65,10 @@ function formatMoney(value) {
 function getOrderSubmissions(now = Date.now()) {
   try {
     const saved = JSON.parse(localStorage.getItem(ORDER_RATE_LIMIT_KEY) || '[]')
-
-    if (!Array.isArray(saved)) {
-      return []
-    }
-
+    if (!Array.isArray(saved)) return []
     return saved
-      .filter((timestamp) => Number.isFinite(timestamp))
-      .filter((timestamp) => now - timestamp < ORDER_RATE_LIMIT_WINDOW_MS)
+      .filter((ts) => Number.isFinite(ts))
+      .filter((ts) => now - ts < ORDER_RATE_LIMIT_WINDOW_MS)
   } catch {
     return []
   }
@@ -90,16 +77,13 @@ function getOrderSubmissions(now = Date.now()) {
 function getRateLimitMessage(now = Date.now()) {
   const submissions = getOrderSubmissions(now)
   const lastSubmission = submissions.at(-1)
-
   if (lastSubmission && now - lastSubmission < ORDER_COOLDOWN_MS) {
     const secondsLeft = Math.ceil((ORDER_COOLDOWN_MS - (now - lastSubmission)) / 1000)
     return `Зачекайте ${secondsLeft} секунд перед наступним замовленням.`
   }
-
   if (submissions.length >= ORDER_RATE_LIMIT_MAX) {
     return 'Занадто багато замовлень за короткий час. Спробуйте ще раз через 10 хвилин або зателефонуйте нам.'
   }
-
   return ''
 }
 
@@ -108,13 +92,73 @@ function saveOrderSubmission(now = Date.now()) {
   localStorage.setItem(ORDER_RATE_LIMIT_KEY, JSON.stringify(submissions))
 }
 
+function redirectToLiqPay(checkoutUrl, data, signature) {
+  const form = document.createElement('form')
+  form.method = 'POST'
+  form.action = checkoutUrl
+  form.acceptCharset = 'utf-8'
+  form.style.display = 'none'
+
+  const dataInput = document.createElement('input')
+  dataInput.type = 'hidden'
+  dataInput.name = 'data'
+  dataInput.value = data
+
+  const sigInput = document.createElement('input')
+  sigInput.type = 'hidden'
+  sigInput.name = 'signature'
+  sigInput.value = signature
+
+  form.appendChild(dataInput)
+  form.appendChild(sigInput)
+  document.body.appendChild(form)
+  form.submit()
+}
+
+function PaymentSuccess({ orderNumber }) {
+  const { clearCart } = useCart()
+
+  useEffect(() => {
+    clearCart()
+  }, [clearCart])
+
+  return (
+    <>
+      <Seo title="Оплату прийнято" canonicalPath="/order" noindex />
+      <section className="contact checkout">
+        <div className="container">
+          <div className="payment-success">
+            <div className="payment-success-icon">✓</div>
+            <h1 className="payment-success-title">Оплату прийнято!</h1>
+            <p className="payment-success-text">
+              Дякуємо за замовлення. Менеджер звʼяжеться з вами найближчим часом.
+            </p>
+            {orderNumber && (
+              <p className="payment-success-order">
+                Номер замовлення: <strong>{orderNumber}</strong>
+              </p>
+            )}
+            <a href="/" className="btn-primary" style={{ marginTop: '2.5rem' }}>
+              На головну →
+            </a>
+          </div>
+        </div>
+      </section>
+    </>
+  )
+}
+
 export default function OrderPage() {
-  const { items, totalQuantity, totalPrice, clearCart } = useCart()
+  const { items, totalQuantity, totalPrice } = useCart()
+  const [searchParams] = useSearchParams()
   const [status, setStatus] = useState('idle')
   const [statusMessage, setStatusMessage] = useState('')
   const [errors, setErrors] = useState(initialErrors)
   const location = useLocation()
   const [formStartedAt] = useState(() => Date.now())
+
+  const paymentParam = searchParams.get('payment')
+  const orderParam = searchParams.get('order')
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
@@ -122,7 +166,6 @@ export default function OrderPage() {
 
   const orderPreview = useMemo(() => {
     if (!items || items.length === 0) return 'Кошик порожній'
-
     return items
       .map((item) => {
         const variant = item.variantTitle ? ` — ${sanitizeInput(item.variantTitle, 80)}` : ''
@@ -132,31 +175,9 @@ export default function OrderPage() {
       .join('\n')
   }, [items])
 
-  const orderDetails = useMemo(() => {
-    if (!items || items.length === 0) return 'Кошик порожній'
-
-    const lines = items.map((item, index) => {
-      const variant = item.variantTitle ? ` — ${sanitizeInput(item.variantTitle, 80)}` : ''
-      const volume = item.volume ? ` ${sanitizeInput(item.volume, 40)}` : ''
-      const quantity = Number(item.quantity) || 1
-      const unitPrice = Number(item.unitPrice)
-      const lineTotal = Number.isFinite(unitPrice) ? unitPrice * quantity : 0
-      const texture = item.texture ? `\n   Фактура: ${sanitizeInput(String(item.texture), 100)}` : ''
-      const color = item.color ? `\n   Колір: ${sanitizeInput(String(item.color), 100)}` : ''
-      const price = Number.isFinite(unitPrice)
-        ? `\n   Ціна: ${formatMoney(unitPrice)}; разом: ${formatMoney(lineTotal)}`
-        : ''
-
-      return `${index + 1}. ${sanitizeInput(item.title, 200)}${variant}${volume}\n   Кількість: ${quantity}${price}${texture}${color}`
-    })
-
-    return [
-      ...lines,
-      '',
-      `Загальна кількість: ${totalQuantity}`,
-      `Сума: ${formatMoney(totalPrice)}`,
-    ].join('\n')
-  }, [items, totalPrice, totalQuantity])
+  if (paymentParam === 'success') {
+    return <PaymentSuccess orderNumber={orderParam} />
+  }
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -171,6 +192,7 @@ export default function OrderPage() {
     const formData = new FormData(form)
     const honeypot = String(formData.get('_honey') || '').trim()
     const now = Date.now()
+
     const raw = {
       name: String(formData.get('name') || ''),
       email: String(formData.get('email') || ''),
@@ -194,14 +216,7 @@ export default function OrderPage() {
       return
     }
 
-    if (honeypot) {
-      form.reset()
-      setErrors(initialErrors)
-      clearCart()
-      setStatus('success')
-      setStatusMessage('Дякуємо! Замовлення відправлено.')
-      return
-    }
+    if (honeypot) return
 
     if (now - formStartedAt < 3000) {
       setStatus('error')
@@ -210,49 +225,51 @@ export default function OrderPage() {
     }
 
     const rateLimitMessage = getRateLimitMessage(now)
-
     if (rateLimitMessage) {
       setStatus('error')
       setStatusMessage(rateLimitMessage)
       return
     }
 
-    const cleanFormData = new FormData()
-    cleanFormData.append('_subject', 'Нове замовлення з сайту Gildiya Dekora')
-    cleanFormData.append('_template', 'table')
-    cleanFormData.append('_captcha', 'false')
-    cleanFormData.append('_honey', '')
-    cleanFormData.append("Ім'я", values.name)
-    cleanFormData.append('Email', values.email)
-    cleanFormData.append('Телефон', values.phone)
-    cleanFormData.append('Коментар', values.message || '-')
-    cleanFormData.append('Замовлення', orderDetails)
-
     setStatus('sending')
-    setStatusMessage('Відправляємо замовлення...')
+    setStatusMessage('Створюємо замовлення...')
 
     try {
-      const response = await fetch(ORDER_FORM_ENDPOINT, {
+      const response = await fetch(`${API_URL}/payment/init`, {
         method: 'POST',
-        headers: {
-          Accept: 'application/json',
-        },
-        body: cleanFormData,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          customer: {
+            name: values.name,
+            email: values.email,
+            phone: values.phone,
+            message: values.message || '',
+          },
+          items: items.map((item) => ({
+            productId: item.productId,
+            variantId: item.variantId,
+            quantity: item.quantity,
+            texture: item.texture ?? null,
+            color: item.color ?? null,
+          })),
+        }),
       })
 
       if (!response.ok) {
-        throw new Error('Order was not sent')
+        const err = await response.json().catch(() => ({}))
+        throw new Error(err?.error || 'Не вдалося створити замовлення.')
       }
 
-      form.reset()
+      const { checkoutUrl, data, signature } = await response.json()
       saveOrderSubmission()
-      clearCart()
-      setErrors(initialErrors)
-      setStatus('success')
-      setStatusMessage('Дякуємо! Замовлення відправлено. Ми звʼяжемось з вами для підтвердження.')
-    } catch {
+      setStatusMessage('Перенаправляємо на сторінку оплати...')
+      redirectToLiqPay(checkoutUrl, data, signature)
+    } catch (error) {
       setStatus('error')
-      setStatusMessage('Не вдалося відправити замовлення. Спробуйте ще раз або зателефонуйте нам.')
+      setStatusMessage(
+        error?.message ||
+          'Не вдалося відправити замовлення. Спробуйте ще раз або зателефонуйте нам.'
+      )
     }
   }
 
@@ -260,23 +277,33 @@ export default function OrderPage() {
     <>
       <Seo
         title="Оформлення замовлення"
-        description="Оформлення замовлення у Гільдії Декора з підтвердженням менеджером."
+        description="Оформлення замовлення у Гільдії Декора з онлайн-оплатою через LiqPay."
         canonicalPath="/order"
         noindex
       />
       <section className="contact checkout">
         <div className="container">
           <h1 className="section-title">Оформлення замовлення</h1>
-          <div className="contact-order-banner">Заповніть форму, і ми звʼяжемось з вами для підтвердження замовлення</div>
+          <div className="contact-order-banner">
+            Заповніть форму — і ви будете перенаправлені на захищену сторінку оплати LiqPay
+          </div>
 
           <div className="contact-content">
             <div className="contact-info">
               <div className="contact-item">
                 <h3>Ваше замовлення</h3>
-                <p style={{ whiteSpace: 'pre-line' }}>{orderPreview}</p>
+                <p style={{ whiteSpace: 'pre-line', marginBottom: '0.75rem' }}>{orderPreview}</p>
                 <p><strong>Кількість:</strong> {totalQuantity}</p>
                 <p><strong>Сума:</strong> {formatMoney(totalPrice)}</p>
-                <p>Після відправки замовлення менеджер уточнить наявність, доставку та спосіб оплати.</p>
+              </div>
+
+              <div className="liqpay-info">
+                <div className="liqpay-badge">
+                  <span className="liqpay-badge-lock">🔒</span>
+                  <span className="liqpay-badge-text">Безпечна оплата через</span>
+                  <span className="liqpay-badge-logo">LiqPay</span>
+                </div>
+                <p className="liqpay-methods">Visa · Mastercard · Apple Pay · Google Pay</p>
               </div>
             </div>
 
@@ -344,8 +371,8 @@ export default function OrderPage() {
               <label className="contact-field">
                 <textarea
                   name="message"
-                  placeholder="Коментар до замовлення"
-                  rows="5"
+                  placeholder="Коментар до замовлення (необов'язково)"
+                  rows="4"
                   maxLength="1000"
                   aria-invalid={Boolean(errors.message)}
                   aria-describedby={errors.message ? 'checkout-message-error' : undefined}
@@ -357,11 +384,15 @@ export default function OrderPage() {
                 )}
               </label>
 
-              <button className="add-btn" type="submit" disabled={status === 'sending'}>
-                {status === 'sending' ? 'Відправляємо...' : 'Надіслати замовлення'}
+              <button
+                className="submit-button liqpay-pay-btn"
+                type="submit"
+                disabled={status === 'sending'}
+              >
+                {status === 'sending' ? statusMessage : 'Перейти до оплати →'}
               </button>
 
-              {statusMessage && (
+              {statusMessage && status !== 'sending' && (
                 <div
                   className={[
                     'contact-form-status',

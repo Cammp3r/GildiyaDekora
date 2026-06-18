@@ -218,7 +218,7 @@ export default function ContactPage() {
               </div>
               <div className="contact-item">
                 <h3>Email</h3>
-                <p><a>gildiya@meta.ua</a></p>
+                <p><a href="mailto:gildiya@meta.ua">gildiya@meta.ua</a></p>
               </div>
               <div className="contact-item">
                 <h3>Телефон</h3>
