@@ -2055,6 +2055,106 @@ footer .logo-text {
   color: rgba(245, 240, 232, 0.3);
 }
 
+/* ============== LIQPAY PAYMENT ============== */
+.liqpay-info {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--soft);
+}
+
+.liqpay-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.9rem;
+  border: 1px solid rgba(196, 112, 58, 0.35);
+  border-radius: 4px;
+  background: rgba(196, 112, 58, 0.06);
+}
+
+.liqpay-badge-lock {
+  font-size: 0.75rem;
+}
+
+.liqpay-badge-text {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.liqpay-badge-logo {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #009966;
+  text-transform: uppercase;
+}
+
+.liqpay-methods {
+  margin-top: 0.6rem;
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.liqpay-pay-btn {
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  padding: 1.1rem;
+}
+
+/* ============== PAYMENT SUCCESS SCREEN ============== */
+.payment-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 1rem 6rem;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.payment-success-icon {
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 50%;
+  background: rgba(0, 153, 102, 0.12);
+  border: 2px solid #009966;
+  color: #009966;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.payment-success-title {
+  font-size: 2.5rem;
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
+
+.payment-success-text {
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 0.5rem;
+}
+
+.payment-success-order {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 0.5rem;
+}
+
 /* ============== SCROLL TO TOP ============== */
 .scroll-to-top {
   position: fixed;
@@ -2334,5 +2434,144 @@ footer .logo-text {
   .product-details-textures,
   .product-details-colors {
     gap: 8px;
+  }
+}
+
+/* ============== SEO LANDING PAGES ============== */
+.seo-landing {
+  padding: 4rem 0 6rem;
+}
+
+.seo-landing-intro {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  max-width: 720px;
+  color: var(--muted);
+  margin: 1.5rem 0 2rem;
+}
+
+.seo-landing-cta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+
+.seo-landing-sections {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.seo-landing-section {
+  padding: 2rem;
+  border: 1px solid var(--soft);
+}
+
+.seo-landing-section h2 {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: var(--ink);
+}
+
+.seo-landing-section p {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.seo-landing-faq {
+  margin: 3rem 0;
+  max-width: 800px;
+}
+
+.seo-landing-faq > h2 {
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+  color: var(--ink);
+}
+
+.seo-faq-item {
+  border-bottom: 1px solid var(--soft);
+}
+
+.seo-faq-item summary {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  list-style: none;
+  padding: 1rem 0;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.seo-faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.seo-faq-item summary::before {
+  content: '+';
+  color: var(--accent);
+  font-size: 1.1rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.seo-faq-item[open] summary::before {
+  content: '−';
+}
+
+.seo-faq-item p {
+  padding: 0 0 1rem 1.4rem;
+  color: var(--muted);
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+.seo-landing-address {
+  margin-top: 2.5rem;
+  padding: 2rem;
+  border: 1px solid var(--soft);
+  background: var(--warm);
+}
+
+.seo-landing-address h2 {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.seo-landing-address p {
+  color: var(--muted);
+  line-height: 1.8;
+  font-size: 1rem;
+}
+
+.seo-landing-address a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.seo-landing-address a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .seo-landing {
+    padding: 2.5rem 0 4rem;
+  }
+
+  .seo-landing-sections {
+    grid-template-columns: 1fr;
+  }
+
+  .seo-landing-cta {
+    flex-direction: column;
   }
 }
