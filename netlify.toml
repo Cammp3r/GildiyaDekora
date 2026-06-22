@@ -1,10 +1,16 @@
 [build]
-  command = "npm run build"
+  # Install Chrome into the Netlify persistent cache dir, then build.
+  # /opt/build/cache/ is preserved between deploys, so Chrome is only
+  # downloaded once and reused on subsequent builds.
+  command = "npx puppeteer browsers install chrome && npm run build"
   publish = "dist"
 
 [build.environment]
   NODE_VERSION = "22"
-  PUPPETEER_SKIP_CHROMIUM_DOWNLOAD = "false"
+  # Skip Chromium download during `npm install` — we install it explicitly above.
+  PUPPETEER_SKIP_CHROMIUM_DOWNLOAD = "true"
+  # Use the Netlify persistent cache directory so Chrome survives between builds.
+  PUPPETEER_CACHE_DIR = "/opt/build/cache/.puppeteer"
 
 [env.production]
   VITE_API_URL = "https://gildiyadekora.onrender.com/api"
@@ -18,7 +24,6 @@
   status = 200
 
 # SPA catch-all: every route that has no static file → serve index.html with HTTP 200
-# Without this rule every /products/xyz returns 404 to Googlebot → not indexed
 [[redirects]]
   from = "/*"
   to = "/index.html"
