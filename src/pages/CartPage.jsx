@@ -74,18 +74,21 @@ export default function CartPage() {
                   (Number.isFinite(unitPrice) ? unitPrice : 0) *
                   (Number.isFinite(quantity) ? quantity : 0)
 
+                const productId = item.productId ?? item.id.split(':')[0]
+                const productHref = `/products/${encodeURIComponent(productId)}`
+
                 return (
                   <div key={item.id} className="cart-item">
-                    <div className="cart-item-media">
+                    <Link to={productHref} className="cart-item-media">
                       {item.image ? (
                         <img src={item.image} alt={item.title} loading="lazy" />
                       ) : (
                         <div className="cart-item-placeholder" />
                       )}
-                    </div>
+                    </Link>
 
                     <div className="cart-item-main">
-                      <div className="cart-item-title">{item.title}</div>
+                      <Link to={productHref} className="cart-item-title">{item.title}</Link>
                       <div className="cart-item-meta">
                         {item.variantTitle ? (
                           <span>{item.variantTitle}{item.volume ? ' ' + item.volume : ''}</span>
