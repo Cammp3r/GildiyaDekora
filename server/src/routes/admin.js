@@ -87,5 +87,40 @@ export function createAdminRouter(config) {
     }
   })
 
+  router.patch('/orders/:orderNumber', async (req, res, next) => {
+    try {
+      const prisma = getPrisma(req)
+      const orderNumber = String(req.params.orderNumber ?? '').trim()
+      const newStatus = String(req.body?.status ?? '').trim()
+
+      const valid = ['pending', 'paid', 'failed', 'canceled', 'refunded']
+      if (!valid.includes(newStatus)) {
+        return res.status(400).json({ error: 'Невалідний статус.' })
+      }
+
+      const order = await prisma.order.update({
+        where: { orderNumber },
+        data: { status: newStatus },
+      })
+
+      return res.json({ order: serializeOrder(order) })
+    } catch (error) {
+      return next(error)
+    }
+  })
+
+  router.delete('/orders/:orderNumber', async (req, res, next) => {
+    try {
+      const prisma = getPrisma(req)
+      const orderNumber = String(req.params.orderNumber ?? '').trim()
+
+      await prisma.order.delete({ where: { orderNumber } })
+
+      return res.json({ success: true })
+    } catch (error) {
+      return next(error)
+    }
+  })
+
   return router
 }

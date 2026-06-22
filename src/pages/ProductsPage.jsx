@@ -6,6 +6,14 @@ import { Seo } from '../seo/Seo.jsx'
 
 const ITEMS_PER_PAGE = 15
 
+// Cyrillic characters that are visually identical to Latin letters.
+// Normalizing both query and haystack to Latin before comparing makes
+// "c351" find "С351" and "сх" find "cx" (and vice-versa).
+const CYRILLIC_LOOKALIKE = { 'а': 'a', 'е': 'e', 'о': 'o', 'р': 'p', 'с': 'c', 'х': 'x', 'і': 'i' }
+function normLookalike(text) {
+  return text.replace(/[аеорсхі]/g, (ch) => CYRILLIC_LOOKALIKE[ch])
+}
+
 function getPositivePage(value) {
   const page = Number(value)
   return Number.isInteger(page) && page > 0 ? page : 1
@@ -140,16 +148,31 @@ export default function ProductsPage() {
   }
 
   const filteredProducts = useMemo(() => {
-    const query = searchQuery.trim().toLowerCase()
+    const tokens = searchQuery
+      .trim()
+      .toLowerCase()
+      .split(/\s+/)
+      .filter(Boolean)
+
     const byBrand = productsDb.filter((p) => p.brand === brandFromUrl)
     const byCategory =
       selectedCategory === 'all'
         ? byBrand
         : byBrand.filter((p) => p.category === selectedCategory)
 
-    if (!query) return byCategory
+    if (!tokens.length) return byCategory
 
-    return byCategory.filter((p) => {
+    // When searching, look across ALL brands so "c351" finds ORAC DECOR
+    // products even if the user is on the OIKOS tab.
+    const searchPool =
+      selectedCategory === 'all'
+        ? productsDb
+        : productsDb.filter((p) => p.category === selectedCategory)
+
+    // Pre-normalize tokens once (lowercase + lookalike normalization)
+    const normTokens = tokens.map((t) => normLookalike(t))
+
+    return searchPool.filter((p) => {
       const colorCodes = Array.isArray(p.colors)
         ? p.colors.map((c) => c?.code).filter(Boolean).join(' ')
         : ''
@@ -158,22 +181,17 @@ export default function ProductsPage() {
         : ''
       const tags = Array.isArray(p.tags) ? p.tags.filter(Boolean).join(' ') : ''
 
-      const haystack = [
-        p.title,
-        p.description,
-        p.effect,
-        p.base,
-        p.category,
-        p.subcategory,
-        tags,
-        colorCodes,
-        textureNames,
-      ]
-        .filter(Boolean)
-        .join(' ')
-        .toLowerCase()
+      // Normalize haystack: lowercase then replace Cyrillic lookalikes with Latin.
+      // This makes "c351" match "С351", "сх" match "cx", and vice-versa.
+      const haystack = normLookalike(
+        [p.id, p.title, p.description, p.effect, p.base, p.category, p.subcategory, tags, colorCodes, textureNames]
+          .filter(Boolean)
+          .join(' ')
+          .toLowerCase()
+      )
 
-      return haystack.includes(query)
+      // All tokens must be present (AND logic)
+      return normTokens.every((token) => haystack.includes(token))
     })
   }, [searchQuery, selectedCategory, brandFromUrl])
 
@@ -234,7 +252,7 @@ export default function ProductsPage() {
           ))}
         </div>
 
-        <div className={`products-grid ${brandFromUrl === 'orac-decor' ? 'orac-products-grid' : ''}`}>
+        <div className={`products-grid ${brandFromUrl === 'orac-decor' && !searchQuery.trim() ? 'orac-products-grid' : ''}`}>
           {paginatedProducts.map((product) => (
             <div key={product.id} className="product-card">
               <div className={`product-swatch ${product.brand === 'orac-decor' ? 'orac-swatch' : ''}`}>
