@@ -141,6 +141,9 @@ async function prerender() {
 }
 
 prerender().catch((err) => {
-  console.error('Prerender fatal error:', err)
-  process.exit(1)
+  // Non-fatal: the SPA is still fully functional via public/_redirects.
+  // Prerendering is a SEO bonus — don't block the deploy if Chrome is unavailable.
+  console.warn('\nPrerender warning (build will continue):', err.message)
+  console.warn('Pages will be served via SPA redirect instead of pre-rendered HTML.\n')
+  process.exit(0)
 })
