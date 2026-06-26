@@ -9,6 +9,7 @@ import {
   verifyLiqPaySignature,
 } from '../lib/liqpay.js'
 import { resolveCartItem } from '../lib/catalog.js'
+import { serializeOrder } from '../lib/orderUtils.js'
 
 function sanitizeText(value, maxLen = 1000) {
   if (typeof value !== 'string') return ''
@@ -53,25 +54,6 @@ function getPublicUrls(config, orderNumber) {
   return {
     resultUrl: `${frontendUrl}/order?payment=success&order=${encodeURIComponent(orderNumber)}`,
     serverUrl: webhookUrl,
-  }
-}
-
-function serializeOrder(order) {
-  return {
-    id: order.id,
-    orderNumber: order.orderNumber,
-    customerName: order.customerName,
-    customerEmail: order.customerEmail,
-    customerPhone: order.customerPhone,
-    customerComment: order.customerComment,
-    currency: order.currency,
-    amount: Number(order.amount),
-    status: order.status,
-    items: order.items,
-    liqpayStatus: order.liqpayStatus,
-    paidAt: order.paidAt,
-    createdAt: order.createdAt,
-    updatedAt: order.updatedAt,
   }
 }
 

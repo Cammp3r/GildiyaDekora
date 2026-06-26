@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { NavLink, useSearchParams } from 'react-router-dom'
+import { NavLink, useSearchParams, useLocation, useNavigate } from 'react-router-dom'
 import logo from '../logos/logo-transparent.png'
 import { useCart } from '../cart/CartContext.jsx'
 
@@ -8,12 +8,24 @@ export default function Header() {
   const [dropdownOpen, setDropdownOpen] = useState(false)
   const { totalDistinctItems } = useCart()
   const [searchParams] = useSearchParams()
+  const location = useLocation()
+  const navigate = useNavigate()
   const cartLabel = totalDistinctItems > 0 ? `Кошик (${totalDistinctItems})` : 'Кошик'
 
   const closeMobileMenu = () => setMobileMenuOpen(false)
 
+  const handleAboutClick = (e) => {
+    e.preventDefault()
+    closeMobileMenu()
+    if (location.pathname === '/') {
+      document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })
+    } else {
+      navigate('/', { state: { scrollToAbout: true } })
+    }
+  }
+
   const navItems = [
-    { label: 'Про нас', path: '/' },
+    { label: 'Про нас', path: '/', isAbout: true },
     { label: 'Продукти', path: '/products', hasDropdown: true },
     { label: 'Галерея', path: '/gallery' },
     { label: 'Контакти', path: '/contact' },
@@ -71,6 +83,14 @@ export default function Header() {
                     ))}
                   </div>
                 </>
+              ) : item.isAbout ? (
+                <a
+                  href="/#about"
+                  className={location.pathname === '/' ? 'active' : ''}
+                  onClick={handleAboutClick}
+                >
+                  {item.label}
+                </a>
               ) : (
                 <NavLink
                   to={item.path}

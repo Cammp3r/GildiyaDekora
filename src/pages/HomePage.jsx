@@ -1,12 +1,20 @@
 import { useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import officePhoto from '../../photos/insget.net_instagram_69e885b88b3ac.jpg'
 import { Seo } from '../seo/Seo.jsx'
 
 export default function HomePage() {
+  const location = useLocation()
+
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
-  }, [])
+    if (location.state?.scrollToAbout) {
+      setTimeout(() => {
+        document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })
+      }, 80)
+    } else {
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+    }
+  }, [location.state])
 
   return (
     <>
@@ -19,7 +27,7 @@ export default function HomePage() {
       <section className="hero">
         <div className="hero-left">
           <p className="hero-tag">Гільдія Декора · Офіційний дилер OIKOS</p>
-          <h1>Матеріали<br />які <em>трансформують</em><br />інтер'єри</h1>
+          <h1>Матеріали які <em>трансформують</em><br />інтер'єри</h1>
           <p className="hero-desc">Офіційна лінійка продуктів OIKOS з 1984 року. Професійні та побутові матеріали найвищої якості для внутрішніх та зовнішніх робіт.</p>
           <Link to="/products" className="btn-primary">Переглянути каталог →</Link>
           <Link to="/contact" className="btn-secondary">Замовити консультацію</Link>
@@ -99,7 +107,7 @@ export default function HomePage() {
       </div>
 
       {/* About Section */}
-      <section className="about">
+      <section className="about" id="about">
         <div className="container">
           <div className="about-content">
             <div className="about-text">

@@ -197,7 +197,6 @@ export function CartProvider({ children }) {
         dispatch({ type: 'SET_QUANTITY', payload: { id: String(id), quantity } })
       },
 
-      clear: () => dispatch({ type: 'CLEAR' }),
       clearCart: () => dispatch({ type: 'CLEAR' }),
     }
   }, [state.items])
