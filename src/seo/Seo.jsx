@@ -55,6 +55,7 @@ function setJsonLd(id, data) {
 export function Seo({
   title,
   description = DEFAULT_DESCRIPTION,
+  keywords,
   image = DEFAULT_IMAGE,
   type = 'website',
   noindex = false,
@@ -75,6 +76,10 @@ export function Seo({
     setMeta('meta[name="description"]', { name: 'description', content: description })
     setMeta('meta[name="robots"]', { name: 'robots', content: robots })
     setMeta('meta[name="theme-color"]', { name: 'theme-color', content: '#111111' })
+
+    if (keywords) {
+      setMeta('meta[name="keywords"]', { name: 'keywords', content: keywords })
+    }
 
     setMeta('meta[property="og:site_name"]', { property: 'og:site_name', content: SITE_NAME })
     setMeta('meta[property="og:type"]', { property: 'og:type', content: type })
@@ -97,7 +102,7 @@ export function Seo({
     return () => {
       setJsonLd('seo-jsonld', null)
     }
-  }, [canonicalPath, description, image, jsonLd, location.pathname, noindex, title, type])
+  }, [canonicalPath, description, image, jsonLd, keywords, location.pathname, noindex, title, type])
 
   return null
 }

@@ -63,21 +63,75 @@ export default function ProductDetailsPage() {
   const shouldShowDescription = product.brand !== 'orac-decor' && product.description
   const brandName = product.brand === 'orac-decor' ? 'ORAC DECOR' : 'OIKOS'
   const productPath = `/products/${encodeURIComponent(product.id)}`
-  const productDescription = [
-    product.title,
+
+  // Ukrainian → Russian category/effect translations for search coverage
+  const CATEGORY_RU = {
+    'Декоративні фарби': 'декоративная краска',
+    'Венеціанська штукатурка': 'венецианская штукатурка',
+    'Фасадні матеріали': 'фасадный материал',
+    'Фасадні фарби': 'фасадная краска',
+    'Штукатурки': 'штукатурка',
+    'Мікроцемент': 'микроцемент',
+    'Ґрунтівки': 'грунтовка',
+    'Лаки та захисні покриття': 'лак защитное покрытие',
+    'Лак для дерева': 'лак для дерева',
+    'Акрилова фарба': 'акриловая краска',
+    'Фарба для стін': 'краска для стен',
+    'Перламутр': 'перламутровая краска',
+    'Ефект крейди': 'эффект мела',
+    'Металік': 'металлик краска',
+    'Карнизи та молдинги': 'карнизы и молдинги',
+    'Декоративні панелі': 'декоративные панели',
+    'Колони та пілястри': 'колонны и пилястры',
+    'Медальйони та розетки': 'медальоны и розетки',
+  }
+  const categoryRu = CATEGORY_RU[product.category] || ''
+  const brandRu = product.brand === 'orac-decor' ? 'ORAC DECOR' : 'OIKOS'
+  const priceStr = hasPrice ? `від ${price.toLocaleString('uk-UA')} грн` : 'за запитом'
+
+  // Meta description — Ukrainian, ~155 chars
+  const metaDescParts = [
+    `Купити ${product.title} (${brandName}) у Києві.`,
+    product.category ? `${product.category}.` : '',
+    product.effect ? `Ефект: ${product.effect}.` : '',
+    `Ціна ${priceStr}. Офіційний дилер. Гільдія Декора.`,
+  ].filter(Boolean).join(' ')
+  const productDescription = metaDescParts.length > 160
+    ? metaDescParts.slice(0, 157) + '...'
+    : metaDescParts
+
+  // Keywords — Ukrainian + Russian
+  const seoKeywords = [
+    `купити ${product.title}`,
+    `${product.title} ${brandName} ціна`,
+    `${product.title} київ`,
+    `${product.title} україна`,
     product.category,
-    product.subcategory,
-    product.effect ? `ефект: ${product.effect}` : '',
-    hasPrice ? `ціна від ${price.toLocaleString('uk-UA')} грн` : 'ціна за запитом',
-    'консультація та замовлення у Гільдії Декору, Київ',
-  ]
-    .filter(Boolean)
-    .join('. ')
+    product.effect ? `купити ${product.effect}` : '',
+    `купить ${product.title}`,
+    `${product.title} ${brandRu} цена`,
+    `${product.title} украина`,
+    `${product.title} киев`,
+    categoryRu,
+    product.brand === 'oikos' ? 'OIKOS Украина краска' : 'ORAC DECOR Украина',
+  ].filter(Boolean).join(', ')
+
+  // JSON-LD description — bilingual, longer
+  const jsonLdDescription = [
+    `Купити ${product.title} (${brandName}) у Києві та по Україні.`,
+    product.description || '',
+    product.category ? `Категорія: ${product.category}.` : '',
+    product.effect ? `Ефект: ${product.effect}.` : '',
+    `Ціна ${priceStr}. Офіційний дилер ${brandName} в Україні — Гільдія Декора, Київ.`,
+    `— Купить ${product.title} ${brandRu} в Украине. Официальный дилер в Киеве.`,
+    categoryRu ? `Категория: ${categoryRu}.` : '',
+  ].filter(Boolean).join(' ')
+
   const productJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Product',
     name: product.title,
-    description: productDescription,
+    description: jsonLdDescription,
     image: absoluteUrl(activePhoto || product.image),
     brand: {
       '@type': 'Brand',
@@ -89,7 +143,13 @@ export default function ProductDetailsPage() {
       '@type': 'Offer',
       priceCurrency: 'UAH',
       availability: 'https://schema.org/InStock',
+      itemCondition: 'https://schema.org/NewCondition',
       url: absoluteUrl(productPath),
+      seller: {
+        '@type': 'Organization',
+        name: 'Гільдія Декора',
+        url: absoluteUrl('/'),
+      },
       ...(hasPrice ? { price } : {}),
     },
   }
@@ -97,8 +157,9 @@ export default function ProductDetailsPage() {
   return (
     <section className="product-details">
       <Seo
-        title={`${product.title} ${brandName}`}
+        title={`Купити ${product.title} ${brandName} | Ціна в Україні`}
         description={productDescription}
+        keywords={seoKeywords}
         image={activePhoto || product.image}
         type="product"
         canonicalPath={productPath}

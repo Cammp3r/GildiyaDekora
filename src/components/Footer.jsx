@@ -1,7 +1,19 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import logo from '../logos/logo-transparent.png'
 
 export default function Footer() {
+  const location = useLocation()
+  const navigate = useNavigate()
+
+  const handleAboutClick = (e) => {
+    e.preventDefault()
+    if (location.pathname === '/') {
+      document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })
+    } else {
+      navigate('/', { state: { scrollToAbout: true } })
+    }
+  }
+
   return (
     <footer>
       <Link to="/" className="logo" style={{ color: '#f5f0e8' }}>
@@ -18,7 +30,7 @@ export default function Footer() {
       <div className="footer-col">
         <h4>Навігація</h4>
         <ul>
-          <li><Link to="/" style={{color: "orange"}} >Про нас</Link></li>
+          <li><a href="/#about" style={{color: "orange"}} onClick={handleAboutClick}>Про нас</a></li>
           <li><Link to="/products" style={{color: "orange"}}>Продукти</Link></li>
           <li><Link to="/gallery" style={{color: "orange"}}>Галерея</Link></li>
           <li><Link to="/contact" style={{color: "orange"}}>Контакти</Link></li>

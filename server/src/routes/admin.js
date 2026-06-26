@@ -1,25 +1,17 @@
+import { createHash, timingSafeEqual } from 'node:crypto'
 import express from 'express'
+import { serializeOrder } from '../lib/orderUtils.js'
 
 function getPrisma(req) {
   return req.app.locals.prisma
 }
 
-function serializeOrder(order) {
-  return {
-    id: order.id,
-    orderNumber: order.orderNumber,
-    customerName: order.customerName,
-    customerEmail: order.customerEmail,
-    customerPhone: order.customerPhone,
-    customerComment: order.customerComment,
-    currency: order.currency,
-    amount: Number(order.amount),
-    status: order.status,
-    items: order.items,
-    liqpayStatus: order.liqpayStatus,
-    paidAt: order.paidAt,
-    createdAt: order.createdAt,
-    updatedAt: order.updatedAt,
+function safeTokenCompare(a, b) {
+  try {
+    const h = (s) => createHash('sha256').update(s).digest()
+    return timingSafeEqual(h(a), h(b))
+  } catch {
+    return false
   }
 }
 
@@ -33,7 +25,7 @@ export function createAdminRouter(config) {
       return res.status(500).json({ error: 'ADMIN_API_TOKEN is not configured.' })
     }
 
-    if (!provided || provided !== config.adminToken) {
+    if (!provided || !safeTokenCompare(provided, config.adminToken)) {
       return res.status(401).json({ error: 'Unauthorized.' })
     }
 

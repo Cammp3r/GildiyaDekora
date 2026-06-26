@@ -1,10 +1,8 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState, useRef } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { productsDb } from '../data/products.js'
 import { useCart } from '../cart/CartContext.jsx'
 import { Seo } from '../seo/Seo.jsx'
-
-const ITEMS_PER_PAGE = 15
 
 // Cyrillic characters that are visually identical to Latin letters.
 // Normalizing both query and haystack to Latin before comparing makes
@@ -93,6 +91,16 @@ export default function ProductsPage() {
   const searchQuery = searchParams.get('q') || ''
   const currentPage = getPositivePage(searchParams.get('page'))
   const { addItem } = useCart()
+  const [priceMin, setPriceMin] = useState('')
+  const [priceMax, setPriceMax] = useState('')
+  const [sortOrder, setSortOrder] = useState('default')
+  const [filterOpen, setFilterOpen] = useState(false)
+  const prevBrand = useRef(brandFromUrl)
+
+  const usesOracGrid = brandFromUrl === 'orac-decor' && !searchQuery.trim()
+  const colCount = usesOracGrid ? 3 : 4
+  const ITEMS_PER_PAGE = usesOracGrid ? 15 : 16
+
   const brandName = brandFromUrl === 'orac-decor' ? 'ORAC DECOR' : 'OIKOS'
   const catalogHeading =
     brandFromUrl === 'orac-decor'
@@ -104,8 +112,8 @@ export default function ProductsPage() {
       : 'Пошук фарби'
   const searchPlaceholder =
     brandFromUrl === 'orac-decor'
-      ? 'Пошук товару (назва, категорія, артикул...)'
-      : 'Пошук фарби (назва, ефект, код кольору...)'
+      ? 'Пошук товару (назва, категорія)'
+      : 'Пошук фарби (назва, ефект)'
   const seoTitle =
     selectedCategory === 'all'
       ? catalogHeading
@@ -118,6 +126,15 @@ export default function ProductsPage() {
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
   }, [])
+
+  useEffect(() => {
+    if (prevBrand.current !== brandFromUrl) {
+      prevBrand.current = brandFromUrl
+      setPriceMin('')
+      setPriceMax('')
+      setSortOrder('default')
+    }
+  }, [brandFromUrl])
 
   const buildCatalogParams = useCallback(
     ({ brand = brandFromUrl, category = selectedCategory, query = searchQuery, page = currentPage } = {}) => {
@@ -148,11 +165,20 @@ export default function ProductsPage() {
   }
 
   const filteredProducts = useMemo(() => {
-    const tokens = searchQuery
-      .trim()
-      .toLowerCase()
-      .split(/\s+/)
-      .filter(Boolean)
+    const minNum = priceMin !== '' ? Number(priceMin) : null
+    const maxNum = priceMax !== '' ? Number(priceMax) : null
+
+    const priceFilter = (p) => {
+      const price = typeof p.price === 'number' ? p.price : Number(p.price)
+      if (!Number.isFinite(price) || price <= 0) return true
+      if (minNum !== null && price < minNum) return false
+      if (maxNum !== null && price > maxNum) return false
+      return true
+    }
+
+    const tokens = searchQuery.trim().toLowerCase().split(/\s+/).filter(Boolean)
+    const normTokens = tokens.map((t) => normLookalike(t))
+    const hasSearch = tokens.length > 0
 
     const byBrand = productsDb.filter((p) => p.brand === brandFromUrl)
     const byCategory =
@@ -160,46 +186,78 @@ export default function ProductsPage() {
         ? byBrand
         : byBrand.filter((p) => p.category === selectedCategory)
 
-    if (!tokens.length) return byCategory
+    let result
 
-    // When searching, look across ALL brands so "c351" finds ORAC DECOR
-    // products even if the user is on the OIKOS tab.
-    const searchPool =
-      selectedCategory === 'all'
-        ? productsDb
-        : productsDb.filter((p) => p.category === selectedCategory)
+    if (!hasSearch) {
+      result = byCategory.filter(priceFilter)
+    } else {
+      const searchPool =
+        selectedCategory === 'all'
+          ? productsDb
+          : productsDb.filter((p) => p.category === selectedCategory)
 
-    // Pre-normalize tokens once (lowercase + lookalike normalization)
-    const normTokens = tokens.map((t) => normLookalike(t))
+      result = searchPool
+        .filter((p) => {
+          const colorCodes = Array.isArray(p.colors)
+            ? p.colors.map((c) => c?.code).filter(Boolean).join(' ')
+            : ''
+          const textureNames = Array.isArray(p.textures)
+            ? p.textures.map((t) => t?.name).filter(Boolean).join(' ')
+            : ''
+          const tags = Array.isArray(p.tags) ? p.tags.filter(Boolean).join(' ') : ''
+          const haystack = normLookalike(
+            [p.id, p.title, p.description, p.effect, p.base, p.category, p.subcategory, tags, colorCodes, textureNames]
+              .filter(Boolean)
+              .join(' ')
+              .toLowerCase()
+          )
+          return normTokens.every((token) => haystack.includes(token))
+        })
+        .filter(priceFilter)
+    }
 
-    return searchPool.filter((p) => {
-      const colorCodes = Array.isArray(p.colors)
-        ? p.colors.map((c) => c?.code).filter(Boolean).join(' ')
-        : ''
-      const textureNames = Array.isArray(p.textures)
-        ? p.textures.map((t) => t?.name).filter(Boolean).join(' ')
-        : ''
-      const tags = Array.isArray(p.tags) ? p.tags.filter(Boolean).join(' ') : ''
+    if (sortOrder === 'asc' || sortOrder === 'desc') {
+      return [...result].sort((a, b) => {
+        const pA = typeof a.price === 'number' ? a.price : Number(a.price) || 0
+        const pB = typeof b.price === 'number' ? b.price : Number(b.price) || 0
+        return sortOrder === 'asc' ? pA - pB : pB - pA
+      })
+    }
 
-      // Normalize haystack: lowercase then replace Cyrillic lookalikes with Latin.
-      // This makes "c351" match "С351", "сх" match "cx", and vice-versa.
-      const haystack = normLookalike(
-        [p.id, p.title, p.description, p.effect, p.base, p.category, p.subcategory, tags, colorCodes, textureNames]
-          .filter(Boolean)
-          .join(' ')
-          .toLowerCase()
-      )
+    if (hasSearch) {
+      return [...result].sort((a, b) => {
+        const brandA = a.brand === brandFromUrl ? 1 : 0
+        const brandB = b.brand === brandFromUrl ? 1 : 0
+        if (brandB !== brandA) return brandB - brandA
+        const titleA = normLookalike(a.title.toLowerCase())
+        const titleB = normLookalike(b.title.toLowerCase())
+        const scoreA = normTokens.filter((t) => titleA.includes(t)).length
+        const scoreB = normTokens.filter((t) => titleB.includes(t)).length
+        return scoreB - scoreA
+      })
+    }
 
-      // All tokens must be present (AND logic)
-      return normTokens.every((token) => haystack.includes(token))
-    })
-  }, [searchQuery, selectedCategory, brandFromUrl])
+    return result
+  }, [searchQuery, selectedCategory, brandFromUrl, priceMin, priceMax, sortOrder])
 
   const totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE)
   const activePage = totalPages > 0 ? Math.min(currentPage, totalPages) : 1
   const startIndex = (activePage - 1) * ITEMS_PER_PAGE
   const endIndex = startIndex + ITEMS_PER_PAGE
   const paginatedProducts = filteredProducts.slice(startIndex, endIndex)
+
+  const activeFiltersCount = [
+    priceMin !== '',
+    priceMax !== '',
+    sortOrder !== 'default',
+  ].filter(Boolean).length
+
+  const resetAllFilters = () => {
+    setPriceMin('')
+    setPriceMax('')
+    setSortOrder('default')
+    updateCatalogParams({ page: 1 })
+  }
 
   const formatPrice = (product) => {
     const price = product.price
@@ -234,6 +292,77 @@ export default function ProductsPage() {
           />
         </div>
 
+        <div className="filter-toggle-row">
+          <button
+            className={`filter-toggle-btn ${filterOpen ? 'active' : ''}`}
+            onClick={() => setFilterOpen(!filterOpen)}
+            aria-expanded={filterOpen}
+          >
+            Фільтри та сортування
+            {activeFiltersCount > 0 && (
+              <span className="filter-badge">{activeFiltersCount}</span>
+            )}
+            <span className="filter-arrow">{filterOpen ? '▲' : '▼'}</span>
+          </button>
+        </div>
+
+        {filterOpen && (
+          <div className="filter-panel">
+            <div className="filter-group">
+              <span className="filter-group-label">Ціна (грн):</span>
+              <div className="filter-price-row">
+                <input
+                  className="filter-price-input"
+                  type="number"
+                  placeholder="від"
+                  min="0"
+                  value={priceMin}
+                  onChange={(e) => { setPriceMin(e.target.value); updateCatalogParams({ page: 1 }) }}
+                  aria-label="Мінімальна ціна"
+                />
+                <span className="filter-price-sep">—</span>
+                <input
+                  className="filter-price-input"
+                  type="number"
+                  placeholder="до"
+                  min="0"
+                  value={priceMax}
+                  onChange={(e) => { setPriceMax(e.target.value); updateCatalogParams({ page: 1 }) }}
+                  aria-label="Максимальна ціна"
+                />
+              </div>
+            </div>
+            <div className="filter-group">
+              <span className="filter-group-label">Сортування:</span>
+              <div className="sort-options">
+                <button
+                  className={`sort-btn ${sortOrder === 'default' ? 'active' : ''}`}
+                  onClick={() => { setSortOrder('default'); updateCatalogParams({ page: 1 }) }}
+                >
+                  За замовчуванням
+                </button>
+                <button
+                  className={`sort-btn ${sortOrder === 'asc' ? 'active' : ''}`}
+                  onClick={() => { setSortOrder('asc'); updateCatalogParams({ page: 1 }) }}
+                >
+                  Ціна: від низької
+                </button>
+                <button
+                  className={`sort-btn ${sortOrder === 'desc' ? 'active' : ''}`}
+                  onClick={() => { setSortOrder('desc'); updateCatalogParams({ page: 1 }) }}
+                >
+                  Ціна: від високої
+                </button>
+              </div>
+            </div>
+            {activeFiltersCount > 0 && (
+              <button className="filter-reset-btn" onClick={resetAllFilters}>
+                Скинути всі фільтри
+              </button>
+            )}
+          </div>
+        )}
+
         <div className="products-filter" style={{ marginBottom: '40px' }}>
           <button
             className={`filter-btn ${selectedCategory === 'all' ? 'active' : ''}`}
@@ -252,52 +381,61 @@ export default function ProductsPage() {
           ))}
         </div>
 
-        <div className={`products-grid ${brandFromUrl === 'orac-decor' && !searchQuery.trim() ? 'orac-products-grid' : ''}`}>
-          {paginatedProducts.map((product) => (
-            <div key={product.id} className="product-card">
-              <div className={`product-swatch ${product.brand === 'orac-decor' ? 'orac-swatch' : ''}`}>
-                <LazyImage
-                  className="swatch-color"
-                  src={product.image}
-                  alt={product.title}
-                />
-                <div className="product-badges">
-                  {product.eco && <span className="product-eco-badge">Еко</span>}
-                </div>
-              </div>
-              <div className="product-info">
-                <h3 className="product-name">{product.title}</h3>
-                <p className="product-sub">{product.subcategory || product.category}</p>
-                {product.effect && (
-                  <p className="product-effect">
-                    <strong>Ефект:</strong> {product.effect}
-                  </p>
-                )}
-                <div className="product-footer">
-                  <span className="product-price">{formatPrice(product)}</span>
-                  <div className="product-actions">
-                    <button
-                      type="button"
-                      className="add-btn"
-                      onClick={() => addItem(product, product.priceVariants?.[0] ?? null, 1)}
-                    >
-                      В кошик
-                    </button>
-                    <Link
-                      to={{
-                        pathname: `/products/${encodeURIComponent(product.id)}`,
-                        search: getCatalogSearch(),
-                      }}
-                      className="add-btn"
-                    >
-                      Дізнатись більше
-                    </Link>
+        {(() => {
+          const remainder = paginatedProducts.length % colCount
+          const placeholderCount = remainder > 0 ? colCount - remainder : 0
+          return (
+            <div className={`products-grid ${usesOracGrid ? 'orac-products-grid' : ''}`}>
+              {paginatedProducts.map((product) => (
+                <div key={product.id} className="product-card">
+                  <div className={`product-swatch ${product.brand === 'orac-decor' ? 'orac-swatch' : ''}`}>
+                    <LazyImage
+                      className="swatch-color"
+                      src={product.image}
+                      alt={product.title}
+                    />
+                    <div className="product-badges">
+                      {product.eco && <span className="product-eco-badge">Еко</span>}
+                    </div>
+                  </div>
+                  <div className="product-info">
+                    <h3 className="product-name">{product.title}</h3>
+                    <p className="product-sub">{product.subcategory || product.category}</p>
+                    {product.effect && (
+                      <p className="product-effect">
+                        <strong>Ефект:</strong> {product.effect}
+                      </p>
+                    )}
+                    <div className="product-footer">
+                      <span className="product-price">{formatPrice(product)}</span>
+                      <div className="product-actions">
+                        <button
+                          type="button"
+                          className="add-btn add-btn-primary"
+                          onClick={() => addItem(product, product.priceVariants?.[0] ?? null, 1)}
+                        >
+                          В кошик
+                        </button>
+                        <Link
+                          to={{
+                            pathname: `/products/${encodeURIComponent(product.id)}`,
+                            search: getCatalogSearch(),
+                          }}
+                          className="add-btn add-btn-secondary"
+                        >
+                          Дізнатись більше
+                        </Link>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
+              ))}
+              {Array.from({ length: placeholderCount }).map((_, i) => (
+                <div key={`ph-${i}`} className="product-card-placeholder" aria-hidden="true" />
+              ))}
             </div>
-          ))}
-        </div>
+          )
+        })()}
 
         {totalPages > 1 && (
           <div
