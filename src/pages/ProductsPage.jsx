@@ -269,9 +269,8 @@ export default function ProductsPage() {
 
   const formatPrice = (product) => {
     const price = product.price
-    if (price === null || price === undefined || price === '') return ''
     const num = typeof price === 'number' ? price : Number(price)
-    if (!Number.isFinite(num) || num <= 0) return ''
+    if (!Number.isFinite(num) || num <= 0) return 'Ціна за запитом'
     const prefix = product.priceVariants?.length > 1 ? 'від ' : ''
     return `${prefix}${num.toLocaleString('uk-UA')} грн`
   }
@@ -438,8 +437,9 @@ export default function ProductsPage() {
                       </p>
                     )}
                     <div className="product-footer">
-                      <span className="product-price">{formatPrice(product)}</span>
+                      <span className={`product-price${product.price > 0 ? '' : ' product-price--request'}`}>{formatPrice(product)}</span>
                       <div className="product-actions">
+                        {product.price > 0 && (
                         <button
                           type="button"
                           className="add-btn add-btn-primary"
@@ -447,6 +447,7 @@ export default function ProductsPage() {
                         >
                           В кошик
                         </button>
+                        )}
                         <Link
                           to={{
                             pathname: `/products/${encodeURIComponent(product.id)}`,

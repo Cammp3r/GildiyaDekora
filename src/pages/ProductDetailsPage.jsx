@@ -343,7 +343,10 @@ export default function ProductDetailsPage() {
               </div>
             )}
 
-            {priceLabel && <div className="product-details-price">{priceLabel}</div>}
+            {priceLabel
+              ? <div className="product-details-price">{priceLabel}</div>
+              : <div className="product-details-price product-price--request">Ціна за запитом</div>
+            }
 
             {priceVariants.length > 0 && (
               <div className="product-price-variants">

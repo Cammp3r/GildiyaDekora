@@ -901,6 +901,11 @@ section {
   font-size: 1.3rem;
   font-weight: 300;
 }
+.product-price--request {
+  font-size: 0.8rem;
+  color: var(--muted, #888);
+  font-style: italic;
+}
 
 .add-btn {
   font-family: var(--mono);
