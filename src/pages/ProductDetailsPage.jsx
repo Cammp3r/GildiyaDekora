@@ -100,6 +100,22 @@ export default function ProductDetailsPage() {
     ? metaDescParts.slice(0, 157) + '...'
     : metaDescParts
 
+  // General type keywords based on product type
+  const TYPE_KEYWORDS_UA = {
+    primer: 'купити ґрунтівку, ґрунтівка для стін, ґрунтовка OIKOS',
+    wax: 'купити віск для штукатурки, захисний віск OIKOS',
+    varnish: 'купити лак для стін, захисне покриття OIKOS, лак для штукатурки',
+    paint: 'купити декоративну фарбу, декоративна штукатурка, купити фарбу OIKOS',
+  }
+  const TYPE_KEYWORDS_RU = {
+    primer: 'купить грунтовку, грунтовка для стен OIKOS',
+    wax: 'купить воск для штукатурки, защитный воск OIKOS',
+    varnish: 'купить лак для стен, защитное покрытие OIKOS',
+    paint: 'купить декоративную краску, декоративная штукатурка, купить краску OIKOS',
+  }
+  const typeKwUA = TYPE_KEYWORDS_UA[product.productType] || TYPE_KEYWORDS_UA.paint
+  const typeKwRU = TYPE_KEYWORDS_RU[product.productType] || TYPE_KEYWORDS_RU.paint
+
   // Keywords — Ukrainian + Russian
   const seoKeywords = [
     `купити ${product.title}`,
@@ -108,11 +124,13 @@ export default function ProductDetailsPage() {
     `${product.title} україна`,
     product.category,
     product.effect ? `купити ${product.effect}` : '',
+    typeKwUA,
     `купить ${product.title}`,
     `${product.title} ${brandRu} цена`,
     `${product.title} украина`,
     `${product.title} киев`,
     categoryRu,
+    typeKwRU,
     product.brand === 'oikos' ? 'OIKOS Украина краска' : 'ORAC DECOR Украина',
   ].filter(Boolean).join(', ')
 

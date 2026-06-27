@@ -80,7 +80,40 @@
             "напівматовий",
             "матовий"
           ],
-          "colors": [],
+          "colors": [
+            {
+              "code": "AU 8 MIDAS",
+              "img": "https://www.oikos.ua/public/texture/aureum/AU8-MIDAS.jpg"
+            },
+            {
+              "code": "AU 16 MELIA",
+              "img": "https://www.oikos.ua/public/texture/aureum/AU16-MELIA.jpg"
+            },
+            {
+              "code": "AU 24 GEA",
+              "img": "https://www.oikos.ua/public/texture/aureum/AU24-GEA.jpg"
+            },
+            {
+              "code": "AU 32 ARCADIA",
+              "img": "https://www.oikos.ua/public/texture/aureum/AU32-ARCADIA.jpg"
+            },
+            {
+              "code": "AU 40 REA",
+              "img": "https://www.oikos.ua/public/texture/aureum/AU40-REA.jpg"
+            },
+            {
+              "code": "AU 48 ARIS",
+              "img": "https://www.oikos.ua/public/texture/aureum/AU48-ARIS.jpg"
+            },
+            {
+              "code": "AU 56 ZEUS",
+              "img": "https://www.oikos.ua/public/texture/aureum/AU56-ZEUS.jpg"
+            },
+            {
+              "code": "AU 64 TALIA",
+              "img": "https://www.oikos.ua/public/texture/aureum/AU64-TALIA.jpg"
+            }
+          ],
           "colors_count": 0,
           "textures": [],
           "photos": [
