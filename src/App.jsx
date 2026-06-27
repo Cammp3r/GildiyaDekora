@@ -3,6 +3,7 @@ import { Suspense, lazy } from 'react'
 import Header from './components/Header.jsx'
 import Footer from './components/Footer.jsx'
 import ScrollToTop from './components/ScrollToTop.jsx'
+import ErrorBoundary from './components/ErrorBoundary.jsx'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import HomePage from './pages/HomePage.jsx'
 
@@ -33,6 +34,7 @@ function App() {
       {/* Header */}
       <Header />
 
+      <ErrorBoundary>
       <Suspense
         fallback={
           <div className="container" style={{ padding: '4rem 0' }}>
@@ -64,6 +66,7 @@ function App() {
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Suspense>
+      </ErrorBoundary>
 
       {/* Scroll to Top Button */}
       <ScrollToTop />

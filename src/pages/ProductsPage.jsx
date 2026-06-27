@@ -95,6 +95,7 @@ export default function ProductsPage() {
   const [priceMax, setPriceMax] = useState('')
   const [sortOrder, setSortOrder] = useState('default')
   const [filterOpen, setFilterOpen] = useState(false)
+  const [selectedType, setSelectedType] = useState('all')
   const prevBrand = useRef(brandFromUrl)
 
   const usesOracGrid = brandFromUrl === 'orac-decor' && !searchQuery.trim()
@@ -122,6 +123,9 @@ export default function ProductsPage() {
     selectedCategory === 'all'
       ? `Каталог ${brandName} від Гільдії Декору: матеріали для інтерʼєру, ціни, фото, характеристики та консультація у Києві.`
       : `${selectedCategory} ${brandName}: перегляньте товари, фото, характеристики та замовте консультацію в Гільдії Декору.`
+  const seoKeywords = brandFromUrl === 'orac-decor'
+    ? 'ORAC DECOR Київ, купити ORAC DECOR, ліпнина Київ, карнизи молдинги, декоративна ліпнина, купить ORAC DECOR Украина, лепнина Киев, карнизы молдинги купить'
+    : 'декоративні фарби OIKOS, купити штукатурку, купити декоративну штукатурку, купити фарбу OIKOS, венеціанська штукатурка Київ, декоративні матеріали, купити ґрунтівку OIKOS, купить декоративную штукатурку, купить краску OIKOS, венецианская штукатурка Киев, декоративные краски Украина'
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
@@ -133,6 +137,7 @@ export default function ProductsPage() {
       setPriceMin('')
       setPriceMax('')
       setSortOrder('default')
+      setSelectedType('all')
     }
   }, [brandFromUrl])
 
@@ -181,10 +186,11 @@ export default function ProductsPage() {
     const hasSearch = tokens.length > 0
 
     const byBrand = productsDb.filter((p) => p.brand === brandFromUrl)
+    const byType = selectedType === 'all' ? byBrand : byBrand.filter((p) => p.productType === selectedType)
     const byCategory =
       selectedCategory === 'all'
-        ? byBrand
-        : byBrand.filter((p) => p.category === selectedCategory)
+        ? byType
+        : byType.filter((p) => p.category === selectedCategory)
 
     let result
 
@@ -238,7 +244,7 @@ export default function ProductsPage() {
     }
 
     return result
-  }, [searchQuery, selectedCategory, brandFromUrl, priceMin, priceMax, sortOrder])
+  }, [searchQuery, selectedCategory, brandFromUrl, priceMin, priceMax, sortOrder, selectedType])
 
   const totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE)
   const activePage = totalPages > 0 ? Math.min(currentPage, totalPages) : 1
@@ -250,12 +256,14 @@ export default function ProductsPage() {
     priceMin !== '',
     priceMax !== '',
     sortOrder !== 'default',
+    selectedType !== 'all',
   ].filter(Boolean).length
 
   const resetAllFilters = () => {
     setPriceMin('')
     setPriceMax('')
     setSortOrder('default')
+    setSelectedType('all')
     updateCatalogParams({ page: 1 })
   }
 
@@ -273,6 +281,7 @@ export default function ProductsPage() {
       <Seo
         title={seoTitle}
         description={seoDescription}
+        keywords={seoKeywords}
         canonicalPath="/products"
       />
       <div className="container">
@@ -355,6 +364,28 @@ export default function ProductsPage() {
                 </button>
               </div>
             </div>
+            {brandFromUrl === 'oikos' && (
+              <div className="filter-group">
+                <span className="filter-group-label">Тип продукту:</span>
+                <div className="sort-options">
+                  {[
+                    { value: 'all', label: 'Усі' },
+                    { value: 'paint', label: 'Фарби' },
+                    { value: 'primer', label: 'Ґрунтівки' },
+                    { value: 'varnish', label: 'Лаки та захист' },
+                    { value: 'wax', label: 'Воски' },
+                  ].map(({ value, label }) => (
+                    <button
+                      key={value}
+                      className={`sort-btn ${selectedType === value ? 'active' : ''}`}
+                      onClick={() => { setSelectedType(value); updateCatalogParams({ page: 1 }) }}
+                    >
+                      {label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
             {activeFiltersCount > 0 && (
               <button className="filter-reset-btn" onClick={resetAllFilters}>
                 Скинути всі фільтри

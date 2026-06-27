@@ -148,6 +148,26 @@ function normalizePriceVariants(variants, currency = '') {
     })
 }
 
+const OIKOS_PRIMERS = new Set([
+  'il primer', 'multifund', 'crilux', 'flexigrap', 'fondo murales', 'il pigmentato',
+  'neofix', 'blankor', 'neokryll', 'decorsil primer', 'decorsil primer pigmentato',
+  'ecofondo riempitivo', 'aggrappante ecologico', 'antiruggine ecologico',
+])
+const OIKOS_WAXES = new Set(['cera per stucco'])
+const OIKOS_VARNISHES = new Set([
+  'finitura autolucidante', 'protettivo per stucco e marmorino',
+  'ecoprotettivo legno', 'ecoprotettivo parquet', 'ecoprotettivo ferro',
+  'ecoimpregnante legno', 'watins lux', 'igrolux', 'turapori ecologico',
+])
+
+function detectOikosProductType(name) {
+  const n = name.toLowerCase()
+  if (OIKOS_PRIMERS.has(n)) return 'primer'
+  if (OIKOS_WAXES.has(n)) return 'wax'
+  if (OIKOS_VARNISHES.has(n)) return 'varnish'
+  return 'paint'
+}
+
 function mapProduct(product, { brand = 'oikos', category, subcategory, sectionId }) {
   const photos = normalizePhotos(product.photos, brand)
   const colors = normalizeColors(product.colors)
@@ -215,6 +235,7 @@ function mapProduct(product, { brand = 'oikos', category, subcategory, sectionId
     note: product.note ?? '',
     sectionId: sectionId ?? '',
     tags: toArray(product.tags),
+    productType: brand === 'oikos' ? detectOikosProductType(title) : 'paint',
   }
 }
 
