@@ -19,16 +19,62 @@ export default function HomePage() {
   return (
     <>
       <Seo
-        title="OIKOS та ORAC DECOR у Києві"
-        description="Гільдія Декора: офіційний дилер OIKOS, декоративні фарби, штукатурки, мікроцемент, ліпнина ORAC DECOR та професійна консультація у Києві."
+        title="Продаж та нанесення декоративних фарб OIKOS і ліпнини ORAC DECOR у Києві"
+        description="Гільдія Декора — офіційний дилер OIKOS в Україні. Продаж і нанесення декоративних фарб, венеціанської штукатурки, мікроцементу OIKOS та ліпнини ORAC DECOR у Києві. Консультація, підбір матеріалів, доставка."
         canonicalPath="/"
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'LocalBusiness',
+          '@id': 'https://gihldihja-decora.ua/#business',
+          name: 'Гільдія Декора',
+          description: 'Офіційний дилер OIKOS в Україні. Продаж та нанесення декоративних фарб, венеціанської штукатурки, мікроцементу OIKOS та ліпнини ORAC DECOR у Києві.',
+          url: 'https://gihldihja-decora.ua',
+          telephone: '+380675039352',
+          email: 'gildiya@meta.ua',
+          image: 'https://gihldihja-decora.ua/logo-transparent.png',
+          priceRange: '₴₴₴',
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: 'вул. Сергія Гусовського 12/7, оф. 10',
+            addressLocality: 'Київ',
+            addressCountry: 'UA',
+            postalCode: '04050',
+          },
+          geo: {
+            '@type': 'GeoCoordinates',
+            latitude: 50.4501,
+            longitude: 30.5234,
+          },
+          openingHoursSpecification: [
+            {
+              '@type': 'OpeningHoursSpecification',
+              dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+              opens: '09:00',
+              closes: '18:00',
+            },
+          ],
+          sameAs: [
+            'https://www.facebook.com/GildiyaDecora/',
+            'https://www.instagram.com/gildiya_decora/',
+          ],
+          hasOfferCatalog: {
+            '@type': 'OfferCatalog',
+            name: 'Декоративні матеріали OIKOS та ORAC DECOR',
+            itemListElement: [
+              { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Продаж декоративних фарб OIKOS' } },
+              { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Нанесення декоративної штукатурки' } },
+              { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Продаж ліпнини ORAC DECOR' } },
+              { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Консультація з підбору матеріалів' } },
+            ],
+          },
+        }}
       />
       {/* Hero Section */}
       <section className="hero">
         <div className="hero-left">
-          <p className="hero-tag">Гільдія Декора · Офіційний дилер OIKOS</p>
-          <h1>Матеріали які <em>трансформують</em><br />інтер'єри</h1>
-          <p className="hero-desc">Офіційна лінійка продуктів OIKOS з 1984 року. Професійні та побутові матеріали найвищої якості для внутрішніх та зовнішніх робіт.</p>
+          <p className="hero-tag">Гільдія Декора · Офіційний дилер <span className="hero-accent">OIKOS</span> в Україні</p>
+          <h1>Декоративні фарби <em>OIKOS</em><br />та ліпнина <span className="hero-accent">ORAC DECOR</span> у Києві</h1>
+          <p className="hero-desc"><span className="hero-accent">Продаємо</span> та <span className="hero-accent">наносимо</span> декоративні фарби, венеціанську штукатурку і мікроцемент OIKOS. Офіційний дистриб'ютор в Україні — 840+ відтінків, сертифіковані матеріали, консультація.</p>
           <Link to="/products" className="btn-primary">Переглянути каталог →</Link>
           <Link to="/contact" className="btn-secondary">Замовити консультацію</Link>
         </div>
@@ -113,19 +159,23 @@ export default function HomePage() {
             <div className="about-text">
               <h2>О компанії "Гільдія Декора"</h2>
               <p>
-                Ми є офіційним дилером італійської компанії OIKOS в Україні.
+                Ми є офіційним дилером італійської компанії <strong>OIKOS</strong> в Україні.
                 Протягом років ми забезпечуємо продаж та нанесення
-                матеріалів найвищої якості для внутрішніх та зовнішніх робіт.
+                декоративних матеріалів найвищої якості для внутрішніх та зовнішніх робіт.
+                OIKOS — світовий лідер у виробництві декоративних фарб і штукатурок,
+                представлений у понад 80 країнах світу.
               </p>
               <p>
-                OIKOS - це світовий лідер у виробництві фарб і лаків, який
-                поставляє матеріали до більш ніж 80 країн світу.
+                Окрім фарб, ми є офіційними дилерами <strong>ORAC DECOR</strong> — бельгійського виробника
+                преміальної поліуретанової ліпнини. Карнизи, молдинги, стінові панелі та декоративні
+                елементи ORAC DECOR дозволяють створити завершений інтер'єр — від класики до сучасного
+                мінімалізму. Матеріал Purotouch легший за гіпс, не боїться вологи і легко монтується.
               </p>
               <ul className="features-list">
-                <li>✓ Офіційний дилер OIKOS</li>
+                <li>✓ Офіційний дилер OIKOS та ORAC DECOR</li>
+                <li>✓ Продаж та нанесення фарб</li>
                 <li>✓ Сертифіковані матеріали</li>
                 <li>✓ Професійна консультація</li>
-                <li>✓ Гарантія якості</li>
               </ul>
             </div>
             <div className="about-image">

@@ -29,6 +29,9 @@ const STATIC_ROUTES = [
   { path: '/magazyn-farb-kyiv', priority: '0.9', changefreq: 'monthly' },
   { path: '/fasadna-farba-kyiv', priority: '0.9', changefreq: 'monthly' },
   { path: '/koleruvannya-kyiv', priority: '0.9', changefreq: 'monthly' },
+  { path: '/kupyty-lipnynu-kyiv', priority: '0.9', changefreq: 'monthly' },
+  { path: '/karnyz-moldyngy-orac-decor', priority: '0.8', changefreq: 'monthly' },
+  { path: '/nanesennya-farby-kyiv', priority: '0.9', changefreq: 'monthly' },
 ]
 
 function escapeXml(value) {

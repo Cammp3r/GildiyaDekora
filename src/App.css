@@ -441,7 +441,7 @@ h1, h2 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 5rem 3rem;
+  padding: 4rem 3rem;
   position: relative;
   z-index: 2;
 }
@@ -452,17 +452,21 @@ h1, h2 {
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--muted);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.2rem;
   animation: fadeInUp 0.8s ease forwards;
 }
 
+.hero-accent {
+  color: var(--accent);
+}
+
 .hero h1 {
-  font-size: clamp(3.5rem, 7vw, 6rem);
+  font-size: clamp(2.8rem, 5.5vw, 5rem);
   font-weight: 300;
   line-height: 0.95;
   letter-spacing: -0.02em;
   color: var(--ink);
-  margin-bottom: 2rem;
+  margin-bottom: 1.2rem;
   animation: fadeInUp 0.8s ease forwards 0.1s;
   opacity: 0;
 }
@@ -477,7 +481,7 @@ h1, h2 {
   line-height: 1.7;
   color: var(--muted);
   max-width: 340px;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   font-weight: 300;
   animation: fadeInUp 0.8s ease forwards 0.2s;
   opacity: 0;
@@ -520,7 +524,7 @@ h1, h2 {
   padding-bottom: 0.2rem;
   transition: border-color 0.3s;
   width: fit-content;
-  margin-top: 1rem;
+  margin-top: 0.6rem;
   animation: fadeInUp 0.8s ease forwards 0.4s;
   opacity: 0;
 }
@@ -2559,15 +2563,18 @@ footer .logo-text {
   }
 
   .hero-left {
-    padding: 2rem 1.5rem 3rem;
+    padding: 1.5rem 1.5rem 2rem;
   }
 
   .hero h1 {
-    font-size: clamp(2.4rem, 9vw, 4rem);
+    font-size: clamp(1.8rem, 5.8vw, 2.8rem);
+    margin-bottom: 0.8rem;
   }
 
   .hero-desc {
     max-width: 100%;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
   }
 
   .about-right h2,

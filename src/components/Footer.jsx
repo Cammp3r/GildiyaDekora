@@ -39,21 +39,24 @@ export default function Footer() {
       </div>
 
       <div className="footer-col">
-        <h4>Категорії фарб</h4>
+        <h4>Матеріали OIKOS</h4>
         <ul>
           <li><Link to="/farba-dlya-stin" className="footer-link">Фарба для стін</Link></li>
           <li><Link to="/fasadna-farba" className="footer-link">Фасадна фарба</Link></li>
           <li><Link to="/intererna-farba" className="footer-link">Інтер'єрна фарба</Link></li>
           <li><Link to="/akrylova-farba" className="footer-link">Акрилова фарба</Link></li>
           <li><Link to="/gruntivka" className="footer-link">Ґрунтівка</Link></li>
-          <li><Link to="/lak-dlya-dereva" className="footer-link">Лак для дерева</Link></li>
           <li><Link to="/koleruvannya" className="footer-link">Колерування фарби</Link></li>
+          <li><Link to="/nanesennya-farby-kyiv" className="footer-link">Нанесення фарби Київ</Link></li>
         </ul>
       </div>
 
       <div className="footer-col">
-        <h4>Київ</h4>
+        <h4>Ліпнина ORAC DECOR</h4>
         <ul>
+          <li><Link to="/kupyty-lipnynu-kyiv" className="footer-link">Купити ліпнину Київ</Link></li>
+          <li><Link to="/karnyz-moldyngy-orac-decor" className="footer-link">Карнизи та молдинги</Link></li>
+          <li><Link to="/products?brand=orac-decor" className="footer-link">Каталог ORAC DECOR</Link></li>
           <li><Link to="/kupit-farbu-kyiv" className="footer-link">Купити фарбу Київ</Link></li>
           <li><Link to="/magazyn-farb-kyiv" className="footer-link">Магазин фарб Київ</Link></li>
           <li><Link to="/fasadna-farba-kyiv" className="footer-link">Фасадна фарба Київ</Link></li>

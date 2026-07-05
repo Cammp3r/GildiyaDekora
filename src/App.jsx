@@ -29,6 +29,9 @@ const MagazynFarbKyivPage = lazy(() => import('./pages/seo/MagazynFarbKyivPage.j
 const FasadnaFarbaKyivPage = lazy(() => import('./pages/seo/FasadnaFarbaKyivPage.jsx'))
 const KoleruvannyaKyivPage = lazy(() => import('./pages/seo/KoleruvannyaKyivPage.jsx'))
 const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage.jsx'))
+const KupytyLipnynyKyivPage = lazy(() => import('./pages/seo/KupytyLipnynyKyivPage.jsx'))
+const KarnyzyMoldyngyPage = lazy(() => import('./pages/seo/KarnyzyMoldyngyPage.jsx'))
+const NanesennyaFarbyPage = lazy(() => import('./pages/seo/NanesennyaFarbyPage.jsx'))
 
 function App() {
   return (
@@ -65,6 +68,9 @@ function App() {
           <Route path="/magazyn-farb-kyiv" element={<MagazynFarbKyivPage />} />
           <Route path="/fasadna-farba-kyiv" element={<FasadnaFarbaKyivPage />} />
           <Route path="/koleruvannya-kyiv" element={<KoleruvannyaKyivPage />} />
+          <Route path="/kupyty-lipnynu-kyiv" element={<KupytyLipnynyKyivPage />} />
+          <Route path="/karnyz-moldyngy-orac-decor" element={<KarnyzyMoldyngyPage />} />
+          <Route path="/nanesennya-farby-kyiv" element={<NanesennyaFarbyPage />} />
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
