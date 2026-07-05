@@ -1,5 +1,4 @@
 import dtb from '../../dtb.json'
-import oracDecor from '../../orac_decor.json'
 import fallbackImage from '../logos/logo.png'
 
 export const PRIVATBANK_EUR_TO_UAH = 51.95
@@ -133,13 +132,16 @@ function normalizePriceVariants(variants, currency = '') {
     .map((variant, index) => {
       const rawVolume = variant.volume ?? ''
       const volume = normalizeVolume(rawVolume)
-      const price = toUah(variant.price, variant.price_currency ?? currency)
+      const variantCurrency = variant.price_currency ?? currency
+      const price = toUah(variant.price, variantCurrency)
+      const eurPrice = variantCurrency === 'EUR' ? toNumber(variant.price) : null
 
       return {
         id: `${index}-${variant.title ?? variant.name ?? rawVolume}`,
         title: normalizeVariantTitle(variant.title ?? variant.name ?? '', rawVolume, volume),
         volume,
         price,
+        eurPrice,
       }
     })
     .filter((variant) => {
@@ -214,6 +216,7 @@ function mapProduct(product, { brand = 'oikos', category, subcategory, sectionId
       brand === 'orac-decor' ? normalizeOracCharacteristics(product.characteristics) : [],
     unitPrice: convertedPrice,
     price: convertedPrice,
+    eurPrice: priceCurrency === 'EUR' ? toNumber(price) : null,
     priceCurrency: 'UAH',
     priceSource: product.price_source ?? '',
     priceVariants,
@@ -239,10 +242,8 @@ function mapProduct(product, { brand = 'oikos', category, subcategory, sectionId
   }
 }
 
-function transformProductsData() {
+function transformOikosData() {
   const products = []
-
-  // OIKOS products (already in Ukrainian)
   toArray(dtb.sections).forEach((section) => {
     const categoryName = section.title ?? section.id ?? ''
 
@@ -275,11 +276,13 @@ function transformProductsData() {
       })
     }
   })
+  return products
+}
 
-  // ORAC DECOR products (title_uk, name_uk, description_uk pre-translated in JSON)
+function transformOracData(oracDecor) {
+  const products = []
   toArray(oracDecor.sections).forEach((section) => {
     const categoryName = section.title_uk ?? section.title ?? section.id ?? ''
-
     if (Array.isArray(section.products) && section.products.length > 0) {
       section.products.forEach((product) => {
         products.push(
@@ -293,8 +296,32 @@ function transformProductsData() {
       })
     }
   })
-
   return products
 }
 
-export const productsDb = transformProductsData()
+// OIKOS products — bundled synchronously (small, ~200KB)
+export const oikosProductsDb = transformOikosData()
+
+// productsDb starts with OIKOS only; updated when ORAC loads
+export let productsDb = oikosProductsDb
+
+// ORAC DECOR — lazy dynamic import (separate ~1.2MB chunk, loads on demand)
+let _oracCache = null
+let _oracPromise = null
+
+export function loadOracDecorProducts() {
+  if (_oracCache) return Promise.resolve(_oracCache)
+  if (!_oracPromise) {
+    _oracPromise = import('../../orac_decor.json')
+      .then((m) => {
+        _oracCache = transformOracData(m.default)
+        productsDb = [...oikosProductsDb, ..._oracCache]
+        return _oracCache
+      })
+  }
+  return _oracPromise
+}
+
+export function isOracProduct(id) {
+  return String(id).startsWith('orac-')
+}

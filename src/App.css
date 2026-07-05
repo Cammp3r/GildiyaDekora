@@ -1069,6 +1069,39 @@ section {
   background: var(--cream);
 }
 
+.privacy-content {
+  max-width: 720px;
+  margin: 2rem 0 4rem;
+  line-height: 1.75;
+  color: var(--ink);
+}
+
+.privacy-content h2 {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin: 2rem 0 0.5rem;
+}
+
+.privacy-content p,
+.privacy-content ul,
+.privacy-content li {
+  font-size: 0.95rem;
+  margin-bottom: 0.6rem;
+}
+
+.privacy-content ul { padding-left: 1.4rem; }
+
+.privacy-content a { color: var(--accent); text-decoration: underline; }
+
+.privacy-updated {
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-family: var(--mono);
+  letter-spacing: 0.05em;
+  margin-bottom: 1.5rem;
+}
+
 .contact-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1859,6 +1892,26 @@ section {
   font-size: 0.95rem;
 }
 
+.cart-order-form {
+  margin-top: 3rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--soft);
+}
+
+.cart-order-form-title {
+  font-family: var(--serif);
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+}
+
+.cart-order-form-desc {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
 .cart-order-button {
   display: inline-flex;
   align-items: center;
@@ -2198,10 +2251,19 @@ footer .logo-text {
   color: rgba(245, 240, 232, 0.5);
   margin-bottom: 0.6rem;
   transition: color 0.3s;
-  
 }
 
 .footer-col li:hover {
+  color: var(--cream);
+}
+
+.footer-link {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-link:hover {
   color: var(--cream);
 }
 
