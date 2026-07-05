@@ -30,50 +30,51 @@ export default function Footer() {
       <div className="footer-col">
         <h4>Навігація</h4>
         <ul>
-          <li><a href="/#about" style={{color: "orange"}} onClick={handleAboutClick}>Про нас</a></li>
-          <li><Link to="/products" style={{color: "orange"}}>Продукти</Link></li>
-          <li><Link to="/gallery" style={{color: "orange"}}>Галерея</Link></li>
-          <li><Link to="/contact" style={{color: "orange"}}>Контакти</Link></li>
+          <li><a href="/#about" className="footer-link" onClick={handleAboutClick}>Про нас</a></li>
+          <li><Link to="/products" className="footer-link">Продукти</Link></li>
+          <li><Link to="/gallery" className="footer-link">Галерея</Link></li>
+          <li><Link to="/contact" className="footer-link">Контакти</Link></li>
+          <li><Link to="/privacy-policy" className="footer-link">Конфіденційність</Link></li>
         </ul>
       </div>
 
       <div className="footer-col">
         <h4>Категорії фарб</h4>
         <ul>
-          <li><Link to="/farba-dlya-stin" style={{color: "orange"}}>Фарба для стін</Link></li>
-          <li><Link to="/fasadna-farba" style={{color: "orange"}}>Фасадна фарба</Link></li>
-          <li><Link to="/intererna-farba" style={{color: "orange"}}>Інтер'єрна фарба</Link></li>
-          <li><Link to="/akrylova-farba" style={{color: "orange"}}>Акрилова фарба</Link></li>
-          <li><Link to="/gruntivka" style={{color: "orange"}}>Ґрунтівка</Link></li>
-          <li><Link to="/lak-dlya-dereva" style={{color: "orange"}}>Лак для дерева</Link></li>
-          <li><Link to="/koleruvannya" style={{color: "orange"}}>Колерування фарби</Link></li>
+          <li><Link to="/farba-dlya-stin" className="footer-link">Фарба для стін</Link></li>
+          <li><Link to="/fasadna-farba" className="footer-link">Фасадна фарба</Link></li>
+          <li><Link to="/intererna-farba" className="footer-link">Інтер'єрна фарба</Link></li>
+          <li><Link to="/akrylova-farba" className="footer-link">Акрилова фарба</Link></li>
+          <li><Link to="/gruntivka" className="footer-link">Ґрунтівка</Link></li>
+          <li><Link to="/lak-dlya-dereva" className="footer-link">Лак для дерева</Link></li>
+          <li><Link to="/koleruvannya" className="footer-link">Колерування фарби</Link></li>
         </ul>
       </div>
 
       <div className="footer-col">
         <h4>Київ</h4>
         <ul>
-          <li><Link to="/kupit-farbu-kyiv" style={{color: "orange"}}>Купити фарбу Київ</Link></li>
-          <li><Link to="/magazyn-farb-kyiv" style={{color: "orange"}}>Магазин фарб Київ</Link></li>
-          <li><Link to="/fasadna-farba-kyiv" style={{color: "orange"}}>Фасадна фарба Київ</Link></li>
-          <li><Link to="/koleruvannya-kyiv" style={{color: "orange"}}>Колерування фарб Київ</Link></li>
+          <li><Link to="/kupit-farbu-kyiv" className="footer-link">Купити фарбу Київ</Link></li>
+          <li><Link to="/magazyn-farb-kyiv" className="footer-link">Магазин фарб Київ</Link></li>
+          <li><Link to="/fasadna-farba-kyiv" className="footer-link">Фасадна фарба Київ</Link></li>
+          <li><Link to="/koleruvannya-kyiv" className="footer-link">Колерування фарб Київ</Link></li>
         </ul>
       </div>
 
       <div className="footer-col">
         <h4>Соціальні мережі</h4>
         <ul>
-          <li><a href="https://www.facebook.com/GildiyaDecora/" target="_blank" rel="noreferrer" style={{color: "orange"}}>Facebook</a></li>
-          <li><a href="https://www.instagram.com/gildiya_decora/" target="_blank" rel="noreferrer" style={{color: "orange"}}>Instagram</a></li>
+          <li><a href="https://www.facebook.com/GildiyaDecora/" target="_blank" rel="noreferrer" className="footer-link">Facebook</a></li>
+          <li><a href="https://www.instagram.com/gildiya_decora/" target="_blank" rel="noreferrer" className="footer-link">Instagram</a></li>
         </ul>
       </div>
 
       <div className="footer-col">
         <h4>Контакти</h4>
         <ul>
-          <li><a href="tel:+380675039352" style={{color: "orange"}}>+38 (067) 503-93-52</a></li>
-          <li><a href="https://maps.app.goo.gl/dRX4TLoQzrdfMqeS9" target="_blank" rel="noreferrer" style={{color: "orange"}}>м. Київ, вул. Гусовського 12/7</a></li>
-          <li><a href="mailto:gildiya@meta.ua" style={{color: "orange"}}>gildiya@meta.ua</a></li>
+          <li><a href="tel:+380675039352" className="footer-link">+38 (067) 503-93-52</a></li>
+          <li><a href="https://maps.app.goo.gl/dRX4TLoQzrdfMqeS9" target="_blank" rel="noreferrer" className="footer-link">м. Київ, вул. Гусовського 12/7</a></li>
+          <li><a href="mailto:gildiya@meta.ua" className="footer-link">gildiya@meta.ua</a></li>
         </ul>
       </div>
 

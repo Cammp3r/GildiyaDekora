@@ -1,19 +1,38 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link, Navigate, useLocation, useParams } from 'react-router-dom'
-import { productsDb } from '../data/products.js'
+import { oikosProductsDb, loadOracDecorProducts, isOracProduct } from '../data/products.js'
 import { useCart } from '../cart/CartContext.jsx'
 import { Seo } from '../seo/Seo.jsx'
 import { absoluteUrl } from '../seo/seoUtils.js'
+import { useEurRate } from '../context/ExchangeRateContext.jsx'
 
 export default function ProductDetailsPage() {
   const { id } = useParams()
   const location = useLocation()
   const { addItem } = useCart()
+  const [oracProducts, setOracProducts] = useState(null)
+  const [oracLoading, setOracLoading] = useState(false)
+  const decodedId = id ? decodeURIComponent(id) : ''
+  const needsOrac = isOracProduct(decodedId)
+
+  useEffect(() => {
+    if (needsOrac && oracProducts === null && !oracLoading) {
+      setOracLoading(true)
+      loadOracDecorProducts().then((data) => {
+        setOracProducts(data)
+        setOracLoading(false)
+      })
+    }
+  }, [needsOrac, oracProducts, oracLoading])
+
   const product = useMemo(() => {
-    if (!id) return undefined
-    const decodedId = decodeURIComponent(id)
-    return productsDb.find((p) => String(p.id) === decodedId)
-  }, [id])
+    if (!decodedId) return undefined
+    if (needsOrac) {
+      if (!oracProducts) return undefined
+      return oracProducts.find((p) => String(p.id) === decodedId)
+    }
+    return oikosProductsDb.find((p) => String(p.id) === decodedId)
+  }, [decodedId, needsOrac, oracProducts])
 
   const [activePhotoByProduct, setActivePhotoByProduct] = useState({})
   const [selectedTextureByProduct, setSelectedTextureByProduct] = useState({})
@@ -24,6 +43,10 @@ export default function ProductDetailsPage() {
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
   }, [id])
+
+  if (oracLoading) {
+    return <div className="container" style={{ padding: '6rem 0', textAlign: 'center', color: 'var(--muted)' }}>Завантаження…</div>
+  }
 
   if (!product) {
     return <Navigate to="/products" replace />
@@ -52,8 +75,15 @@ export default function ProductDetailsPage() {
   const selectedVariant =
     priceVariants.find((variant) => variant.id === selectedVariantId) ?? priceVariants[0] ?? null
   const quantity = quantityByProduct[product.id] ?? 1
+  const eurRate = useEurRate()
+  const variantEurPrice = selectedVariant?.eurPrice ?? null
+  const productEurPrice = product.eurPrice ?? null
+  const activeEurPrice = variantEurPrice ?? productEurPrice
   const rawPrice = selectedVariant?.price ?? product.price
-  const price = typeof rawPrice === 'number' ? rawPrice : Number(rawPrice)
+  const basePrice = typeof rawPrice === 'number' ? rawPrice : Number(rawPrice)
+  const price = activeEurPrice !== null
+    ? Math.round(activeEurPrice * eurRate)
+    : basePrice
   const hasPrice = Number.isFinite(price) && price > 0
   const shouldShowContactPriceButton = product.brand === 'orac-decor' && !hasPrice
   const priceLabel = hasPrice ? `${price.toLocaleString('uk-UA')} грн` : ''

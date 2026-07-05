@@ -1,8 +1,9 @@
 import { useCallback, useEffect, useMemo, useState, useRef } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
-import { productsDb } from '../data/products.js'
+import { oikosProductsDb, loadOracDecorProducts } from '../data/products.js'
 import { useCart } from '../cart/CartContext.jsx'
 import { Seo } from '../seo/Seo.jsx'
+import { useEurRate } from '../context/ExchangeRateContext.jsx'
 
 // Cyrillic characters that are visually identical to Latin letters.
 // Normalizing both query and haystack to Latin before comparing makes
@@ -77,12 +78,30 @@ function LazyImage({ src, alt, className }) {
 export default function ProductsPage() {
   const [searchParams, setSearchParams] = useSearchParams()
   const brandFromUrl = searchParams.get('brand') || 'oikos'
-  
+
+  const [oracProducts, setOracProducts] = useState(null)
+  const [oracLoading, setOracLoading] = useState(false)
+
+  useEffect(() => {
+    if (brandFromUrl === 'orac-decor' && oracProducts === null && !oracLoading) {
+      setOracLoading(true)
+      loadOracDecorProducts().then((data) => {
+        setOracProducts(data)
+        setOracLoading(false)
+      })
+    }
+  }, [brandFromUrl, oracProducts, oracLoading])
+
+  const activeProducts = useMemo(() => {
+    if (brandFromUrl === 'orac-decor') return oracProducts ?? []
+    return oikosProductsDb
+  }, [brandFromUrl, oracProducts])
+
   const categories = useMemo(
-    () => [...new Set(productsDb.filter((p) => p.brand === brandFromUrl).map((p) => p.category))],
-    [brandFromUrl]
+    () => [...new Set(activeProducts.map((p) => p.category))],
+    [activeProducts]
   )
-  
+
   const categoryFromUrl = searchParams.get('category') || 'all'
   const selectedCategory =
     categoryFromUrl === 'all' || categories.includes(categoryFromUrl)
@@ -91,12 +110,14 @@ export default function ProductsPage() {
   const searchQuery = searchParams.get('q') || ''
   const currentPage = getPositivePage(searchParams.get('page'))
   const { addItem } = useCart()
+  const eurRate = useEurRate()
   const [priceMin, setPriceMin] = useState('')
   const [priceMax, setPriceMax] = useState('')
   const [sortOrder, setSortOrder] = useState('default')
   const [filterOpen, setFilterOpen] = useState(false)
   const [selectedType, setSelectedType] = useState('all')
   const prevBrand = useRef(brandFromUrl)
+  const [searchInput, setSearchInput] = useState(searchQuery)
 
   const usesOracGrid = brandFromUrl === 'orac-decor' && !searchQuery.trim()
   const colCount = usesOracGrid ? 3 : 4
@@ -116,16 +137,23 @@ export default function ProductsPage() {
       ? 'Пошук товару (назва, категорія)'
       : 'Пошук фарби (назва, ефект)'
   const seoTitle =
-    selectedCategory === 'all'
-      ? catalogHeading
-      : `${selectedCategory} ${brandName}`
+    selectedCategory !== 'all'
+      ? `${selectedCategory} ${brandName} — купити в Києві`
+      : brandFromUrl === 'orac-decor'
+        ? 'Купити ліпнину ORAC DECOR у Києві | Карнизи, молдинги, панелі'
+        : 'Купити декоративну фарбу OIKOS у Києві | Штукатурка, мікроцемент, венеціанка'
   const seoDescription =
-    selectedCategory === 'all'
-      ? `Каталог ${brandName} від Гільдії Декору: матеріали для інтерʼєру, ціни, фото, характеристики та консультація у Києві.`
-      : `${selectedCategory} ${brandName}: перегляньте товари, фото, характеристики та замовте консультацію в Гільдії Декору.`
+    selectedCategory !== 'all'
+      ? `${selectedCategory} ${brandName}: перегляньте товари, фото, характеристики та замовте консультацію в Гільдії Декора, Київ.`
+      : brandFromUrl === 'orac-decor'
+        ? 'Офіційний дилер ORAC DECOR в Україні. Купити ліпнину, карнизи, молдинги, декоративні панелі ORAC DECOR у Києві. Ціни, фото, консультація — Гільдія Декора.'
+        : 'Офіційний дилер OIKOS в Україні. Купити декоративну фарбу, венеціанську штукатурку, мікроцемент OIKOS у Києві. 840+ відтінків, ціни, доставка — Гільдія Декора.'
   const seoKeywords = brandFromUrl === 'orac-decor'
-    ? 'ORAC DECOR Київ, купити ORAC DECOR, ліпнина Київ, карнизи молдинги, декоративна ліпнина, купить ORAC DECOR Украина, лепнина Киев, карнизы молдинги купить'
-    : 'декоративні фарби OIKOS, купити штукатурку, купити декоративну штукатурку, купити фарбу OIKOS, венеціанська штукатурка Київ, декоративні матеріали, купити ґрунтівку OIKOS, купить декоративную штукатурку, купить краску OIKOS, венецианская штукатурка Киев, декоративные краски Украина'
+    ? 'ORAC DECOR Київ, купити ORAC DECOR, ліпнина Київ, карнизи молдинги, купити ліпнину, декоративна ліпнина купити, ORAC DECOR ціна, купить ORAC DECOR Украина, лепнина Киев, карнизы молдинги купить'
+    : 'купити декоративну фарбу OIKOS, купити штукатурку Київ, купити венеціанську штукатурку, декоративні матеріали OIKOS, мікроцемент купити, купити ґрунтівку OIKOS, купить декоративную штукатурку OIKOS, купить венецианскую штукатурку Киев, декоративные краски Украина, OIKOS цена Украина'
+  const seoCanonical = selectedCategory === 'all'
+    ? `/products?brand=${brandFromUrl}`
+    : `/products?brand=${brandFromUrl}&category=${encodeURIComponent(selectedCategory)}`
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
@@ -138,8 +166,21 @@ export default function ProductsPage() {
       setPriceMax('')
       setSortOrder('default')
       setSelectedType('all')
+      setSearchInput('')
     }
   }, [brandFromUrl])
+
+  // Sync external URL param changes (e.g. browser back button) back to local input
+  useEffect(() => { setSearchInput(searchQuery) }, [searchQuery])
+
+  // Debounce: update URL only 300ms after user stops typing
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      updateCatalogParams({ query: searchInput, page: 1 })
+    }, 300)
+    return () => clearTimeout(timer)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchInput])
 
   const buildCatalogParams = useCallback(
     ({ brand = brandFromUrl, category = selectedCategory, query = searchQuery, page = currentPage } = {}) => {
@@ -185,7 +226,7 @@ export default function ProductsPage() {
     const normTokens = tokens.map((t) => normLookalike(t))
     const hasSearch = tokens.length > 0
 
-    const byBrand = productsDb.filter((p) => p.brand === brandFromUrl)
+    const byBrand = activeProducts
     const byType = selectedType === 'all' ? byBrand : byBrand.filter((p) => p.productType === selectedType)
     const byCategory =
       selectedCategory === 'all'
@@ -199,8 +240,8 @@ export default function ProductsPage() {
     } else {
       const searchPool =
         selectedCategory === 'all'
-          ? productsDb
-          : productsDb.filter((p) => p.category === selectedCategory)
+          ? activeProducts
+          : activeProducts.filter((p) => p.category === selectedCategory)
 
       result = searchPool
         .filter((p) => {
@@ -244,7 +285,7 @@ export default function ProductsPage() {
     }
 
     return result
-  }, [searchQuery, selectedCategory, brandFromUrl, priceMin, priceMax, sortOrder, selectedType])
+  }, [searchQuery, selectedCategory, brandFromUrl, priceMin, priceMax, sortOrder, selectedType, activeProducts])
 
   const totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE)
   const activePage = totalPages > 0 ? Math.min(currentPage, totalPages) : 1
@@ -268,8 +309,9 @@ export default function ProductsPage() {
   }
 
   const formatPrice = (product) => {
-    const price = product.price
-    const num = typeof price === 'number' ? price : Number(price)
+    const num = product.eurPrice !== null && product.eurPrice !== undefined
+      ? Math.round(product.eurPrice * eurRate)
+      : (typeof product.price === 'number' ? product.price : Number(product.price))
     if (!Number.isFinite(num) || num <= 0) return 'Ціна за запитом'
     const prefix = product.priceVariants?.length > 1 ? 'від ' : ''
     return `${prefix}${num.toLocaleString('uk-UA')} грн`
@@ -281,7 +323,7 @@ export default function ProductsPage() {
         title={seoTitle}
         description={seoDescription}
         keywords={seoKeywords}
-        canonicalPath="/products"
+        canonicalPath={seoCanonical}
       />
       <div className="container">
         <h1 className="section-title">{catalogHeading}</h1>
@@ -291,11 +333,8 @@ export default function ProductsPage() {
             className="products-search-input"
             type="search"
             placeholder={searchPlaceholder}
-            value={searchQuery}
-            onChange={(e) => {
-              const query = e.target.value
-              updateCatalogParams({ query, page: 1 })
-            }}
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}
             aria-label={searchLabel}
           />
         </div>
@@ -411,7 +450,13 @@ export default function ProductsPage() {
           ))}
         </div>
 
-        {(() => {
+        {oracLoading && (
+          <div style={{ padding: '4rem 0', textAlign: 'center', color: 'var(--muted)', fontFamily: 'var(--mono)', fontSize: '0.7rem', letterSpacing: '0.15em', textTransform: 'uppercase' }}>
+            Завантаження каталогу…
+          </div>
+        )}
+
+        {!oracLoading && (() => {
           const remainder = paginatedProducts.length % colCount
           const placeholderCount = remainder > 0 ? colCount - remainder : 0
           return (

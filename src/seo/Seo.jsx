@@ -90,6 +90,8 @@ export function Seo({
     })
     setMeta('meta[property="og:url"]', { property: 'og:url', content: canonicalUrl })
     setMeta('meta[property="og:image"]', { property: 'og:image', content: imageUrl })
+    setMeta('meta[property="og:image:width"]', { property: 'og:image:width', content: '512' })
+    setMeta('meta[property="og:image:height"]', { property: 'og:image:height', content: '512' })
 
     setMeta('meta[name="twitter:card"]', { name: 'twitter:card', content: 'summary_large_image' })
     setMeta('meta[name="twitter:title"]', { name: 'twitter:title', content: pageTitle })

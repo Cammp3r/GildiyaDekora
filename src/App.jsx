@@ -4,16 +4,17 @@ import Header from './components/Header.jsx'
 import Footer from './components/Footer.jsx'
 import ScrollToTop from './components/ScrollToTop.jsx'
 import ErrorBoundary from './components/ErrorBoundary.jsx'
-import { Navigate, Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import HomePage from './pages/HomePage.jsx'
+import NotFoundPage from './pages/NotFoundPage.jsx'
 
 const ProductsPage = lazy(() => import('./pages/ProductsPage.jsx'))
 const ProductDetailsPage = lazy(() => import('./pages/ProductDetailsPage.jsx'))
 const GalleryPage = lazy(() => import('./pages/GalleryPage.jsx'))
 const ContactPage = lazy(() => import('./pages/ContactPage.jsx'))
 const CartPage = lazy(() => import('./pages/CartPage.jsx'))
-const OrderPage = lazy(() => import('./pages/OrderPage.jsx'))
-const AdminOrdersPage = lazy(() => import('./pages/AdminOrdersPage.jsx'))
+// const OrderPage = lazy(() => import('./pages/OrderPage.jsx'))
+// const AdminOrdersPage = lazy(() => import('./pages/AdminOrdersPage.jsx'))
 
 const FarbaStinPage = lazy(() => import('./pages/seo/FarbaStinPage.jsx'))
 const FasadnaFarbaPage = lazy(() => import('./pages/seo/FasadnaFarbaPage.jsx'))
@@ -27,6 +28,7 @@ const KupytyFarbuKyivPage = lazy(() => import('./pages/seo/KupytyFarbuKyivPage.j
 const MagazynFarbKyivPage = lazy(() => import('./pages/seo/MagazynFarbKyivPage.jsx'))
 const FasadnaFarbaKyivPage = lazy(() => import('./pages/seo/FasadnaFarbaKyivPage.jsx'))
 const KoleruvannyaKyivPage = lazy(() => import('./pages/seo/KoleruvannyaKyivPage.jsx'))
+const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage.jsx'))
 
 function App() {
   return (
@@ -47,8 +49,8 @@ function App() {
           <Route path="/products" element={<ProductsPage />} />
           <Route path="/products/:id" element={<ProductDetailsPage />} />
           <Route path="/cart" element={<CartPage />} />
-          <Route path="/order" element={<OrderPage />} />
-          <Route path="/admin/orders" element={<AdminOrdersPage />} />
+          {/* <Route path="/order" element={<OrderPage />} /> */}
+          {/* <Route path="/admin/orders" element={<AdminOrdersPage />} /> */}
           <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/farba-dlya-stin" element={<FarbaStinPage />} />
@@ -63,7 +65,8 @@ function App() {
           <Route path="/magazyn-farb-kyiv" element={<MagazynFarbKyivPage />} />
           <Route path="/fasadna-farba-kyiv" element={<FasadnaFarbaKyivPage />} />
           <Route path="/koleruvannya-kyiv" element={<KoleruvannyaKyivPage />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>
       </ErrorBoundary>

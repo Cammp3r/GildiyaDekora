@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useMemo, useReducer, useRef, useState } from 'react'
+import { useEurRate } from '../context/ExchangeRateContext.jsx'
 
 const CartContext = createContext(null)
 const CART_STORAGE_KEY = 'gildiya-dekora-cart-v1'
@@ -30,6 +31,7 @@ function normalizeStoredItem(item) {
     variantTitle: String(item.variantTitle ?? ''),
     volume: String(item.volume ?? ''),
     unitPrice: toNumber(item.unitPrice, null),
+    eurPrice: toNumber(item.eurPrice, null) || null,
     priceCurrency: String(item.priceCurrency ?? 'UAH'),
     quantity: clampMin(toNumber(item.quantity, 1), 1),
     texture: item.texture ?? null,
@@ -117,6 +119,7 @@ function cartReducer(state, action) {
 }
 
 export function CartProvider({ children }) {
+  const eurRate = useEurRate()
   const [state, dispatch] = useReducer(cartReducer, initialState, loadStoredCart)
   const [toast, setToast] = useState(null)
   const toastTimer = useRef(null)
@@ -137,9 +140,9 @@ export function CartProvider({ children }) {
     )
 
     const totalPrice = state.items.reduce((sum, x) => {
-      const unitPrice = toNumber(x.unitPrice, 0)
-      const quantity = toNumber(x.quantity, 0)
-      return sum + unitPrice * quantity
+      const qty = toNumber(x.quantity, 0)
+      const unit = x.eurPrice ? Math.round(x.eurPrice * eurRate) : toNumber(x.unitPrice, 0)
+      return sum + unit * qty
     }, 0)
 
     return {
@@ -153,6 +156,7 @@ export function CartProvider({ children }) {
         const selectedVariant = variant ?? product.priceVariants?.[0] ?? null
         const variantId = selectedVariant?.id ?? selectedVariant?.volume ?? 'default'
         const unitPrice = toNumber(selectedVariant?.price ?? product.price, null)
+        const eurPrice = selectedVariant?.eurPrice ?? product.eurPrice ?? null
         const volume = selectedVariant?.volume ?? ''
 
         dispatch({
@@ -164,10 +168,10 @@ export function CartProvider({ children }) {
               variantId: String(variantId),
               title: product.title ?? '',
               image: product.image ?? '',
-              // prefer an explicit variant title, fall back to type or volume if title is missing
               variantTitle: selectedVariant?.title ?? selectedVariant?.type ?? selectedVariant?.volume ?? '',
               volume,
               unitPrice,
+              eurPrice,
               priceCurrency: 'UAH',
             },
             quantity,
