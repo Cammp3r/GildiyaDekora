@@ -42,6 +42,9 @@ const ROUTES = [
   '/magazyn-farb-kyiv',
   '/fasadna-farba-kyiv',
   '/koleruvannya-kyiv',
+  '/kupyty-lipnynu-kyiv',
+  '/karnyz-moldyngy-orac-decor',
+  '/nanesennya-farby-kyiv',
 ]
 
 async function prerender() {
