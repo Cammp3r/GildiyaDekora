@@ -24,14 +24,14 @@ export default function Footer() {
         </div>
       </Link>
       <p className="footer-desc">
-        Офіційний дилер італійської компанії OIKOS в Україні. Забезпечуємо продаж та нанесення матеріалів найвищої якості для внутрішніх та зовнішніх робіт.
+        Офіційний дилер OIKOS та ORAC DECOR в Україні. Продаж і нанесення декоративних фарб, венеціанської штукатурки, мікроцементу та ліпнини у Києві.
       </p>
 
       <div className="footer-col">
         <h4>Навігація</h4>
         <ul>
           <li><a href="/#about" className="footer-link" onClick={handleAboutClick}>Про нас</a></li>
-          <li><Link to="/products" className="footer-link">Продукти</Link></li>
+          <li><Link to="/products" className="footer-link">Каталог</Link></li>
           <li><Link to="/gallery" className="footer-link">Галерея</Link></li>
           <li><Link to="/contact" className="footer-link">Контакти</Link></li>
           <li><Link to="/privacy-policy" className="footer-link">Конфіденційність</Link></li>
@@ -39,14 +39,12 @@ export default function Footer() {
       </div>
 
       <div className="footer-col">
-        <h4>Матеріали OIKOS</h4>
+        <h4>Фарби OIKOS</h4>
         <ul>
-          <li><Link to="/farba-dlya-stin" className="footer-link">Фарба для стін</Link></li>
-          <li><Link to="/fasadna-farba" className="footer-link">Фасадна фарба</Link></li>
-          <li><Link to="/intererna-farba" className="footer-link">Інтер'єрна фарба</Link></li>
-          <li><Link to="/akrylova-farba" className="footer-link">Акрилова фарба</Link></li>
-          <li><Link to="/gruntivka" className="footer-link">Ґрунтівка</Link></li>
-          <li><Link to="/koleruvannya" className="footer-link">Колерування фарби</Link></li>
+          <li><Link to="/products?brand=oikos" className="footer-link">Каталог OIKOS</Link></li>
+          <li><Link to="/products?brand=oikos&category=Декоративні фарби" className="footer-link">Декоративні фарби</Link></li>
+          <li><Link to="/products?brand=oikos&category=Фасадні фарби" className="footer-link">Фасадні фарби</Link></li>
+          <li><Link to="/products?brand=oikos&category=Ґрунтівки" className="footer-link">Ґрунтівки</Link></li>
           <li><Link to="/nanesennya-farby-kyiv" className="footer-link">Нанесення фарби Київ</Link></li>
         </ul>
       </div>
@@ -55,12 +53,11 @@ export default function Footer() {
         <h4>Ліпнина ORAC DECOR</h4>
         <ul>
           <li><Link to="/kupyty-lipnynu-kyiv" className="footer-link">Купити ліпнину Київ</Link></li>
-          <li><Link to="/karnyz-moldyngy-orac-decor" className="footer-link">Карнизи та молдинги</Link></li>
           <li><Link to="/products?brand=orac-decor" className="footer-link">Каталог ORAC DECOR</Link></li>
-          <li><Link to="/kupit-farbu-kyiv" className="footer-link">Купити фарбу Київ</Link></li>
-          <li><Link to="/magazyn-farb-kyiv" className="footer-link">Магазин фарб Київ</Link></li>
-          <li><Link to="/fasadna-farba-kyiv" className="footer-link">Фасадна фарба Київ</Link></li>
-          <li><Link to="/koleruvannya-kyiv" className="footer-link">Колерування фарб Київ</Link></li>
+          <li><Link to="/products?brand=orac-decor&category=Карнизи" className="footer-link">Карнизи</Link></li>
+          <li><Link to="/products?brand=orac-decor&category=Молдинги" className="footer-link">Молдинги</Link></li>
+          <li><Link to="/products?brand=orac-decor&category=Панелі" className="footer-link">Стінові панелі</Link></li>
+          <li><Link to="/contact" className="footer-link">Консультація</Link></li>
         </ul>
       </div>
 
@@ -82,7 +79,7 @@ export default function Footer() {
       </div>
 
       <div className="footer-bottom">
-        <span>&copy; 2026 Гільдія Декора · Офіційний дилер OIKOS · Всі права захищені</span>
+        <span>&copy; 2026 Гільдія Декора · Офіційний дилер OIKOS та ORAC DECOR · Всі права захищені</span>
       </div>
     </footer>
   )

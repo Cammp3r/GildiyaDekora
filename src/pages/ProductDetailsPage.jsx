@@ -161,7 +161,9 @@ export default function ProductDetailsPage() {
     `${product.title} киев`,
     categoryRu,
     typeKwRU,
-    product.brand === 'oikos' ? 'OIKOS Украина краска' : 'ORAC DECOR Украина',
+    product.brand === 'oikos'
+      ? `OIKOS Украина краска, ${product.title} farba, ${product.title} фарба`
+      : `ORAC DECOR Украина, ${product.title} square, ${product.title} профіль`,
   ].filter(Boolean).join(', ')
 
   // JSON-LD description — bilingual, longer
@@ -205,7 +207,11 @@ export default function ProductDetailsPage() {
   return (
     <section className="product-details">
       <Seo
-        title={`Купити ${product.title} ${brandName} | Ціна в Україні`}
+        title={
+          product.brand === 'orac-decor'
+            ? `${product.title} ORAC DECOR — купити в Києві | Гільдія Декора`
+            : `Купити ${product.title} OIKOS — ${product.category || 'декоративна фарба'} | Гільдія Декора`
+        }
         description={productDescription}
         keywords={seoKeywords}
         image={activePhoto || product.image}

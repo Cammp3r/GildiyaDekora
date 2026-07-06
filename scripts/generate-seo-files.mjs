@@ -17,21 +17,8 @@ const STATIC_ROUTES = [
   { path: '/products?brand=orac-decor', priority: '0.9', changefreq: 'weekly' },
   { path: '/gallery', priority: '0.6', changefreq: 'monthly' },
   { path: '/contact', priority: '0.7', changefreq: 'monthly' },
-  { path: '/farba-dlya-stin', priority: '0.8', changefreq: 'monthly' },
-  { path: '/fasadna-farba', priority: '0.8', changefreq: 'monthly' },
-  { path: '/intererna-farba', priority: '0.8', changefreq: 'monthly' },
-  { path: '/akrylova-farba', priority: '0.8', changefreq: 'monthly' },
-  { path: '/farba-dlya-dereva', priority: '0.8', changefreq: 'monthly' },
-  { path: '/gruntivka', priority: '0.8', changefreq: 'monthly' },
-  { path: '/lak-dlya-dereva', priority: '0.8', changefreq: 'monthly' },
-  { path: '/koleruvannya', priority: '0.8', changefreq: 'monthly' },
-  { path: '/kupit-farbu-kyiv', priority: '0.9', changefreq: 'monthly' },
-  { path: '/magazyn-farb-kyiv', priority: '0.9', changefreq: 'monthly' },
-  { path: '/fasadna-farba-kyiv', priority: '0.9', changefreq: 'monthly' },
-  { path: '/koleruvannya-kyiv', priority: '0.9', changefreq: 'monthly' },
-  { path: '/kupyty-lipnynu-kyiv', priority: '0.9', changefreq: 'monthly' },
-  { path: '/karnyz-moldyngy-orac-decor', priority: '0.8', changefreq: 'monthly' },
   { path: '/nanesennya-farby-kyiv', priority: '0.9', changefreq: 'monthly' },
+  { path: '/kupyty-lipnynu-kyiv', priority: '0.9', changefreq: 'monthly' },
 ]
 
 function escapeXml(value) {

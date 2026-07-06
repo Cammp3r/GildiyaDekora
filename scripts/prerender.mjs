@@ -29,22 +29,8 @@ const ROUTES = [
   '/products',
   '/gallery',
   '/contact',
-  // SEO landing pages — most important to prerender
-  '/farba-dlya-stin',
-  '/fasadna-farba',
-  '/intererna-farba',
-  '/akrylova-farba',
-  '/farba-dlya-dereva',
-  '/gruntivka',
-  '/lak-dlya-dereva',
-  '/koleruvannya',
-  '/kupit-farbu-kyiv',
-  '/magazyn-farb-kyiv',
-  '/fasadna-farba-kyiv',
-  '/koleruvannya-kyiv',
-  '/kupyty-lipnynu-kyiv',
-  '/karnyz-moldyngy-orac-decor',
   '/nanesennya-farby-kyiv',
+  '/kupyty-lipnynu-kyiv',
 ]
 
 async function prerender() {
