@@ -6,6 +6,7 @@ export function SeoLandingPage({
   title,
   h1,
   description,
+  keywords,
   canonicalPath,
   badge,
   intro,
@@ -25,6 +26,7 @@ export function SeoLandingPage({
       <Seo
         title={title}
         description={description}
+        keywords={keywords}
         canonicalPath={canonicalPath}
         jsonLd={jsonLd}
       />

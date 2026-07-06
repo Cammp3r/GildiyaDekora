@@ -2700,6 +2700,46 @@ footer .logo-text {
   }
 }
 
+/* ============== CATALOG SEO TEXT ============== */
+.catalog-seo-text {
+  margin-top: 4rem;
+  padding-top: 3rem;
+  border-top: 1px solid var(--soft);
+  max-width: 800px;
+}
+
+.catalog-seo-text h2 {
+  font-family: var(--serif);
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--ink);
+}
+
+.catalog-seo-text h3 {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 1.8rem 0 0.6rem;
+  color: var(--ink);
+}
+
+.catalog-seo-text p {
+  color: var(--muted);
+  line-height: 1.8;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.catalog-seo-text a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.catalog-seo-text a:hover {
+  text-decoration: underline;
+}
+
 /* ============== SEO LANDING PAGES ============== */
 .seo-landing {
   padding: 4rem 0 6rem;
@@ -2805,10 +2845,10 @@ footer .logo-text {
 }
 
 .seo-landing-address h2 {
-  color: black;
   font-family: var(--serif);
   font-size: 1.3rem;
   margin-bottom: 1rem;
+  color: var(--ink);
 }
 
 .seo-landing-address p {
