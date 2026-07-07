@@ -30,7 +30,7 @@ export function ExchangeRateProvider({ children }) {
     if (getCachedRate() !== null) return
 
     const controller = new AbortController()
-    fetch('https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=5', {
+    fetch('/api/eur-rate', {
       signal: controller.signal,
     })
       .then((r) => r.json())
