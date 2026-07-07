@@ -17,6 +17,21 @@
   VITE_SITE_URL = "https://gihldihja-decora.ua"
   SITE_URL = "https://gihldihja-decora.ua"
 
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+# PrivatBank EUR rate proxy — avoids CORS when fetching from the browser
+[[redirects]]
+  from = "/api/eur-rate"
+  to = "https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=5"
+  status = 200
+  force = true
+
 # API proxy — must be before the SPA catch-all
 [[redirects]]
   from = "/api/*"

@@ -44,7 +44,7 @@ export default function ProductDetailsPage() {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
   }, [id])
 
-  if (oracLoading) {
+  if (oracLoading || (needsOrac && oracProducts === null)) {
     return <div className="container" style={{ padding: '6rem 0', textAlign: 'center', color: 'var(--muted)' }}>Завантаження…</div>
   }
 
