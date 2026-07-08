@@ -190,6 +190,7 @@ export default function ContactPage() {
       setErrors(initialErrors)
       setStatus('success')
       setStatusMessage('Дякуємо! Повідомлення відправлено.')
+      window.gtag?.('event', 'conversion', { send_to: 'AW-18195334174/7WNrCLW1lM0cEJ6Im-RD', transaction_id: '' })
     } catch {
       setStatus('error')
       setStatusMessage('Не вдалося відправити повідомлення. Спробуйте ще раз або зателефонуйте нам.')
