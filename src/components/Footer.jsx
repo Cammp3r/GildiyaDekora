@@ -17,7 +17,7 @@ export default function Footer() {
   return (
     <footer>
       <Link to="/" className="logo" style={{ color: '#f5f0e8' }}>
-        <img src={logo} alt="Гільдія Декору" />
+        <img src={logo} alt="Гільдія Декора" />
         <div className="logo-text" style={{ color: '#f5f0e8' }}>
           <span className="logo-main">Гільдія</span>
           <span className="logo-sub">Декора</span>
@@ -73,7 +73,7 @@ export default function Footer() {
         <h4>Контакти</h4>
         <ul>
           <li><a href="tel:+380675039352" className="footer-link">+38 (067) 503-93-52</a></li>
-          <li><a href="https://maps.app.goo.gl/dRX4TLoQzrdfMqeS9" target="_blank" rel="noreferrer" className="footer-link">м. Київ, вул. Гусовського 12/7</a></li>
+          <li><a href="https://maps.app.goo.gl/dRX4TLoQzrdfMqeS9" target="_blank" rel="noreferrer" className="footer-link">м. Київ, вул. Сергія Гусовського 12/7</a></li>
           <li><a href="mailto:gildiya@meta.ua" className="footer-link">gildiya@meta.ua</a></li>
         </ul>
       </div>

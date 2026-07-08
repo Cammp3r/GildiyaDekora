@@ -146,6 +146,25 @@ export default function ProductDetailsPage() {
   const typeKwUA = TYPE_KEYWORDS_UA[product.productType] || TYPE_KEYWORDS_UA.paint
   const typeKwRU = TYPE_KEYWORDS_RU[product.productType] || TYPE_KEYWORDS_RU.paint
 
+  // Russian phonetic aliases for well-known product names
+  const PRODUCT_RU_PHONETIC = {
+    Ottocento: 'отточенто, купить отточенто, отточенто oikos',
+    Veneziano: 'венециано, купить венециано, венецианская штукатурка oikos',
+    Marmorino: 'марморино, купить марморино, марморино oikos',
+    Microbase: 'микробаза oikos, микроцемент oikos купить',
+    Supercolor: 'суперколор oikos, суперколор краска купить',
+    Chalk: 'меловая краска oikos, чок oikos, chalk oikos купить',
+    Sterylpaint: 'стерилпейнт oikos, антибактериальная краска oikos',
+    Ultrasaten: 'ультрасатен oikos, матовая краска для стен oikos',
+    Silossato: 'силоссато oikos, фасадная краска oikos',
+    Silarlat: 'силарлат oikos, силиконовая фасадная краска',
+    Extrapaint: 'экстрапейнт oikos, краска для потолка oikos',
+    Macrobase: 'макробаза oikos, структурная штукатурка oikos',
+  }
+  const productRuPhonetic = Object.entries(PRODUCT_RU_PHONETIC).find(
+    ([name]) => product.title?.includes(name)
+  )?.[1] || ''
+
   // Keywords — Ukrainian + Russian
   const seoKeywords = [
     `купити ${product.title}`,
@@ -161,6 +180,7 @@ export default function ProductDetailsPage() {
     `${product.title} киев`,
     categoryRu,
     typeKwRU,
+    productRuPhonetic,
     product.brand === 'oikos'
       ? `OIKOS Украина краска, ${product.title} farba, ${product.title} фарба`
       : `ORAC DECOR Украина, ${product.title} square, ${product.title} профіль`,
