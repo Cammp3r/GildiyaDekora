@@ -209,7 +209,7 @@ export default function ContactPage() {
         <div className="container">
           <h1 className="section-title">Зв'яжіться з <em>нами</em></h1>
           <div className="contact-order-banner">
-            Щоб замовити консультацію заповніть форму або зв'яжіться з нами
+            Щоб замовити консультацію, заповніть форму або зв'яжіться з нами
           </div>
           <div className="contact-content">
             <div className="contact-info">
@@ -239,7 +239,7 @@ export default function ContactPage() {
               </div>
               <div className="contact-item">
                 <h3>Замовити консультацію</h3>
-                <p>Щоб замовити консультацію заповніть форму або зв'яжіться з нами</p>
+                <p>Щоб замовити консультацію, заповніть форму або зв'яжіться з нами</p>
               </div>
 
               <div className="contact-item">
