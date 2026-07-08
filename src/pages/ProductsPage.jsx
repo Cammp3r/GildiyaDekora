@@ -324,6 +324,7 @@ export default function ProductsPage() {
         description={seoDescription}
         keywords={seoKeywords}
         canonicalPath={seoCanonical}
+        noindex={Boolean(searchQuery)}
       />
       <div className="container">
         <h1 className="section-title">{catalogHeading}</h1>

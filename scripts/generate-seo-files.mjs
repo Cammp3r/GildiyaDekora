@@ -13,8 +13,7 @@ const SITE_URL = (
 
 const STATIC_ROUTES = [
   { path: '/', priority: '1.0', changefreq: 'weekly' },
-  { path: '/products?brand=oikos', priority: '0.9', changefreq: 'weekly' },
-  { path: '/products?brand=orac-decor', priority: '0.9', changefreq: 'weekly' },
+  { path: '/products', priority: '0.9', changefreq: 'weekly' },
   { path: '/gallery', priority: '0.6', changefreq: 'monthly' },
   { path: '/contact', priority: '0.7', changefreq: 'monthly' },
   { path: '/nanesennya-farby-kyiv', priority: '0.9', changefreq: 'monthly' },
