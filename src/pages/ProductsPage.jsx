@@ -191,7 +191,7 @@ export default function ProductsPage() {
   const buildCatalogParams = useCallback(
     ({ brand = brandFromUrl, category = selectedCategory, query = searchQuery, page = currentPage } = {}) => {
       const params = new URLSearchParams()
-      if (brand && brand !== 'oikos') params.set('brand', brand)
+      if (brand) params.set('brand', brand)
       if (category && category !== 'all') params.set('category', category)
       if (query) params.set('q', query)
       if (page > 1) params.set('page', String(page))

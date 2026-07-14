@@ -31,7 +31,7 @@ export default function Footer() {
         <h4>Навігація</h4>
         <ul>
           <li><a href="/#about" className="footer-link" onClick={handleAboutClick}>Про нас</a></li>
-          <li><Link to="/products" className="footer-link">Каталог</Link></li>
+          <li><Link to="/products?brand=oikos" className="footer-link">Каталог</Link></li>
           <li><Link to="/gallery" className="footer-link">Галерея</Link></li>
           <li><Link to="/contact" className="footer-link">Контакти</Link></li>
           <li><Link to="/privacy-policy" className="footer-link">Конфіденційність</Link></li>
