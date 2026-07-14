@@ -26,7 +26,7 @@ export default function Header() {
 
   const navItems = [
     { label: 'Про нас', path: '/', isAbout: true },
-    { label: 'Продукти', path: '/products', hasDropdown: true },
+    { label: 'Продукти', path: '/products?brand=oikos', hasDropdown: true },
     { label: 'Галерея', path: '/gallery' },
     { label: 'Контакти', path: '/contact' },
   ]
