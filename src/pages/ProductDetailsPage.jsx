@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { Link, Navigate, useLocation, useParams } from 'react-router-dom'
+import { Link, Navigate, useLocation, useNavigate, useParams } from 'react-router-dom'
 import { oikosProductsDb, loadOracDecorProducts, isOracProduct } from '../data/products.js'
 import { useCart } from '../cart/CartContext.jsx'
 import { Seo } from '../seo/Seo.jsx'
@@ -9,6 +9,7 @@ import { useEurRate } from '../context/ExchangeRateContext.jsx'
 export default function ProductDetailsPage() {
   const { id } = useParams()
   const location = useLocation()
+  const navigate = useNavigate()
   const { addItem } = useCart()
   const [oracProducts, setOracProducts] = useState(null)
   const [oracLoading, setOracLoading] = useState(false)
@@ -43,6 +44,27 @@ export default function ProductDetailsPage() {
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
   }, [id])
+
+  const returnTo = location.state?.returnTo ?? {
+    pathname: '/products',
+    search: location.search,
+  }
+
+  useEffect(() => {
+    if (!location.search) return
+
+    navigate(
+      {
+        pathname: location.pathname,
+      },
+      {
+        replace: true,
+        state: {
+          returnTo,
+        },
+      }
+    )
+  }, [location.pathname, location.search, navigate, returnTo])
 
   if (oracLoading || (needsOrac && oracProducts === null)) {
     return <div className="container" style={{ padding: '6rem 0', textAlign: 'center', color: 'var(--muted)' }}>Завантаження…</div>
@@ -242,7 +264,7 @@ export default function ProductDetailsPage() {
       <div className="container">
         <div className="product-details-top">
           <Link
-            to={{ pathname: '/products', search: location.search }}
+            to={returnTo}
             className="product-details-back"
           >
             Назад до каталогу

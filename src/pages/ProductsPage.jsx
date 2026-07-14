@@ -117,6 +117,7 @@ export default function ProductsPage() {
   const [filterOpen, setFilterOpen] = useState(false)
   const [selectedType, setSelectedType] = useState('all')
   const prevBrand = useRef(brandFromUrl)
+  const didInitSearchSync = useRef(false)
   const [searchInput, setSearchInput] = useState(searchQuery)
 
   const usesOracGrid = brandFromUrl === 'orac-decor' && !searchQuery.trim()
@@ -175,6 +176,11 @@ export default function ProductsPage() {
 
   // Debounce: update URL only 300ms after user stops typing
   useEffect(() => {
+    if (!didInitSearchSync.current) {
+      didInitSearchSync.current = true
+      return () => {}
+    }
+
     const timer = setTimeout(() => {
       updateCatalogParams({ query: searchInput, page: 1 })
     }, 300)
@@ -497,7 +503,12 @@ export default function ProductsPage() {
                         <Link
                           to={{
                             pathname: `/products/${encodeURIComponent(product.id)}`,
-                            search: getCatalogSearch(),
+                          }}
+                          state={{
+                            returnTo: {
+                              pathname: '/products',
+                              search: getCatalogSearch(),
+                            },
                           }}
                           className="add-btn add-btn-secondary"
                         >
