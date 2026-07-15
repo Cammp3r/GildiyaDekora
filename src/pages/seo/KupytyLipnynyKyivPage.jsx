@@ -41,7 +41,7 @@ export default function KupytyLipnynyKyivPage() {
       canonicalPath="/kupyty-lipnynu-kyiv"
       badge="Офіційний дилер ORAC DECOR в Україні"
       intro="Гільдія Декора — офіційний дилер ORAC DECOR в Україні. Пропонуємо повний асортимент поліуретанової ліпнини бельгійського виробника: карнизи, молдинги, стінові панелі, розетки, пілястри та декоративні елементи. Купить лепнину ORAC DECOR в Киеве с доставкой и профессиональной консультацией."
-      productLink="/products?brand=orac-decor"
+      productLink="/products/orac-decor"
       productLinkText="Переглянути каталог ORAC DECOR →"
       sections={[
         {

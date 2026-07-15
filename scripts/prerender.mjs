@@ -27,6 +27,7 @@ const PORT = 4174 // use 4174 to avoid conflict with a running dev server on 517
 const ROUTES = [
   '/',
   '/products',
+  '/products/orac-decor',
   '/gallery',
   '/contact',
   '/nanesennya-farby-kyiv',
