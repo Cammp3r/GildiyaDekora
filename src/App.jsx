@@ -14,6 +14,7 @@ const GalleryPage = lazy(() => import('./pages/GalleryPage.jsx'))
 const ContactPage = lazy(() => import('./pages/ContactPage.jsx'))
 const CartPage = lazy(() => import('./pages/CartPage.jsx'))
 const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage.jsx'))
+const ReturnPolicyPage = lazy(() => import('./pages/ReturnPolicyPage.jsx'))
 const NanesennyaFarbyPage = lazy(() => import('./pages/seo/NanesennyaFarbyPage.jsx'))
 const KupytyLipnynyKyivPage = lazy(() => import('./pages/seo/KupytyLipnynyKyivPage.jsx'))
 
@@ -41,6 +42,7 @@ function App() {
           <Route path="/nanesennya-farby-kyiv" element={<NanesennyaFarbyPage />} />
           <Route path="/kupyty-lipnynu-kyiv" element={<KupytyLipnynyKyivPage />} />
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+          <Route path="/return-policy" element={<ReturnPolicyPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>

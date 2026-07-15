@@ -34,6 +34,7 @@ export default function Footer() {
           <li><Link to="/products" className="footer-link">Каталог</Link></li>
           <li><Link to="/gallery" className="footer-link">Галерея</Link></li>
           <li><Link to="/contact" className="footer-link">Контакти</Link></li>
+          <li><Link to="/return-policy" className="footer-link">Повернення замовлення</Link></li>
           <li><Link to="/privacy-policy" className="footer-link">Конфіденційність</Link></li>
         </ul>
       </div>
