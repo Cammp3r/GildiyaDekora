@@ -17,6 +17,7 @@ const STATIC_ROUTES = [
   { path: '/products/orac-decor', priority: '0.9', changefreq: 'weekly' },
   { path: '/gallery', priority: '0.6', changefreq: 'monthly' },
   { path: '/contact', priority: '0.7', changefreq: 'monthly' },
+  { path: '/return-policy', priority: '0.5', changefreq: 'yearly' },
   { path: '/nanesennya-farby-kyiv', priority: '0.9', changefreq: 'monthly' },
   { path: '/kupyty-lipnynu-kyiv', priority: '0.9', changefreq: 'monthly' },
 ]

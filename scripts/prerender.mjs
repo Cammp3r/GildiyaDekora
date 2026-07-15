@@ -30,6 +30,7 @@ const ROUTES = [
   '/products/orac-decor',
   '/gallery',
   '/contact',
+  '/return-policy',
   '/nanesennya-farby-kyiv',
   '/kupyty-lipnynu-kyiv',
 ]
