@@ -31,7 +31,7 @@ export default function Footer() {
         <h4>Навігація</h4>
         <ul>
           <li><a href="/#about" className="footer-link" onClick={handleAboutClick}>Про нас</a></li>
-          <li><Link to="/products?brand=oikos" className="footer-link">Каталог</Link></li>
+          <li><Link to="/products" className="footer-link">Каталог</Link></li>
           <li><Link to="/gallery" className="footer-link">Галерея</Link></li>
           <li><Link to="/contact" className="footer-link">Контакти</Link></li>
           <li><Link to="/privacy-policy" className="footer-link">Конфіденційність</Link></li>
@@ -41,10 +41,10 @@ export default function Footer() {
       <div className="footer-col">
         <h4>Фарби OIKOS</h4>
         <ul>
-          <li><Link to="/products?brand=oikos" className="footer-link">Каталог OIKOS</Link></li>
-          <li><Link to="/products?brand=oikos&category=Декоративні фарби" className="footer-link">Декоративні фарби</Link></li>
-          <li><Link to="/products?brand=oikos&category=Фасадні фарби" className="footer-link">Фасадні фарби</Link></li>
-          <li><Link to="/products?brand=oikos&category=Ґрунтівки" className="footer-link">Ґрунтівки</Link></li>
+          <li><Link to="/products" className="footer-link">Каталог OIKOS</Link></li>
+          <li><Link to="/products?category=Декоративні фарби" className="footer-link">Декоративні фарби</Link></li>
+          <li><Link to="/products?category=Фасадні фарби" className="footer-link">Фасадні фарби</Link></li>
+          <li><Link to="/products?category=Ґрунтівки" className="footer-link">Ґрунтівки</Link></li>
           <li><Link to="/nanesennya-farby-kyiv" className="footer-link">Нанесення фарби Київ</Link></li>
         </ul>
       </div>
@@ -53,10 +53,10 @@ export default function Footer() {
         <h4>Ліпнина ORAC DECOR</h4>
         <ul>
           <li><Link to="/kupyty-lipnynu-kyiv" className="footer-link">Купити ліпнину Київ</Link></li>
-          <li><Link to="/products?brand=orac-decor" className="footer-link">Каталог ORAC DECOR</Link></li>
-          <li><Link to="/products?brand=orac-decor&category=Карнизи" className="footer-link">Карнизи</Link></li>
-          <li><Link to="/products?brand=orac-decor&category=Молдинги" className="footer-link">Молдинги</Link></li>
-          <li><Link to="/products?brand=orac-decor&category=Панелі" className="footer-link">Стінові панелі</Link></li>
+          <li><Link to="/products/orac-decor" className="footer-link">Каталог ORAC DECOR</Link></li>
+          <li><Link to="/products/orac-decor?category=Карнизи" className="footer-link">Карнизи</Link></li>
+          <li><Link to="/products/orac-decor?category=Молдинги" className="footer-link">Молдинги</Link></li>
+          <li><Link to="/products/orac-decor?category=Панелі" className="footer-link">Стінові панелі</Link></li>
           <li><Link to="/contact" className="footer-link">Консультація</Link></li>
         </ul>
       </div>

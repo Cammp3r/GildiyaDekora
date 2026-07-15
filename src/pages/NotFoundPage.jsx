@@ -22,7 +22,7 @@ export default function NotFoundPage() {
           </p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link to="/" className="btn-primary">На головну</Link>
-            <Link to="/products?brand=oikos" className="btn-secondary">До каталогу</Link>
+            <Link to="/products" className="btn-secondary">До каталогу</Link>
           </div>
         </div>
       </section>

@@ -41,7 +41,7 @@ export default function NanesennyaFarbyPage() {
       canonicalPath="/nanesennya-farby-kyiv"
       badge="Сертифікований аплікатор OIKOS"
       intro="Гільдія Декора — сертифікований аплікатор OIKOS в Україні. Ми наносимо декоративні фарби, венеціанську штукатурку, мікроцемент та фасадні покриття OIKOS у Києві та Київській області. Гарантія якості, дотримання технології виробника, безкоштовна консультація."
-      productLink="/products?brand=oikos"
+      productLink="/products"
       productLinkText="Переглянути матеріали OIKOS →"
       sections={[
         {

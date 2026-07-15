@@ -26,7 +26,7 @@ export default function Header() {
 
   const navItems = [
     { label: 'Про нас', path: '/', isAbout: true },
-    { label: 'Продукти', path: '/products?brand=oikos', hasDropdown: true },
+    { label: 'Продукти', path: '/products', hasDropdown: true },
     { label: 'Галерея', path: '/gallery' },
     { label: 'Контакти', path: '/contact' },
   ]
@@ -35,6 +35,8 @@ export default function Header() {
     { label: 'OIKOS', brand: 'oikos' },
     { label: 'ORAC DECOR', brand: 'orac-decor' },
   ]
+
+  const brandPath = (brand) => (brand === 'orac-decor' ? '/products/orac-decor' : '/products')
 
   return (
     <header className="header">
@@ -67,9 +69,10 @@ export default function Header() {
                     {productBrands.map((brand) => (
                       <NavLink
                         key={brand.brand}
-                        to={`/products?brand=${brand.brand}`}
+                        to={brandPath(brand.brand)}
                         className={() =>
-                          searchParams.get('brand') === brand.brand
+                          (location.pathname === brandPath(brand.brand) ||
+                            (location.pathname === '/products' && (searchParams.get('brand') || 'oikos') === brand.brand))
                             ? 'dropdown-item active'
                             : 'dropdown-item'
                         }

@@ -71,7 +71,7 @@ export default function ProductDetailsPage() {
   }
 
   if (!product) {
-    return <Navigate to="/products?brand=oikos" replace />
+    return <Navigate to="/products" replace />
   }
 
   const photos = Array.isArray(product.photos) ? product.photos.filter(Boolean) : []

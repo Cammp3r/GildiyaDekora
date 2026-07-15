@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState, useRef } from 'react'
-import { Link, useSearchParams } from 'react-router-dom'
+import { Link, useLocation, useSearchParams } from 'react-router-dom'
 import { oikosProductsDb, loadOracDecorProducts } from '../data/products.js'
 import { useCart } from '../cart/CartContext.jsx'
 import { Seo } from '../seo/Seo.jsx'
@@ -77,7 +77,10 @@ function LazyImage({ src, alt, className }) {
 
 export default function ProductsPage() {
   const [searchParams, setSearchParams] = useSearchParams()
-  const brandFromUrl = searchParams.get('brand') || 'oikos'
+  const location = useLocation()
+  const brandFromPath = location.pathname === '/products/orac-decor' ? 'orac-decor' : null
+  const brandFromUrl = brandFromPath || searchParams.get('brand') || 'oikos'
+  const catalogBasePath = brandFromUrl === 'orac-decor' ? '/products/orac-decor' : '/products'
 
   const [oracProducts, setOracProducts] = useState(null)
   const [oracLoading, setOracLoading] = useState(false)
@@ -153,8 +156,8 @@ export default function ProductsPage() {
     ? 'ORAC DECOR Київ, купити ORAC DECOR, ліпнина Київ, карнизи молдинги, купити ліпнину, декоративна ліпнина купити, ORAC DECOR ціна, купить ORAC DECOR Украина, лепнина Киев, карнизы молдинги купить, потолочный плинтус орак декор, потолочный плинтус ORAC DECOR, купить потолочный плинтус Киев, потолочный карниз орак, лепнина из полиуретана Киев, молдинги для стен купить, розетки потолочные ORAC DECOR'
     : 'купити декоративну фарбу OIKOS, купити штукатурку Київ, купити венеціанську штукатурку, декоративні матеріали OIKOS, мікроцемент купити, ottocento farba, supercolor oikos, ottocento oikos, купить краску OIKOS, купить краску oikos Киев, купить OIKOS Украина, краска OIKOS цена, декоративная краска OIKOS, купить декоративную краску Киев, ottocento oikos купить, ottocento краска купить, микроцемент Киев купить, венецианская штукатурка OIKOS, декоративная штукатурка цена Украина, supercolor oikos купить'
   const seoCanonical = selectedCategory === 'all'
-    ? `/products?brand=${brandFromUrl}`
-    : `/products?brand=${brandFromUrl}&category=${encodeURIComponent(selectedCategory)}`
+    ? catalogBasePath
+    : `${catalogBasePath}?category=${encodeURIComponent(selectedCategory)}`
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
@@ -191,13 +194,13 @@ export default function ProductsPage() {
   const buildCatalogParams = useCallback(
     ({ brand = brandFromUrl, category = selectedCategory, query = searchQuery, page = currentPage } = {}) => {
       const params = new URLSearchParams()
-      if (brand) params.set('brand', brand)
+      if (!brandFromPath && brand) params.set('brand', brand)
       if (category && category !== 'all') params.set('category', category)
       if (query) params.set('q', query)
       if (page > 1) params.set('page', String(page))
       return params
     },
-    [brandFromUrl, currentPage, searchQuery, selectedCategory],
+    [brandFromPath, brandFromUrl, currentPage, searchQuery, selectedCategory],
   )
 
   const updateCatalogParams = useCallback(

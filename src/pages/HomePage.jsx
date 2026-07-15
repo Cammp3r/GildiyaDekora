@@ -75,7 +75,7 @@ export default function HomePage() {
           <p className="hero-tag">Гільдія Декора · Офіційний дилер <span className="hero-accent">OIKOS</span> в Україні</p>
           <h1>Декоративні фарби <em>OIKOS</em><br />та ліпнина <span className="hero-accent">ORAC DECOR</span> у Києві</h1>
           <p className="hero-desc"><span className="hero-accent">Продаємо</span> та <span className="hero-accent">наносимо</span> декоративні фарби, венеціанську штукатурку і мікроцемент OIKOS. Офіційний дистриб'ютор в Україні — 840+ відтінків, сертифіковані матеріали, консультація.</p>
-          <Link to="/products?brand=oikos" className="btn-primary">Переглянути каталог →</Link>
+          <Link to="/products" className="btn-primary">Переглянути каталог →</Link>
           <Link to="/contact" className="btn-secondary">Замовити консультацію</Link>
         </div>
         <div className="hero-right">
