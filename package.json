@@ -6,8 +6,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && npm run seo:generate && npm run prerender",
+    "build": "vite build && npm run feed:generate && npm run seo:generate && npm run prerender",
     "prerender": "node scripts/prerender.mjs",
+    "feed:generate": "node scripts/generate-google-shopping-feed.mjs",
     "seo:generate": "node scripts/generate-seo-files.mjs",
     "lint": "eslint .",
     "preview": "vite preview"
