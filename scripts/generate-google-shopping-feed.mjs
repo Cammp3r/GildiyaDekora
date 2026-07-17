@@ -203,7 +203,7 @@ function collectOracProducts(oracDecor) {
 }
 
 function formatPrice(value) {
-  return `${Number(value).toFixed(2)} UAH`
+  return `${Math.round(Number(value))} UAH`
 }
 
 function feedItem(product) {
