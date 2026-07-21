@@ -38,6 +38,48 @@
   to = "https://gildiyadekora.onrender.com/api/:splat"
   status = 200
 
+# Prerendered routes are static directories (e.g. dist/products/index.html).
+# Without an explicit rule, Netlify's default asset serving 301-redirects
+# "/products" -> "/products/" before returning 200, which SEO crawlers flag
+# as an unnecessary redirect hop on every internal nav link. Serving them
+# directly here avoids that hop.
+[[redirects]]
+  from = "/products"
+  to = "/products/index.html"
+  status = 200
+[[redirects]]
+  from = "/products/orac-decor"
+  to = "/products/orac-decor/index.html"
+  status = 200
+[[redirects]]
+  from = "/gallery"
+  to = "/gallery/index.html"
+  status = 200
+[[redirects]]
+  from = "/contact"
+  to = "/contact/index.html"
+  status = 200
+[[redirects]]
+  from = "/return-policy"
+  to = "/return-policy/index.html"
+  status = 200
+[[redirects]]
+  from = "/nanesennya-farby-kyiv"
+  to = "/nanesennya-farby-kyiv/index.html"
+  status = 200
+[[redirects]]
+  from = "/kupyty-lipnynu-kyiv"
+  to = "/kupyty-lipnynu-kyiv/index.html"
+  status = 200
+
+# "/" and "/index.html" both served full content (200/200) reads as
+# duplicate content to SEO crawlers — force index.html to the canonical root.
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+  force = true
+
 # SPA catch-all: every route that has no static file → serve index.html with HTTP 200
 [[redirects]]
   from = "/*"

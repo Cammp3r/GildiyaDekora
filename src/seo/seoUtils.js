@@ -17,3 +17,21 @@ export function absoluteUrl(value) {
   const path = value.startsWith('/') ? value : `/${value}`
   return `${siteUrl}${path}`
 }
+
+const MAX_TITLE_LENGTH = 65
+const SITE_NAME_SUFFIX_RE = new RegExp(`\\s*\\|\\s*${SITE_NAME.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*$`, 'i')
+
+// Builds the final <title> tag: appends the site name once (callers should
+// not include it themselves) and truncates so the total stays within the
+// 35-65 char range SEO tools check for.
+export function buildPageTitle(title) {
+  if (!title) return SITE_NAME
+  const base = title.replace(SITE_NAME_SUFFIX_RE, '').trim()
+  const full = `${base} | ${SITE_NAME}`
+  if (full.length <= MAX_TITLE_LENGTH) return full
+
+  const suffix = ` | ${SITE_NAME}`
+  const budget = MAX_TITLE_LENGTH - suffix.length - 1
+  if (budget <= 10) return `${full.slice(0, MAX_TITLE_LENGTH - 1)}…`
+  return `${base.slice(0, budget).trimEnd()}…${suffix}`
+}
