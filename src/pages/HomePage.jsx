@@ -19,7 +19,7 @@ export default function HomePage() {
   return (
     <>
       <Seo
-        title="Фарби OIKOS та ліпнина ORAC DECOR у Києві | Гільдія Декора"
+        title="Фарби OIKOS та ліпнина ORAC DECOR у Києві"
         description="Офіційний дилер OIKOS і ORAC DECOR у Києві. Декоративні фарби, венеціанська штукатурка, мікроцемент і ліпнина. Продаємо та наносимо. Консультація безкоштовно — зателефонуйте!"
         canonicalPath="/"
         jsonLd={{

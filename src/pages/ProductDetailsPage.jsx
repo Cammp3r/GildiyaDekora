@@ -251,8 +251,10 @@ export default function ProductDetailsPage() {
       <Seo
         title={
           product.brand === 'orac-decor'
-            ? `${product.title} ORAC DECOR — купити в Києві | Гільдія Декора`
-            : `Купити ${product.title} OIKOS — ${product.category || 'декоративна фарба'} | Гільдія Декора`
+            ? /orac\s*decor/i.test(product.title)
+              ? `${product.title} — купити в Києві`
+              : `${product.title} ORAC DECOR — купити в Києві`
+            : `Купити ${product.title} OIKOS`
         }
         description={productDescription}
         keywords={seoKeywords}
@@ -305,7 +307,7 @@ export default function ProductDetailsPage() {
                     }
                     aria-label="Показати фото"
                   >
-                    <img src={src} alt="" loading="lazy" decoding="async" />
+                    <img src={src} alt={product.title} loading="lazy" decoding="async" />
                   </button>
                 ))}
               </div>

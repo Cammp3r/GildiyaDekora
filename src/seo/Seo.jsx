@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
-import { DEFAULT_DESCRIPTION, DEFAULT_IMAGE, SITE_NAME, absoluteUrl } from './seoUtils.js'
+import { DEFAULT_DESCRIPTION, DEFAULT_IMAGE, SITE_NAME, absoluteUrl, buildPageTitle } from './seoUtils.js'
 
 function setMeta(selector, attributes) {
   let element = document.head.querySelector(selector)
@@ -65,7 +65,7 @@ export function Seo({
   const location = useLocation()
 
   useEffect(() => {
-    const pageTitle = title ? `${title} | ${SITE_NAME}` : SITE_NAME
+    const pageTitle = buildPageTitle(title)
     const canonicalUrl = absoluteUrl(canonicalPath || location.pathname)
     const imageUrl = absoluteUrl(image)
     const robots = noindex ? 'noindex, nofollow' : 'index, follow'
