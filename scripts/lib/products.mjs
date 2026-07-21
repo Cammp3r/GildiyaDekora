@@ -3,6 +3,12 @@ import path from 'node:path'
 
 const EUR_TO_UAH = 51.95
 
+// Google product taxonomy IDs (https://www.google.com/basepages/producttype/taxonomy-with-ids.en-US.txt)
+const GOOGLE_PRODUCT_CATEGORY_BY_BRAND = {
+  OIKOS: '1361', // Hardware > Building Consumables > Painting Consumables > Paint
+  'ORAC DECOR': '7112', // Hardware > Building Materials > Molding
+}
+
 function toArray(value) {
   return Array.isArray(value) ? value : []
 }
@@ -133,6 +139,7 @@ function mapProduct(product, { brand, category, subcategory }, siteUrl) {
     image: absoluteUrl(getPrimaryImage(product), siteUrl),
     brand,
     productType: [brand, category, subcategory].filter(Boolean).join(' > '),
+    googleProductCategory: GOOGLE_PRODUCT_CATEGORY_BY_BRAND[brand] ?? '',
     price,
   }
 }
