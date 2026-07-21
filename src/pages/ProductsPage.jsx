@@ -4,6 +4,7 @@ import { oikosProductsDb, loadOracDecorProducts } from '../data/products.js'
 import { useCart } from '../cart/CartContext.jsx'
 import { Seo } from '../seo/Seo.jsx'
 import { useEurRate } from '../context/ExchangeRateContext.jsx'
+import { thumbSrc } from '../utils/imageUtils.js'
 
 // Cyrillic characters that are visually identical to Latin letters.
 // Normalizing both query and haystack to Latin before comparing makes
@@ -23,15 +24,30 @@ function LazyImage({ src, alt, className }) {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
+    // Catalog images are exported at ~1920px; card thumbnails only need
+    // ~480px, so prefer the small "-thumb" build variant. Falls back to
+    // the full image if the thumb doesn't exist (e.g. local dev, where
+    // thumbnails aren't generated until `npm run build`).
+    const thumb = thumbSrc(src)
     const img = new Image()
     img.onload = () => {
-      setImageSrc(src)
+      setImageSrc(thumb)
       setIsLoading(false)
     }
     img.onerror = () => {
-      setIsLoading(false)
+      if (thumb === src) {
+        setIsLoading(false)
+        return
+      }
+      const fallback = new Image()
+      fallback.onload = () => {
+        setImageSrc(src)
+        setIsLoading(false)
+      }
+      fallback.onerror = () => setIsLoading(false)
+      fallback.src = src
     }
-    img.src = src
+    img.src = thumb
   }, [src])
 
   return (
