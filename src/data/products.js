@@ -148,6 +148,7 @@ function normalizePriceVariants(variants, currency = '') {
       const price = Number(variant.price)
       return variant.volume && Number.isFinite(price) && price > 0
     })
+    .sort((a, b) => Number(a.price) - Number(b.price))
 }
 
 const OIKOS_PRIMERS = new Set([

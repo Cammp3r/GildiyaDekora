@@ -99,6 +99,10 @@ export default function ProductDetailsPage() {
     priceVariants.find((variant) => variant.id === selectedVariantId) ?? priceVariants[0] ?? null
   const quantity = quantityByProduct[product.id] ?? 1
   const eurRate = useEurRate()
+  const getVariantPrice = (variant) =>
+    variant.eurPrice !== null && variant.eurPrice !== undefined
+      ? Math.round(variant.eurPrice * eurRate)
+      : Number(variant.price)
   const variantEurPrice = selectedVariant?.eurPrice ?? null
   const productEurPrice = product.eurPrice ?? null
   const activeEurPrice = variantEurPrice ?? productEurPrice
@@ -456,7 +460,7 @@ export default function ProductDetailsPage() {
                 {priceVariants.map((variant) => (
                   <div key={`${variant.id}-${variant.price}`} className="product-price-variant">
                     <span>{variant.title || variant.volume}</span>
-                    <strong>{Number(variant.price).toLocaleString('uk-UA')} грн</strong>
+                    <strong>{getVariantPrice(variant).toLocaleString('uk-UA')} грн</strong>
                   </div>
                 ))}
               </div>
@@ -480,7 +484,7 @@ export default function ProductDetailsPage() {
                       >
                         {priceVariants.map((variant) => (
                           <option key={variant.id} value={variant.id}>
-                            {variant.title ? variant.title + ' ' + variant.volume : variant.volume} - {Number(variant.price).toLocaleString('uk-UA')} грн
+                            {variant.title ? variant.title + ' ' + variant.volume : variant.volume} - {getVariantPrice(variant).toLocaleString('uk-UA')} грн
                           </option>
                         ))}
                       </select>
