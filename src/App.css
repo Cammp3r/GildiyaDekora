@@ -24,6 +24,16 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Type/spacing scale is rem-based — bumping the root font-size on desktop
+   scales the whole site ~1.25x (matches the 125% browser zoom the site was
+   designed/reviewed at) without touching mobile, which is already tuned
+   separately via its own breakpoint overrides below. */
+@media (min-width: 1024px) {
+  html {
+    font-size: 125%;
+  }
+}
+
 body {
   background: var(--cream);
   color: var(--ink);

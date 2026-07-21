@@ -5,6 +5,7 @@ import { useCart } from '../cart/CartContext.jsx'
 import { Seo } from '../seo/Seo.jsx'
 import { absoluteUrl } from '../seo/seoUtils.js'
 import { useEurRate } from '../context/ExchangeRateContext.jsx'
+import { thumbSrc, heroSrc } from '../utils/imageUtils.js'
 
 export default function ProductDetailsPage() {
   const { id } = useParams()
@@ -285,11 +286,15 @@ export default function ProductDetailsPage() {
               className={`product-details-image ${
                 product.brand === 'orac-decor' ? 'orac-image' : 'oikos-image'
               }`}
-              src={activePhoto || product.image}
+              src={heroSrc(activePhoto || product.image)}
               alt={product.title}
               loading="eager"
               decoding="async"
               fetchPriority="high"
+              onError={(e) => {
+                e.currentTarget.onerror = null
+                e.currentTarget.src = activePhoto || product.image
+              }}
             />
 
             {hasMultiplePhotos && (
@@ -307,7 +312,13 @@ export default function ProductDetailsPage() {
                     }
                     aria-label="Показати фото"
                   >
-                    <img src={src} alt={product.title} loading="lazy" decoding="async" />
+                    <img
+                      src={thumbSrc(src)}
+                      alt={product.title}
+                      loading="lazy"
+                      decoding="async"
+                      onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = src }}
+                    />
                   </button>
                 ))}
               </div>
@@ -372,7 +383,13 @@ export default function ProductDetailsPage() {
                       aria-label={t.name}
                     >
                       {t.url ? (
-                        <img src={t.url} alt={t.name} loading="lazy" decoding="async" />
+                        <img
+                          src={thumbSrc(t.url)}
+                          alt={t.name}
+                          loading="lazy"
+                          decoding="async"
+                          onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = t.url }}
+                        />
                       ) : (
                         <span className="product-details-texture-name">{t.name}</span>
                       )}
@@ -407,7 +424,13 @@ export default function ProductDetailsPage() {
                       aria-label={c.code}
                     >
                       {c.img ? (
-                        <img src={c.img} alt={c.code} loading="lazy" decoding="async" />
+                        <img
+                          src={thumbSrc(c.img)}
+                          alt={c.code}
+                          loading="lazy"
+                          decoding="async"
+                          onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = c.img }}
+                        />
                       ) : (
                         <span className="product-details-color-code">{c.code}</span>
                       )}
