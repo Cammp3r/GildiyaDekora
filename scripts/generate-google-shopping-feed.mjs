@@ -41,6 +41,9 @@ function feedItem(product) {
     `      <g:price>${escapeXml(formatPrice(product.price))}</g:price>`,
     `      <g:brand>${escapeXml(product.brand)}</g:brand>`,
     `      <g:product_type>${escapeXml(product.productType)}</g:product_type>`,
+    ...(product.googleProductCategory
+      ? [`      <g:google_product_category>${escapeXml(product.googleProductCategory)}</g:google_product_category>`]
+      : []),
     '    </item>',
   ].join('\n')
 }
