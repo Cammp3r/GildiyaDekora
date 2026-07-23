@@ -20,6 +20,7 @@ const STATIC_ROUTES = [
   { path: '/return-policy', priority: '0.5', changefreq: 'yearly' },
   { path: '/nanesennya-farby-kyiv', priority: '0.9', changefreq: 'monthly' },
   { path: '/kupyty-lipnynu-kyiv', priority: '0.9', changefreq: 'monthly' },
+  { path: '/kupyty-farbu-oikos-kyiv', priority: '0.9', changefreq: 'monthly' },
 ]
 
 function escapeXml(value) {
@@ -95,7 +96,7 @@ const entries = [
     lastmod: today,
   })),
   ...uniqueProductIds.map((id) => ({
-    loc: routeUrl(`/products/${encodeURIComponent(id)}`),
+    loc: routeUrl(`/products/${encodeURIComponent(id)}/`),
     priority: '0.8',
     changefreq: 'weekly',
     lastmod: today,

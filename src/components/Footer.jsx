@@ -43,6 +43,7 @@ export default function Footer() {
       <div className="footer-col">
         <h4>Фарби OIKOS</h4>
         <ul>
+          <li><Link to="/kupyty-farbu-oikos-kyiv" className="footer-link">Купити фарбу Київ</Link></li>
           <li><Link to="/products" className="footer-link">Каталог OIKOS</Link></li>
           <li><Link to="/products?category=Декоративні фарби" className="footer-link">Декоративні фарби</Link></li>
           <li><Link to="/products?category=Фасадні фарби" className="footer-link">Фасадні фарби</Link></li>

@@ -119,7 +119,7 @@ export default function ProductDetailsPage() {
   const hasCharacteristics = characteristics.length > 0
   const shouldShowDescription = product.brand !== 'orac-decor' && product.description
   const brandName = product.brand === 'orac-decor' ? 'ORAC DECOR' : 'OIKOS'
-  const productPath = `/products/${encodeURIComponent(product.id)}`
+  const productPath = `/products/${encodeURIComponent(product.id)}/`
 
   // Ukrainian → Russian category/effect translations for search coverage
   const CATEGORY_RU = {
