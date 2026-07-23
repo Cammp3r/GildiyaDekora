@@ -40,7 +40,7 @@ export function absoluteUrl(url, siteUrl) {
 }
 
 export function productUrl(id, siteUrl) {
-  return `${siteUrl}/products/${encodeURIComponent(id)}`
+  return `${siteUrl}/products/${encodeURIComponent(id)}/`
 }
 
 function normalizeVolume(volume) {
