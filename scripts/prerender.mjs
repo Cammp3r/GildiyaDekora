@@ -47,6 +47,7 @@ const CORE_ROUTES = [
   '/nanesennya-farby-kyiv',
   '/kupyty-lipnynu-kyiv',
   '/kupyty-farbu-oikos-kyiv',
+  '/oplata-i-dostavka',
 ]
 
 async function getProductRoutes() {

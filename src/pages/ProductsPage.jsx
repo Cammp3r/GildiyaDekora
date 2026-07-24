@@ -94,9 +94,11 @@ function LazyImage({ src, alt, className }) {
 export default function ProductsPage() {
   const [searchParams, setSearchParams] = useSearchParams()
   const location = useLocation()
-  const brandFromPath = location.pathname === '/products/orac-decor' ? 'orac-decor' : null
+  const brandFromPath = location.pathname === '/products/orac-decor/' ? 'orac-decor' : null
   const brandFromUrl = brandFromPath || searchParams.get('brand') || 'oikos'
-  const catalogBasePath = brandFromUrl === 'orac-decor' ? '/products/orac-decor' : '/products'
+  // Trailing slash matters: prerendered directory routes 301 to add it on
+  // Netlify, so the catalog's canonical/internal-link base must already be final.
+  const catalogBasePath = brandFromUrl === 'orac-decor' ? '/products/orac-decor/' : '/products/'
 
   const [oracProducts, setOracProducts] = useState(null)
   const [oracLoading, setOracLoading] = useState(false)
@@ -521,11 +523,11 @@ export default function ProductsPage() {
                         )}
                         <Link
                           to={{
-                            pathname: `/products/${encodeURIComponent(product.id)}`,
+                            pathname: `/products/${encodeURIComponent(product.id)}/`,
                           }}
                           state={{
                             returnTo: {
-                              pathname: '/products',
+                              pathname: catalogBasePath,
                               search: getCatalogSearch(),
                             },
                           }}

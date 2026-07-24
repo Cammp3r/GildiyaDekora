@@ -10,7 +10,7 @@ export default function ReturnPolicyPage() {
       <Seo
         title="Повернення та обмін замовлення"
         description="Умови повернення та обміну замовлень Гільдії Декора: строки, стан товару, порядок оформлення заявки, повернення коштів та контакти."
-        canonicalPath="/return-policy"
+        canonicalPath="/return-policy/"
       />
       <section className="contact">
         <div className="container">
@@ -84,7 +84,7 @@ export default function ReturnPolicyPage() {
 
             <p>
               Для питань щодо доставки, оплати або конкретного замовлення також можна перейти на сторінку{' '}
-              <Link to="/contact">контактів</Link>.
+              <Link to="/contact/">контактів</Link>.
             </p>
           </div>
         </div>

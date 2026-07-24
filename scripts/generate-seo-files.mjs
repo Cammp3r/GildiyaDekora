@@ -11,16 +11,21 @@ const SITE_URL = (
   'https://gihldihja-decora.ua'
 ).replace(/\/+$/, '')
 
+// Trailing slash required: prerendered pages are static directories
+// (dist/<route>/index.html), and Netlify 301-redirects a bare path to add
+// the slash before serving them — so the sitemap must list the final URL
+// directly, not the one that then bounces through a redirect.
 const STATIC_ROUTES = [
   { path: '/', priority: '1.0', changefreq: 'weekly' },
-  { path: '/products', priority: '0.9', changefreq: 'weekly' },
-  { path: '/products/orac-decor', priority: '0.9', changefreq: 'weekly' },
-  { path: '/gallery', priority: '0.6', changefreq: 'monthly' },
-  { path: '/contact', priority: '0.7', changefreq: 'monthly' },
-  { path: '/return-policy', priority: '0.5', changefreq: 'yearly' },
-  { path: '/nanesennya-farby-kyiv', priority: '0.9', changefreq: 'monthly' },
-  { path: '/kupyty-lipnynu-kyiv', priority: '0.9', changefreq: 'monthly' },
-  { path: '/kupyty-farbu-oikos-kyiv', priority: '0.9', changefreq: 'monthly' },
+  { path: '/products/', priority: '0.9', changefreq: 'weekly' },
+  { path: '/products/orac-decor/', priority: '0.9', changefreq: 'weekly' },
+  { path: '/gallery/', priority: '0.6', changefreq: 'monthly' },
+  { path: '/contact/', priority: '0.7', changefreq: 'monthly' },
+  { path: '/return-policy/', priority: '0.5', changefreq: 'yearly' },
+  { path: '/nanesennya-farby-kyiv/', priority: '0.9', changefreq: 'monthly' },
+  { path: '/kupyty-lipnynu-kyiv/', priority: '0.9', changefreq: 'monthly' },
+  { path: '/kupyty-farbu-oikos-kyiv/', priority: '0.9', changefreq: 'monthly' },
+  { path: '/oplata-i-dostavka/', priority: '0.7', changefreq: 'monthly' },
 ]
 
 function escapeXml(value) {

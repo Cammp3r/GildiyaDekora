@@ -11,7 +11,7 @@ export function SeoLandingPage({
   badge,
   intro,
   sections = [],
-  productLink = '/products',
+  productLink = '/products/',
   productLinkText = 'Переглянути каталог →',
   faqs = [],
   addressBlock = false,
@@ -40,7 +40,7 @@ export function SeoLandingPage({
             <Link to={productLink} className="btn-primary">
               {productLinkText}
             </Link>
-            <Link to="/contact" className="btn-secondary">
+            <Link to="/contact/" className="btn-secondary">
               Замовити консультацію
             </Link>
           </div>

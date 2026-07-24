@@ -21,7 +21,7 @@ export default function GalleryPage() {
       <Seo
         title="Галерея робіт"
         description="Галерея реалізованих обʼєктів Гільдії Декору: декоративні покриття, фарби OIKOS та інтерʼєрні рішення у Києві."
-        canonicalPath="/gallery"
+        canonicalPath="/gallery/"
       />
       {/* Gallery Section */}
       <section className="gallery">

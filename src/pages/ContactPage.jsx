@@ -202,7 +202,7 @@ export default function ContactPage() {
       <Seo
         title="Контакти"
         description="Контакти Гільдії Декору у Києві: вул. Сергія Гусовського 12/7, офіс 10, телефон +38 (067) 503-93-52, email gildiya@meta.ua."
-        canonicalPath="/contact"
+        canonicalPath="/contact/"
       />
       {/* Contact Section */}
       <section className="contact">

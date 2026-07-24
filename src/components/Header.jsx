@@ -26,9 +26,9 @@ export default function Header() {
 
   const navItems = [
     { label: 'Про нас', path: '/', isAbout: true },
-    { label: 'Продукти', path: '/products', hasDropdown: true },
-    { label: 'Галерея', path: '/gallery' },
-    { label: 'Контакти', path: '/contact' },
+    { label: 'Продукти', path: '/products/', hasDropdown: true },
+    { label: 'Галерея', path: '/gallery/' },
+    { label: 'Контакти', path: '/contact/' },
   ]
 
   const productBrands = [
@@ -36,7 +36,9 @@ export default function Header() {
     { label: 'ORAC DECOR', brand: 'orac-decor' },
   ]
 
-  const brandPath = (brand) => (brand === 'orac-decor' ? '/products/orac-decor' : '/products')
+  // Trailing slash matters: prerendered directory routes 301 to add it on
+  // Netlify, so every internal link must already point at the final URL.
+  const brandPath = (brand) => (brand === 'orac-decor' ? '/products/orac-decor/' : '/products/')
 
   return (
     <header className="header">
@@ -72,7 +74,7 @@ export default function Header() {
                         to={brandPath(brand.brand)}
                         className={() =>
                           (location.pathname === brandPath(brand.brand) ||
-                            (location.pathname === '/products' && (searchParams.get('brand') || 'oikos') === brand.brand))
+                            (location.pathname === '/products/' && (searchParams.get('brand') || 'oikos') === brand.brand))
                             ? 'dropdown-item active'
                             : 'dropdown-item'
                         }
