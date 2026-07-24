@@ -47,7 +47,7 @@ export default function ProductDetailsPage() {
   }, [id])
 
   const returnTo = location.state?.returnTo ?? {
-    pathname: '/products',
+    pathname: needsOrac ? '/products/orac-decor' : '/products',
     search: location.search,
   }
 

@@ -525,7 +525,7 @@ export default function ProductsPage() {
                           }}
                           state={{
                             returnTo: {
-                              pathname: '/products',
+                              pathname: catalogBasePath,
                               search: getCatalogSearch(),
                             },
                           }}
