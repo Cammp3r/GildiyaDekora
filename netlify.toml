@@ -71,6 +71,14 @@
   from = "/kupyty-lipnynu-kyiv"
   to = "/kupyty-lipnynu-kyiv/index.html"
   status = 200
+[[redirects]]
+  from = "/kupyty-farbu-oikos-kyiv"
+  to = "/kupyty-farbu-oikos-kyiv/index.html"
+  status = 200
+[[redirects]]
+  from = "/oplata-i-dostavka"
+  to = "/oplata-i-dostavka/index.html"
+  status = 200
 
 # "/" and "/index.html" both served full content (200/200) reads as
 # duplicate content to SEO crawlers — force index.html to the canonical root.

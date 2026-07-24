@@ -47,7 +47,7 @@ export default function ProductDetailsPage() {
   }, [id])
 
   const returnTo = location.state?.returnTo ?? {
-    pathname: needsOrac ? '/products/orac-decor' : '/products',
+    pathname: needsOrac ? '/products/orac-decor/' : '/products/',
     search: location.search,
   }
 
@@ -224,6 +224,9 @@ export default function ProductDetailsPage() {
     categoryRu ? `Категория: ${categoryRu}.` : '',
   ].filter(Boolean).join(' ')
 
+  // Google requires `price` on any Offer — for "price on request" ORAC DECOR
+  // items there's no real price to publish, so skip the offers block entirely
+  // instead of emitting an Offer that fails structured-data validation.
   const productJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Product',
@@ -236,19 +239,23 @@ export default function ProductDetailsPage() {
     },
     category: [product.category, product.subcategory].filter(Boolean).join(' / '),
     url: absoluteUrl(productPath),
-    offers: {
-      '@type': 'Offer',
-      priceCurrency: 'UAH',
-      availability: 'https://schema.org/InStock',
-      itemCondition: 'https://schema.org/NewCondition',
-      url: absoluteUrl(productPath),
-      seller: {
-        '@type': 'Organization',
-        name: 'Гільдія Декора',
-        url: absoluteUrl('/'),
-      },
-      ...(hasPrice ? { price } : {}),
-    },
+    ...(hasPrice
+      ? {
+          offers: {
+            '@type': 'Offer',
+            priceCurrency: 'UAH',
+            price,
+            availability: 'https://schema.org/InStock',
+            itemCondition: 'https://schema.org/NewCondition',
+            url: absoluteUrl(productPath),
+            seller: {
+              '@type': 'Organization',
+              name: 'Гільдія Декора',
+              url: absoluteUrl('/'),
+            },
+          },
+        }
+      : {}),
   }
 
   return (
@@ -521,12 +528,12 @@ export default function ProductDetailsPage() {
                 </div>
               )}
               {shouldShowContactPriceButton && (
-                <Link to="/contact" className="add-btn add-btn-secondary">
+                <Link to="/contact/" className="add-btn add-btn-secondary">
                   Дізнатись ціну
                 </Link>
               )}
               {shouldShowContactPriceButton || (
-                <Link to="/contact" className="add-btn add-btn-secondary">
+                <Link to="/contact/" className="add-btn add-btn-secondary">
                   Замовити консультацію
                 </Link>
               )}
