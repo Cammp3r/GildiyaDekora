@@ -117,7 +117,7 @@ export default function ProductDetailsPage() {
   const lineTotal = hasPrice ? price * Number(quantity || 0) : 0
   const characteristics = Array.isArray(product.characteristics) ? product.characteristics : []
   const hasCharacteristics = characteristics.length > 0
-  const shouldShowDescription = product.brand !== 'orac-decor' && product.description
+  const shouldShowDescription = Boolean(product.description)
   const brandName = product.brand === 'orac-decor' ? 'ORAC DECOR' : 'OIKOS'
   const productPath = `/products/${encodeURIComponent(product.id)}/`
 

@@ -491,7 +491,18 @@ export default function ProductsPage() {
             <div className={`products-grid ${usesOracGrid ? 'orac-products-grid' : ''}`}>
               {paginatedProducts.map((product) => (
                 <div key={product.id} className="product-card">
-                  <div className={`product-swatch ${product.brand === 'orac-decor' ? 'orac-swatch' : ''}`}>
+                  <Link
+                    to={{
+                      pathname: `/products/${encodeURIComponent(product.id)}/`,
+                    }}
+                    state={{
+                      returnTo: {
+                        pathname: catalogBasePath,
+                        search: getCatalogSearch(),
+                      },
+                    }}
+                    className={`product-swatch ${product.brand === 'orac-decor' ? 'orac-swatch' : ''}`}
+                  >
                     <LazyImage
                       className="swatch-color"
                       src={product.image}
@@ -500,7 +511,7 @@ export default function ProductsPage() {
                     <div className="product-badges">
                       {product.eco && <span className="product-eco-badge">Еко</span>}
                     </div>
-                  </div>
+                  </Link>
                   <div className="product-info">
                     <h3 className="product-name">{product.title}</h3>
                     <p className="product-sub">{product.subcategory || product.category}</p>
