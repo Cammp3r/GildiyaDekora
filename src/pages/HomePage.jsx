@@ -33,6 +33,17 @@ export default function HomePage() {
           email: 'gildiya@meta.ua',
           image: 'https://gihldihja-decora.ua/logo-transparent.png',
           priceRange: '₴₴₴',
+          // Mirrors the real, publicly-visible rating on the Google Business
+          // Profile — kept here rather than duplicated onto every individual
+          // product page, since these reviews are about the business as a
+          // whole (service, delivery), not any specific paint or moulding.
+          aggregateRating: {
+            '@type': 'AggregateRating',
+            ratingValue: 5.0,
+            reviewCount: 5,
+            bestRating: 5,
+            worstRating: 1,
+          },
           address: {
             '@type': 'PostalAddress',
             streetAddress: 'вул. Сергія Гусовського 12/7, оф. 10',

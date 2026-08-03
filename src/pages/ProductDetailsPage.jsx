@@ -537,7 +537,7 @@ export default function ProductDetailsPage() {
                   Замовити консультацію
                 </Link>
               )}
-              
+
             </div>
           </div>
         </div>
