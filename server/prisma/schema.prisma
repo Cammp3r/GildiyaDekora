@@ -52,3 +52,29 @@ model PaymentLog {
 
   @@index([event, createdAt])
 }
+
+enum ReviewStatus {
+  pending
+  approved
+  rejected
+}
+
+// Genuine customer reviews, collected on-site and moderated by an admin
+// before they count toward a product's public rating or its Product
+// structured data — Google's guidelines prohibit publishing aggregateRating
+// / review markup that isn't backed by real reviews, so pending/rejected
+// rows must never be surfaced on the storefront or in JSON-LD.
+model Review {
+  id           String       @id @default(cuid())
+  productId    String
+  productTitle String
+  authorName   String
+  rating       Int
+  comment      String
+  status       ReviewStatus @default(pending)
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+
+  @@index([productId, status])
+  @@index([status, createdAt])
+}

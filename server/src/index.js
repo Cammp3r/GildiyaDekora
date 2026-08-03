@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url'
 import { PrismaClient } from '@prisma/client'
 import { createAdminRouter } from './routes/admin.js'
 import { createPaymentRouter } from './routes/payment.js'
+import { createReviewsRouter } from './routes/reviews.js'
 
 const currentDir = dirname(fileURLToPath(import.meta.url))
 dotenv.config({ path: resolve(currentDir, '../.env') })
@@ -22,23 +23,23 @@ const corsOrigins = String(process.env.CORS_ORIGIN ?? frontendUrl)
 
 app.locals.prisma = prisma
 
-app.use(
-  cors({
-    origin(origin, callback) {
-      if (!origin || corsOrigins.length === 0 || corsOrigins.includes(origin)) {
-        return callback(null, true)
-      }
+const restrictedCors = cors({
+  origin(origin, callback) {
+    if (!origin || corsOrigins.length === 0 || corsOrigins.includes(origin)) {
+      return callback(null, true)
+    }
 
-      return callback(new Error('Not allowed by CORS'))
-    },
-    credentials: true,
-  })
-)
+    return callback(new Error('Not allowed by CORS'))
+  },
+  credentials: true,
+})
+
 app.use(express.json({ limit: '1mb' }))
 app.use(express.urlencoded({ extended: false }))
 
 app.use(
   '/api/payment',
+  restrictedCors,
   createPaymentRouter({
     liqpayPublicKey: String(process.env.LIQPAY_PUBLIC_KEY ?? '').trim(),
     liqpayPrivateKey: String(process.env.LIQPAY_PRIVATE_KEY ?? '').trim(),
@@ -50,10 +51,19 @@ app.use(
 
 app.use(
   '/api/admin',
+  restrictedCors,
   createAdminRouter({
     adminToken: String(process.env.ADMIN_API_TOKEN ?? '').trim(),
   })
 )
+
+// Deliberately open to any origin (read: public review data anyway; write:
+// moderated before publishing) — the Netlify build's prerender step renders
+// every product page against a local preview server (http://localhost:4174,
+// not the production domain), so restricting this to the production origin
+// would silently strip aggregateRating/review from the static HTML Google
+// actually crawls, even though it'd keep working for real site visitors.
+app.use('/api/reviews', cors(), createReviewsRouter())
 
 app.get('/api/health', (_req, res) => {
   res.json({ ok: true })

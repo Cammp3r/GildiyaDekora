@@ -121,6 +121,7 @@ const robots = [
   'Allow: /',
   'Disallow: /cart',
   'Disallow: /order',
+  'Disallow: /admin',
   '',
   '# Allow AI crawlers — helps appear in AI-powered search results',
   'User-agent: GPTBot',
@@ -139,10 +140,29 @@ const robots = [
   '',
 ].join('\n')
 
+// Every product page is a prerendered static directory
+// (dist/products/<id>/index.html), same as the CORE_ROUTES handled in
+// netlify.toml. Without a matching rule here too, Netlify's default asset
+// serving 301-redirects the bare `/products/<id>` path to add the trailing
+// slash before it can serve that directory — an extra redirect hop that
+// Google Search Console flags ("page with redirect") on every product URL
+// that's ever linked, bookmarked, or crawled without the slash. Listing the
+// known ids explicitly (rather than a wildcard) means unknown/typo'd ids
+// still fall through to the SPA catch-all and its normal "not found" flow.
+const redirects = [
+  ...uniqueProductIds.map((id) => {
+    const encoded = encodeURIComponent(id)
+    return `/products/${encoded}  /products/${encoded}/index.html  200`
+  }),
+  '/*    /index.html   200',
+].join('\n') + '\n'
+
 await mkdir(DIST_DIR, { recursive: true })
 await Promise.all([
   writeFile(path.join(DIST_DIR, 'sitemap.xml'), sitemap, 'utf8'),
   writeFile(path.join(DIST_DIR, 'robots.txt'), robots, 'utf8'),
+  writeFile(path.join(DIST_DIR, '_redirects'), redirects, 'utf8'),
 ])
 
 console.log(`Generated sitemap.xml with ${entries.length} URLs for ${SITE_URL}`)
+console.log(`Generated _redirects with ${uniqueProductIds.length} product rules for ${SITE_URL}`)
