@@ -149,10 +149,16 @@ const robots = [
 // that's ever linked, bookmarked, or crawled without the slash. Listing the
 // known ids explicitly (rather than a wildcard) means unknown/typo'd ids
 // still fall through to the SPA catch-all and its normal "not found" flow.
+//
+// The trailing `!` forces the rule: a directory already exists on disk at
+// `/products/<id>`, so without `!` Netlify's asset server shadows (skips)
+// this rewrite and falls back to its own default 301-add-trailing-slash
+// response — which is what was actually happening in production and is
+// exactly the redirect hop this rule exists to prevent.
 const redirects = [
   ...uniqueProductIds.map((id) => {
     const encoded = encodeURIComponent(id)
-    return `/products/${encoded}  /products/${encoded}/index.html  200`
+    return `/products/${encoded}  /products/${encoded}/index.html  200!`
   }),
   '/*    /index.html   200',
 ].join('\n') + '\n'

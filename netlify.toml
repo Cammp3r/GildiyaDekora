@@ -43,42 +43,58 @@
 # "/products" -> "/products/" before returning 200, which SEO crawlers flag
 # as an unnecessary redirect hop on every internal nav link. Serving them
 # directly here avoids that hop.
+# `force = true` is required: a directory already exists on disk at each of
+# these paths, and Netlify's asset server otherwise shadows (skips) the
+# rewrite rule and serves its own default 301-add-trailing-slash response
+# first. That shadowing was the actual live behavior in production (verified
+# via curl) despite these rules being present — every one of these routes
+# was 301-ing instead of rewriting, which is what Search Console was
+# flagging as "Page with redirect" / "Redirect error" on every product URL.
 [[redirects]]
   from = "/products"
   to = "/products/index.html"
   status = 200
+  force = true
 [[redirects]]
   from = "/products/orac-decor"
   to = "/products/orac-decor/index.html"
   status = 200
+  force = true
 [[redirects]]
   from = "/gallery"
   to = "/gallery/index.html"
   status = 200
+  force = true
 [[redirects]]
   from = "/contact"
   to = "/contact/index.html"
   status = 200
+  force = true
 [[redirects]]
   from = "/return-policy"
   to = "/return-policy/index.html"
   status = 200
+  force = true
 [[redirects]]
   from = "/nanesennya-farby-kyiv"
   to = "/nanesennya-farby-kyiv/index.html"
   status = 200
+  force = true
 [[redirects]]
   from = "/kupyty-lipnynu-kyiv"
   to = "/kupyty-lipnynu-kyiv/index.html"
   status = 200
+  force = true
 [[redirects]]
   from = "/kupyty-farbu-oikos-kyiv"
   to = "/kupyty-farbu-oikos-kyiv/index.html"
   status = 200
+  force = true
 [[redirects]]
   from = "/oplata-i-dostavka"
   to = "/oplata-i-dostavka/index.html"
   status = 200
+  force = true
 
 # "/" and "/index.html" both served full content (200/200) reads as
 # duplicate content to SEO crawlers — force index.html to the canonical root.
