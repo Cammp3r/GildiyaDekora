@@ -14,9 +14,18 @@ export default function Footer() {
     }
   }
 
+  // Same fix as Header: clicking "/" while already on "/" doesn't change
+  // location.state, so HomePage's scroll-restore effect never re-fires.
+  const handleLogoClick = (e) => {
+    if (location.pathname === '/') {
+      e.preventDefault()
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  }
+
   return (
     <footer>
-      <Link to="/" className="logo" style={{ color: '#f5f0e8' }}>
+      <Link to="/" className="logo" style={{ color: '#f5f0e8' }} onClick={handleLogoClick}>
         <img src={logo} alt="Гільдія Декора" />
         <div className="logo-text" style={{ color: '#f5f0e8' }}>
           <span className="logo-main">Гільдія</span>

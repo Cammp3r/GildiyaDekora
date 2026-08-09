@@ -24,6 +24,19 @@ export default function Header() {
     }
   }
 
+  // When already on "/", a NavLink click to "/" doesn't change location.state,
+  // so HomePage's scroll-restore effect (which only reacts to location.state
+  // changes) never re-fires — clicking the logo after scrolling to #about
+  // (which itself scrolls directly, without touching state) did nothing.
+  // Scroll explicitly here instead of relying on that effect.
+  const handleLogoClick = (e) => {
+    closeMobileMenu()
+    if (location.pathname === '/') {
+      e.preventDefault()
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  }
+
   const navItems = [
     { label: 'Про нас', path: '/', isAbout: true },
     { label: 'Продукти', path: '/products/', hasDropdown: true },
@@ -43,7 +56,7 @@ export default function Header() {
   return (
     <header className="header">
       <div className="header-content">
-        <NavLink to="/" className="logo" onClick={closeMobileMenu}>
+        <NavLink to="/" className="logo" onClick={handleLogoClick}>
           <img src={logo} alt="Гільдія Декора" />
           <div className="logo-text">
             <span className="logo-main">Гільдія</span>
