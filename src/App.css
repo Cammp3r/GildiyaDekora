@@ -508,15 +508,31 @@ h1, h2 {
   color: var(--cream);
   background: var(--ink);
   padding: 1rem 1.8rem;
-  transition: all 0.3s;
+  border-radius: 4px;
   width: fit-content;
   animation: fadeInUp 0.8s ease forwards 0.3s;
   opacity: 0;
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
 }
 
-.btn-primary:hover {
+/* Sweeps in from the left on hover instead of an instant color swap —
+   dark by default, fills with the accent color left-to-right. Slow,
+   even easing (no letter-spacing stretch) keeps the motion smooth. */
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
   background: var(--accent);
-  letter-spacing: 0.3em;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+  z-index: -1;
+}
+
+.btn-primary:hover::before {
+  transform: scaleX(1);
 }
 
 .btn-secondary {
@@ -939,20 +955,39 @@ section {
   color: var(--cream);
 }
 
-/* Primary: cart button — larger and orange */
+/* Primary: cart button — larger, same dark idle background as .btn-primary */
 .add-btn-primary {
-  background: var(--accent);
+  background: var(--ink);
   color: var(--cream);
-  border-color: var(--accent);
+  border-color: var(--ink);
   padding: 0.6rem 1rem;
   font-size: 0.95rem;
   font-weight: 700;
   border-radius: 6px;
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* Sweeps in from the left on hover instead of an instant color swap —
+   fills with the accent color left-to-right, matching .btn-primary. */
+.add-btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+  z-index: -1;
+}
+
+.add-btn-primary:hover::before {
+  transform: scaleX(1);
 }
 
 .add-btn-primary:hover {
-  background: #ad5f31;
-  border-color: #ad5f31;
+  border-color: var(--accent);
 }
 
 /* Secondary: 'Дізнатись більше' — larger but less prominent, no underline */
