@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState, useRef } from 'react'
 import { Link, useLocation, useSearchParams } from 'react-router-dom'
-import { oikosProductsDb, loadOracDecorProducts } from '../data/products.js'
+import { oikosProductsDb, loadOracDecorProducts, loadEliteDecorProducts } from '../data/products.js'
 import { useCart } from '../cart/CartContext.jsx'
 import { Seo } from '../seo/Seo.jsx'
 import { useEurRate } from '../context/ExchangeRateContext.jsx'
@@ -94,29 +94,54 @@ function LazyImage({ src, alt, className }) {
 export default function ProductsPage() {
   const [searchParams, setSearchParams] = useSearchParams()
   const location = useLocation()
-  const brandFromPath = location.pathname === '/products/orac-decor/' ? 'orac-decor' : null
+  const normalizedPath = location.pathname.replace(/\/+$/, '') || '/'
+  const brandFromPath = normalizedPath === '/products/orac-decor'
+    ? 'orac-decor'
+    : normalizedPath === '/products/elite-decor'
+      ? 'elite-decor'
+      : null
   const brandFromUrl = brandFromPath || searchParams.get('brand') || 'oikos'
   // Trailing slash matters: prerendered directory routes 301 to add it on
   // Netlify, so the catalog's canonical/internal-link base must already be final.
-  const catalogBasePath = brandFromUrl === 'orac-decor' ? '/products/orac-decor/' : '/products/'
+  const catalogBasePath = brandFromUrl === 'orac-decor'
+    ? '/products/orac-decor/'
+    : brandFromUrl === 'elite-decor'
+      ? '/products/elite-decor/'
+      : '/products/'
 
-  const [oracProducts, setOracProducts] = useState(null)
-  const [oracLoading, setOracLoading] = useState(false)
+  const [brandProducts, setBrandProducts] = useState(null)
+  const [brandLoading, setBrandLoading] = useState(false)
 
   useEffect(() => {
-    if (brandFromUrl === 'orac-decor' && oracProducts === null && !oracLoading) {
-      setOracLoading(true)
-      loadOracDecorProducts().then((data) => {
-        setOracProducts(data)
-        setOracLoading(false)
-      })
+    if (brandFromUrl !== 'orac-decor' && brandFromUrl !== 'elite-decor') {
+      setBrandProducts(null)
+      setBrandLoading(false)
+      return undefined
     }
-  }, [brandFromUrl, oracProducts, oracLoading])
+
+    let cancelled = false
+    setBrandProducts(null)
+    setBrandLoading(true)
+    const loadProducts = brandFromUrl === 'orac-decor'
+      ? loadOracDecorProducts
+      : loadEliteDecorProducts
+
+    loadProducts().then((data) => {
+      if (!cancelled) {
+        setBrandProducts(data)
+        setBrandLoading(false)
+      }
+    })
+
+    return () => {
+      cancelled = true
+    }
+  }, [brandFromUrl])
 
   const activeProducts = useMemo(() => {
-    if (brandFromUrl === 'orac-decor') return oracProducts ?? []
+    if (brandFromUrl === 'orac-decor' || brandFromUrl === 'elite-decor') return brandProducts ?? []
     return oikosProductsDb
-  }, [brandFromUrl, oracProducts])
+  }, [brandFromUrl, brandProducts])
 
   const categories = useMemo(
     () => [...new Set(activeProducts.map((p) => p.category))],
@@ -132,30 +157,33 @@ export default function ProductsPage() {
   const currentPage = getPositivePage(searchParams.get('page'))
   const { addItem } = useCart()
   const eurRate = useEurRate()
-  const [priceMin, setPriceMin] = useState('')
-  const [priceMax, setPriceMax] = useState('')
-  const [sortOrder, setSortOrder] = useState('default')
-  const [filterOpen, setFilterOpen] = useState(false)
-  const [selectedType, setSelectedType] = useState('all')
+  const savedCatalogState = location.state?.catalogState ?? {}
+  const [priceMin, setPriceMin] = useState(savedCatalogState.priceMin ?? '')
+  const [priceMax, setPriceMax] = useState(savedCatalogState.priceMax ?? '')
+  const [sortOrder, setSortOrder] = useState(savedCatalogState.sortOrder ?? 'default')
+  const [filterOpen, setFilterOpen] = useState(savedCatalogState.filterOpen ?? false)
+  const [selectedType, setSelectedType] = useState(savedCatalogState.selectedType ?? 'all')
   const prevBrand = useRef(brandFromUrl)
   const didInitSearchSync = useRef(false)
   const [searchInput, setSearchInput] = useState(searchQuery)
 
-  const usesOracGrid = brandFromUrl === 'orac-decor' && !searchQuery.trim()
+  const usesOracGrid = (brandFromUrl === 'orac-decor' || brandFromUrl === 'elite-decor') && !searchQuery.trim()
   const colCount = usesOracGrid ? 3 : 4
   const ITEMS_PER_PAGE = usesOracGrid ? 15 : 16
 
-  const brandName = brandFromUrl === 'orac-decor' ? 'ORAC DECOR' : 'OIKOS'
+  const brandName = brandFromUrl === 'orac-decor' ? 'ORAC DECOR' : brandFromUrl === 'elite-decor' ? 'ELITE DECOR' : 'OIKOS'
   const catalogHeading =
     brandFromUrl === 'orac-decor'
       ? 'Ліпнина ORAC DECOR у Києві'
+      : brandFromUrl === 'elite-decor'
+        ? 'Ліпнина ELITE DECOR у Києві'
       : 'Декоративні фарби та штукатурки OIKOS'
   const searchLabel =
-    brandFromUrl === 'orac-decor'
+    brandFromUrl === 'orac-decor' || brandFromUrl === 'elite-decor'
       ? 'Пошук товару'
       : 'Пошук фарби'
   const searchPlaceholder =
-    brandFromUrl === 'orac-decor'
+    brandFromUrl === 'orac-decor' || brandFromUrl === 'elite-decor'
       ? 'Пошук товару (назва, категорія)'
       : 'Пошук фарби (назва, ефект)'
   const seoTitle =
@@ -163,15 +191,21 @@ export default function ProductsPage() {
       ? `${selectedCategory} ${brandName} — купити в Києві`
       : brandFromUrl === 'orac-decor'
         ? 'Купити ліпнину ORAC DECOR у Києві | Карнизи, молдинги, панелі'
+        : brandFromUrl === 'elite-decor'
+          ? 'Купити ліпнину ELITE DECOR у Києві | Gaudi Decor, Grand Decor'
         : 'Купити декоративну фарбу OIKOS у Києві | Штукатурка, мікроцемент, венеціанка'
   const seoDescription =
     selectedCategory !== 'all'
       ? `${selectedCategory} ${brandName}: перегляньте товари, фото, характеристики та замовте консультацію в Гільдії Декора, Київ.`
       : brandFromUrl === 'orac-decor'
         ? 'Офіційний дилер ORAC DECOR в Україні. Купити ліпнину, карнизи, молдинги, декоративні панелі ORAC DECOR у Києві. Ціни, фото, консультація — Гільдія Декора.'
+        : brandFromUrl === 'elite-decor'
+          ? 'Купити ліпнину ELITE DECOR у Києві: Gaudi Decor і Grand Decor, актуальні ціни, фото, доставка та консультація — Гільдія Декора.'
         : 'Офіційний дилер OIKOS в Україні. Купити декоративну фарбу, венеціанську штукатурку, мікроцемент OIKOS у Києві. 840+ відтінків, ціни, доставка — Гільдія Декора.'
   const seoKeywords = brandFromUrl === 'orac-decor'
     ? 'ORAC DECOR Київ, купити ORAC DECOR, ліпнина Київ, карнизи молдинги, купити ліпнину, декоративна ліпнина купити, ORAC DECOR ціна, купить ORAC DECOR Украина, лепнина Киев, карнизы молдинги купить, потолочный плинтус орак декор, потолочный плинтус ORAC DECOR, купить потолочный плинтус Киев, потолочный карниз орак, лепнина из полиуретана Киев, молдинги для стен купить, розетки потолочные ORAC DECOR'
+    : brandFromUrl === 'elite-decor'
+      ? 'ELITE DECOR Київ, купити ELITE DECOR, Gaudi Decor, Grand Decor, ліпнина Київ, карнизи, молдинги, декоративні панелі, ціни Elite Decor'
     : 'купити декоративну фарбу OIKOS, купити штукатурку Київ, купити венеціанську штукатурку, декоративні матеріали OIKOS, мікроцемент купити, ottocento farba, supercolor oikos, ottocento oikos, купить краску OIKOS, купить краску oikos Киев, купить OIKOS Украина, краска OIKOS цена, декоративная краска OIKOS, купить декоративную краску Киев, ottocento oikos купить, ottocento краска купить, микроцемент Киев купить, венецианская штукатурка OIKOS, декоративная штукатурка цена Украина, supercolor oikos купить'
   const seoCanonical = selectedCategory === 'all'
     ? catalogBasePath
@@ -232,6 +266,11 @@ export default function ProductsPage() {
     const search = buildCatalogParams().toString()
     return search ? `?${search}` : ''
   }, [buildCatalogParams])
+
+  const getCatalogState = useCallback(
+    () => ({ priceMin, priceMax, sortOrder, filterOpen, selectedType }),
+    [filterOpen, priceMax, priceMin, selectedType, sortOrder]
+  )
 
   const handleCategoryFilter = (category) => {
     updateCatalogParams({ category, page: 1 })
@@ -365,6 +404,16 @@ export default function ProductsPage() {
             onChange={(e) => setSearchInput(e.target.value)}
             aria-label={searchLabel}
           />
+          {searchInput && (
+            <button
+              type="button"
+              className="products-search-clear"
+              onClick={() => setSearchInput('')}
+              aria-label="Очистити пошук"
+            >
+              ×
+            </button>
+          )}
         </div>
 
         <div className="filter-toggle-row">
@@ -478,13 +527,13 @@ export default function ProductsPage() {
           ))}
         </div>
 
-        {oracLoading && (
+        {brandLoading && (
           <div style={{ padding: '4rem 0', textAlign: 'center', color: 'var(--muted)', fontFamily: 'var(--mono)', fontSize: '0.7rem', letterSpacing: '0.15em', textTransform: 'uppercase' }}>
             Завантаження каталогу…
           </div>
         )}
 
-        {!oracLoading && (() => {
+        {!brandLoading && (() => {
           const remainder = paginatedProducts.length % colCount
           const placeholderCount = remainder > 0 ? colCount - remainder : 0
           return (
@@ -500,8 +549,9 @@ export default function ProductsPage() {
                         pathname: catalogBasePath,
                         search: getCatalogSearch(),
                       },
+                      catalogState: getCatalogState(),
                     }}
-                    className={`product-swatch ${product.brand === 'orac-decor' ? 'orac-swatch' : ''}`}
+                    className={`product-swatch ${product.brand !== 'oikos' ? 'orac-swatch' : ''}`}
                   >
                     <LazyImage
                       className="swatch-color"
@@ -541,6 +591,7 @@ export default function ProductsPage() {
                               pathname: catalogBasePath,
                               search: getCatalogSearch(),
                             },
+                            catalogState: getCatalogState(),
                           }}
                           className="add-btn add-btn-secondary"
                         >
@@ -711,7 +762,7 @@ export default function ProductsPage() {
                   Консультація — безкоштовно. Телефонуйте: <a href="tel:+380675039352">+38 (067) 503-93-52</a>
                 </p>
               </>
-            ) : (
+            ) : brandFromUrl === 'orac-decor' ? (
               <>
                 <h2>Купити ліпнину ORAC DECOR у Києві</h2>
                 <p>
@@ -736,6 +787,17 @@ export default function ProductsPage() {
 
                 <p>
                   Консультація та підбір елементів — безкоштовно. Телефонуйте: <a href="tel:+380675039352">+38 (067) 503-93-52</a>
+                </p>
+              </>
+            ) : (
+              <>
+                <h2>Купити ліпнину ELITE DECOR у Києві</h2>
+                <p>
+                  Гільдія Декора пропонує ліпнину <strong>ELITE DECOR</strong> з колекцій Gaudi Decor і Grand Decor. У каталозі доступні карнизи, молдинги, плінтуси, 3D-панелі та декоративні елементи з актуальними цінами й фото.
+                </p>
+                <h3>Gaudi Decor і Grand Decor</h3>
+                <p>
+                  Підберіть профіль за артикулом, розміром і категорією. Ми допоможемо перевірити наявність, розрахувати кількість і організувати доставку по Києву та Україні.
                 </p>
               </>
             )}

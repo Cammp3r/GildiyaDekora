@@ -2,6 +2,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import logo from '../logos/logo-transparent.png'
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
   const location = useLocation()
   const navigate = useNavigate()
 
@@ -74,6 +75,16 @@ export default function Footer() {
       </div>
 
       <div className="footer-col">
+        <h4>Ліпнина ELITE DECOR</h4>
+        <ul>
+          <li><Link to="/products/elite-decor/" className="footer-link">Каталог ELITE DECOR</Link></li>
+          <li><Link to="/products/elite-decor/?category=Gaudi%20Decor" className="footer-link">Gaudi Decor</Link></li>
+          <li><Link to="/products/elite-decor/?category=Grand%20Decor" className="footer-link">Grand Decor</Link></li>
+          <li><Link to="/contact/" className="footer-link">Консультація</Link></li>
+        </ul>
+      </div>
+
+      <div className="footer-col">
         <h4>Соціальні мережі</h4>
         <ul>
           <li><a href="https://www.facebook.com/GildiyaDecora/" target="_blank" rel="noreferrer" className="footer-link">Facebook</a></li>
@@ -91,7 +102,7 @@ export default function Footer() {
       </div>
 
       <div className="footer-bottom">
-        <span>&copy; 2026 Гільдія Декора · Офіційний дилер OIKOS та ORAC DECOR · Всі права захищені</span>
+        <span>&copy; {currentYear} Гільдія Декора · Офіційний дилер OIKOS та ORAC DECOR · Всі права захищені</span>
       </div>
     </footer>
   )

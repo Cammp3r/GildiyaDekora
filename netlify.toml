@@ -61,6 +61,11 @@
   status = 200
   force = true
 [[redirects]]
+  from = "/products/elite-decor"
+  to = "/products/elite-decor/index.html"
+  status = 200
+  force = true
+[[redirects]]
   from = "/gallery"
   to = "/gallery/index.html"
   status = 200

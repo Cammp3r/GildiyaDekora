@@ -47,11 +47,16 @@ export default function Header() {
   const productBrands = [
     { label: 'OIKOS', brand: 'oikos' },
     { label: 'ORAC DECOR', brand: 'orac-decor' },
+    { label: 'ELITE DECOR', brand: 'elite-decor' },
   ]
 
   // Trailing slash matters: prerendered directory routes 301 to add it on
   // Netlify, so every internal link must already point at the final URL.
-  const brandPath = (brand) => (brand === 'orac-decor' ? '/products/orac-decor/' : '/products/')
+  const brandPath = (brand) => brand === 'orac-decor'
+    ? '/products/orac-decor/'
+    : brand === 'elite-decor'
+      ? '/products/elite-decor/'
+      : '/products/'
 
   return (
     <header className="header">
