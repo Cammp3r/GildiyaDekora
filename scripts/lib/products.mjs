@@ -7,6 +7,7 @@ const EUR_TO_UAH = 51.95
 const GOOGLE_PRODUCT_CATEGORY_BY_BRAND = {
   OIKOS: '1361', // Hardware > Building Consumables > Painting Consumables > Paint
   'ORAC DECOR': '7112', // Hardware > Building Materials > Molding
+  'ELITE DECOR': '7112', // Hardware > Building Materials > Molding
 }
 
 function toArray(value) {
@@ -190,13 +191,32 @@ function collectOracProducts(oracDecor, siteUrl) {
   return products
 }
 
+function collectEliteProducts(eliteDecor, siteUrl) {
+  const products = []
+  for (const section of toArray(eliteDecor.sections)) {
+    for (const product of toArray(section.products)) {
+      products.push(mapProduct(product, {
+        brand: 'ELITE DECOR',
+        category: product.category ?? section.title_uk ?? section.id ?? '',
+        subcategory: product.collection ?? '',
+      }, siteUrl))
+    }
+  }
+  return products
+}
+
 export async function loadUniqueProducts(root, siteUrl) {
-  const [dtb, oracDecor] = await Promise.all([
+  const [dtb, oracDecor, eliteDecor] = await Promise.all([
     readJson(root, 'dtb.json'),
     readJson(root, 'orac_decor.json'),
+    readJson(root, 'elite_decor.json'),
   ])
 
-  const products = [...collectOikosProducts(dtb, siteUrl), ...collectOracProducts(oracDecor, siteUrl)]
+  const products = [
+    ...collectOikosProducts(dtb, siteUrl),
+    ...collectOracProducts(oracDecor, siteUrl),
+    ...collectEliteProducts(eliteDecor, siteUrl),
+  ]
     .filter((product) => {
       const price = Number(product.price)
       return product.id && product.title && Number.isFinite(price) && price > 0

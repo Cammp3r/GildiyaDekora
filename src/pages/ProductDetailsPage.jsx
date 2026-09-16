@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link, Navigate, useLocation, useNavigate, useParams } from 'react-router-dom'
-import { oikosProductsDb, loadOracDecorProducts, isOracProduct } from '../data/products.js'
+import { oikosProductsDb, loadOracDecorProducts, loadEliteDecorProducts, isOracProduct, isEliteProduct } from '../data/products.js'
 import { useCart } from '../cart/CartContext.jsx'
 import { Seo } from '../seo/Seo.jsx'
 import { absoluteUrl } from '../seo/seoUtils.js'
@@ -12,31 +12,39 @@ export default function ProductDetailsPage() {
   const location = useLocation()
   const navigate = useNavigate()
   const { addItem } = useCart()
+  const eurRate = useEurRate()
   const [oracProducts, setOracProducts] = useState(null)
   const [oracLoading, setOracLoading] = useState(false)
   const decodedId = id ? decodeURIComponent(id) : ''
   const needsOrac = isOracProduct(decodedId)
+  const needsElite = isEliteProduct(decodedId)
 
   useEffect(() => {
     if (needsOrac && oracProducts === null && !oracLoading) {
-      setOracLoading(true)
       loadOracDecorProducts().then((data) => {
         setOracProducts(data)
         setOracLoading(false)
       })
     }
-  }, [needsOrac, oracProducts, oracLoading])
+    if (needsElite && oracProducts === null && !oracLoading) {
+      loadEliteDecorProducts().then((data) => {
+        setOracProducts(data)
+        setOracLoading(false)
+      })
+    }
+  }, [needsOrac, needsElite, oracProducts, oracLoading])
 
   const product = useMemo(() => {
     if (!decodedId) return undefined
-    if (needsOrac) {
+    if (needsOrac || needsElite) {
       if (!oracProducts) return undefined
       return oracProducts.find((p) => String(p.id) === decodedId)
     }
     return oikosProductsDb.find((p) => String(p.id) === decodedId)
-  }, [decodedId, needsOrac, oracProducts])
+  }, [decodedId, needsOrac, needsElite, oracProducts])
 
   const [activePhotoByProduct, setActivePhotoByProduct] = useState({})
+  const [activeTechnicalPhoto, setActiveTechnicalPhoto] = useState(null)
   const [selectedTextureByProduct, setSelectedTextureByProduct] = useState({})
   const [selectedColorByProduct, setSelectedColorByProduct] = useState({})
   const [selectedVariantByProduct, setSelectedVariantByProduct] = useState({})
@@ -46,10 +54,13 @@ export default function ProductDetailsPage() {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
   }, [id])
 
-  const returnTo = location.state?.returnTo ?? {
-    pathname: needsOrac ? '/products/orac-decor/' : '/products/',
-    search: location.search,
-  }
+  const returnTo = useMemo(
+    () => location.state?.returnTo ?? {
+      pathname: needsOrac ? '/products/orac-decor/' : needsElite ? '/products/elite-decor/' : '/products/',
+      search: location.search,
+    },
+    [location.search, location.state?.returnTo, needsElite, needsOrac]
+  )
 
   useEffect(() => {
     if (!location.search) return
@@ -67,7 +78,7 @@ export default function ProductDetailsPage() {
     )
   }, [location.pathname, location.search, navigate, returnTo])
 
-  if (oracLoading || (needsOrac && oracProducts === null)) {
+  if (oracLoading || ((needsOrac || needsElite) && oracProducts === null)) {
     return <div className="container" style={{ padding: '6rem 0', textAlign: 'center', color: 'var(--muted)' }}>Завантаження…</div>
   }
 
@@ -76,6 +87,7 @@ export default function ProductDetailsPage() {
   }
 
   const photos = Array.isArray(product.photos) ? product.photos.filter(Boolean) : []
+  const technicalPhotos = Array.isArray(product.technicalPhotos) ? product.technicalPhotos.filter(Boolean) : []
   const hasMultiplePhotos = photos.length > 1
 
   const defaultPhoto = photos[0] || product.image || ''
@@ -98,7 +110,6 @@ export default function ProductDetailsPage() {
   const selectedVariant =
     priceVariants.find((variant) => variant.id === selectedVariantId) ?? priceVariants[0] ?? null
   const quantity = quantityByProduct[product.id] ?? 1
-  const eurRate = useEurRate()
   const getVariantPrice = (variant) =>
     variant.eurPrice !== null && variant.eurPrice !== undefined
       ? Math.round(variant.eurPrice * eurRate)
@@ -112,13 +123,13 @@ export default function ProductDetailsPage() {
     ? Math.round(activeEurPrice * eurRate)
     : basePrice
   const hasPrice = Number.isFinite(price) && price > 0
-  const shouldShowContactPriceButton = product.brand === 'orac-decor' && !hasPrice
+  const shouldShowContactPriceButton = (product.brand === 'orac-decor' || product.brand === 'elite-decor') && !hasPrice
   const priceLabel = hasPrice ? `${price.toLocaleString('uk-UA')} грн` : ''
   const lineTotal = hasPrice ? price * Number(quantity || 0) : 0
   const characteristics = Array.isArray(product.characteristics) ? product.characteristics : []
   const hasCharacteristics = characteristics.length > 0
   const shouldShowDescription = Boolean(product.description)
-  const brandName = product.brand === 'orac-decor' ? 'ORAC DECOR' : 'OIKOS'
+  const brandName = product.brand === 'orac-decor' ? 'ORAC DECOR' : product.brand === 'elite-decor' ? 'ELITE DECOR' : 'OIKOS'
   const productPath = `/products/${encodeURIComponent(product.id)}/`
 
   // Ukrainian → Russian category/effect translations for search coverage
@@ -143,7 +154,7 @@ export default function ProductDetailsPage() {
     'Медальйони та розетки': 'медальоны и розетки',
   }
   const categoryRu = CATEGORY_RU[product.category] || ''
-  const brandRu = product.brand === 'orac-decor' ? 'ORAC DECOR' : 'OIKOS'
+  const brandRu = product.brand === 'orac-decor' ? 'ORAC DECOR' : product.brand === 'elite-decor' ? 'ELITE DECOR' : 'OIKOS'
   const priceStr = hasPrice ? `від ${price.toLocaleString('uk-UA')} грн` : 'за запитом'
 
   // Meta description — Ukrainian, ~155 chars
@@ -208,9 +219,9 @@ export default function ProductDetailsPage() {
     categoryRu,
     typeKwRU,
     productRuPhonetic,
-    product.brand === 'oikos'
-      ? `OIKOS Украина краска, ${product.title} farba, ${product.title} фарба`
-      : `ORAC DECOR Украина, ${product.title} square, ${product.title} профіль`,
+      product.brand === 'oikos'
+        ? `OIKOS Украина краска, ${product.title} farba, ${product.title} фарба`
+        : `${brandName} Украина, ${product.title} профіль, ${product.title} ціна`,
   ].filter(Boolean).join(', ')
 
   // JSON-LD description — bilingual, longer
@@ -266,7 +277,9 @@ export default function ProductDetailsPage() {
             ? /orac\s*decor/i.test(product.title)
               ? `${product.title} — купити в Києві`
               : `${product.title} ORAC DECOR — купити в Києві`
-            : `Купити ${product.title} OIKOS`
+            : product.brand === 'elite-decor'
+              ? `Купити ${product.title} ELITE DECOR у Києві`
+              : `Купити ${product.title} OIKOS`
         }
         description={productDescription}
         keywords={seoKeywords}
@@ -279,6 +292,7 @@ export default function ProductDetailsPage() {
         <div className="product-details-top">
           <Link
             to={returnTo}
+            state={{ catalogState: location.state?.catalogState }}
             className="product-details-back"
           >
             Назад до каталогу
@@ -289,13 +303,13 @@ export default function ProductDetailsPage() {
 
         <div
           className={`product-details-grid ${
-            product.brand === 'orac-decor' ? 'orac-details-grid' : 'oikos-details-grid'
+            product.brand !== 'oikos' ? 'orac-details-grid' : 'oikos-details-grid'
           }`}
         >
           <div className="product-details-media">
             <img
               className={`product-details-image ${
-                product.brand === 'orac-decor' ? 'orac-image' : 'oikos-image'
+                product.brand !== 'oikos' ? 'orac-image' : 'oikos-image'
               }`}
               src={heroSrc(activePhoto || product.image)}
               alt={product.title}
@@ -332,6 +346,34 @@ export default function ProductDetailsPage() {
                     />
                   </button>
                 ))}
+              </div>
+            )}
+
+            {technicalPhotos.length > 0 && (
+              <div className="product-details-technical">
+                <h3>Схема та розміри</h3>
+                <div className="product-details-thumbs">
+                  {technicalPhotos.map((src) => (
+                    <button
+                      type="button"
+                      className="product-details-thumb"
+                      key={src}
+                      onClick={() => setActiveTechnicalPhoto(src)}
+                      aria-label={`Збільшити схему та розміри ${product.title}`}
+                    >
+                      <img
+                        src={src}
+                        alt={`Схема та розміри ${product.title}`}
+                        loading="lazy"
+                        decoding="async"
+                        onError={(e) => {
+                          e.currentTarget.onerror = null
+                          e.currentTarget.src = thumbSrc(src)
+                        }}
+                      />
+                    </button>
+                  ))}
+                </div>
               </div>
             )}
           </div>
@@ -542,6 +584,26 @@ export default function ProductDetailsPage() {
           </div>
         </div>
       </div>
+
+      {activeTechnicalPhoto && (
+        <div className="product-image-modal" role="dialog" aria-modal="true" aria-label="Збільшена схема">
+          <button
+            type="button"
+            className="product-image-modal-backdrop"
+            onClick={() => setActiveTechnicalPhoto(null)}
+            aria-label="Закрити"
+          />
+          <button
+            type="button"
+            className="product-image-modal-close"
+            onClick={() => setActiveTechnicalPhoto(null)}
+            aria-label="Закрити збільшене зображення"
+          >
+            ×
+          </button>
+          <img src={activeTechnicalPhoto} alt={`Схема та розміри ${product.title}`} />
+        </div>
+      )}
     </section>
   )
 }

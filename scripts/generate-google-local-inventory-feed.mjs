@@ -51,7 +51,7 @@ const feed = [
   '  <channel>',
   '    <title>Гільдія Декора — місцевий асортимент</title>',
   `    <link>${escapeXml(SITE_URL)}</link>`,
-  '    <description>Наявність товарів OIKOS та ORAC DECOR у точці продажу Гільдії Декора</description>',
+  '    <description>Наявність товарів OIKOS, ORAC DECOR та ELITE DECOR у точці продажу Гільдії Декора</description>',
   ...uniqueProducts.map(feedItem),
   '  </channel>',
   '</rss>',

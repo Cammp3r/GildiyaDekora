@@ -126,6 +126,26 @@ function normalizeOracCharacteristics(characteristics) {
   }).filter(Boolean)
 }
 
+const ELITE_CHARACTERISTIC_LABELS = {
+  length: 'Довжина',
+  height: 'Висота',
+  width: 'Ширина',
+  depth: 'Глибина',
+  dimensions: 'Габарити',
+  material: 'Матеріал',
+}
+
+const ELITE_CHARACTERISTIC_ORDER = ['length', 'height', 'width', 'depth', 'dimensions', 'material']
+
+function normalizeEliteCharacteristics(characteristics) {
+  if (!characteristics || typeof characteristics !== 'object') return []
+
+  return ELITE_CHARACTERISTIC_ORDER.map((key) => {
+    const value = String(characteristics[key] ?? '').trim()
+    return value ? { key, label: ELITE_CHARACTERISTIC_LABELS[key], value } : null
+  }).filter(Boolean)
+}
+
 function normalizePriceVariants(variants, currency = '') {
   return toArray(variants)
     .filter(Boolean)
@@ -173,6 +193,7 @@ function detectOikosProductType(name) {
 
 function mapProduct(product, { brand = 'oikos', category, subcategory, sectionId }) {
   const photos = normalizePhotos(product.photos, brand)
+  const technicalPhotos = normalizePhotos(product.technical_photos ?? product.technicalPhotos, brand)
   const colors = normalizeColors(product.colors)
   const textures = normalizeTextures(product.textures)
   const primaryImage =
@@ -211,10 +232,15 @@ function mapProduct(product, { brand = 'oikos', category, subcategory, sectionId
     description,
     image: primaryImage,
     photos,
+    technicalPhotos,
     colors,
     textures,
     characteristics:
-      brand === 'orac-decor' ? normalizeOracCharacteristics(product.characteristics) : [],
+      brand === 'orac-decor'
+        ? normalizeOracCharacteristics(product.characteristics)
+        : brand === 'elite-decor'
+          ? normalizeEliteCharacteristics(product.characteristics)
+          : [],
     unitPrice: convertedPrice,
     price: convertedPrice,
     eurPrice: priceCurrency === 'EUR' ? toNumber(price) : null,
@@ -300,6 +326,22 @@ function transformOracData(oracDecor) {
   return products
 }
 
+function transformEliteData(eliteDecor) {
+  const products = []
+  toArray(eliteDecor.sections).forEach((section) => {
+    const categoryName = section.title_uk ?? section.title ?? section.id ?? ''
+    toArray(section.products).forEach((product) => {
+      products.push(mapProduct(product, {
+        brand: 'elite-decor',
+        category: product.category ?? categoryName,
+        subcategory: product.collection ?? '',
+        sectionId: section.id,
+      }))
+    })
+  })
+  return products
+}
+
 // OIKOS products — bundled synchronously (small, ~200KB)
 export const oikosProductsDb = transformOikosData()
 
@@ -309,6 +351,8 @@ export let productsDb = oikosProductsDb
 // ORAC DECOR — lazy dynamic import (separate ~1.2MB chunk, loads on demand)
 let _oracCache = null
 let _oracPromise = null
+let _eliteCache = null
+let _elitePromise = null
 
 export function loadOracDecorProducts() {
   if (_oracCache) return Promise.resolve(_oracCache)
@@ -323,6 +367,22 @@ export function loadOracDecorProducts() {
   return _oracPromise
 }
 
+export function loadEliteDecorProducts() {
+  if (_eliteCache) return Promise.resolve(_eliteCache)
+  if (!_elitePromise) {
+    _elitePromise = import('../../elite_decor.json').then((m) => {
+      _eliteCache = transformEliteData(m.default)
+      productsDb = [...oikosProductsDb, ...(_oracCache ?? []), ..._eliteCache]
+      return _eliteCache
+    })
+  }
+  return _elitePromise
+}
+
 export function isOracProduct(id) {
   return String(id).startsWith('orac-')
+}
+
+export function isEliteProduct(id) {
+  return String(id).startsWith('elite-')
 }

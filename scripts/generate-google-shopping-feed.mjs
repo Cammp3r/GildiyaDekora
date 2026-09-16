@@ -56,7 +56,7 @@ const feed = [
   '  <channel>',
   '    <title>Гільдія Декора</title>',
   `    <link>${escapeXml(SITE_URL)}</link>`,
-  '    <description>Товари OIKOS та ORAC DECOR від Гільдії Декора</description>',
+  '    <description>Товари OIKOS, ORAC DECOR та ELITE DECOR від Гільдії Декора</description>',
   ...uniqueProducts.map(feedItem),
   '  </channel>',
   '</rss>',

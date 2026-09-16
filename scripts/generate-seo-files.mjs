@@ -19,6 +19,7 @@ const STATIC_ROUTES = [
   { path: '/', priority: '1.0', changefreq: 'weekly' },
   { path: '/products/', priority: '0.9', changefreq: 'weekly' },
   { path: '/products/orac-decor/', priority: '0.9', changefreq: 'weekly' },
+  { path: '/products/elite-decor/', priority: '0.9', changefreq: 'weekly' },
   { path: '/gallery/', priority: '0.6', changefreq: 'monthly' },
   { path: '/contact/', priority: '0.7', changefreq: 'monthly' },
   { path: '/return-policy/', priority: '0.5', changefreq: 'yearly' },
@@ -74,6 +75,16 @@ function collectOracProductIds(oracDecor) {
   return ids
 }
 
+function collectEliteProductIds(eliteDecor) {
+  return toArray(eliteDecor.sections).flatMap((section) =>
+    toArray(section.products).map((product) => product.id ?? product.url ?? product.name)
+  )
+}
+
+function toArray(value) {
+  return Array.isArray(value) ? value : []
+}
+
 function sitemapEntry({ loc, priority, changefreq, lastmod }) {
   return [
     '  <url>',
@@ -85,8 +96,16 @@ function sitemapEntry({ loc, priority, changefreq, lastmod }) {
   ].join('\n')
 }
 
-const [dtb, oracDecor] = await Promise.all([readJson('dtb.json'), readJson('orac_decor.json')])
-const productIds = [...collectOikosProductIds(dtb), ...collectOracProductIds(oracDecor)]
+const [dtb, oracDecor, eliteDecor] = await Promise.all([
+  readJson('dtb.json'),
+  readJson('orac_decor.json'),
+  readJson('elite_decor.json'),
+])
+const productIds = [
+  ...collectOikosProductIds(dtb),
+  ...collectOracProductIds(oracDecor),
+  ...collectEliteProductIds(eliteDecor),
+]
   .filter((id) => id !== null && id !== undefined && String(id).trim())
   .map((id) => String(id))
 

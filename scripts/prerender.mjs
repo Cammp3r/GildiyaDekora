@@ -41,6 +41,7 @@ const CORE_ROUTES = [
   '/',
   '/products',
   '/products/orac-decor',
+  '/products/elite-decor',
   '/gallery',
   '/contact',
   '/return-policy',

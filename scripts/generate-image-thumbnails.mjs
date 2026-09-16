@@ -25,9 +25,14 @@ const CONCURRENCY = 8
 //  -thumb  480px  — texture/color swatches, catalog grid cards, extra-photo strip
 //  -lg    1600px  — the main product photo (loading="eager", the LCP candidate);
 //                   guards against the handful of ~1920px originals exported at 300-650KB
-const VARIANTS = [
+const DEFAULT_VARIANTS = [
   { suffix: '-thumb.webp', width: 480, quality: 72 },
   { suffix: '-lg.webp', width: 1600, quality: 80 },
+]
+
+const ELITE_VARIANTS = [
+  { suffix: '-thumb.webp', width: 640, quality: 86 },
+  { suffix: '-lg.webp', width: 2400, quality: 95 },
 ]
 
 async function collectImages(dir) {
@@ -49,9 +54,11 @@ async function collectImages(dir) {
 async function makeThumb(filePath) {
   const ext = path.extname(filePath)
   const base = filePath.slice(0, -ext.length)
+  const isEliteImage = filePath.includes(`${path.sep}products${path.sep}elite-decor${path.sep}`)
+  const variants = isEliteImage ? ELITE_VARIANTS : DEFAULT_VARIANTS
 
   let anyCreated = false
-  for (const variant of VARIANTS) {
+  for (const variant of variants) {
     const outPath = base + variant.suffix
     try {
       await stat(outPath)
@@ -60,8 +67,12 @@ async function makeThumb(filePath) {
       // doesn't exist yet — generate it
     }
 
-    await sharp(filePath)
-      .resize({ width: variant.width, withoutEnlargement: true })
+    const pipeline = sharp(filePath)
+      .resize({ width: variant.width, withoutEnlargement: !isEliteImage, kernel: sharp.kernel.lanczos3 })
+
+    if (isEliteImage) pipeline.sharpen({ sigma: 1.1, m1: 0.8, m2: 2.2 })
+
+    await pipeline
       .webp({ quality: variant.quality })
       .toFile(outPath)
     anyCreated = true
