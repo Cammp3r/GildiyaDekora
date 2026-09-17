@@ -5,6 +5,7 @@ import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { PrismaClient } from '@prisma/client'
 import { createAdminRouter } from './routes/admin.js'
+import { createNotifyRouter } from './routes/notify.js'
 import { createPaymentRouter } from './routes/payment.js'
 import { createReviewsRouter } from './routes/reviews.js'
 
@@ -46,6 +47,15 @@ app.use(
     liqpaySandbox: String(process.env.LIQPAY_SANDBOX ?? '1').trim() !== '0',
     frontendUrl,
     webhookUrl: String(process.env.LIQPAY_WEBHOOK_URL ?? '').trim() || `${publicApiUrl.replace(/\/$/, '')}/api/payment/callback`,
+  })
+)
+
+app.use(
+  '/api/notify',
+  restrictedCors,
+  createNotifyRouter({
+    telegramBotToken: String(process.env.TELEGRAM_BOT_TOKEN ?? '').trim(),
+    telegramChatId: String(process.env.TELEGRAM_CHAT_ID ?? '').trim(),
   })
 )
 

@@ -1,9 +1,11 @@
 import { useEffect, useMemo, useState } from 'react'
-import { useLocation, useSearchParams } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import { useCart } from '../cart/CartContext.jsx'
 import { Seo } from '../seo/Seo.jsx'
+import { notifyTelegram } from '../utils/telegramNotify.js'
 
-const API_URL = (import.meta.env.VITE_API_URL ?? 'http://localhost:3001/api').replace(/\/$/, '')
+const ORDER_EMAIL = 'gildiya@meta.ua'
+const ORDER_FORM_ENDPOINT = `https://formsubmit.co/ajax/${ORDER_EMAIL}`
 const ORDER_RATE_LIMIT_KEY = 'gildiyaDekoraOrderSubmissions'
 const ORDER_RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000
 const ORDER_RATE_LIMIT_MAX = 3
@@ -92,30 +94,7 @@ function saveOrderSubmission(now = Date.now()) {
   localStorage.setItem(ORDER_RATE_LIMIT_KEY, JSON.stringify(submissions))
 }
 
-function redirectToLiqPay(checkoutUrl, data, signature) {
-  const form = document.createElement('form')
-  form.method = 'POST'
-  form.action = checkoutUrl
-  form.acceptCharset = 'utf-8'
-  form.style.display = 'none'
-
-  const dataInput = document.createElement('input')
-  dataInput.type = 'hidden'
-  dataInput.name = 'data'
-  dataInput.value = data
-
-  const sigInput = document.createElement('input')
-  sigInput.type = 'hidden'
-  sigInput.name = 'signature'
-  sigInput.value = signature
-
-  form.appendChild(dataInput)
-  form.appendChild(sigInput)
-  document.body.appendChild(form)
-  form.submit()
-}
-
-function PaymentSuccess({ orderNumber }) {
+function OrderSuccess() {
   const { clearCart } = useCart()
 
   useEffect(() => {
@@ -124,20 +103,15 @@ function PaymentSuccess({ orderNumber }) {
 
   return (
     <>
-      <Seo title="Оплату прийнято" canonicalPath="/order" noindex />
+      <Seo title="Замовлення прийнято" canonicalPath="/order" noindex />
       <section className="contact checkout">
         <div className="container">
           <div className="payment-success">
             <div className="payment-success-icon">✓</div>
-            <h1 className="payment-success-title">Оплату прийнято!</h1>
+            <h1 className="payment-success-title">Замовлення прийнято!</h1>
             <p className="payment-success-text">
-              Дякуємо за замовлення. Менеджер звʼяжеться з вами найближчим часом.
+              Дякуємо за замовлення. Менеджер звʼяжеться з вами найближчим часом для підтвердження та оплати.
             </p>
-            {orderNumber && (
-              <p className="payment-success-order">
-                Номер замовлення: <strong>{orderNumber}</strong>
-              </p>
-            )}
             <a href="/" className="btn-primary" style={{ marginTop: '2.5rem' }}>
               На головну →
             </a>
@@ -150,15 +124,11 @@ function PaymentSuccess({ orderNumber }) {
 
 export default function OrderPage() {
   const { items, totalQuantity, totalPrice } = useCart()
-  const [searchParams] = useSearchParams()
   const [status, setStatus] = useState('idle')
   const [statusMessage, setStatusMessage] = useState('')
   const [errors, setErrors] = useState(initialErrors)
   const location = useLocation()
   const [formStartedAt] = useState(() => Date.now())
-
-  const paymentParam = searchParams.get('payment')
-  const orderParam = searchParams.get('order')
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
@@ -175,8 +145,8 @@ export default function OrderPage() {
       .join('\n')
   }, [items])
 
-  if (paymentParam === 'success') {
-    return <PaymentSuccess orderNumber={orderParam} />
+  if (status === 'success') {
+    return <OrderSuccess />
   }
 
   const handleSubmit = async (event) => {
@@ -232,44 +202,48 @@ export default function OrderPage() {
     }
 
     setStatus('sending')
-    setStatusMessage('Створюємо замовлення...')
+    setStatusMessage('Відправляємо замовлення...')
+
+    const cleanFormData = new FormData()
+    cleanFormData.append('_subject', 'Нове замовлення з сайту Gildiya Dekora')
+    cleanFormData.append('_template', 'table')
+    cleanFormData.append('_captcha', 'false')
+    cleanFormData.append('_honey', '')
+    cleanFormData.append("Ім'я", values.name)
+    cleanFormData.append('Email', values.email)
+    cleanFormData.append('Телефон', values.phone)
+    cleanFormData.append('Замовлення', orderPreview)
+    cleanFormData.append('Кількість', String(totalQuantity))
+    cleanFormData.append('Сума', formatMoney(totalPrice))
+    cleanFormData.append('Коментар', values.message || '-')
 
     try {
-      const response = await fetch(`${API_URL}/payment/init`, {
+      const response = await fetch(ORDER_FORM_ENDPOINT, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          customer: {
-            name: values.name,
-            email: values.email,
-            phone: values.phone,
-            message: values.message || '',
-          },
-          items: items.map((item) => ({
-            productId: item.productId,
-            variantId: item.variantId,
-            quantity: item.quantity,
-            texture: item.texture ?? null,
-            color: item.color ?? null,
-          })),
-        }),
+        headers: { Accept: 'application/json' },
+        body: cleanFormData,
       })
 
       if (!response.ok) {
-        const err = await response.json().catch(() => ({}))
-        throw new Error(err?.error || 'Не вдалося створити замовлення.')
+        throw new Error('Order was not sent')
       }
 
-      const { checkoutUrl, data, signature } = await response.json()
       saveOrderSubmission()
-      setStatusMessage('Перенаправляємо на сторінку оплати...')
-      redirectToLiqPay(checkoutUrl, data, signature)
-    } catch (error) {
+      notifyTelegram({
+        type: 'order',
+        name: values.name,
+        email: values.email,
+        phone: values.phone,
+        message: values.message,
+        items: orderPreview,
+        totalQuantity,
+        totalPrice: formatMoney(totalPrice),
+      })
+      setStatus('success')
+      setStatusMessage('Дякуємо! Замовлення відправлено.')
+    } catch {
       setStatus('error')
-      setStatusMessage(
-        error?.message ||
-          'Не вдалося відправити замовлення. Спробуйте ще раз або зателефонуйте нам.'
-      )
+      setStatusMessage('Не вдалося відправити замовлення. Спробуйте ще раз або зателефонуйте нам.')
     }
   }
 
@@ -277,7 +251,7 @@ export default function OrderPage() {
     <>
       <Seo
         title="Оформлення замовлення"
-        description="Оформлення замовлення у Гільдії Декора з онлайн-оплатою через LiqPay."
+        description="Оформлення замовлення у Гільдії Декора."
         canonicalPath="/order"
         noindex
       />
@@ -285,7 +259,7 @@ export default function OrderPage() {
         <div className="container">
           <h1 className="section-title">Оформлення замовлення</h1>
           <div className="contact-order-banner">
-            Заповніть форму — і ви будете перенаправлені на захищену сторінку оплати LiqPay
+            Заповніть форму — і менеджер звʼяжеться з вами для підтвердження замовлення та оплати
           </div>
 
           <div className="contact-content">
@@ -295,15 +269,6 @@ export default function OrderPage() {
                 <p style={{ whiteSpace: 'pre-line', marginBottom: '0.75rem' }}>{orderPreview}</p>
                 <p><strong>Кількість:</strong> {totalQuantity}</p>
                 <p><strong>Сума:</strong> {formatMoney(totalPrice)}</p>
-              </div>
-
-              <div className="liqpay-info">
-                <div className="liqpay-badge">
-                  <span className="liqpay-badge-lock">🔒</span>
-                  <span className="liqpay-badge-text">Безпечна оплата через</span>
-                  <span className="liqpay-badge-logo">LiqPay</span>
-                </div>
-                <p className="liqpay-methods">Visa · Mastercard · Apple Pay · Google Pay</p>
               </div>
             </div>
 
@@ -385,18 +350,17 @@ export default function OrderPage() {
               </label>
 
               <button
-                className="submit-button liqpay-pay-btn"
+                className="submit-button"
                 type="submit"
                 disabled={status === 'sending'}
               >
-                {status === 'sending' ? statusMessage : 'Перейти до оплати →'}
+                {status === 'sending' ? statusMessage : 'Оформити замовлення'}
               </button>
 
               {statusMessage && status !== 'sending' && (
                 <div
                   className={[
                     'contact-form-status',
-                    status === 'success' ? 'contact-form-status-success' : '',
                     status === 'error' ? 'contact-form-status-error' : '',
                   ]
                     .filter(Boolean)
