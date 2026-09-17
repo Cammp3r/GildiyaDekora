@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Seo } from '../seo/Seo.jsx'
+import { notifyTelegram } from '../utils/telegramNotify.js'
 
 const CONTACT_EMAIL = 'gildiya@meta.ua'
 const CONTACT_FORM_ENDPOINT = `https://formsubmit.co/ajax/${CONTACT_EMAIL}`
@@ -190,6 +191,7 @@ export default function ContactPage() {
       setErrors(initialErrors)
       setStatus('success')
       setStatusMessage('Дякуємо! Повідомлення відправлено.')
+      notifyTelegram({ type: 'contact', ...values })
       window.gtag?.('event', 'conversion', { send_to: 'AW-18195334174/7WNrCLW1lM0cEJ6Im-RD', transaction_id: '' })
     } catch {
       setStatus('error')
