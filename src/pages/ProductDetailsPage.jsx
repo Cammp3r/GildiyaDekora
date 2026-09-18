@@ -292,7 +292,6 @@ export default function ProductDetailsPage() {
         <div className="product-details-top">
           <Link
             to={returnTo}
-            state={{ catalogState: location.state?.catalogState }}
             className="product-details-back"
           >
             Назад до каталогу
@@ -533,7 +532,7 @@ export default function ProductDetailsPage() {
                       >
                         {priceVariants.map((variant) => (
                           <option key={variant.id} value={variant.id}>
-                            {variant.title ? variant.title + ' ' + variant.volume : variant.volume} - {getVariantPrice(variant).toLocaleString('uk-UA')} грн
+                            {variant.title || variant.volume} - {getVariantPrice(variant).toLocaleString('uk-UA')} грн
                           </option>
                         ))}
                       </select>

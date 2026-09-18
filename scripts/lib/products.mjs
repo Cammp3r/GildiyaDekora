@@ -108,13 +108,31 @@ function getPrimaryImage(product) {
   return colorImage || product.image || '/logo-transparent.png'
 }
 
+function buildTitle(product, brand, category, name) {
+  // ORAC's own name_uk is already a full descriptive title (e.g. "LED
+  // Карниз прихованого освітлення Orac Decor C351") — nothing to add.
+  if (brand === 'ORAC DECOR') return name
+
+  // OIKOS and ELITE DECOR names are bare ("Decorsil Firenze", "HW 368"),
+  // which reads fine on the site next to photos/categories but is a poor
+  // Google Shopping title — competitors lead with a descriptive noun
+  // ("Інтер'єрна фарба Ultrasaten...", "Акрилова грунт-краска..."). Each
+  // OIKOS product carries its own `type` ("Декоративна фарба", "Ґрунтовка"
+  // etc.), more specific than the section-level `category`; ELITE DECOR
+  // only has the section-level category ("Молдинги", "Карнизи з
+  // орнаментом").
+  const descriptor = brand === 'OIKOS' ? (product.type || category) : category
+  return [descriptor, brand, name].filter(Boolean).join(' ')
+}
+
 function mapProduct(product, { brand, category, subcategory }, siteUrl) {
   const id = String(product.id ?? product.url ?? product.name ?? '').trim()
-  const title = String(
+  const rawName = String(
     brand === 'ORAC DECOR'
       ? (product.name_uk ?? product.name ?? '')
       : (product.name ?? product.title ?? '')
   ).trim()
+  const title = buildTitle(product, brand, category, rawName)
   const description = stripHtml(
     brand === 'ORAC DECOR'
       ? (product.description_uk ?? product.description ?? product.desc ?? '')

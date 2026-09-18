@@ -77,9 +77,10 @@ export default function Footer() {
       <div className="footer-col">
         <h4>Ліпнина ELITE DECOR</h4>
         <ul>
+          <li><Link to="/kupyty-elite-decor-kyiv/" className="footer-link">Купити ELITE DECOR Київ</Link></li>
           <li><Link to="/products/elite-decor/" className="footer-link">Каталог ELITE DECOR</Link></li>
-          <li><Link to="/products/elite-decor/?category=Gaudi%20Decor" className="footer-link">Gaudi Decor</Link></li>
-          <li><Link to="/products/elite-decor/?category=Grand%20Decor" className="footer-link">Grand Decor</Link></li>
+          <li><Link to="/products/elite-decor/?q=Gaudi%20Decor" className="footer-link">Купити Gaudi Decor</Link></li>
+          <li><Link to="/products/elite-decor/?q=Grand%20Decor" className="footer-link">Купити Grand Decor</Link></li>
           <li><Link to="/contact/" className="footer-link">Консультація</Link></li>
         </ul>
       </div>

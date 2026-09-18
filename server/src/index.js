@@ -6,7 +6,6 @@ import { fileURLToPath } from 'node:url'
 import { PrismaClient } from '@prisma/client'
 import { createAdminRouter } from './routes/admin.js'
 import { createNotifyRouter } from './routes/notify.js'
-import { createPaymentRouter } from './routes/payment.js'
 import { createReviewsRouter } from './routes/reviews.js'
 
 const currentDir = dirname(fileURLToPath(import.meta.url))
@@ -16,7 +15,6 @@ const prisma = new PrismaClient()
 const app = express()
 
 const frontendUrl = String(process.env.FRONTEND_URL ?? '').trim() || 'http://localhost:5173'
-const publicApiUrl = String(process.env.PUBLIC_API_URL ?? '').trim() || 'http://localhost:3001'
 const corsOrigins = String(process.env.CORS_ORIGIN ?? frontendUrl)
   .split(',')
   .map((value) => value.trim())
@@ -37,18 +35,6 @@ const restrictedCors = cors({
 
 app.use(express.json({ limit: '1mb' }))
 app.use(express.urlencoded({ extended: false }))
-
-app.use(
-  '/api/payment',
-  restrictedCors,
-  createPaymentRouter({
-    liqpayPublicKey: String(process.env.LIQPAY_PUBLIC_KEY ?? '').trim(),
-    liqpayPrivateKey: String(process.env.LIQPAY_PRIVATE_KEY ?? '').trim(),
-    liqpaySandbox: String(process.env.LIQPAY_SANDBOX ?? '1').trim() !== '0',
-    frontendUrl,
-    webhookUrl: String(process.env.LIQPAY_WEBHOOK_URL ?? '').trim() || `${publicApiUrl.replace(/\/$/, '')}/api/payment/callback`,
-  })
-)
 
 app.use(
   '/api/notify',

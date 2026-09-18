@@ -157,15 +157,25 @@ export default function ProductsPage() {
   const currentPage = getPositivePage(searchParams.get('page'))
   const { addItem } = useCart()
   const eurRate = useEurRate()
-  const savedCatalogState = location.state?.catalogState ?? {}
-  const [priceMin, setPriceMin] = useState(savedCatalogState.priceMin ?? '')
-  const [priceMax, setPriceMax] = useState(savedCatalogState.priceMax ?? '')
-  const [sortOrder, setSortOrder] = useState(savedCatalogState.sortOrder ?? 'default')
-  const [filterOpen, setFilterOpen] = useState(savedCatalogState.filterOpen ?? false)
-  const [selectedType, setSelectedType] = useState(savedCatalogState.selectedType ?? 'all')
+  const sortFromUrl = searchParams.get('sort')
+  const sortOrder = sortFromUrl === 'asc' || sortFromUrl === 'desc' ? sortFromUrl : 'default'
+  const priceMin = searchParams.get('priceMin') || ''
+  const priceMax = searchParams.get('priceMax') || ''
+  const PRODUCT_TYPES = ['all', 'paint', 'primer', 'varnish', 'wax']
+  const typeFromUrl = searchParams.get('type')
+  const selectedType = PRODUCT_TYPES.includes(typeFromUrl) ? typeFromUrl : 'all'
+  const [filterOpen, setFilterOpen] = useState(
+    () =>
+      categoryFromUrl !== 'all' ||
+      Boolean(sortFromUrl) ||
+      Boolean(searchParams.get('priceMin')) ||
+      Boolean(searchParams.get('priceMax')) ||
+      Boolean(typeFromUrl)
+  )
   const prevBrand = useRef(brandFromUrl)
-  const didInitSearchSync = useRef(false)
   const [searchInput, setSearchInput] = useState(searchQuery)
+  const [priceMinInput, setPriceMinInput] = useState(priceMin)
+  const [priceMaxInput, setPriceMaxInput] = useState(priceMax)
 
   const usesOracGrid = (brandFromUrl === 'orac-decor' || brandFromUrl === 'elite-decor') && !searchQuery.trim()
   const colCount = usesOracGrid ? 3 : 4
@@ -218,24 +228,34 @@ export default function ProductsPage() {
   useEffect(() => {
     if (prevBrand.current !== brandFromUrl) {
       prevBrand.current = brandFromUrl
-      setPriceMin('')
-      setPriceMax('')
-      setSortOrder('default')
-      setSelectedType('all')
       setSearchInput('')
+      setPriceMinInput('')
+      setPriceMaxInput('')
+      updateCatalogParams({ sort: 'default', priceMin: '', priceMax: '', type: 'all', query: '', page: 1 })
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [brandFromUrl])
 
   // Sync external URL param changes (e.g. browser back button) back to local input
   useEffect(() => { setSearchInput(searchQuery) }, [searchQuery])
+  useEffect(() => { setPriceMinInput(priceMin) }, [priceMin])
+  useEffect(() => { setPriceMaxInput(priceMax) }, [priceMax])
 
-  // Debounce: update URL only 300ms after user stops typing
+  // Debounce: update URL only 300ms after user stops typing. Compares
+  // against the URL-derived value (not a "have I run yet" ref) so it's a
+  // no-op on mount and immediately after any external URL change (browser
+  // back, category click, etc.) — a ref-based "skip the first run" guard
+  // looks equivalent but isn't: React 18 StrictMode's dev-only double
+  // effect invocation flips that guard before any real input change, so
+  // the *second* invocation schedules a real update a moment after mount
+  // that overwrites whatever's in the URL (category included, since it's
+  // not part of this call's own overrides) with whatever this effect's
+  // inputs happened to be at the time — on OIKOS (loaded synchronously)
+  // that's harmless, but on ORAC/ELITE (async-loaded) it can fire while
+  // the category list is still empty and wipe an already-selected category
+  // right out of the URL.
   useEffect(() => {
-    if (!didInitSearchSync.current) {
-      didInitSearchSync.current = true
-      return () => {}
-    }
-
+    if (searchInput === searchQuery) return undefined
     const timer = setTimeout(() => {
       updateCatalogParams({ query: searchInput, page: 1 })
     }, 300)
@@ -243,16 +263,39 @@ export default function ProductsPage() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchInput])
 
+  // Debounce: update URL only 300ms after user stops typing a price bound
+  useEffect(() => {
+    if (priceMinInput === priceMin && priceMaxInput === priceMax) return undefined
+    const timer = setTimeout(() => {
+      updateCatalogParams({ priceMin: priceMinInput, priceMax: priceMaxInput, page: 1 })
+    }, 300)
+    return () => clearTimeout(timer)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [priceMinInput, priceMaxInput])
+
   const buildCatalogParams = useCallback(
-    ({ brand = brandFromUrl, category = selectedCategory, query = searchQuery, page = currentPage } = {}) => {
+    ({
+      brand = brandFromUrl,
+      category = selectedCategory,
+      query = searchQuery,
+      page = currentPage,
+      sort = sortOrder,
+      priceMin: nextPriceMin = priceMin,
+      priceMax: nextPriceMax = priceMax,
+      type = selectedType,
+    } = {}) => {
       const params = new URLSearchParams()
       if (!brandFromPath && brand) params.set('brand', brand)
       if (category && category !== 'all') params.set('category', category)
       if (query) params.set('q', query)
+      if (sort && sort !== 'default') params.set('sort', sort)
+      if (nextPriceMin) params.set('priceMin', nextPriceMin)
+      if (nextPriceMax) params.set('priceMax', nextPriceMax)
+      if (type && type !== 'all') params.set('type', type)
       if (page > 1) params.set('page', String(page))
       return params
     },
-    [brandFromPath, brandFromUrl, currentPage, searchQuery, selectedCategory],
+    [brandFromPath, brandFromUrl, currentPage, priceMax, priceMin, searchQuery, selectedCategory, selectedType, sortOrder],
   )
 
   const updateCatalogParams = useCallback(
@@ -266,11 +309,6 @@ export default function ProductsPage() {
     const search = buildCatalogParams().toString()
     return search ? `?${search}` : ''
   }, [buildCatalogParams])
-
-  const getCatalogState = useCallback(
-    () => ({ priceMin, priceMax, sortOrder, filterOpen, selectedType }),
-    [filterOpen, priceMax, priceMin, selectedType, sortOrder]
-  )
 
   const handleCategoryFilter = (category) => {
     updateCatalogParams({ category, page: 1 })
@@ -364,14 +402,13 @@ export default function ProductsPage() {
     priceMax !== '',
     sortOrder !== 'default',
     selectedType !== 'all',
+    selectedCategory !== 'all',
   ].filter(Boolean).length
 
   const resetAllFilters = () => {
-    setPriceMin('')
-    setPriceMax('')
-    setSortOrder('default')
-    setSelectedType('all')
-    updateCatalogParams({ page: 1 })
+    setPriceMinInput('')
+    setPriceMaxInput('')
+    updateCatalogParams({ category: 'all', sort: 'default', priceMin: '', priceMax: '', type: 'all', page: 1 })
   }
 
   const formatPrice = (product) => {
@@ -432,6 +469,26 @@ export default function ProductsPage() {
 
         {filterOpen && (
           <div className="filter-panel">
+            <div className="filter-group filter-group-categories">
+              <span className="filter-group-label">Категорія:</span>
+              <div className="products-filter">
+                <button
+                  className={`filter-btn ${selectedCategory === 'all' ? 'active' : ''}`}
+                  onClick={() => handleCategoryFilter('all')}
+                >
+                  Усі товари
+                </button>
+                {categories.map((category) => (
+                  <button
+                    key={category}
+                    className={`filter-btn ${selectedCategory === category ? 'active' : ''}`}
+                    onClick={() => handleCategoryFilter(category)}
+                  >
+                    {category}
+                  </button>
+                ))}
+              </div>
+            </div>
             <div className="filter-group">
               <span className="filter-group-label">Ціна (грн):</span>
               <div className="filter-price-row">
@@ -440,8 +497,8 @@ export default function ProductsPage() {
                   type="number"
                   placeholder="від"
                   min="0"
-                  value={priceMin}
-                  onChange={(e) => { setPriceMin(e.target.value); updateCatalogParams({ page: 1 }) }}
+                  value={priceMinInput}
+                  onChange={(e) => setPriceMinInput(e.target.value)}
                   aria-label="Мінімальна ціна"
                 />
                 <span className="filter-price-sep">—</span>
@@ -450,8 +507,8 @@ export default function ProductsPage() {
                   type="number"
                   placeholder="до"
                   min="0"
-                  value={priceMax}
-                  onChange={(e) => { setPriceMax(e.target.value); updateCatalogParams({ page: 1 }) }}
+                  value={priceMaxInput}
+                  onChange={(e) => setPriceMaxInput(e.target.value)}
                   aria-label="Максимальна ціна"
                 />
               </div>
@@ -461,19 +518,19 @@ export default function ProductsPage() {
               <div className="sort-options">
                 <button
                   className={`sort-btn ${sortOrder === 'default' ? 'active' : ''}`}
-                  onClick={() => { setSortOrder('default'); updateCatalogParams({ page: 1 }) }}
+                  onClick={() => updateCatalogParams({ sort: 'default', page: 1 })}
                 >
                   За замовчуванням
                 </button>
                 <button
                   className={`sort-btn ${sortOrder === 'asc' ? 'active' : ''}`}
-                  onClick={() => { setSortOrder('asc'); updateCatalogParams({ page: 1 }) }}
+                  onClick={() => updateCatalogParams({ sort: 'asc', page: 1 })}
                 >
                   Ціна: від низької
                 </button>
                 <button
                   className={`sort-btn ${sortOrder === 'desc' ? 'active' : ''}`}
-                  onClick={() => { setSortOrder('desc'); updateCatalogParams({ page: 1 }) }}
+                  onClick={() => updateCatalogParams({ sort: 'desc', page: 1 })}
                 >
                   Ціна: від високої
                 </button>
@@ -493,7 +550,7 @@ export default function ProductsPage() {
                     <button
                       key={value}
                       className={`sort-btn ${selectedType === value ? 'active' : ''}`}
-                      onClick={() => { setSelectedType(value); updateCatalogParams({ page: 1 }) }}
+                      onClick={() => updateCatalogParams({ type: value, page: 1 })}
                     >
                       {label}
                     </button>
@@ -508,24 +565,6 @@ export default function ProductsPage() {
             )}
           </div>
         )}
-
-        <div className="products-filter" style={{ marginBottom: '40px' }}>
-          <button
-            className={`filter-btn ${selectedCategory === 'all' ? 'active' : ''}`}
-            onClick={() => handleCategoryFilter('all')}
-          >
-            Усі товари
-          </button>
-          {categories.map((category) => (
-            <button
-              key={category}
-              className={`filter-btn ${selectedCategory === category ? 'active' : ''}`}
-              onClick={() => handleCategoryFilter(category)}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
 
         {brandLoading && (
           <div style={{ padding: '4rem 0', textAlign: 'center', color: 'var(--muted)', fontFamily: 'var(--mono)', fontSize: '0.7rem', letterSpacing: '0.15em', textTransform: 'uppercase' }}>
@@ -549,7 +588,6 @@ export default function ProductsPage() {
                         pathname: catalogBasePath,
                         search: getCatalogSearch(),
                       },
-                      catalogState: getCatalogState(),
                     }}
                     className={`product-swatch ${product.brand !== 'oikos' ? 'orac-swatch' : ''}`}
                   >
@@ -591,7 +629,6 @@ export default function ProductsPage() {
                               pathname: catalogBasePath,
                               search: getCatalogSearch(),
                             },
-                            catalogState: getCatalogState(),
                           }}
                           className="add-btn add-btn-secondary"
                         >
