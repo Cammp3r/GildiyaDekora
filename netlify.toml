@@ -96,6 +96,11 @@
   status = 200
   force = true
 [[redirects]]
+  from = "/kupyty-elite-decor-kyiv"
+  to = "/kupyty-elite-decor-kyiv/index.html"
+  status = 200
+  force = true
+[[redirects]]
   from = "/oplata-i-dostavka"
   to = "/oplata-i-dostavka/index.html"
   status = 200

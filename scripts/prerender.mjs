@@ -48,6 +48,7 @@ const CORE_ROUTES = [
   '/nanesennya-farby-kyiv',
   '/kupyty-lipnynu-kyiv',
   '/kupyty-farbu-oikos-kyiv',
+  '/kupyty-elite-decor-kyiv',
   '/oplata-i-dostavka',
 ]
 
