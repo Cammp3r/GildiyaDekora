@@ -173,11 +173,9 @@ export default function ProductsPage() {
       Boolean(typeFromUrl)
   )
   const prevBrand = useRef(brandFromUrl)
-  const didInitSearchSync = useRef(false)
   const [searchInput, setSearchInput] = useState(searchQuery)
   const [priceMinInput, setPriceMinInput] = useState(priceMin)
   const [priceMaxInput, setPriceMaxInput] = useState(priceMax)
-  const didInitPriceSync = useRef(false)
 
   const usesOracGrid = (brandFromUrl === 'orac-decor' || brandFromUrl === 'elite-decor') && !searchQuery.trim()
   const colCount = usesOracGrid ? 3 : 4
@@ -243,13 +241,21 @@ export default function ProductsPage() {
   useEffect(() => { setPriceMinInput(priceMin) }, [priceMin])
   useEffect(() => { setPriceMaxInput(priceMax) }, [priceMax])
 
-  // Debounce: update URL only 300ms after user stops typing
+  // Debounce: update URL only 300ms after user stops typing. Compares
+  // against the URL-derived value (not a "have I run yet" ref) so it's a
+  // no-op on mount and immediately after any external URL change (browser
+  // back, category click, etc.) — a ref-based "skip the first run" guard
+  // looks equivalent but isn't: React 18 StrictMode's dev-only double
+  // effect invocation flips that guard before any real input change, so
+  // the *second* invocation schedules a real update a moment after mount
+  // that overwrites whatever's in the URL (category included, since it's
+  // not part of this call's own overrides) with whatever this effect's
+  // inputs happened to be at the time — on OIKOS (loaded synchronously)
+  // that's harmless, but on ORAC/ELITE (async-loaded) it can fire while
+  // the category list is still empty and wipe an already-selected category
+  // right out of the URL.
   useEffect(() => {
-    if (!didInitSearchSync.current) {
-      didInitSearchSync.current = true
-      return () => {}
-    }
-
+    if (searchInput === searchQuery) return undefined
     const timer = setTimeout(() => {
       updateCatalogParams({ query: searchInput, page: 1 })
     }, 300)
@@ -259,11 +265,7 @@ export default function ProductsPage() {
 
   // Debounce: update URL only 300ms after user stops typing a price bound
   useEffect(() => {
-    if (!didInitPriceSync.current) {
-      didInitPriceSync.current = true
-      return () => {}
-    }
-
+    if (priceMinInput === priceMin && priceMaxInput === priceMax) return undefined
     const timer = setTimeout(() => {
       updateCatalogParams({ priceMin: priceMinInput, priceMax: priceMaxInput, page: 1 })
     }, 300)
