@@ -2456,58 +2456,6 @@ footer .logo-text {
   color: rgba(245, 240, 232, 0.3);
 }
 
-/* ============== LIQPAY PAYMENT ============== */
-.liqpay-info {
-  margin-top: 2rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--soft);
-}
-
-.liqpay-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.5rem 0.9rem;
-  border: 1px solid rgba(196, 112, 58, 0.35);
-  border-radius: 4px;
-  background: rgba(196, 112, 58, 0.06);
-}
-
-.liqpay-badge-lock {
-  font-size: 0.75rem;
-}
-
-.liqpay-badge-text {
-  font-family: var(--mono);
-  font-size: 0.6rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
-.liqpay-badge-logo {
-  font-family: var(--mono);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  color: #009966;
-  text-transform: uppercase;
-}
-
-.liqpay-methods {
-  margin-top: 0.6rem;
-  font-family: var(--mono);
-  font-size: 0.6rem;
-  letter-spacing: 0.08em;
-  color: var(--muted);
-}
-
-.liqpay-pay-btn {
-  font-size: 0.72rem;
-  letter-spacing: 0.18em;
-  padding: 1.1rem;
-}
-
 /* ============== PAYMENT SUCCESS SCREEN ============== */
 .payment-success {
   display: flex;
