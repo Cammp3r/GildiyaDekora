@@ -292,7 +292,6 @@ export default function ProductDetailsPage() {
         <div className="product-details-top">
           <Link
             to={returnTo}
-            state={{ catalogState: location.state?.catalogState }}
             className="product-details-back"
           >
             Назад до каталогу

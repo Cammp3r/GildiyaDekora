@@ -1455,6 +1455,10 @@ section {
   gap: 0.5rem;
 }
 
+.filter-group-categories {
+  flex-basis: 100%;
+}
+
 .filter-group-label {
   font-family: var(--mono);
   font-size: 0.55rem;
