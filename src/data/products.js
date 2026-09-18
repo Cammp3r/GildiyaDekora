@@ -131,11 +131,12 @@ const ELITE_CHARACTERISTIC_LABELS = {
   height: 'Висота',
   width: 'Ширина',
   depth: 'Глибина',
+  diameter: 'Діаметр',
   dimensions: 'Габарити',
   material: 'Матеріал',
 }
 
-const ELITE_CHARACTERISTIC_ORDER = ['length', 'height', 'width', 'depth', 'dimensions', 'material']
+const ELITE_CHARACTERISTIC_ORDER = ['length', 'diameter', 'height', 'width', 'depth', 'dimensions', 'material']
 
 function normalizeEliteCharacteristics(characteristics) {
   if (!characteristics || typeof characteristics !== 'object') return []
