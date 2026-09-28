@@ -49,6 +49,7 @@ const CORE_ROUTES = [
   '/kupyty-lipnynu-kyiv',
   '/kupyty-farbu-oikos-kyiv',
   '/kupyty-elite-decor-kyiv',
+  '/kupyty-farbu-dlya-stin-kyiv',
   '/oplata-i-dostavka',
 ]
 
@@ -101,6 +102,15 @@ async function renderRoute(browser, baseUrl, route) {
     // Suppress console noise from the page
     page.on('console', () => {})
     page.on('pageerror', () => {})
+
+    // Tell index.html's inline scripts not to load GTM/gtag here — they
+    // inject their own runtime <script> tags (including a conversion ping
+    // stamped with this preview server's own localhost URL) into the DOM,
+    // and page.content() below would freeze that straight into the static
+    // HTML every real visitor's browser then also executes.
+    await page.evaluateOnNewDocument(() => {
+      window.__PRERENDER__ = true
+    })
 
     await page.goto(url, { waitUntil: 'networkidle0', timeout: 30_000 })
 

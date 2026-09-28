@@ -108,21 +108,91 @@ function getPrimaryImage(product) {
   return colorImage || product.image || '/logo-transparent.png'
 }
 
-function buildTitle(product, brand, category, name) {
+// Elite Decor's own category names are plural section headings ("Молдинги",
+// "Карнизи з орнаментом") — fine as an in-site filter label, but competing
+// Shopping listings title each item with the singular product noun ("Молдинг
+// ELITE Decor HCR 517 2000x42x17мм"). Map the ones actually present in
+// elite_decor.json (plus the rest of the PDF's own section list, so this
+// doesn't go stale the next time more categories get photos matched).
+const ELITE_CATEGORY_SINGULAR = {
+  'Молдинги': 'Молдинг',
+  'Карнизи для LED-освітлення': 'LED-карниз',
+  'Карнизи з орнаментом': 'Карниз',
+  'Гладкі карнизи': 'Карниз',
+  'Молдинги з орнаментом': 'Молдинг',
+  'Гладкі молдинги': 'Молдинг',
+  'Кутові елементи': 'Кутовий елемент',
+  'Плінтуси': 'Плінтус',
+  'Розетки': 'Розетка',
+  'Дуги': 'Дуга',
+  'Стельові плити': 'Стельова плита',
+  'Стельові куполи': 'Стельовий купол',
+  'Пілястри': 'Пілястра',
+  'Колони': 'Колона',
+  'Консолі': 'Консоль',
+  'Орнаменти': 'Орнамент',
+  'Ніші': 'Ніша',
+  '3D Панелі': '3D-панель',
+}
+
+function dimensionNumber(value) {
+  const match = String(value ?? '').match(/[\d]+(?:[.,]\d+)?/)
+  return match ? match[0].replace(',', '.') : ''
+}
+
+// "2000x79x52мм" / "⌀1010x65мм" — matches how competing Elite Decor
+// listings title their Shopping ads, built from this product's own
+// characteristics rather than guessed.
+function buildDimensionsCompact(characteristics) {
+  if (!characteristics) return ''
+
+  if (characteristics.diameter) {
+    const diameter = dimensionNumber(characteristics.diameter)
+    const height = dimensionNumber(characteristics.height)
+    if (!diameter) return ''
+    return height ? `⌀${diameter}x${height}мм` : `⌀${diameter}мм`
+  }
+
+  const parts = [
+    dimensionNumber(characteristics.length),
+    dimensionNumber(characteristics.width),
+    dimensionNumber(characteristics.height),
+    dimensionNumber(characteristics.depth),
+  ].filter(Boolean)
+
+  return parts.length ? `${parts.join('x')}мм` : ''
+}
+
+function cheapestVariant(priceVariants) {
+  return priceVariants.reduce(
+    (min, variant) => (!min || Number(variant.price) < Number(min.price) ? variant : min),
+    null,
+  )
+}
+
+function buildTitle(product, brand, category, name, priceVariants) {
   // ORAC's own name_uk is already a full descriptive title (e.g. "LED
   // Карниз прихованого освітлення Orac Decor C351") — nothing to add.
   if (brand === 'ORAC DECOR') return name
 
   // OIKOS and ELITE DECOR names are bare ("Decorsil Firenze", "HW 368"),
   // which reads fine on the site next to photos/categories but is a poor
-  // Google Shopping title — competitors lead with a descriptive noun
-  // ("Інтер'єрна фарба Ultrasaten...", "Акрилова грунт-краска..."). Each
-  // OIKOS product carries its own `type` ("Декоративна фарба", "Ґрунтовка"
-  // etc.), more specific than the section-level `category`; ELITE DECOR
-  // only has the section-level category ("Молдинги", "Карнизи з
-  // орнаментом").
-  const descriptor = brand === 'OIKOS' ? (product.type || category) : category
-  return [descriptor, brand, name].filter(Boolean).join(' ')
+  // Google Shopping title — competitors lead with a descriptive noun and,
+  // for Elite Decor specifically, the profile's dimensions ("Молдинг ELITE
+  // Decor HCR 517 2000x42x17мм").
+  if (brand === 'ELITE DECOR') {
+    const descriptor = ELITE_CATEGORY_SINGULAR[category] || category
+    const dimensions = buildDimensionsCompact(product.characteristics)
+    return [descriptor, brand, name, dimensions].filter(Boolean).join(' ')
+  }
+
+  // OIKOS: each product carries its own `type` ("Декоративна фарба",
+  // "Ґрунтовка" etc.), more specific than the section-level `category`.
+  // Append the cheapest variant's volume too, the way competing listings
+  // title a specific pack size rather than the bare product name.
+  const descriptor = product.type || category
+  const volume = cheapestVariant(priceVariants)?.volume || ''
+  return [descriptor, brand, name, volume].filter(Boolean).join(' ')
 }
 
 function mapProduct(product, { brand, category, subcategory }, siteUrl) {
@@ -132,7 +202,6 @@ function mapProduct(product, { brand, category, subcategory }, siteUrl) {
       ? (product.name_uk ?? product.name ?? '')
       : (product.name ?? product.title ?? '')
   ).trim()
-  const title = buildTitle(product, brand, category, rawName)
   const description = stripHtml(
     brand === 'ORAC DECOR'
       ? (product.description_uk ?? product.description ?? product.desc ?? '')
@@ -140,6 +209,7 @@ function mapProduct(product, { brand, category, subcategory }, siteUrl) {
   )
   const priceCurrency = product.price_currency ?? ''
   const priceVariants = normalizePriceVariants(product.price_variants ?? product.priceVariants, priceCurrency)
+  const title = buildTitle(product, brand, category, rawName, priceVariants)
   const rawPrice =
     product.price_m2 ??
     product.pricePerM2 ??

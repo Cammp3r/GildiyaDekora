@@ -1,9 +1,14 @@
 <!doctype html>
 <html lang="uk">
   <head>
-    <!-- Google Tag Manager -->
+    <!-- Google Tag Manager. Skipped when window.__PRERENDER__ is set (see
+         scripts/prerender.mjs) — otherwise Puppeteer lets GTM/gtag inject
+         their runtime script tags (including a conversion ping stamped with
+         the prerender preview server's own localhost URL) into the DOM
+         before the snapshot is taken, freezing that stale tag into the
+         static HTML every real visitor's browser then also executes. -->
     <script>
-      ;(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      window.__PRERENDER__ || (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
       new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
       j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
@@ -78,12 +83,17 @@
       }
     </script>
     <!-- Google Ads tag -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18195334174"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'AW-18195334174');
+      if (!window.__PRERENDER__) {
+        var gtagScript = document.createElement('script');
+        gtagScript.async = true;
+        gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=AW-18195334174';
+        document.head.appendChild(gtagScript);
+        gtag('js', new Date());
+        gtag('config', 'AW-18195334174');
+      }
     </script>
     <script type="text/javascript">
       ;(function (l) {
@@ -113,21 +123,5 @@
     <!-- End Google Tag Manager (noscript) -->
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
-    <!-- BEGIN PLERDY CODE -->
-    <script data-plerdy_code='1'>
-    (function(w,d){
-      if(w.__plerdyCode)return;
-      w.__plerdyCode=1;
-      w._protocol=w.location.protocol=="https:"?"https://":"http://";
-      w._site_hash_code="f5bceac97102c394c90a6456e4e4be89";
-      w._suid=79383;
-      var s=d.createElement("script");
-      s.async=true;
-      s.referrerPolicy="strict-origin-when-cross-origin";
-      s.src="https://a.plerdy.com/public/js/click/main.js?v="+Math.random();
-      d.head.appendChild(s);
-    })(window,document);
-    </script>
-    <!-- END PLERDY CODE -->
   </body>
 </html>
