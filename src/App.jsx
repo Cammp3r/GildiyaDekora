@@ -19,6 +19,7 @@ const NanesennyaFarbyPage = lazy(() => import('./pages/seo/NanesennyaFarbyPage.j
 const KupytyLipnynyKyivPage = lazy(() => import('./pages/seo/KupytyLipnynyKyivPage.jsx'))
 const KupytyFarbuOikosKyivPage = lazy(() => import('./pages/seo/KupytyFarbuOikosKyivPage.jsx'))
 const KupytyEliteDecorKyivPage = lazy(() => import('./pages/seo/KupytyEliteDecorKyivPage.jsx'))
+const KupytyFarbuDlyaStinKyivPage = lazy(() => import('./pages/seo/KupytyFarbuDlyaStinKyivPage.jsx'))
 const OplataIDostavkaPage = lazy(() => import('./pages/seo/OplataIDostavkaPage.jsx'))
 const AdminReviewsPage = lazy(() => import('./pages/AdminReviewsPage.jsx'))
 
@@ -48,6 +49,7 @@ function App() {
           <Route path="/kupyty-lipnynu-kyiv" element={<KupytyLipnynyKyivPage />} />
           <Route path="/kupyty-farbu-oikos-kyiv" element={<KupytyFarbuOikosKyivPage />} />
           <Route path="/kupyty-elite-decor-kyiv" element={<KupytyEliteDecorKyivPage />} />
+          <Route path="/kupyty-farbu-dlya-stin-kyiv" element={<KupytyFarbuDlyaStinKyivPage />} />
           <Route path="/oplata-i-dostavka" element={<OplataIDostavkaPage />} />
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
           <Route path="/return-policy" element={<ReturnPolicyPage />} />

@@ -27,6 +27,7 @@ const STATIC_ROUTES = [
   { path: '/kupyty-lipnynu-kyiv/', priority: '0.9', changefreq: 'monthly' },
   { path: '/kupyty-farbu-oikos-kyiv/', priority: '0.9', changefreq: 'monthly' },
   { path: '/kupyty-elite-decor-kyiv/', priority: '0.9', changefreq: 'monthly' },
+  { path: '/kupyty-farbu-dlya-stin-kyiv/', priority: '0.9', changefreq: 'monthly' },
   { path: '/oplata-i-dostavka/', priority: '0.7', changefreq: 'monthly' },
 ]
 
