@@ -103,6 +103,15 @@ async function renderRoute(browser, baseUrl, route) {
     page.on('console', () => {})
     page.on('pageerror', () => {})
 
+    // Tell index.html's inline scripts not to load GTM/gtag here — they
+    // inject their own runtime <script> tags (including a conversion ping
+    // stamped with this preview server's own localhost URL) into the DOM,
+    // and page.content() below would freeze that straight into the static
+    // HTML every real visitor's browser then also executes.
+    await page.evaluateOnNewDocument(() => {
+      window.__PRERENDER__ = true
+    })
+
     await page.goto(url, { waitUntil: 'networkidle0', timeout: 30_000 })
 
     // Wait until React has rendered at least one child inside #root
