@@ -161,28 +161,17 @@ const robots = [
   '',
 ].join('\n')
 
-// Every product page is a prerendered static directory
-// (dist/products/<id>/index.html), same as the CORE_ROUTES handled in
-// netlify.toml. Without a matching rule here too, Netlify's default asset
-// serving 301-redirects the bare `/products/<id>` path to add the trailing
-// slash before it can serve that directory — an extra redirect hop that
-// Google Search Console flags ("page with redirect") on every product URL
-// that's ever linked, bookmarked, or crawled without the slash. Listing the
-// known ids explicitly (rather than a wildcard) means unknown/typo'd ids
-// still fall through to the SPA catch-all and its normal "not found" flow.
-//
-// The trailing `!` forces the rule: a directory already exists on disk at
-// `/products/<id>`, so without `!` Netlify's asset server shadows (skips)
-// this rewrite and falls back to its own default 301-add-trailing-slash
-// response — which is what was actually happening in production and is
-// exactly the redirect hop this rule exists to prevent.
-const redirects = [
-  ...uniqueProductIds.map((id) => {
-    const encoded = encodeURIComponent(id)
-    return `/products/${encoded}  /products/${encoded}/index.html  200!`
-  }),
-  '/*    /index.html   200',
-].join('\n') + '\n'
+// Product pages are prerendered static directories (dist/products/<id>/index.html).
+// A bare `/products/<id>` request (no trailing slash) naturally 301-redirects to
+// `/products/<id>/` via Netlify's own directory-serving behavior — that's fine,
+// it matches the canonical URL (see productPath in ProductDetailsPage.jsx) and the
+// sitemap entry below, both of which already use the trailing-slash form. A
+// previous rewrite rule here served the no-slash URL directly with 200 OK instead
+// of redirecting it, which meant Googlebot found the *same* page live at two
+// different URLs with mismatched canonical signals — Search Console flagged ~95
+// product pages as "Duplicate, Google chose different canonical than user" because
+// of it. Removing the rewrite lets every product page resolve to exactly one URL.
+const redirects = '/*    /index.html   200\n'
 
 await mkdir(DIST_DIR, { recursive: true })
 await Promise.all([
@@ -192,4 +181,4 @@ await Promise.all([
 ])
 
 console.log(`Generated sitemap.xml with ${entries.length} URLs for ${SITE_URL}`)
-console.log(`Generated _redirects with ${uniqueProductIds.length} product rules for ${SITE_URL}`)
+console.log(`Generated _redirects for ${SITE_URL}`)
