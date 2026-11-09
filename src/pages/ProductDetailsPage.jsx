@@ -1,5 +1,8 @@
-import { useEffect, useMemo, useState } from 'react'
-import { Link, Navigate, useLocation, useNavigate, useParams } from 'react-router-dom'
+import ImageDialog from '../components/ImageDialog.jsx'
+import { variantLabel } from '../utils/variantLabel.js'
+import NotFoundPage from './NotFoundPage.jsx'
+import { useCallback, useEffect, useMemo, useState } from 'react'
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
 import { oikosProductsDb, loadOracDecorProducts, loadEliteDecorProducts, isOracProduct, isEliteProduct } from '../data/products.js'
 import { useCart } from '../cart/CartContext.jsx'
 import { Seo } from '../seo/Seo.jsx'
@@ -44,7 +47,8 @@ export default function ProductDetailsPage() {
   }, [decodedId, needsOrac, needsElite, oracProducts])
 
   const [activePhotoByProduct, setActivePhotoByProduct] = useState({})
-  const [activeTechnicalPhoto, setActiveTechnicalPhoto] = useState(null)
+  const [enlargedImage, setEnlargedImage] = useState(null)
+  const closeImage = useCallback(() => setEnlargedImage(null), [])
   const [selectedTextureByProduct, setSelectedTextureByProduct] = useState({})
   const [selectedColorByProduct, setSelectedColorByProduct] = useState({})
   const [selectedVariantByProduct, setSelectedVariantByProduct] = useState({})
@@ -83,7 +87,7 @@ export default function ProductDetailsPage() {
   }
 
   if (!product) {
-    return <Navigate to="/products" replace />
+    return <NotFoundPage />
   }
 
   const photos = Array.isArray(product.photos) ? product.photos.filter(Boolean) : []
@@ -350,14 +354,14 @@ export default function ProductDetailsPage() {
 
             {technicalPhotos.length > 0 && (
               <div className="product-details-technical">
-                <h3>Схема та розміри</h3>
+                <h2>Схема та розміри</h2>
                 <div className="product-details-thumbs">
                   {technicalPhotos.map((src) => (
                     <button
                       type="button"
                       className="product-details-thumb"
                       key={src}
-                      onClick={() => setActiveTechnicalPhoto(src)}
+                      onClick={() => setEnlargedImage({ src, alt: `Схема та розміри ${product.title}` })}
                       aria-label={`Збільшити схему та розміри ${product.title}`}
                     >
                       <img
@@ -390,7 +394,7 @@ export default function ProductDetailsPage() {
 
             {hasCharacteristics && (
               <div className="product-characteristics">
-                <h3>Характеристики</h3>
+                <h2>Характеристики</h2>
                 <dl>
                   {characteristics.map((item) => (
                     <div key={item.key} className="product-characteristics-row">
@@ -425,14 +429,19 @@ export default function ProductDetailsPage() {
                       key={t.name || t.url}
                       type="button"
                       className={`product-details-texture ${(t.name || t.url) === selectedTexture ? 'active' : ''}`}
-                      onClick={() =>
+                      onClick={() => {
                         setSelectedTextureByProduct((prev) => ({
                           ...prev,
                           [product.id]: t.name || t.url,
                         }))
-                      }
+                        if (product.brand === 'oikos' && t.url) {
+                          setEnlargedImage({ src: t.url, alt: `Текстура ${product.title} ${t.name || ''}` })
+                        }
+                      }}
                       title={t.name}
-                      aria-label={t.name}
+                      aria-label={product.brand === 'oikos' && t.url ? `Обрати та збільшити текстуру ${t.name || product.title}` : t.name}
+                      aria-haspopup={product.brand === 'oikos' && t.url ? 'dialog' : undefined}
+                      aria-pressed={(t.name || t.url) === selectedTexture}
                     >
                       {t.url ? (
                         <img
@@ -466,14 +475,19 @@ export default function ProductDetailsPage() {
                       key={`${c.code}-${c.img}`}
                       type="button"
                       className={`product-details-color ${c.code === selectedColor ? 'active' : ''}`}
-                      onClick={() =>
+                      onClick={() => {
                         setSelectedColorByProduct((prev) => ({
                           ...prev,
                           [product.id]: c.code,
                         }))
-                      }
+                        if (product.brand === 'oikos' && c.img) {
+                          setEnlargedImage({ src: c.img, alt: `Кольорова гамма ${product.title} ${c.code || ''}` })
+                        }
+                      }}
                       title={c.code}
-                      aria-label={c.code}
+                      aria-label={product.brand === 'oikos' && c.img ? `Обрати та збільшити колір ${c.code || product.title}` : c.code}
+                      aria-haspopup={product.brand === 'oikos' && c.img ? 'dialog' : undefined}
+                      aria-pressed={c.code === selectedColor}
                     >
                       {c.img ? (
                         <img
@@ -532,7 +546,9 @@ export default function ProductDetailsPage() {
                       >
                         {priceVariants.map((variant) => (
                           <option key={variant.id} value={variant.id}>
-                            {variant.title || variant.volume} - {getVariantPrice(variant).toLocaleString('uk-UA')} грн
+                            {product.brand === 'oikos'
+                              ? variantLabel(product, variant)
+                              : `${variant.title || variant.volume} - ${getVariantPrice(variant).toLocaleString('uk-UA')} грн`}
                           </option>
                         ))}
                       </select>
@@ -584,24 +600,9 @@ export default function ProductDetailsPage() {
         </div>
       </div>
 
-      {activeTechnicalPhoto && (
-        <div className="product-image-modal" role="dialog" aria-modal="true" aria-label="Збільшена схема">
-          <button
-            type="button"
-            className="product-image-modal-backdrop"
-            onClick={() => setActiveTechnicalPhoto(null)}
-            aria-label="Закрити"
-          />
-          <button
-            type="button"
-            className="product-image-modal-close"
-            onClick={() => setActiveTechnicalPhoto(null)}
-            aria-label="Закрити збільшене зображення"
-          >
-            ×
-          </button>
-          <img src={activeTechnicalPhoto} alt={`Схема та розміри ${product.title}`} />
-        </div>
+      {enlargedImage && (
+        <ImageDialog src={enlargedImage.src}
+          alt={enlargedImage.alt} onClose={closeImage} />
       )}
     </section>
   )

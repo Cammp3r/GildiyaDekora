@@ -1,3 +1,5 @@
+import PhoneInput from '../components/PhoneInput.jsx'
+import { isValidPhone } from '../utils/phone.js'
 import { useEffect, useState } from 'react'
 import { Seo } from '../seo/Seo.jsx'
 import { notifyTelegram } from '../utils/telegramNotify.js'
@@ -21,8 +23,6 @@ function validateContactForm(values) {
   const errors = { ...initialErrors }
   const namePattern = /^[A-Za-zА-Яа-яЁёІіЇїЄєҐґ'’ -]{2,60}$/
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
-  const normalizedPhone = values.phone.replace(/[^\d+]/g, '')
-  const phoneDigits = normalizedPhone.replace(/\D/g, '')
 
   if (!namePattern.test(values.name)) {
     errors.name = "Вкажіть ім'я від 2 до 60 літер без цифр і зайвих символів."
@@ -32,8 +32,8 @@ function validateContactForm(values) {
     errors.email = 'Вкажіть коректний email, наприклад name@gmail.com.'
   }
 
-  if (!/^\+?[\d\s()-.]{10,20}$/.test(values.phone) || phoneDigits.length < 10 || phoneDigits.length > 15) {
-    errors.phone = 'Вкажіть коректний номер телефону, наприклад +38 (067) 503-93-52.'
+  if (!isValidPhone(values.phone)) {
+    errors.phone = 'Вкажіть коректний номер телефону, наприклад +380 67 503 93 52.'
   }
 
   if (values.message.length < 10 || values.message.length > 1000 || !/[A-Za-zА-Яа-яЁёІіЇїЄєҐґ]/.test(values.message)) {
@@ -48,6 +48,7 @@ function sanitizeInput(value, maxLen = 1000) {
   // Remove HTML tags
   let s = value.replace(/<[^>]*>/g, '')
   // Remove control chars except newline and basic whitespace
+  // eslint-disable-next-line no-control-regex -- Strip control characters from submitted text.
   s = s.replace(/[\u0000-\u001F\u007F]+/g, ' ')
   // Collapse multiple whitespace
   s = s.replace(/\s+/g, ' ')
@@ -216,15 +217,15 @@ export default function ContactPage() {
           <div className="contact-content">
             <div className="contact-info">
               <div className="contact-item">
-                <h3>Адреса</h3>
+                <h2>Адреса</h2>
                 <p><a href="https://maps.app.goo.gl/dRX4TLoQzrdfMqeS9">м. Київ, вул. Сергія Гусовського 12/7, оф.10 </a></p>
               </div>
               <div className="contact-item">
-                <h3>Email</h3>
+                <h2>Email</h2>
                 <p><a href="mailto:gildiya@meta.ua">gildiya@meta.ua</a></p>
               </div>
               <div className="contact-item">
-                <h3>Телефон</h3>
+                <h2>Телефон</h2>
                 <p><a href="tel:+380675039352">+38 (067) 503-93-52</a></p>
                 <p><a
                     href="https://t.me/natkakhmelova"
@@ -240,12 +241,12 @@ export default function ContactPage() {
                   </a></p>
               </div>
               <div className="contact-item">
-                <h3>Замовити консультацію</h3>
+                <h2>Замовити консультацію</h2>
                 <p>Щоб замовити консультацію, заповніть форму або зв'яжіться з нами</p>
               </div>
 
               <div className="contact-item">
-                <h3>Ми в соцмережах</h3>
+                <h2>Ми в соцмережах</h2>
                 <div className="contact-social-links">
                   
                   <a
@@ -287,6 +288,7 @@ export default function ContactPage() {
               </label>
 
               <label className="contact-field">
+                <span className="contact-field-label">Ваше ім’я</span>
                 <input
                   type="text"
                   name="name"
@@ -302,6 +304,7 @@ export default function ContactPage() {
               </label>
 
               <label className="contact-field">
+                <span className="contact-field-label">Ваш email</span>
                 <input
                   type="email"
                   name="email"
@@ -315,14 +318,12 @@ export default function ContactPage() {
               </label>
 
               <label className="contact-field">
-                <input
-                  type="tel"
+                <span className="contact-field-label">Ваш номер телефону</span>
+                <PhoneInput
                   name="phone"
                   placeholder="Ваш номер телефону"
                   autoComplete="tel"
                   inputMode="tel"
-                  minLength="10"
-                  maxLength="20"
                   aria-invalid={Boolean(errors.phone)}
                   aria-describedby={errors.phone ? 'contact-phone-error' : undefined}
                   required
@@ -331,12 +332,12 @@ export default function ContactPage() {
               </label>
 
               <label className="contact-field">
+                <span className="contact-field-label">Ваше повідомлення</span>
                 <textarea
                   name="message"
                   placeholder="Ваше повідомлення"
                   rows="5"
-                  minLength="10"
-                  maxLength="1000"
+                                    maxLength="1000"
                   aria-invalid={Boolean(errors.message)}
                   aria-describedby={errors.message ? 'contact-message-error' : undefined}
                   required

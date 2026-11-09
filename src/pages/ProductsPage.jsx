@@ -1,3 +1,4 @@
+import { catalogPrice } from '../utils/prices.js'
 import { useCallback, useEffect, useMemo, useState, useRef } from 'react'
 import { Link, useLocation, useSearchParams } from 'react-router-dom'
 import { oikosProductsDb, loadOracDecorProducts, loadEliteDecorProducts } from '../data/products.js'
@@ -319,7 +320,7 @@ export default function ProductsPage() {
     const maxNum = priceMax !== '' ? Number(priceMax) : null
 
     const priceFilter = (p) => {
-      const price = typeof p.price === 'number' ? p.price : Number(p.price)
+      const price = catalogPrice(p, eurRate)
       if (!Number.isFinite(price) || price <= 0) return true
       if (minNum !== null && price < minNum) return false
       if (maxNum !== null && price > maxNum) return false
@@ -369,8 +370,8 @@ export default function ProductsPage() {
 
     if (sortOrder === 'asc' || sortOrder === 'desc') {
       return [...result].sort((a, b) => {
-        const pA = typeof a.price === 'number' ? a.price : Number(a.price) || 0
-        const pB = typeof b.price === 'number' ? b.price : Number(b.price) || 0
+        const pA = catalogPrice(a, eurRate)
+        const pB = catalogPrice(b, eurRate)
         return sortOrder === 'asc' ? pA - pB : pB - pA
       })
     }
@@ -389,7 +390,7 @@ export default function ProductsPage() {
     }
 
     return result
-  }, [searchQuery, selectedCategory, brandFromUrl, priceMin, priceMax, sortOrder, selectedType, activeProducts])
+  }, [searchQuery, selectedCategory, brandFromUrl, priceMin, priceMax, sortOrder, selectedType, activeProducts, eurRate])
 
   const totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE)
   const activePage = totalPages > 0 ? Math.min(currentPage, totalPages) : 1
@@ -412,9 +413,7 @@ export default function ProductsPage() {
   }
 
   const formatPrice = (product) => {
-    const num = product.eurPrice !== null && product.eurPrice !== undefined
-      ? Math.round(product.eurPrice * eurRate)
-      : (typeof product.price === 'number' ? product.price : Number(product.price))
+    const num = catalogPrice(product, eurRate)
     if (!Number.isFinite(num) || num <= 0) return 'Ціна за запитом'
     const prefix = product.priceVariants?.length > 1 ? 'від ' : ''
     return `${prefix}${num.toLocaleString('uk-UA')} грн`
@@ -601,7 +600,7 @@ export default function ProductsPage() {
                     </div>
                   </Link>
                   <div className="product-info">
-                    <h3 className="product-name">{product.title}</h3>
+                    <h2 className="product-name">{product.title}</h2>
                     <p className="product-sub">{product.subcategory || product.category}</p>
                     {product.effect && (
                       <p className="product-effect">
@@ -611,16 +610,19 @@ export default function ProductsPage() {
                     <div className="product-footer">
                       <span className={`product-price${product.price > 0 ? '' : ' product-price--request'}`}>{formatPrice(product)}</span>
                       <div className="product-actions">
-                        {product.price > 0 && (
-                        <button
-                          type="button"
-                          className="add-btn add-btn-primary"
-                          onClick={() => addItem(product, product.priceVariants?.[0] ?? null, 1)}
-                        >
-                          В кошик
-                        </button>
+                        {(product.brand === 'oikos' || product.price > 0) && (
+                        (product.brand === 'oikos' || product.priceVariants?.length > 1 || product.colors?.length || product.textures?.length) ? (
+                          <Link to={`/products/${encodeURIComponent(product.id)}/`}
+                            state={{ returnTo: { pathname: catalogBasePath, search: getCatalogSearch() } }}
+                            className="add-btn add-btn-primary">Обрати варіант</Link>
+                        ) : (
+                          <button type="button" className="add-btn add-btn-primary"
+                            onClick={() => addItem(product, product.priceVariants?.[0] ?? null, 1)}>
+                            В кошик
+                          </button>
+                        )
                         )}
-                        <Link
+                        {product.brand !== 'oikos' && <Link
                           to={{
                             pathname: `/products/${encodeURIComponent(product.id)}/`,
                           }}
@@ -633,7 +635,7 @@ export default function ProductsPage() {
                           className="add-btn add-btn-secondary"
                         >
                           Дізнатись більше
-                        </Link>
+                        </Link>}
                       </div>
                     </div>
                   </div>

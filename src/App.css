@@ -14,7 +14,7 @@
   --accent: #c4703a;
   --accent2: #7a5c8a;
   --soft: #d4c9b8;
-  --muted: #8a8278;
+  --muted: #696157;
   --serif: 'Cormorant Garamond', serif;
   --body: 'Nunito', sans-serif;
   --mono: 'Nunito', sans-serif;
@@ -111,7 +111,7 @@ h1, h2 {
 
 .logo-sub {
   font-size: 0.65rem;
-  opacity: 0.6;
+  opacity: 1;
 }
 
 .nav {
@@ -130,7 +130,7 @@ h1, h2 {
   text-transform: uppercase;
   text-decoration: none;
   color: var(--ink);
-  opacity: 0.6;
+  opacity: 1;
   transition: opacity 0.3s;
 }
 
@@ -154,7 +154,7 @@ h1, h2 {
   text-transform: uppercase;
   text-decoration: none;
   color: var(--ink);
-  opacity: 0.6;
+  opacity: 1;
   transition: opacity 0.3s;
 }
 
@@ -181,7 +181,7 @@ h1, h2 {
   text-transform: uppercase;
   text-decoration: none;
   color: var(--ink);
-  opacity: 0.6;
+  opacity: 1;
   transition: opacity 0.3s;
   cursor: pointer;
   padding: 0;
@@ -1177,7 +1177,7 @@ section {
   gap: 2.5rem;
 }
 
-.contact-item h3 {
+.contact-item h2 {
   font-size: 1.3rem;
   margin-bottom: 0.75rem;
   color: var(--ink);
@@ -1234,7 +1234,7 @@ section {
 .contact-form input::placeholder,
 .contact-form textarea::placeholder {
   color: var(--muted);
-  opacity: 0.6;
+  opacity: 1;
 }
 
 .contact-form input:focus,
@@ -1434,7 +1434,7 @@ section {
 
 .filter-arrow {
   font-size: 0.45rem;
-  opacity: 0.6;
+  opacity: 1;
 }
 
 .filter-panel {
@@ -1588,7 +1588,7 @@ section {
   color: var(--muted);
 }
 
-.product-card h3 {
+.product-card h2 {
   font-size: 1.3rem;
   margin-bottom: 0.75rem;
   color: var(--ink);
@@ -1764,7 +1764,7 @@ section {
   background: rgba(255, 255, 255, 0.7);
 }
 
-.product-characteristics h3 {
+.product-characteristics h2 {
   margin: 0 0 0.75rem;
   color: var(--ink);
   font-size: 1rem;
@@ -2316,7 +2316,7 @@ footer .logo-text {
   font-weight: 300;
 }
 
-.footer-col h4 {
+.footer-col h2 {
   font-family: var(--mono);
   font-size: 0.6rem;
   letter-spacing: 0.2em;
@@ -2991,4 +2991,27 @@ footer .logo-text {
   .seo-landing-cta {
     flex-direction: column;
   }
+}
+
+/* Keyboard access and reduced motion */
+.skip-link {
+  position: fixed;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 1000;
+  padding: 0.75rem 1rem;
+  background: var(--ink);
+  color: var(--cream);
+  transform: translateY(-150%);
+}
+.skip-link:focus { transform: translateY(0); }
+#main-content { scroll-margin-top: 110px; }
+#main-content:focus { outline: none; }
+.contact-field-label { display: block; color: var(--ink); margin-bottom: 0.35rem; font-size: 0.9rem; }
+.product-card h2 { font-family: var(--body); }
+.contact-item h2, .footer-col h2 { font-family: var(--body); }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .marquee-inner { animation: none; }
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
 }

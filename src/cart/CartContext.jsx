@@ -87,7 +87,7 @@ function cartReducer(state, action) {
       const { id } = action.payload
       return {
         ...state,
-        items: state.items.filter((x) => x.id !== id),
+        items: state.items.filter((x) => x.cartId !== id),
       }
     }
 
@@ -98,14 +98,14 @@ function cartReducer(state, action) {
       if (nextQuantity <= 0) {
         return {
           ...state,
-          items: state.items.filter((x) => x.id !== id),
+          items: state.items.filter((x) => x.cartId !== id),
         }
       }
 
       return {
         ...state,
         items: state.items.map((x) =>
-          x.id === id ? { ...x, quantity: clampMin(nextQuantity, 1) } : x
+          x.cartId === id ? { ...x, quantity: clampMin(nextQuantity, 1) } : x
         ),
       }
     }
@@ -203,7 +203,7 @@ export function CartProvider({ children }) {
 
       clearCart: () => dispatch({ type: 'CLEAR' }),
     }
-  }, [state.items])
+  }, [state.items, eurRate])
 
   useEffect(() => () => {
     if (toastTimer.current) {

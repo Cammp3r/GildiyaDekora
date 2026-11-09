@@ -1,1 +1,2 @@
-/*    /index.html   200
+# Routing is configured in netlify.toml. Do not add a SPA catch-all here:
+# _redirects rules run before TOML rules and would intercept /api/eur-rate.

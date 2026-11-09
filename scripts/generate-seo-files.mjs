@@ -171,7 +171,7 @@ const robots = [
 // different URLs with mismatched canonical signals — Search Console flagged ~95
 // product pages as "Duplicate, Google chose different canonical than user" because
 // of it. Removing the rewrite lets every product page resolve to exactly one URL.
-const redirects = '/*    /index.html   200\n'
+const redirects = '# Routing is configured in netlify.toml; no SPA catch-all.\n'
 
 await mkdir(DIST_DIR, { recursive: true })
 await Promise.all([

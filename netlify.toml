@@ -57,8 +57,9 @@
   status = 301
   force = true
 
-# SPA catch-all: every route that has no static file → serve index.html with HTTP 200
+# Known routes have static HTML generated during the build, including cart.
+# Unknown paths return HTTP 404, after the API proxy rules above.
 [[redirects]]
   from = "/*"
-  to = "/index.html"
-  status = 200
+  to = "/404.html"
+  status = 404

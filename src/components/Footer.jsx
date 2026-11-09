@@ -38,7 +38,7 @@ export default function Footer() {
       </p>
 
       <div className="footer-col">
-        <h4>Навігація</h4>
+        <h2>Навігація</h2>
         <ul>
           <li><a href="/#about" className="footer-link" onClick={handleAboutClick}>Про нас</a></li>
           <li><Link to="/products/" className="footer-link">Каталог</Link></li>
@@ -51,7 +51,7 @@ export default function Footer() {
       </div>
 
       <div className="footer-col">
-        <h4>Фарби OIKOS</h4>
+        <h2>Фарби OIKOS</h2>
         <ul>
           <li><Link to="/kupyty-farbu-oikos-kyiv/" className="footer-link">Купити фарбу Київ</Link></li>
           <li><Link to="/kupyty-farbu-dlya-stin-kyiv/" className="footer-link">Фарба для стін Київ</Link></li>
@@ -64,7 +64,7 @@ export default function Footer() {
       </div>
 
       <div className="footer-col">
-        <h4>Ліпнина ORAC DECOR</h4>
+        <h2>Ліпнина ORAC DECOR</h2>
         <ul>
           <li><Link to="/kupyty-lipnynu-kyiv/" className="footer-link">Купити ліпнину Київ</Link></li>
           <li><Link to="/products/orac-decor/" className="footer-link">Каталог ORAC DECOR</Link></li>
@@ -76,7 +76,7 @@ export default function Footer() {
       </div>
 
       <div className="footer-col">
-        <h4>Ліпнина ELITE DECOR</h4>
+        <h2>Ліпнина ELITE DECOR</h2>
         <ul>
           <li><Link to="/kupyty-elite-decor-kyiv/" className="footer-link">Купити ELITE DECOR Київ</Link></li>
           <li><Link to="/products/elite-decor/" className="footer-link">Каталог ELITE DECOR</Link></li>
@@ -87,7 +87,7 @@ export default function Footer() {
       </div>
 
       <div className="footer-col">
-        <h4>Соціальні мережі</h4>
+        <h2>Соціальні мережі</h2>
         <ul>
           <li><a href="https://www.facebook.com/GildiyaDecora/" target="_blank" rel="noreferrer" className="footer-link">Facebook</a></li>
           <li><a href="https://www.instagram.com/gildiya_decora/" target="_blank" rel="noreferrer" className="footer-link">Instagram</a></li>
@@ -95,7 +95,7 @@ export default function Footer() {
       </div>
 
       <div className="footer-col">
-        <h4>Контакти</h4>
+        <h2>Контакти</h2>
         <ul>
           <li><a href="tel:+380675039352" className="footer-link">+38 (067) 503-93-52</a></li>
           <li><a href="https://maps.app.goo.gl/dRX4TLoQzrdfMqeS9" target="_blank" rel="noreferrer" className="footer-link">м. Київ, вул. Сергія Гусовського 12/7</a></li>
