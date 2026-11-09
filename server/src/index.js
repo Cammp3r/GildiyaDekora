@@ -61,6 +61,11 @@ app.use(
 // actually crawls, even though it'd keep working for real site visitors.
 app.use('/api/reviews', cors(), createReviewsRouter())
 
+// Public, lightweight endpoint for external uptime monitoring; no database calls.
+app.get('/ping', (_req, res) => {
+  res.set('Cache-Control', 'no-store').status(200).type('text/plain').send('OK')
+})
+
 app.get('/api/health', (_req, res) => {
   res.json({ ok: true })
 })

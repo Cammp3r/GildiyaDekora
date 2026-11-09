@@ -12,6 +12,14 @@ dist
 dist-ssr
 *.local
 
+# Raw ORAC DECOR supplier asset dumps (renders/samples/tools) — far too large
+# for git; already processed into public/products/orac-decor + orac_decor.json.
+3. Renders and cross sections
+4. Sample images
+6. Tools and adhesives
+Images1
+Collection 2025_Nov
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
