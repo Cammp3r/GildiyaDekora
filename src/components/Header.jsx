@@ -68,7 +68,7 @@ export default function Header() {
             <span className="logo-sub">Декора</span>
           </div>
         </NavLink>
-        <nav className={`nav ${mobileMenuOpen ? 'open' : ''}`}>
+        <nav id="site-navigation" aria-label="Основна навігація" className={`nav ${mobileMenuOpen ? 'open' : ''}`}>
           {navItems.map((item) => (
             <div
               key={`${item.path}-${item.label}`}
@@ -80,12 +80,14 @@ export default function Header() {
                 <>
                   <button
                     className="nav-link dropdown-toggle"
+                    aria-expanded={dropdownOpen}
+                    aria-controls="product-navigation"
                     onClick={() => setDropdownOpen(!dropdownOpen)}
                   >
                     {item.label}
                     <span className="dropdown-arrow">▼</span>
                   </button>
-                  <div className={`dropdown-menu ${dropdownOpen ? 'open' : ''}`}>
+                  <div id="product-navigation" className={`dropdown-menu ${dropdownOpen ? 'open' : ''}`}>
                     {productBrands.map((brand) => (
                       <NavLink
                         key={brand.brand}
@@ -137,7 +139,9 @@ export default function Header() {
         <button
           className="mobile-toggle"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-label="Відкрити меню"
+          aria-label={mobileMenuOpen ? 'Закрити меню' : 'Відкрити меню'}
+          aria-expanded={mobileMenuOpen}
+          aria-controls="site-navigation"
         >
           ☰
         </button>

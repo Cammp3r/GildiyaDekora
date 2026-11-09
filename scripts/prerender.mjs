@@ -10,11 +10,9 @@
  *  3. Waits for React to render the page
  *  4. Saves the rendered HTML as dist/<route>/index.html
  *
- * Netlify serves these as static files directly from disk (bypassing the
- * SPA `/*` redirect), so bots get full content on the first request.
- * Product pages that fail to render for some reason simply fall back to
- * the normal SPA `/*` redirect (still HTTP 200, just client-rendered) —
- * a failed product page never fails the whole build.
+ * Netlify serves these files directly. Known product routes retain their
+ * static React shells if a snapshot fails; unknown paths use 404.html.
+ * Core pages, including the 404 document, must render successfully.
  */
 
 import { preview } from 'vite'
@@ -22,19 +20,13 @@ import puppeteer from 'puppeteer'
 import { writeFile, mkdir, copyFile } from 'node:fs/promises'
 import path from 'node:path'
 import process from 'node:process'
-import { loadUniqueProducts } from './lib/products.mjs'
+import { getProductRoutes } from './lib/product-routes.mjs'
+import { getBuildEurRate } from './lib/exchange-rate.mjs'
 
 const ROOT = process.cwd()
 const DIST = path.join(ROOT, 'dist')
 const PORT = 4174 // use 4174 to avoid conflict with a running dev server on 5173
 const CONCURRENCY = Number(process.env.PRERENDER_CONCURRENCY) || 6
-const SITE_URL = (
-  process.env.SITE_URL ||
-  process.env.VITE_SITE_URL ||
-  process.env.URL ||
-  process.env.DEPLOY_PRIME_URL ||
-  'https://gihldihja-decora.ua'
-).replace(/\/+$/, '')
 
 // Hand-picked pages where a prerender failure should fail the build.
 const CORE_ROUTES = [
@@ -44,6 +36,9 @@ const CORE_ROUTES = [
   '/products/elite-decor',
   '/gallery',
   '/contact',
+  '/cart',
+  '/privacy-policy',
+  '/404',
   '/return-policy',
   '/nanesennya-farby-kyiv',
   '/kupyty-lipnynu-kyiv',
@@ -52,11 +47,6 @@ const CORE_ROUTES = [
   '/kupyty-farbu-dlya-stin-kyiv',
   '/oplata-i-dostavka',
 ]
-
-async function getProductRoutes() {
-  const products = await loadUniqueProducts(ROOT, SITE_URL)
-  return products.map((product) => `/products/${encodeURIComponent(product.id)}`)
-}
 
 async function makeRouteShells(routes, indexHtml) {
   // Copy index.html into every route directory so the preview server can
@@ -81,7 +71,7 @@ const TRANSPARENT_GIF = Buffer.from(
   'base64',
 )
 
-async function renderRoute(browser, baseUrl, route) {
+async function renderRoute(browser, baseUrl, route, eurRate) {
   const url = `${baseUrl}${route}`
   const page = await browser.newPage()
   try {
@@ -108,9 +98,10 @@ async function renderRoute(browser, baseUrl, route) {
     // stamped with this preview server's own localhost URL) into the DOM,
     // and page.content() below would freeze that straight into the static
     // HTML every real visitor's browser then also executes.
-    await page.evaluateOnNewDocument(() => {
+    await page.evaluateOnNewDocument((rate) => {
       window.__PRERENDER__ = true
-    })
+      localStorage.setItem('gildiyaEurRate', JSON.stringify({ rate, ts: Date.now() }))
+    }, eurRate)
 
     await page.goto(url, { waitUntil: 'networkidle0', timeout: 30_000 })
 
@@ -125,6 +116,7 @@ async function renderRoute(browser, baseUrl, route) {
         : path.join(DIST, route.slice(1), 'index.html')
 
     await writeFile(outPath, html, 'utf-8')
+    if (route === '/404') await writeFile(path.join(DIST, '404.html'), html, 'utf-8')
     return { route, ok: true }
   } catch (err) {
     return { route, ok: false, error: err.message }
@@ -149,7 +141,8 @@ async function runPool(routes, concurrency, worker) {
 }
 
 async function prerender() {
-  const productRoutes = await getProductRoutes()
+  const productRoutes = await getProductRoutes(ROOT)
+  const eurRate = await getBuildEurRate()
   const allRoutes = [...CORE_ROUTES, ...productRoutes]
   const coreRouteSet = new Set(CORE_ROUTES)
 
@@ -190,7 +183,7 @@ async function prerender() {
   let done = 0
 
   await runPool(allRoutes, CONCURRENCY, async (route) => {
-    const result = await renderRoute(browser, baseUrl, route)
+    const result = await renderRoute(browser, baseUrl, route, eurRate)
     done++
     if (result.ok) {
       rendered++
@@ -218,9 +211,6 @@ async function prerender() {
 }
 
 prerender().catch((err) => {
-  // Non-fatal: the SPA is still fully functional via public/_redirects.
-  // Prerendering is a SEO bonus — don't block the deploy if Chrome is unavailable.
-  console.warn('\nPrerender warning (build will continue):', err.message)
-  console.warn('Pages will be served via SPA redirect instead of pre-rendered HTML.\n')
-  process.exit(0)
+  console.error('\nPrerender failed; static routes and 404.html are required:', err.message)
+  process.exit(1)
 })

@@ -7,5 +7,14 @@ export default defineConfig(() => {
   return {
     base: process.env.VITE_BASE || '/',
     plugins: [react()],
+    server: {
+      proxy: {
+        '/api/eur-rate': {
+          target: 'https://api.privatbank.ua',
+          changeOrigin: true,
+          rewrite: () => '/p24api/pubinfo?exchange&json&coursid=5',
+        },
+      },
+    },
   }
 })

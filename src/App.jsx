@@ -21,13 +21,14 @@ const KupytyFarbuOikosKyivPage = lazy(() => import('./pages/seo/KupytyFarbuOikos
 const KupytyEliteDecorKyivPage = lazy(() => import('./pages/seo/KupytyEliteDecorKyivPage.jsx'))
 const KupytyFarbuDlyaStinKyivPage = lazy(() => import('./pages/seo/KupytyFarbuDlyaStinKyivPage.jsx'))
 const OplataIDostavkaPage = lazy(() => import('./pages/seo/OplataIDostavkaPage.jsx'))
-const AdminReviewsPage = lazy(() => import('./pages/AdminReviewsPage.jsx'))
 
 function App() {
   return (
     <div className="App">
+      <a className="skip-link" href="#main-content">Перейти до вмісту</a>
       <Header />
 
+      <main id="main-content" tabIndex={-1}>
       <ErrorBoundary>
       <Suspense
         fallback={
@@ -53,11 +54,11 @@ function App() {
           <Route path="/oplata-i-dostavka" element={<OplataIDostavkaPage />} />
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
           <Route path="/return-policy" element={<ReturnPolicyPage />} />
-          <Route path="/admin/reviews" element={<AdminReviewsPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>
       </ErrorBoundary>
+      </main>
 
       <ScrollToTop />
       <Footer />

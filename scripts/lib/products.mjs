@@ -1,7 +1,9 @@
 import { readFile } from 'node:fs/promises'
 import path from 'node:path'
 
-const EUR_TO_UAH = 51.95
+import { getBuildEurRate } from './exchange-rate.mjs'
+
+let eurToUah
 
 // Google product taxonomy IDs (https://www.google.com/basepages/producttype/taxonomy-with-ids.en-US.txt)
 const GOOGLE_PRODUCT_CATEGORY_BY_BRAND = {
@@ -23,7 +25,7 @@ function toNumber(value, fallback = null) {
 function toUah(price, currency) {
   const num = toNumber(price)
   if (num === null) return null
-  return currency === 'EUR' ? Math.round(num * EUR_TO_UAH * 100) / 100 : num
+  return currency === 'EUR' ? Math.round(num * eurToUah) : num
 }
 
 export function stripHtml(value) {
@@ -294,6 +296,7 @@ function collectEliteProducts(eliteDecor, siteUrl) {
 }
 
 export async function loadUniqueProducts(root, siteUrl) {
+  eurToUah = await getBuildEurRate()
   const [dtb, oracDecor, eliteDecor] = await Promise.all([
     readJson(root, 'dtb.json'),
     readJson(root, 'orac_decor.json'),
